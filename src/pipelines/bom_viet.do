@@ -40,6 +40,9 @@ global x_oth = "area_tot_km2 area_tot_km2_2"
 // Total U.S. bombs, missiles, and rockets per km2
 global dep_bom = "tot_bmr_per"
 global dep_pov = "poverty_p0"
+global dep_pop_den = "popdensity1985"
+global dep_pop_gro = "ch_popdensity_20001985"
+global dep_nborn = "nbhere"
 
 /*-----------------------------------
 LOAD DATASETS AS FRAMES
@@ -238,106 +241,407 @@ IMPACTS ON ESTIMATED
 
 // (OLS 1)
 cwf province
-regress                                                                      ///
-    $dep_pov                                                                 ///
-    tot_bmr_per                                                              /// 
-    popdensity6061                                                           ///
-    south                                                                    ///
-    $x_elev                                                                  ///
-    $x_weather                                                               ///
-    $x_gis                                                                   ///
+regress                                                                     ///
+    $dep_pov                                                                ///
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
     if sample_all==1, robust
     
-summ                                                                         ///
-    $dep_pov                                                                 ///
+summ                                                                        ///
+    $dep_pov                                                                ///
     if sample_all==1
 
 // (OLS 2)
 cwf district
-regress                                                                      ///
-    $dep_pov                                                                 ///
-    tot_bmr_per                                                              /// 
-    popdensity6061                                                           ///
-    south                                                                    ///
-    $x_elev                                                                  ///
-    $x_weather                                                               ///
-    $x_gis                                                                   ///
-    $x_soil1                                                                 ///
-    $x_soil2,                                                                ///
+regress                                                                     ///
+    $dep_pov                                                                ///
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2,                                                               ///
     robust cluster(province)
     
 summ $dep_pov                                                                 
 
 // (OLS 3)
-areg                                                                         ///
-    $dep_pov                                                                 ///
-    tot_bmr_per                                                              ///
-    $x_elev                                                                  ///
-    $x_weather                                                               ///
-    $x_gis                                                                   ///
-    $x_soil1                                                                 ///
-    $x_soil2                                                                 ///
-    if sample_all==1,                                                        ///
-    a(province)                                                              ///
+areg                                                                        ///
+    $dep_pov                                                                ///
+    tot_bmr_per                                                             ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    if sample_all==1,                                                       ///
+    a(province)                                                             ///
     robust cluster(province)
     
-summ                                                                         ///
-    $dep_pov                                                                 ///
+summ                                                                        ///
+    $dep_pov                                                                ///
     if sample_all==1
 
 // (OLS 4)
-regress                                                                      ///
-    $dep_pov                                                                 ///
-    tot_bmr_per                                                              /// 
-    popdensity6061                                                           ///
-    south                                                                    ///
-    $x_elev                                                                  ///
-    $x_weather                                                               ///
-    $x_gis                                                                   ///
-    $x_soil1                                                                 ///
-    $x_soil2                                                                 ///
-    if provincename~="Quang Tri" & sample_all==1,                            ///
+regress                                                                     ///
+    $dep_pov                                                                ///
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    if provincename~="Quang Tri" & sample_all==1,                           ///
     robust cluster(province)
     
-summ                                                                         ///
-    $dep_pov                                                                 ///
+summ                                                                        ///
+    $dep_pov                                                                ///
     if provincename~="Quang Tri" & sample_all==1
 
 // (OLS 5)
-regress                                                                      ///
-    poverty_p0                                                               ///
-    diff_17                                                                  ///
-    popdensity6061                                                           ///
-    south                                                                    ///
-    $x_elev $x_gis                                                           ///
-    $x_weather                                                               ///
-    $x_soil1 $x_soil2                                                        ///
+regress                                                                     ///
+    $dep_pov                                                                ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev $x_gis                                                          ///
+    $x_weather                                                              ///
+    $x_soil1 $x_soil2                                                       ///
     if sample_all==1, robust cluster(province)
-summ poverty_p0 if sample_all==1
+    
+summ $dep_pov if sample_all==1
 
 // (IV-2SLS 6)
-regress                                                                      ///
-    poverty_p0                                                               ///
-    tot_bmr_per                                                              ///
-    popdensity6061                                                           ///
-    south                                                                    ///
-    $x_elev                                                                  ///
-    $x_gis                                                                   ///
-    $x_weather                                                               ///
-    $x_soil1                                                                 ///
-    $x_soil2(                                                                ///
-        diff_17                                                              ///
-        popdensity6061                                                       ///
-        south                                                                ///
-        $x_elev                                                              ///
-        $x_gis                                                               ///
-        $x_weather                                                           ///
-        $x_soil1                                                             ///
-        $x_soil2                                                             ///
-        )                                                                    ///
+regress                                                                     ///
+    $dep_pov                                                                ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2(                                                               ///
+        diff_17                                                             ///
+        popdensity6061                                                      ///
+        south                                                               ///
+        $x_elev                                                             ///
+        $x_gis                                                              ///
+        $x_weather                                                          ///
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
+        )                                                                   ///
     if sample_all==1, robust cluster(province)
-summ poverty_p0 if sample_all==1
+summ $dep_pov if sample_all==1
 
+/*-----------
+TABLE 5
+-------------
+
+LOCAL BOMBING
+IMPACTS ON ESTIMATED
+1999 POVERTY RATE
+ALTERNATIVE 
+SPECIFICATIONS
+-----------*/
+
+***5.1 5.2 /* NORTH VERSUS SOUTH */;
+bys south: regress poverty_p0 tot_bmr_per 
+    popdensity6061
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    /* [aw=pop_tot] */
+    if sample_all==1,
+    robust cluster(province);
+bys south: summ poverty_p0 if sample_all==1;
+
+***5.3 5.4 /* URBAN VERSUS RURAL: WHERE TO MAKE THIS CUT? AT 200/KM2? */;
+gen urban_6061 = (popdensity6061>200 & popdensity6061~=.);
+bys urban_6061: regress poverty_p0 tot_bmr_per
+    popdensity6061
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    south
+    /* [aw=pop_tot] */
+    if sample_all==1,
+    robust cluster(province);
+bys urban_6061: summ poverty_p0  if sample_all==1;
+drop urban_6061;
+
+***5.5 /* QUADRATIC TERM */;
+regress poverty_p0 tot_bmr_per tot_bmr_per_2
+    popdensity6061
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    south
+    /* [aw=pop_tot] */
+    if sample_all==1,
+    robust cluster(province);
+summ poverty_p0 if sample_all==1;
+
+***5.6  /* TOP 10% OF DISTRICTS */;
+regress poverty_p0 tot_bmr_hi
+    popdensity6061
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    south
+    /* [aw=pop_tot] */
+    if sample_all==1,
+    robust cluster(province);
+summ poverty_p0 if sample_all==1;
+
+/*-----------
+TABLE 6
+-------------
+
+LOCAL WAR IMPACTS
+ON CONSUMPTION
+EXPENDITURES 
+AND GROWTH
+
+-----------*/
+
+
+/*-----------
+TABLE 7
+-------------
+
+LOCAL WAR IMPACTS
+ON PHYSICAL 
+INFRASTRUCTURE AND
+HUMAN CAPITAL
+
+-----------*/
+
+/*-----------
+TABLE 8
+-------------
+
+LOCAL WAR IMPACTS
+ON POPULATION 
+DENSITY
+
+-----------*/
+
+// (1)
+cwf province
+
+regress  popdensity1999 tot_bmr_per 
+	popdensity6061
+	south
+	$x_elev $x_gis $x_weather /* $x_oth */
+	/* $x_soil1 $x_soil2 */
+	/* [aw=pop_prov] */
+	if sample_all==1, robust;
+**summ `var' if sample_all==1;
+clear;
+
+use war_data_district;
+***8.2 /* DETAILED DISTRICT GEOGRAPHIC, CLIMATIC CONTROLS */;
+regress  popdensity1999 tot_bmr_per
+	popdensity6061
+	$x_weather $x_elev $x_gis /* $x_oth */
+	$x_soil1 $x_soil2
+	south
+	/* [aw=pop_tot] */,
+	robust cluster(province);
+**summ popdensity1999;
+
+***8.3 /* PROVINCE FE */;
+areg popdensity1999 tot_bmr_per
+	$x_weather $x_elev $x_gis /* $x_oth */
+	$x_soil1 $x_soil2
+	/* [aw=pop_tot] */
+	if sample_all==1,
+	a(province) robust cluster(province);
+**summ popdensity1999 if sample_all==1;
+
+***8.4 /* EXCLUDE QUANG TRI */;
+regress popdensity1999 tot_bmr_per
+	popdensity6061
+	$x_weather $x_elev $x_gis /* $x_oth */
+	$x_soil1 $x_soil2
+	south
+	/* [aw=pop_tot] */
+	if provincename~="Quang Tri" & sample_all==1,
+	robust cluster(province);
+**summ popdensity1999 if provincename~="Quang Tri" & sample_all==1;
+
+***8.5 /* REDUCED FORM */;
+regress popdensity1999
+	diff_17
+	popdensity6061
+	south
+	$x_elev $x_gis $x_weather /* $x_oth */
+	$x_soil1 $x_soil2
+	/* [aw=pop_prov] */
+	if sample_all==1, robust cluster(province);
+**summ popdensity1999 if sample_all==1;
+
+***8.6 /* IV-2SLS */;
+regress popdensity1999 tot_bmr_per
+	popdensity6061
+	south
+	$x_elev $x_gis $x_weather /* $x_oth */
+	$x_soil1 $x_soil2
+	(diff_17
+	popdensity6061
+	south
+	$x_elev $x_gis $x_weather /* $x_oth */
+	$x_soil1 $x_soil2)
+	/* [aw=pop_prov] */
+	if sample_all==1, robust cluster(province);
+**summ popdensity1999 if sample_all==1;
+
+/*-----------
+TABLE 9
+-------------
+
+LOCAL WAR IMPACTS
+ON OTHER POPULATION
+CHARACTERISTICS
+
+-----------*/
+
+// PANEL A
+//--------
+
+// (1)
+cwf province
+regress                                                                     ///
+    $dep_pop_den                                                            ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_pop_den if sample_all==1
+
+// (2)
+regress                                                                     ///
+    $dep_pop_den                                                            ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust                    
+    
+summ $dep_pop_den                                                           /// 
+    if (provincename~="Quang Tri") & sample_all==1
+
+// (3)
+regress                                                                     ///
+    $dep_pop_den                                                            ///  
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_pop_den if sample_all==1
+
+
+// PANEL B
+//--------
+
+// (1)
+regress                                                                     ///
+    $dep_pop_gro                                                            ///  
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_pop_gro if sample_all==1
+
+// (2)
+regress                                                                     ///
+    $dep_pop_gro                                                            /// 
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust
+
+summ $dep_pop_gro                                                           ///  
+    if (provincename~="Quang Tri") & sample_all==1
+
+// (3)
+regress                                                                     ///
+    $dep_pop_gro                                                            /// 
+    diff_17																	///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_pop_gro if sample_all==1
+
+gen nbhere=(1-bornhere)
+
+// PANEL C
+//--------
+
+// (1)
+regress                                                                     ///
+    $dep_nborn                                                              ///
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_nborn if sample_all==1
+
+// (2)
+regress                                                                     ///
+    $dep_nborn                                                              ///
+    tot_bmr_per                                                             /// 
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust
+    
+summ nbhere if (provincename~="Quang Tri") & sample_all==1
+
+// (3)
+regress                                                                     ///
+    $dep_nborn                                                              ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+
+summ nbhere if sample_all==1
 
 
 /*-----------------------------------
@@ -345,14 +649,24 @@ FIGURES
 -----------------------------------*/
 
 /*-----------
+FIGURE 1
+-------------
+
+MAP OF VIETNAM
+
+-----------*/
+
+
+/*-----------
 FIGURE 2
 -------------
 
 ESTIMATED DISTRICT
-POVERTY RATE 1999 VS. 
-TOTAL US BOMBS, MISSILES, 
-AND ROCKETS PER KM2 IN 
-THE DISTRICT CONDITIONAL ON:
+POVERTY RATE 1999 
+VS. TOTAL US BOMBS,
+MISSILES, AND ROCKETS 
+PER KM2 IN THE DISTRICT
+ CONDITIONAL ON:
 -Province population
 -South Vietnam
 -District temp
@@ -400,6 +714,16 @@ twoway                                                                     ///
     (lfit poverty_p0_dc tot_bmr_per_dc),                                   ///
     ytitle("Residuals/Fitted values")                                      ///
     saving(poverty_p0_tot_bmr_per_lin_dc, replace)
+
+/*-----------
+FIGURE 3
+-------------
+
+STATE INVESTMENTS,
+RATIO OF MORE HEAVILY
+BOMBED TO LESS HEAVILY
+BOMBED
+-----------*/
 
 
 /*-----------------------------------
