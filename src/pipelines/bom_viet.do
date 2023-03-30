@@ -48,6 +48,7 @@ global dep_consum_2002 ="exppc02r98"
 global dep_consum_1992 ="exppc93r98"
 global dep_consum_gro ="consgrowth_9302"
 global dep_acc_elec ="elec_rate"
+global dep_lit = "lit_rate"
 
 /*-----------------------------------
 LOAD DATASETS AS FRAMES
@@ -613,7 +614,7 @@ areg                                                                        ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil,                                                                ///        
+    $x_soil                                                                 ///        
     if sample_all==1,                                                       ///
     a(province) robust cluster(province)
 
@@ -622,116 +623,146 @@ summ $dep_acc_elec if sample_all==1
 // (4)
 regress                                                                     ///
     $dep_acc_elec                                                           ///
-    tot_bmr_per
-    popdensity6061
-    south
-    $x_weather $x_elev $x_gis /* $x_oth */
-    $x_soil,                                                                ///        
-    /* [aw=pop_tot] */
-    if provincename~="Quang Tri" & sample_all==1,
-    robust cluster(province);
-**summ elec_rate if provincename~="Quang Tri" & sample_all==1;
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///          
+    $x_soil                                                                 ///
+    if provincename~="Quang Tri" & sample_all==1,							///
+    robust cluster(province)
+
+summ $dep_acc_elec if provincename~="Quang Tri" & sample_all==1
 
 // (5)
-regress elec_rate
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2
-    /* [aw=pop_prov] */
-    if sample_all==1, robust cluster(province);
-**summ elec_rate if sample_all==1;
+regress                                                                     ///
+    $dep_acc_elec                                                           ///
+    diff_17																	///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///          
+    $x_soil                                                                 ///
+    if sample_all==1, robust cluster(province) 
+
+summ $dep_acc_elec if sample_all==1
 
 // (6)
-regress elec_rate tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2
-    (diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2)
-    /* [aw=pop_prov] */
-    if sample_all==1, robust cluster(province);
-**summ elec_rate if sample_all==1;
-
+regress                                                                     ///
+    $dep_acc_elec                                                           ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///          
+    $x_soil(																///
+		diff_17																///
+		popdensity6061														///
+		south                                                               ///
+		$x_elev                                                             ///
+		$x_gis                                                              ///
+		$x_weather                                                          ///          
+		$x_soil                                                             ///
+	) if sample_all==1, robust cluster(province)
+	
+summ $dep_acc_elec if sample_all==1
 
 /*
 PANEL B
 */
 
-cwf province
-
 // (1)
+cwf province
+regress                                                                     ///
+	$dep_lit																///
+	tot_bmr_per																/// 
+    popdensity6061															///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
 
-regress lit_rate tot_bmr_per 
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if sample_all==1, robust;
-**summ `var' if sample_all==1;
-
-
-cwf district
+summ $dep_lit if sample_all==1
 
 // (2)
+cwf district
+regress                                                                     ///
+	$dep_lit																///
+	tot_bmr_per																/// 
+    popdensity6061															///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+	south,																	///
+    robust cluster(province)
+	
+summ $dep_lit
 
-regress lit_rate tot_bmr_per
-    popdensity6061
-    $x_weather $x_elev $x_gis
-    $x_soil1 $x_soil2
-    south
-    /* [aw=pop_tot] */,
-    robust cluster(province);
-**summ lit_rate;
+// (3) PROBLEMS
+areg
+	$dep_lit																///
+	tot_bmr_per																///
+	$x_elev                                                                 ///
+	$x_gis                                                                  ///
+	$x_weather                                                              ///          
+	$x_soil  																///
+    if sample_all==1,														///
+    a(province) robust cluster(province)
 
-***7.B.3 /* PROVINCE FE */;
-areg lit_rate tot_bmr_per
-    $x_weather $x_elev $x_gis /* $x_oth */
-    $x_soil1 $x_soil2
-    /* [aw=pop_tot] */
-    if sample_all==1,
-    a(province) robust cluster(province);
-**summ lit_rate if sample_all==1;
+summ $dep_lit if sample_all==1
 
-***7.B.4 /* EXCLUDE QUANG TRI */;
-regress lit_rate tot_bmr_per
-    popdensity6061
-    $x_weather $x_elev $x_gis
-    $x_soil1 $x_soil2
-    south
-    if provincename~="Quang Tri" & sample_all==1,
-    robust cluster(province);
-**summ lit_rate if provincename~="Quang Tri" & sample_all==1;
+// (4)
+regress                                                                     ///
+	$dep_lit																///
+	tot_bmr_per																///
+    popdensity6061															///
+	$x_elev                                                                 ///
+	$x_gis                                                                  ///
+	$x_weather                                                              ///          
+	$x_soil  																///
+    south																	///
+    if provincename~="Quang Tri" & sample_all==1,							///
+    robust cluster(province)
+	
+summ $dep_lit if provincename~="Quang Tri" & sample_all==1
 
-***7.B.5 /* REDUCED FORM */;
-regress lit_rate
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    $x_soil1 $x_soil2
-    if sample_all==1, robust cluster(province);
-**summ lit_rate if sample_all==1;
+// (5)
+regress                                                                     ///
+	$dep_lit																///
+    diff_17																	///
+    popdensity6061															///
+    south																	///
+	$x_elev                                                                 ///
+	$x_gis                                                                  ///
+	$x_weather                                                              ///          
+	$x_soil  																///
+    if sample_all==1, robust cluster(province)								///
 
-***7.B.6 /* IV-2SLS */;
-regress lit_rate tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    $x_soil1 $x_soil2
-    (diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    $x_soil1 $x_soil2)
-    if sample_all==1, robust cluster(province);
-**summ lit_rate if sample_all==1;
+summ $dep_lit if sample_all==1
 
+// (6)
+regress                                                                     ///
+	$dep_lit																///
+	tot_bmr_per																///
+    popdensity6061															///
+    south																	///
+	$x_elev                                                                 ///
+	$x_gis                                                                  ///
+	$x_weather                                                              ///          
+	$x_soil(																///
+		diff_17															    ///
+		popdensity6061												    	///
+		south												                ///
+		$x_elev                                                             ///
+		$x_gis                                                              ///
+		$x_weather                                                          ///          
+		$x_soil 															///
+		) if sample_all==1, robust cluster(province)						
 
+summ $dep_lit if sample_all==1
 
 /*-----------
 TABLE 8
@@ -746,15 +777,15 @@ DENSITY
 // (1)
 cwf province
 
-regress
-    $dep_pop_den_1999
-    tot_bmr_per 
-    popdensity6061
-    south
+regress																		///
+    $dep_pop_den_1999														///
+    tot_bmr_per 															///
+    popdensity6061															///
+    south																	///
     $x_elev $x_gis $x_weather
     if sample_all==1, robust
     
-**summ `var' if sample_all==1
+summ $dep_pop_den_1999 if sample_all==1
 
 use war_data_district;
 ***8.2 /* DETAILED DISTRICT GEOGRAPHIC, CLIMATIC CONTROLS */;
@@ -1037,32 +1068,32 @@ BOMBED TO LESS HEAVILY
 BOMBED
 -----------*/
 
-use war_data_province, clear;
-gen tot_bmr_q1 = (tot_bmr_per>=0 & tot_bmr_per < 3.5);
-gen tot_bmr_q2 = (tot_bmr_per>=3.5 & tot_bmr_per < 12.3);
-gen tot_bmr_q3 = (tot_bmr_per>=12.3 & tot_bmr_per < 39.6);
-gen tot_bmr_q4 = (tot_bmr_per>=39.6 & tot_bmr_per ~=.);
-save temp0, replace;
+cwf province
 
+gen tot_bmr_q1 = (tot_bmr_per>=0 & tot_bmr_per < 3.5)
+gen tot_bmr_q2 = (tot_bmr_per>=3.5 & tot_bmr_per < 12.3)
+gen tot_bmr_q3 = (tot_bmr_per>=12.3 & tot_bmr_per < 39.6)
+gen tot_bmr_q4 = (tot_bmr_per>=39.6 & tot_bmr_per ~=.)
 
-/* Q1 BOMBED PROVINCES */;
-collapse popdensity1976 popdensity1985 popdensity1990 popdensity1992 popdensity1994 popdensity1996 popdensity1998 popdensity2000
-    if tot_bmr_q1==1 /* & popdensity1976~=. */;
+save temp0, replace
 
-foreach num in
-    /* 1976 */ 1985 1990 1992 1994 1996 1998 2000
-{;
-rename popdensity`num' q1_`num';
-};
+/* Q1 BOMBED PROVINCES */
+collapse																	///
+	popdensity*																///
+    if tot_bmr_q1==1	
 
-gen temp=1;
-reshape long q1_, i(temp) j(year);
-drop temp;
-sort year;
-save temp_q1, replace;
-clear;
+foreach num in 																///
+	1985 1990 1992 1994 1996 1998 2000{
+		rename popdensity`num' q1_`num'
+	}
 
-use temp0;
+gen temp=1
+reshape long q1_, i(temp) j(year)
+drop temp
+sort year
+save temp_q1, replace
+
+use temp0
 /* Q2 BOMBED PROVINCES */;
 collapse popdensity1976 popdensity1985 popdensity1990 popdensity1992 popdensity1994 popdensity1996 popdensity1998 popdensity2000
     if tot_bmr_q2==1 /* & popdensity1976~=. */;
@@ -1148,15 +1179,6 @@ gen ratio4 = q4_/q1_;
 gen ratio34 = (q3_+q4_)/(q2_+q1_);
 label var ratio34 "Ratio Above/Below Median";
 
-**twoway (connected q1_ year, ml(lab1) mlabp(12)) (connected q2_ year, ml(lab2) mlabp(12)) (connected q3_ year, ml(lab3) mlabp(12)) (connected q4_ year, ml(lab4) mlabp(12)), ylabel(0(100)600) l1title("Population density") saving(ch_popdensity_20001985, replace);
-
-/*twoway (connected ratio2 year, ml(lab2) mlabp(12)) (connected ratio3 year, ml(lab3) mlabp(12)) (connected ratio4 year, ml(lab4) mlabp(12)),
-    l1title("Population density ratio");
-
-twoway (connected ratio34 year, mlabp(12)),
-    ylabel(1(0.2)1.6) l1title("Population density") saving(popdensity_median_20001985, replace);*/
-
-clear;
 
 /* POST-WAR INVESTMENT PATTERNS OVER TIME */
 use temp0;
@@ -1273,12 +1295,6 @@ gen ratio4 = q4_/q1_;
 
 gen ratio34 = (q3_+q4_)/(q2_+q1_);
 label var ratio34 "Ratio Above/Below Median";
-
-/*twoway (connected q1_ year, ml(lab1) mlabp(12)) (connected q2_ year, ml(lab2) mlabp(12)) (connected q3_ year, ml(lab3) mlabp(12)) (connected q4_ year, ml(lab4) mlabp(12)),
-    l1title("Investment (in current Dong)") saving(invest_19851976, replace);
-
-twoway (connected ratio2 year, ml(lab2) mlabp(12)) (connected ratio3 year, ml(lab3) mlabp(12)) (connected ratio4 year, ml(lab4) mlabp(12)),
-    l1title("Investment ratio (in current Dong)") saving(invest_ratio_19851976, replace);*/
 
 twoway (connected ratio34 year, mlabp(12)),
     ylabel(0.8(0.2)1.6) l1title("State investment") saving(invest_median_19851976, replace);
