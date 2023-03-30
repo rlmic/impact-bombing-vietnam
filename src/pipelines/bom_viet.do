@@ -36,7 +36,9 @@ global ord5 = "HE HECVT HEPD";
 global ord6 = "ILL ILLUM ILUM";
 global ord7 = "MK10 MK12 MK7";
 global ord8 = "RAP VT";
-global x_oth = "area_tot_km2 area_tot_km2_2";
+global x_oth = "area_tot_km2 area_tot_km2_2"
+// Total U.S. bombs, missiles, and rockets per km2
+global dep0 = "tot_bmr_per"
 
 /*-----------------------------------
 LOAD DATASETS AS FRAMES
@@ -57,78 +59,12 @@ cwf province
 use "../archives/war_data_province_sep09.dta"
 //use "../dataverse/war_data_province.dta", clear
 
-
+// List datasets
 frame dir
 
 /*-----------------------------------
-FIGURES, TABLES, CODEBOOK
+TABLES
 -----------------------------------*/
-
-/*-----------
-NAME
-----
-
-TYPE
-----
-CODEBOOK
-
-DESCRIPTION
------------
-
------------*/
-
-cwf district
-    
-desc                                                                        ///
-    poverty_p0                                                              ///
-    lit_rate                                                                ///
-    elec_rate                                                               ///
-    radio_rate                                                              ///
-    urban_pct                                                               ///
-    percent_cultivated                                                      ///
-    pcexp_99                                                                /// 
-    gini                                                                    ///
-    rlpcex1_9398                                                            ///
-    rlpcex1                                                                 ///
-    rlpcex1_93                                                              ///
-    CONSGROWTHPC                                                            ///
-    avg_ill4wks                                                             ///
-    literate numerate                                                       ///
-    educyr98_head                                                           ///
-    educyr98father                                                          ///
-    educyr98mother                                                          ///
-    farm                                                                    ///
-    notbornhere                                                             ///
-    yrshere                                                                 ///
-    $ord0                                                                   ///
-    $ord1                                                                   ///
-    $ord2                                                                   ///
-    $ord3                                                                   ///
-    $ord3_per                                                               ///
-    log_tot_bm*                                                             ///
-    tot_bmr*                                                                ///
-    tot_bomb*                                                               ///
-    war_f1                                                                  ///
-    war_f2                                                                  ///
-    $x_weather                                                              ///
-    $x_oth                                                                  ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_soil1                                                                ///
-    $x_soil2                                                                ///
-    log_popdensity*                                                         ///
-    popdensity*                                                             ///
-    log*paddy*                                                              ///
-    paddyyield*                                                             ///
-    births*                                                                 ///
-    south*                                                                  ///
-    region                                                                  ///
-    pop_tot                                                                 ///
-    pop_prov                                                                ///
-    sample*                                                                 ///
-    central                                                                 ///
-    rural                                                                   ///
-    diff_17*
 
 /*-----------
 TABLE 1
@@ -224,108 +160,141 @@ PREDICTING BOMBING
 INTENSITY
 -----------*/
 
-/*
-NOTES
--------
-Regions:
-- 1=RED RIVER DELTA, 
-- 2=NORTHEAST,
-- 3=NORTHWEST,
-- 8=MEKONG RIVER DELTA
-- 4=NORTH CENTRAL COAST,
-- 5=SOUTH CENTRAL COAST,
-- 6=CENTRAL HIGHLANDS,
-- 7=NORTHEAST SOUTH
-*/
-
-cwf province
-
-// Excludes soil controls due to problems
+// Excludes soil controls
+// due to problems
 // with degrees of freedom
 
-regress                                                                     ///
-    `vio'                                                                   ///
-    south                                                                   ///
-    popdensity6061                                                          ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_weather                                                              ///
-    if sample_all==1, robust
-    
-summ                                                                        ///
-    `vio'                                                                   ///
-    if sample_all==1
+// Column 1: Province level
+cwf province
 
 regress                                                                     ///
-    `vio'                                                                   ///
+    $dep0                                                                   ///
     diff_17                                                                 ///
-    south                                                                   ///
     popdensity6061                                                          ///
+    south                                                                   ///
     $x_elev                                                                 ///
-    $x_gis                                                                  ///
     $x_weather                                                              ///
+    $x_gis                                                                  ///
     if sample_all==1, robust
-    
+  
 summ                                                                        ///
-    `vio'                                                                   ///
+    $dep0                                                                   ///
     if sample_all==1
 
-/* INCLUDE 1951-1960 COHORT AVERAGE HEIGHT AS BASELINE SES CONTROL */;
-regress `vio'
-    diff_17
-    south
+
+// Column 2: District level: All
+cwf district
+
+regress                                                                     ///
+    $dep0                                                                   ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
+    if sample_all==1, robust cluster(province)
+
+summ                                                                        ///
+    $dep0                                                                   ///
+    if sample_all==1
+
+// Column 3: District level: Exclude Quang Tri
+
+regress                                                                     ///
+    $dep0                                                                   ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_weather                                                              ///
+    $x_gis                                                                  ///
+    if sample_all==1 & provincename~="Quang Tri", robust cluster(province)
+    
+summ                                                                        ///
+    $dep0                                                                   ///
+    if sample_all==1 & provincename~="Quang Tri"
+
+    
+/*-----------
+TABLE 4
+LOCAL BOMBING
+IMPACTS ON ESTIMATED
+1999 POVERTY RATE
+-----------*/
+
+
+***4.1 /* MAIN OLS SPECIFICATIONS */;
+use war_data_province;
+regress poverty_p0 
+    tot_bmr_per 
     popdensity6061
-    height_5156
-    $x_elev $x_gis $x_weather
+    south
+    $x_elev $x_gis $x_weather /* $x_oth */
+    /* $x_soil1 $x_soil2 */
+    /* [aw=pop_prov] */
     if sample_all==1, robust;
-summ `vio' if sample_all==1;
+summ poverty_p0 if sample_all==1;
 
-/* INCLUDE 1967 HAMLA MEASURE AS BASELINE SES CONTROL - SOUTH ONLY */;
-regress `vio'
-    diff_17
-    south
-    popdensity6061
-    hamla_dev_score
-    $x_elev $x_gis $x_weather
-    if sample_all==1, robust;
-summ `vio' if sample_all==1 & hamla_dev_score~=.;
+clear; 
 
-regress `vio'
-    diff_17
-    south
+use war_data_district;
+*** 4.2 /* DETAILED DISTRICT GEOGRAPHIC, CLIMATIC CONTROLS */;
+regress poverty_p0  tot_bmr_per 
     popdensity6061
-    hamla_dev_score
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    south
+    /* [aw=pop_tot] */,
+    robust cluster(province);
+summ poverty_p0;
+
+***4.3 /* PROVINCE FE */;
+areg poverty_p0  tot_bmr_per 
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    /* [aw=pop_tot] */
+    if sample_all==1,
+    a(province) robust cluster(province);
+summ poverty_p0 if sample_all==1;
+
+***4.4 /* EXCLUDE QUANG TRI */;
+regress poverty_p0 tot_bmr_per 
+    popdensity6061
+    $x_weather $x_elev $x_gis /* $x_oth */
+    $x_soil1 $x_soil2
+    south
+    /* [aw=pop_tot] */
+    if provincename~="Quang Tri" & sample_all==1,
+    robust cluster(province);
+summ poverty_p0 if provincename~="Quang Tri" & sample_all==1;
+
+***4.5 /* REDUCED FORM */;
+regress poverty_p0
+    diff_17
+    popdensity6061
+    south
     $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
+    $x_soil1 $x_soil2
     /* [aw=pop_prov] */
-    if sample_all==1 & hamla_dev_score<100, robust;
-summ `vio' if sample_all==1 & hamla_dev_score~=. & hamla_dev_score<100;
+    if sample_all==1, robust cluster(province);
+summ poverty_p0 if sample_all==1;
 
-
-/* CENTRAL REGION */;
-regress `vio'
-    diff_17
-    south
+***4.6 /* IV-2SLS */;
+regress poverty_p0  tot_bmr_per 
     popdensity6061
-    $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
-    /* [aw=pop_prov] */
-    if central==1 & sample_all==1, robust;
-summ `vio' if central==1 & sample_all==1;
-
-/* EXCLUDE QUANG TRI */;
-regress `vio'
-    diff_17
     south
-    popdensity6061
     $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
+    $x_soil1 $x_soil2
+    (diff_17
+    popdensity6061
+    south
+    $x_elev $x_gis $x_weather /* $x_oth */
+    $x_soil1 $x_soil2)
     /* [aw=pop_prov] */
-    if (provincename~="Quang Tri") & sample_all==1, robust;
-summ `vio' if (provincename~="Quang Tri") & sample_all==1;
+    if sample_all==1, robust cluster(province);
+summ poverty_p0 if sample_all==1;
 
-twoway (scatter popdensity6061 `vio' if sample_all==1, mlabel(provincename) mlabp(12)) /*(lfit popdensity6061 `vio')*/, saving(popdensity_lin_`vio', replace);
-clear;
 
 cwf district
 /* DISTRICT LEVEL */;
@@ -1380,5 +1349,68 @@ summ ratio34 if year>=76 & year<=80;
 summ ratio34 if year>=81 & year<=86;
 
 erase temp0.dta;
+
+
+/*-----------------------------------
+FIGURES
+-----------------------------------*/
+
+/*-----------------------------------
+CODEBOOK
+-----------------------------------*/
+
+cwf district
+    
+desc                                                                        ///
+    poverty_p0                                                              ///
+    lit_rate                                                                ///
+    elec_rate                                                               ///
+    radio_rate                                                              ///
+    urban_pct                                                               ///
+    percent_cultivated                                                      ///
+    pcexp_99                                                                /// 
+    gini                                                                    ///
+    rlpcex1_9398                                                            ///
+    rlpcex1                                                                 ///
+    rlpcex1_93                                                              ///
+    CONSGROWTHPC                                                            ///
+    avg_ill4wks                                                             ///
+    literate numerate                                                       ///
+    educyr98_head                                                           ///
+    educyr98father                                                          ///
+    educyr98mother                                                          ///
+    farm                                                                    ///
+    notbornhere                                                             ///
+    yrshere                                                                 ///
+    $ord0                                                                   ///
+    $ord1                                                                   ///
+    $ord2                                                                   ///
+    $ord3                                                                   ///
+    $ord3_per                                                               ///
+    log_tot_bm*                                                             ///
+    tot_bmr*                                                                ///
+    tot_bomb*                                                               ///
+    war_f1                                                                  ///
+    war_f2                                                                  ///
+    $x_weather                                                              ///
+    $x_oth                                                                  ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    log_popdensity*                                                         ///
+    popdensity*                                                             ///
+    log*paddy*                                                              ///
+    paddyyield*                                                             ///
+    births*                                                                 ///
+    south*                                                                  ///
+    region                                                                  ///
+    pop_tot                                                                 ///
+    pop_prov                                                                ///
+    sample*                                                                 ///
+    central                                                                 ///
+    rural                                                                   ///
+    diff_17*
+
 
 log c;
