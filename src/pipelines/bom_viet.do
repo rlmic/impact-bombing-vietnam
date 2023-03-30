@@ -48,12 +48,15 @@ frames reset
 frame create district
 cwf district
 use "../archives/war_data_district_sep09.dta", clear
+//use "../dataverse/war_data_district.dta", clear
 
 // Province Level
 
 frame create province
 cwf province
 use "../archives/war_data_province_sep09.dta"
+//use "../dataverse/war_data_province.dta", clear
+
 
 frame dir
 
@@ -183,24 +186,36 @@ PANEL A
 cwf district
 summ                                                                        /// 
     poverty_p0                                                              ///
-    lit_rate                                                                ///
+    popdensity1999                                                          ///
     elec_rate                                                               ///
-    pcexp_99                                                                ///
-    gini                                                                    ///
-    [aw=pop_tot]                                                            ///
+    lit_rate                                                                ///
+    $x_elev                                                                 ///
+    area_tot_km2                                                            ///
+    $x_weather                                                              ///
+    south                                                                   ///
+    $x_gis                                                                  ///
+    diff_17                                                                 ///
     if sample_all==1
 
 
 /*
 PANEL B
 */
+
 cwf province
-gen nbhere=(1-bornhere);
-summ  
-    popdensity6061 popdensity1985 popdensity1999 
-    ch_popdensity_20001985 nbhere exppc93r98 exppc02r98 consgrowth_9302
-    north_lat diff_17
-    if sample_all==1;
+gen nbhere=(1-bornhere)
+summ                                                                          ///
+    popdensity6061                                                            ///
+    popdensity1985                                                            ///
+    popdensity1999                                                            ///
+    ch_popdensity_20001985                                                    ///
+    nbhere                                                                    ///
+    exppc93r98                                                                ///
+    exppc02r98                                                                ///
+    consgrowth_9302                                                           ///
+    $x_gis                                                                    ///
+    diff_17                                                                   ///
+    if sample_all==1
 
 
 /*-----------
