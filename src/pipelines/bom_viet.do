@@ -44,6 +44,10 @@ global dep_pop_den = "popdensity1985"
 global dep_pop_gro = "ch_popdensity_20001985"
 global dep_nborn = "nbhere"
 global dep_pop_den_1999 = "popdensity1999"
+global dep_consum_2002 ="exppc02r98"
+global dep_consum_1992 ="exppc93r98"
+global dep_consum_gro ="consgrowth_9302"
+
 
 /*-----------------------------------
 LOAD DATASETS AS FRAMES
@@ -266,9 +270,9 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
-    $x_soil1                                                                ///
-    $x_soil2,                                                               ///
+    soil*,                                                                    ///
     robust cluster(province)
+
     
 summ $dep_pov                                                                 
 
@@ -434,99 +438,136 @@ AND GROWTH
 
 cwf province
 
+/*
+PANEL A
+*/
+
 // (1)
-regress exppc02r98 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if sample_all==1, robust;
-summ exppc02r98 if sample_all==1;
+regress                                                                     /// 
+    $dep_consum_2002                                                        ///
+    tot_bmr_per                                                             ///                
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ exppc02r98 if sample_all==1
+
+// (2)
+regress                                                                     /// 
+    $dep_consum_2002                                                        ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust
+    
+summ exppc02r98 if (provincename~="Quang Tri") & sample_all==1
+
+// (3)
+regress                                                                     /// 
+    $dep_consum_2002                                                        ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ exppc02r98 if sample_all==1
+
+/*
+PANEL B
+*/
+
+// (1)
+regress                                                                     ///
+    $dep_consum_1992                                                        ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ exppc93r98 if sample_all==1
+
+// (2)
+regress                                                                     ///
+    $dep_consum_1992                                                        ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust
+    
+summ exppc93r98 if (provincename~="Quang Tri") & sample_all==1
+
+// (3)
+regress                                                                     ///
+    $dep_consum_1992                                                        ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ exppc93r98 if sample_all==1
 
 
-***6.A.2 (w/ dependent var is exppc02r98) 
-/* WITHOUT QUANG TRI */;
-regress exppc02r98 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if (provincename~="Quang Tri") & sample_all==1, robust;
-summ exppc02r98 if (provincename~="Quang Tri") & sample_all==1;
+/*
+PANEL C
+*/
 
+// (1)
+regress                                                                     ///
+    $dep_consum_gro                                                         ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_consum_gro if sample_all==1
 
-***6.A.3 (w/ dependent var is exppc02r98) 
-/* REDUCED FORM */;
-regress exppc02r98
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if sample_all==1, robust;
-summ exppc02r98 if sample_all==1;
+// (2)
+regress                                                                     ///
+    $dep_consum_gro                                                         /// 
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if (provincename~="Quang Tri") & sample_all==1, robust
+    
+summ $dep_consum_gro                                                        ///
+    if (provincename~="Quang Tri") & sample_all==1
 
-***6.B.1 (w/ dependent var is exppc93r98)
-/* MAIN OLS SPECIFICATIONS */;
-regress exppc93r98 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if sample_all==1, robust;
-summ exppc93r98 if sample_all==1;
-
-***6.B.2 (w/ dependent var is exppc93r98)
-/* WITHOUT QUANG TRI */;
-regress exppc93r98 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather
-    if (provincename~="Quang Tri") & sample_all==1, robust;
-summ exppc93r98 if (provincename~="Quang Tri") & sample_all==1;
-
-***6.B.3 (w/ dependent var is exppc93r98)
-/* REDUCED FORM */;
-regress exppc93r98
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
-    /* [aw=pop_prov] */
-    if sample_all==1, robust;
-summ exppc93r98 if sample_all==1;
-
-
-***6.C.1 (w/ dependent var is consgrowth_9302) 
-/* MAIN OLS SPECIFICATIONS */;
-regress consgrowth_9302 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
-    /* [aw=pop_prov] */
-    if sample_all==1, robust;
-summ consgrowth_9302 if sample_all==1;
-
-***6.C.2 (w/ dependent var is consgrowth_9302) 
-/* WITHOUT QUANG TRI */;
-regress consgrowth_9302 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
-    /* [aw=pop_prov] */
-    if (provincename~="Quang Tri") & sample_all==1, robust;
-summ consgrowth_9302 if (provincename~="Quang Tri") & sample_all==1;
-
-***6.C.3 (w/ dependent var is consgrowth_9302) 
-/* REDUCED FORM */;
-regress consgrowth_9302
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    /* $x_soil1 $x_soil2 */
-    /* [aw=pop_prov] */
-    if sample_all==1, robust;
-summ consgrowth_9302 if sample_all==1;
+// (3)
+regress                                                                     ///
+    $dep_consum_gro                                                         /// 
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
+    
+summ $dep_consum_gro if sample_all==1
 
 /*-----------
 TABLE 7
@@ -539,8 +580,8 @@ HUMAN CAPITAL
 
 -----------*/
 
+cwf province
 
-use war_data_province;
 ***7.A.1 /* MAIN OLS SPECIFICATIONS PROVINCE LEVEL */;
 regress elec_rate tot_bmr_per 
     popdensity6061
@@ -618,9 +659,10 @@ regress lit_rate tot_bmr_per
     /* [aw=pop_prov] */
     if sample_all==1, robust;
 **summ `var' if sample_all==1;
-clear;
 
-use war_data_district;
+
+cwf district
+
 ***7.B.2 /* DETAILED DISTRICT GEOGRAPHIC, CLIMATIC CONTROLS */;
 regress lit_rate tot_bmr_per
     popdensity6061
