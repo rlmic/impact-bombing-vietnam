@@ -19,51 +19,51 @@ global output = "$dir/outputs"
 global logs = "$dir/logs"
 global figures = "$output/figures"
 
-global																		///
-	stats1959																///
-	area1959																///
-	population1959															///
-	popdensity1959															///
-	birthsmale1958
-	birthsfemale1958
-	birthsmale1959 
-	birthsfemale1959
-	deathsmale1958
-	deathsfemale1958														///
-	deathsmale1959
-	deathsfemale1959
-	paddyarea1959
-	paddyproduction1959 													///
-	paddyyieldperhectare1959
-	rubberplanted1958														///
-	rubberworkable1958 														///
-	rubberworked1958 
-	rubberworkedtoworkable1958 
-	rubberplanted1959
-	rubberworkable1959 rubberworked1959 rubberworkedtoworkable1959 tobaccoarea1958 tobaccoarea1959 
-	tobaccoproduction1958 tobaccoproduction1959 tobaccoyieldperha1958 tobaccoyieldperha1959 coconutarea1958 
-	coconutarea1959 coconutproduction1958 coconutproduction1959 coconutyieldperha1958 coconutyieldperha1959 
-	canearea1958 canearea1959 caneproduction1958 caneproduction1959 caneyieldperha1958 caneyieldperha1959";
+global                                                                       ///
+    stats1959                                                                ///
+    area1959                                                                 ///
+    population1959                                                           ///
+    popdensity1959                                                           ///
+    birthsmale1958
+    birthsfemale1958
+    birthsmale1959 
+    birthsfemale1959
+    deathsmale1958
+    deathsfemale1958                                                        ///
+    deathsmale1959
+    deathsfemale1959
+    paddyarea1959
+    paddyproduction1959                                                     ///
+    paddyyieldperhectare1959
+    rubberplanted1958                                                       ///
+    rubberworkable1958                                                      ///
+    rubberworked1958 
+    rubberworkedtoworkable1958 
+    rubberplanted1959
+    rubberworkable1959 rubberworked1959 rubberworkedtoworkable1959 tobaccoarea1958 tobaccoarea1959 
+    tobaccoproduction1958 tobaccoproduction1959 tobaccoyieldperha1958 tobaccoyieldperha1959 coconutarea1958 
+    coconutarea1959 coconutproduction1958 coconutproduction1959 coconutyieldperha1958 coconutyieldperha1959 
+    canearea1958 canearea1959 caneproduction1958 caneproduction1959 caneyieldperha1958 caneyieldperha1959";
 
 
 global stats1961 "provincecity1961 area1961 population1961 popdensity1961 birthsmale1960 birthsfemale1960 birthsmale1961 
-	birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
-	paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
-	coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
-	tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
-	coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
-	
+    birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
+    paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
+    coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
+    tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
+    coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
+    
 **/////////////////////////////////////////////////////////////////////////**;
 **// TABLE OF CONTENTS;
-**// I. 	CREATION OF PREWAR DATA FILE (PREWARDTSVIET);
-**// 		i. 	ADDITION OF NORTH VIETNAMESE DATA (PREWARDTNVIET);
-**// II.	CREATION OF DSCADATA - DATA ON BOMBING MEASURES (DSCABOMB);
-**// III.	CREATION OF VLSS DATA FILES: PROVINCE AND COMMUNE LEVEL (VLSSDATA);
-**//		i.	CREATION OF VLSS PANEL COLLAPSED TO PROVINCE LEVEL (PROVPAN);
-**//		ii.	CREATION OF COMMUNE LEVEL VLSS DATA (doesn't exist);
-**// IV.	COMBINATION OF DATA FILES TO CREATE ANALYSIS FILES (DATCON);
-**//		i.	COLLAPSING TO PROVINCE LEVEL (PROVCREATE);
-**/////////////////////////////////////////////////////////////////////////**;	 		
+**// I.     CREATION OF PREWAR DATA FILE (PREWARDTSVIET);
+**//         i.     ADDITION OF NORTH VIETNAMESE DATA (PREWARDTNVIET);
+**// II.    CREATION OF DSCADATA - DATA ON BOMBING MEASURES (DSCABOMB);
+**// III.    CREATION OF VLSS DATA FILES: PROVINCE AND COMMUNE LEVEL (VLSSDATA);
+**//        i.    CREATION OF VLSS PANEL COLLAPSED TO PROVINCE LEVEL (PROVPAN);
+**//        ii.    CREATION OF COMMUNE LEVEL VLSS DATA (doesn't exist);
+**// IV.    COMBINATION OF DATA FILES TO CREATE ANALYSIS FILES (DATCON);
+**//        i.    COLLAPSING TO PROVINCE LEVEL (PROVCREATE);
+**/////////////////////////////////////////////////////////////////////////**;             
 
 
 /*-----------------------------------
@@ -72,28 +72,28 @@ PRE-WAR DATA
 /*ALL FIGURES EXTRACTED AS PER-UNIT-AREA FROM PROVINCE-LEVEL PRE-WAR TABLES, ALLOW FOR SHIFTING BOUNDARIES*/
 /*SAME PROCESS FOR ALL YEARS 1959, 1961-3, 1965, & 1960/65 IN NViet (accompanying do-file)*/
 /*ALL PRE-WAR PROVINCES CONSTITUTING <=5% OF TOTAL DISTRICT AREA IGNORED, DECREASE NOISE GENERATED BY 
-	MAP PROJECTION DIFFS*/
+    MAP PROJECTION DIFFS*/
 
 // 1959
 cd "$data/internal/raw/prewar"
 
-insheet using 																///
-	Data1959.txt
-	
-replace 																	///
-	rubberworkedtoworkable1958 = rubberworkedtoworkable1958/100 
+insheet using                                                               ///
+    Data1959.txt
+    
+replace                                                                     ///
+    rubberworkedtoworkable1958 = rubberworkedtoworkable1958/100 
 
-replace 																	///
-	rubberworkedtoworkable1959 = rubberworkedtoworkable1959/100
+replace                                                                     ///
+    rubberworkedtoworkable1959 = rubberworkedtoworkable1959/100
 
 label var 
-	area1959
-	"Area 1959, km2"
-	
+    area1959
+    "Area 1959, km2"
+    
 label var
-	popdensity1959
-	"Population Density 1959, per km2"
-	
+    popdensity1959
+    "Population Density 1959, per km2"
+    
 label var paddyarea1959 "Planted Area of Paddy, 1958-9, hectars"
 label var paddyproduction1959 "Production of Paddy, 1958-9, tons";
 label var paddyyieldperhectare1959 "Paddy Yield per Hectare, 1958-9";
@@ -103,14 +103,14 @@ label var coconutproduction1958 "Coconut Production 1958, mtrc tns of nuts";
 label var caneproduction1958 "Cane Production 1958, tons";
 sort provincecode1959
 drop if missing(provincecode1959)
-
+    
 /*MAKE LANDMASS INVARIANT*/
 quietly for var population1959 birthsmale1958 birthsfemale1958 birthsmale1959 birthsfemale1959 deathsmale1958 deathsfemale1958 
-	deathsmale1959 deathsfemale1959 paddyarea1959 paddyproduction1959 rubberplanted1958 rubberworkable1958 
-	rubberworked1958 rubberplanted1959 rubberworkable1959 rubberworked1959 tobaccoarea1958 tobaccoarea1959 
-	tobaccoproduction1958 tobaccoproduction1959 coconutarea1958 coconutarea1959 coconutproduction1958 
-	coconutproduction1959 canearea1958 canearea1959 caneproduction1958 caneproduction1959:
-	replace X=X/area1959;
+    deathsmale1959 deathsfemale1959 paddyarea1959 paddyproduction1959 rubberplanted1958 rubberworkable1958 
+    rubberworked1958 rubberplanted1959 rubberworkable1959 rubberworked1959 tobaccoarea1958 tobaccoarea1959 
+    tobaccoproduction1958 tobaccoproduction1959 coconutarea1958 coconutarea1959 coconutproduction1958 
+    coconutproduction1959 canearea1958 canearea1959 caneproduction1958 caneproduction1959:
+    replace X=X/area1959;
 save Tmp1959, replace;
 clear;
 /*MATCH TO PRE-WAR PROVINCES, CONTAINED IN districtcodesprewarmatchedw.txt*/
@@ -176,19 +176,19 @@ label var coconutproduction1961 "Coconut Production 1961, 1000 nuts";
 sort provincecode1961;
 drop if provincecode1961==.;
 foreach part in paddyarea paddyproduction {;
-	gen `part'1962=`part'1_1962+`part'2_1962;
-	gen `part'1961=`part'1_1961+`part'2_1961;
-	drop `part'1_* `part'2_*;
+    gen `part'1962=`part'1_1962+`part'2_1962;
+    gen `part'1961=`part'1_1961+`part'2_1961;
+    drop `part'1_* `part'2_*;
 };
 quietly for num 1961 1962: gen paddyyieldperhectareX=paddyproductionX/paddyareaX;
 quietly for num 1960 1961: gen caneyieldperhaX=caneproductionX/caneareaX\
-	gen coconutyieldperhaX=coconutproductionX/coconutareaX\
-	gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
+    gen coconutyieldperhaX=coconutproductionX/coconutareaX\
+    gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
 quietly for var population1961 birthsmale1960 birthsfemale1960 birthsmale1961 birthsfemale1961 deathsmale1960 
-	deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 paddyarea1962 paddyproduction1962 
-	canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 coconutarea1961 coconutproduction1960 
-	coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 tobaccoproduction1961:
-	replace X=X/area1961;
+    deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 paddyarea1962 paddyproduction1962 
+    canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 coconutarea1961 coconutproduction1960 
+    coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 tobaccoproduction1961:
+    replace X=X/area1961;
 save Tmp1961, replace;
 clear;
 insheet using districtcodesprewarmatchedw.txt;
@@ -222,11 +222,11 @@ quietly for var $stats1961: rename X X_4;
 rename provincecode1961 provincefour1961;
 
 global stats1961 "area1961 population1961 popdensity1961 birthsmale1960 birthsfemale1960 birthsmale1961 
-	birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
-	paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
-	coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
-	tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
-	coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
+    birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
+    paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
+    coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
+    tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
+    coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
 
 quietly for any $stats1961: gen X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w+X_4*provincefour1961w if provincefour1961w~=. & provincefour1961w>0.05;
 quietly for any $stats1961: replace X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w if (provincefour1961w==. | provincefour1961w<=0.05) & provincethree1961w~=. & provincethree1961w>0.05;
@@ -246,27 +246,27 @@ save prewardt.dta, replace;
 clear; insheet using Data1963.txt; sort provincecode1963; save Tmp1963.dta, replace;
 insheet using Data1962.txt, clear; drop if provincecode1962==.; sort provincecode1962;
 global stats1962 "provincecity1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
-	deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1_1963 paddyarea2_1963 paddyproduction1_1963 
-	paddyproduction2_1963 rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
-	rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
-	coconutarea1962 coconutproduction1961 coconutproduction1962";
+    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1_1963 paddyarea2_1963 paddyproduction1_1963 
+    paddyproduction2_1963 rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
+    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
+    coconutarea1962 coconutproduction1961 coconutproduction1962";
 /* HAVE TO PULL area1962 FROM THE Data1963 FILE */;
 rename provincecode1962 provincecode1963; merge provincecode1963 using Tmp1963.dta; tab _merge; drop _merge;
-	keep provincecode1963 area1962 $stats1962; rename provincecode1963 provincecode1962;
+    keep provincecode1963 area1962 $stats1962; rename provincecode1963 provincecode1962;
 foreach part in paddyarea paddyproduction {;
-	gen `part'1963=`part'1_1963+`part'2_1963;
-	drop `part'1_1963 `part'2_1963;
+    gen `part'1963=`part'1_1963+`part'2_1963;
+    drop `part'1_1963 `part'2_1963;
 };
 gen paddyyieldperhectare1963=paddyproduction1963/paddyarea1963;
 quietly for num 1961 1962: gen rubberworkedtoworkableX=rubberworkedX/rubberworkableX\
-	gen coconutyieldperhaX=coconutproductionX/coconutareaX\
-	gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
+    gen coconutyieldperhaX=coconutproductionX/coconutareaX\
+    gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
 quietly for var birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 deathsfemale1961 
-	deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 rubberplanted1961 rubberworkable1961 
-	rubberworked1961 rubberplanted1962 rubberworkable1962 rubberworked1962 tobaccoarea1961 tobaccoarea1962 
-	tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 coconutarea1962 coconutproduction1961 
-	coconutproduction1962:
-	replace X=X/area1962;
+    deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 rubberplanted1961 rubberworkable1961 
+    rubberworked1961 rubberplanted1962 rubberworkable1962 rubberworked1962 tobaccoarea1961 tobaccoarea1962 
+    tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 coconutarea1962 coconutproduction1961 
+    coconutproduction1962:
+    replace X=X/area1962;
 sort provincecode1962;
 save Tmp1962, replace;
 clear;
@@ -277,11 +277,11 @@ merge provincecode1962 using Tmp1962.dta, update replace nokeep;
 tab _merge;
 drop _merge;
 global stats1962 "provincecity1962 area1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
-	deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
-	rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
-	rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
-	coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
-	rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
+    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
+    rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
+    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
+    coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
+    rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
 quietly for var $stats1962: rename X X_1;
 rename provincecode1962 provinceone1962;
 rename provincetwo1962 provincecode1962;
@@ -307,11 +307,11 @@ quietly for var $stats1962: rename X X_4;
 rename provincecode1962 provincefour1962;
 
 global stats1962 "area1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
-	deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
-	rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
-	rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
-	coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
-	rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
+    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
+    rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
+    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
+    coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
+    rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
 
 quietly for any $stats1962: gen X=X_1*provinceone1962w+X_2*provincetwo1962w+X_3*provincethree1962w+X_4*provincefour1962w if provincefour1962w~=. & provincefour1962w>0.05;
 quietly for any $stats1962: replace X=X_1*provinceone1962w+X_2*provincetwo1962w+X_3*provincethree1962w if (provincefour1962w==. | provincefour1962w<=0.05) & provincethree1962w~=. & provincethree1962w>0.05;
@@ -338,15 +338,15 @@ sort provincecode1963;
 drop if provincecode1963==.;
 quietly for num 1963 1964: gen paddyyieldperhectareX=paddyproductionX/paddyareaX;
 quietly for num 1962 1963: gen caneyieldperhaX=caneproductionX/caneareaX\
-	gen rubberworkedtoworkableX=rubberworkedX/rubberworkableX\
-	gen coconutyieldperhaX=coconutproductionX/coconutareaX\
-	gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
+    gen rubberworkedtoworkableX=rubberworkedX/rubberworkableX\
+    gen coconutyieldperhaX=coconutproductionX/coconutareaX\
+    gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
 quietly for var population1962 birthsmale1962 birthsfemale1962 birthsmale1963 birthsfemale1963 deathsmale1962 
-	deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 paddyproduction1963 paddyproduction1964 
-	rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 rubberworkable1963 rubberworked1963 
-	canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 coconutarea1963 coconutproduction1962 
-	coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 tobaccoproduction1963:
-	replace X=X/area1962;
+    deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 paddyproduction1963 paddyproduction1964 
+    rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 rubberworkable1963 rubberworked1963 
+    canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 coconutarea1963 coconutproduction1962 
+    coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 tobaccoproduction1963:
+    replace X=X/area1962;
 save Tmp1963, replace;
 clear;
 insheet using districtcodesprewarmatchedw.txt;
@@ -356,13 +356,13 @@ merge provincecode1963 using Tmp1963.dta, update replace nokeep;
 tab _merge;
 drop _merge;
 global stats1963 "provincecity1963 population1962 area1962 popdensity1962 birthsmale1962 birthsfemale1962 birthsmale1963 
-	birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 
-	paddyproduction1963 paddyproduction1964 rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 
-	rubberworkable1963 rubberworked1963 canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 
-	coconutarea1963 coconutproduction1962 coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 
-	tobaccoproduction1963 paddyyieldperhectare1963 paddyyieldperhectare1964 caneyieldperha1962 caneyieldperha1963 
-	rubberworkedtoworkable1962 rubberworkedtoworkable1963 coconutyieldperha1962 coconutyieldperha1963 
-	tobaccoyieldperha1962 tobaccoyieldperha1963";
+    birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 
+    paddyproduction1963 paddyproduction1964 rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 
+    rubberworkable1963 rubberworked1963 canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 
+    coconutarea1963 coconutproduction1962 coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 
+    tobaccoproduction1963 paddyyieldperhectare1963 paddyyieldperhectare1964 caneyieldperha1962 caneyieldperha1963 
+    rubberworkedtoworkable1962 rubberworkedtoworkable1963 coconutyieldperha1962 coconutyieldperha1963 
+    tobaccoyieldperha1962 tobaccoyieldperha1963";
 quietly for var $stats1963: rename X X_1;
 rename provincecode1963 provinceone1962;
 rename provincetwo1962 provincecode1963;
@@ -388,13 +388,13 @@ quietly for var $stats1963: rename X X_4;
 rename provincecode1963 provincefour1962;
 
 global stats1963 "population1962 area1962 popdensity1962 birthsmale1962 birthsfemale1962 birthsmale1963 
-	birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 
-	paddyproduction1963 paddyproduction1964 rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 
-	rubberworkable1963 rubberworked1963 canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 
-	coconutarea1963 coconutproduction1962 coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 
-	tobaccoproduction1963 paddyyieldperhectare1963 paddyyieldperhectare1964 caneyieldperha1962 caneyieldperha1963 
-	rubberworkedtoworkable1962 rubberworkedtoworkable1963 coconutyieldperha1962 coconutyieldperha1963 
-	tobaccoyieldperha1962 tobaccoyieldperha1963";
+    birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 deathsfemale1963 paddyarea1963 paddyarea1964 
+    paddyproduction1963 paddyproduction1964 rubberplanted1962 rubberworkable1962 rubberworked1962 rubberplanted1963 
+    rubberworkable1963 rubberworked1963 canearea1962 canearea1963 caneproduction1962 caneproduction1963 coconutarea1962 
+    coconutarea1963 coconutproduction1962 coconutproduction1963 tobaccoarea1962 tobaccoarea1963 tobaccoproduction1962 
+    tobaccoproduction1963 paddyyieldperhectare1963 paddyyieldperhectare1964 caneyieldperha1962 caneyieldperha1963 
+    rubberworkedtoworkable1962 rubberworkedtoworkable1963 coconutyieldperha1962 coconutyieldperha1963 
+    tobaccoyieldperha1962 tobaccoyieldperha1963";
 
 quietly for any $stats1963: gen X=X_1*provinceone1962w+X_2*provincetwo1962w+X_3*provincethree1962w+X_4*provincefour1962w if provincefour1962w~=. & provincefour1962w>0.05;
 quietly for any $stats1963: replace X=X_1*provinceone1962w+X_2*provincetwo1962w+X_3*provincethree1962w if (provincefour1962w==. | provincefour1962w<=0.05) & provincethree1962w~=. & provincethree1962w>0.05;
@@ -420,21 +420,21 @@ sort provincecode1965;
 drop if provincecode1965==.;
 quietly for num 1964 1965 1966: gen paddyyieldperhectareX=paddyproductionX/paddyareaX;
 quietly for num 1962 1963 1964 1965: gen caneyieldperhaX=caneproductionX/caneareaX\
-	gen cornyieldperhaX=cornproductionX/cornareaX\
-	gen coconutyieldperhaX=coconutproductionX/coconutareaX\
-	gen maniocyieldperhaX=maniocproductionX/maniocareaX\
-	gen swtpotatoyieldperhaX=swtpotatoproductionX/swtpotatoareaX\
-	gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
+    gen cornyieldperhaX=cornproductionX/cornareaX\
+    gen coconutyieldperhaX=coconutproductionX/coconutareaX\
+    gen maniocyieldperhaX=maniocproductionX/maniocareaX\
+    gen swtpotatoyieldperhaX=swtpotatoproductionX/swtpotatoareaX\
+    gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
 quietly for var population1963 population1964 birthsmale1964 birthsfemale1964 deathsmale1964 deathsfemale1964 paddyarea1964 paddyarea1965 
-	paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
-	swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
-	coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
-	coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
-	caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
-	tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
-	maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
-	cornproduction1963 cornproduction1964 cornproduction1965:
-	replace X=X/area1963;
+    paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
+    swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
+    coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
+    coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
+    caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
+    tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
+    maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
+    cornproduction1963 cornproduction1964 cornproduction1965:
+    replace X=X/area1963;
 save Tmp1965, replace;
 clear;
 insheet using districtcodesprewarmatchedw.txt;
@@ -444,18 +444,18 @@ merge provincecode1965 using Tmp1965.dta, update replace nokeep;
 tab _merge;
 drop _merge;
 global stats1965 "provincecity1965 area1963 population1963 popdensity1963 population1964 birthsmale1964 birthsfemale1964 deathsmale1964 deathsfemale1964 paddyarea1964 paddyarea1965 
-	paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
-	swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
-	coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
-	coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
-	caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
-	tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
-	maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
-	cornproduction1963 cornproduction1964 cornproduction1965 paddyyieldperhectare1964 paddyyieldperhectare1965 paddyyieldperhectare1966
-	caneyieldperha1962 caneyieldperha1963 caneyieldperha1964 caneyieldperha1965 cornyieldperha1962 cornyieldperha1963 cornyieldperha1964
-	cornyieldperha1965 coconutyieldperha1962 coconutyieldperha1963 coconutyieldperha1964 coconutyieldperha1965 maniocyieldperha1962
-	maniocyieldperha1963 maniocyieldperha1964 maniocyieldperha1965 swtpotatoyieldperha1962 swtpotatoyieldperha1963 swtpotatoyieldperha1964
-	swtpotatoyieldperha1965 tobaccoyieldperha1962 tobaccoyieldperha1963 tobaccoyieldperha1964 tobaccoyieldperha1965";
+    paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
+    swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
+    coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
+    coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
+    caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
+    tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
+    maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
+    cornproduction1963 cornproduction1964 cornproduction1965 paddyyieldperhectare1964 paddyyieldperhectare1965 paddyyieldperhectare1966
+    caneyieldperha1962 caneyieldperha1963 caneyieldperha1964 caneyieldperha1965 cornyieldperha1962 cornyieldperha1963 cornyieldperha1964
+    cornyieldperha1965 coconutyieldperha1962 coconutyieldperha1963 coconutyieldperha1964 coconutyieldperha1965 maniocyieldperha1962
+    maniocyieldperha1963 maniocyieldperha1964 maniocyieldperha1965 swtpotatoyieldperha1962 swtpotatoyieldperha1963 swtpotatoyieldperha1964
+    swtpotatoyieldperha1965 tobaccoyieldperha1962 tobaccoyieldperha1963 tobaccoyieldperha1964 tobaccoyieldperha1965";
 quietly for var $stats1965: rename X X_1;
 rename provincecode1965 provinceone1965;
 rename provincetwo1965 provincecode1965;
@@ -481,18 +481,18 @@ quietly for var $stats1965: rename X X_4;
 rename provincecode1965 provincefour1965;
 
 global stats1965 "area1963 population1963 popdensity1963 population1964 birthsmale1964 birthsfemale1964 deathsmale1964 deathsfemale1964 paddyarea1964 paddyarea1965 
-	paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
-	swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
-	coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
-	coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
-	caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
-	tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
-	maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
-	cornproduction1963 cornproduction1964 cornproduction1965 paddyyieldperhectare1964 paddyyieldperhectare1965 paddyyieldperhectare1966
-	caneyieldperha1962 caneyieldperha1963 caneyieldperha1964 caneyieldperha1965 cornyieldperha1962 cornyieldperha1963 cornyieldperha1964
-	cornyieldperha1965 coconutyieldperha1962 coconutyieldperha1963 coconutyieldperha1964 coconutyieldperha1965 maniocyieldperha1962
-	maniocyieldperha1963 maniocyieldperha1964 maniocyieldperha1965 swtpotatoyieldperha1962 swtpotatoyieldperha1963 swtpotatoyieldperha1964
-	swtpotatoyieldperha1965 tobaccoyieldperha1962 tobaccoyieldperha1963 tobaccoyieldperha1964 tobaccoyieldperha1965";
+    paddyarea1966 paddyproduction1964 paddyproduction1965 paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 
+    swtpotatoarea1965 swtpotatoproduction1962 swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 
+    coconutarea1963 coconutarea1964 coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 
+    coconutproduction1965 canearea1962 canearea1963 canearea1964 canearea1965 caneproduction1962 caneproduction1963 caneproduction1964 
+    caneproduction1965 tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
+    tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 maniocproduction1962 
+    maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 cornarea1964 cornarea1965 cornproduction1962 
+    cornproduction1963 cornproduction1964 cornproduction1965 paddyyieldperhectare1964 paddyyieldperhectare1965 paddyyieldperhectare1966
+    caneyieldperha1962 caneyieldperha1963 caneyieldperha1964 caneyieldperha1965 cornyieldperha1962 cornyieldperha1963 cornyieldperha1964
+    cornyieldperha1965 coconutyieldperha1962 coconutyieldperha1963 coconutyieldperha1964 coconutyieldperha1965 maniocyieldperha1962
+    maniocyieldperha1963 maniocyieldperha1964 maniocyieldperha1965 swtpotatoyieldperha1962 swtpotatoyieldperha1963 swtpotatoyieldperha1964
+    swtpotatoyieldperha1965 tobaccoyieldperha1962 tobaccoyieldperha1963 tobaccoyieldperha1964 tobaccoyieldperha1965";
 
 quietly for any $stats1965: gen X=X_1*provinceone1965w+X_2*provincetwo1965w+X_3*provincethree1965w+X_4*provincefour1965w if provincefour1965w~=. & provincefour1965w>0.05;
 quietly for any $stats1965: replace X=X_1*provinceone1965w+X_2*provincetwo1965w+X_3*provincethree1965w if (provincefour1965w==. | provincefour1965w<=0.05) & provincethree1965w~=. & provincethree1965w>0.05;
@@ -512,7 +512,7 @@ save prewardt.dta, replace;
 
 **//N.Viet. 1960, 1965;
 /*****NOTE: ALL APPROPRIATE FIGURES (ALL YRS, N/S) MULTIPLIED BY DIST AREA, IN ACCOMPANYING NViet do-file, 
-	TO GENERATE DIST-LEVEL ESTIMATES*****/
+    TO GENERATE DIST-LEVEL ESTIMATES*****/
 
 
 **//NORTH VIETNAMESE DATA CONSTRUCTION (PREWARDTNVIET)
@@ -527,119 +527,119 @@ sort provincecoden;
 quietly for num 1960 1965 1970: gen cropyield_nonpad_tonsphaX=cropprod_nonpad_1000tonsX/croparea_nonpad_1000haX;
 quietly for var
 
-	hhagrocoop_thousands1960 hhagrocoop_thousands1965 hhagrocoop_thousands1970 hhagrocoop_thousands1976 hhagrocoop_thousands1977 
-	hhagrocoop_thousands1978 hhagrocoop_thousands1979 hhagrocoop_thousands1980 
+    hhagrocoop_thousands1960 hhagrocoop_thousands1965 hhagrocoop_thousands1970 hhagrocoop_thousands1976 hhagrocoop_thousands1977 
+    hhagrocoop_thousands1978 hhagrocoop_thousands1979 hhagrocoop_thousands1980 
 
-	hhagrocoop_vsagro_pct1960 hhagrocoop_vsagro_pct1965 hhagrocoop_vsagro_pct1970 
-	agrocoops_no1960 agrocoops_no1965 agrocoops_no1970 
-	area_cult_thousandha1960 area_cult_thousandha1965 area_cult_thousandha1970 area_cult_thousandha1976 area_cult_thousandha1977 
-	area_cult_thousandha1978 area_cult_thousandha1979 area_cult_thousandha1980 
+    hhagrocoop_vsagro_pct1960 hhagrocoop_vsagro_pct1965 hhagrocoop_vsagro_pct1970 
+    agrocoops_no1960 agrocoops_no1965 agrocoops_no1970 
+    area_cult_thousandha1960 area_cult_thousandha1965 area_cult_thousandha1970 area_cult_thousandha1976 area_cult_thousandha1977 
+    area_cult_thousandha1978 area_cult_thousandha1979 area_cult_thousandha1980 
 
-	area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 area_cult_crops_thousandha1970 
-	cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 cerealprod_padval_1000tons1970 
-	cerealprod_padval_1000tons1976 cerealprod_padval_1000tons1977 cerealprod_padval_1000tons1978 cerealprod_padval_1000tons1979 
-	cerealprod_padval_1000tons1980 
+    area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 area_cult_crops_thousandha1970 
+    cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 cerealprod_padval_1000tons1970 
+    cerealprod_padval_1000tons1976 cerealprod_padval_1000tons1977 cerealprod_padval_1000tons1978 cerealprod_padval_1000tons1979 
+    cerealprod_padval_1000tons1980 
 
-	cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 cerealprodpercap_pv_kgper1970 
-	paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965 paddyarea_thousandha1970 
-	paddyarea_thousandha1976 paddyarea_thousandha1977 paddyarea_thousandha1978 paddyarea_thousandha1979 paddyarea_thousandha1980  
+    cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 cerealprodpercap_pv_kgper1970 
+    paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965 paddyarea_thousandha1970 
+    paddyarea_thousandha1976 paddyarea_thousandha1977 paddyarea_thousandha1978 paddyarea_thousandha1979 paddyarea_thousandha1980  
 
-	paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 paddyprod_1000tons1970 
-	paddyprod_1000tons1976 paddyprod_1000tons1977 paddyprod_1000tons1978 paddyprod_1000tons1979 paddyprod_1000tons1980 
+    paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 paddyprod_1000tons1970 
+    paddyprod_1000tons1976 paddyprod_1000tons1977 paddyprod_1000tons1978 paddyprod_1000tons1979 paddyprod_1000tons1980 
 
-	paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 paddypdpercap_kgperperson1970 paddypdpercap_kgperperson1976 
-	paddypdpercap_kgperperson1977 paddypdpercap_kgperperson1978 paddypdpercap_kgperperson1979 paddypdpercap_kgperperson1980 
+    paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 paddypdpercap_kgperperson1970 paddypdpercap_kgperperson1976 
+    paddypdpercap_kgperperson1977 paddypdpercap_kgperperson1978 paddypdpercap_kgperperson1979 paddypdpercap_kgperperson1980 
 
-	croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965 croparea_nonpad_1000ha1970 
-	cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 cropprod_nonpad_1000tons1970 cropprod_nonpad_1000tons1976 
-	cropprod_nonpad_1000tons1977 cropprod_nonpad_1000tons1978 cropprod_nonpad_1000tons1979 cropprod_nonpad_1000tons1980 
+    croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965 croparea_nonpad_1000ha1970 
+    cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 cropprod_nonpad_1000tons1970 cropprod_nonpad_1000tons1976 
+    cropprod_nonpad_1000tons1977 cropprod_nonpad_1000tons1978 cropprod_nonpad_1000tons1979 cropprod_nonpad_1000tons1980 
 
-	cornarea_thousandha1960 cornarea_thousandha1965 cornarea_thousandha1970 
-	cornprod_thousandtons1960 cornprod_thousandtons1965 cornprod_thousandtons1970 
-	swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 swtpotatoarea_thousandha1970  
-	swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 swtpotatoprod_thousandtons1970 
-	cassavaarea_thousandha1960 cassavaarea_thousandha1965 cassavaarea_thousandha1970 
-	cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 cassavaprod_thousandtons1970 
-	peanutarea_thousandha1960 peanutarea_thousandha1965 peanutarea_thousandha1970 
-	peanutprod_thousandtons1960 peanutprod_thousandtons1965 peanutprod_thousandtons1970 
-	canearea_thousandha1960 canearea_thousandha1965 canearea_thousandha1970 
-	caneprod_thousandtons1960 caneprod_thousandtons1965 caneprod_thousandtons1970 caneprod_thousandtons1976 caneprod_thousandtons1977 
-	caneprod_thousandtons1978  caneprod_thousandtons1979 caneprod_thousandtons1980 
+    cornarea_thousandha1960 cornarea_thousandha1965 cornarea_thousandha1970 
+    cornprod_thousandtons1960 cornprod_thousandtons1965 cornprod_thousandtons1970 
+    swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 swtpotatoarea_thousandha1970  
+    swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 swtpotatoprod_thousandtons1970 
+    cassavaarea_thousandha1960 cassavaarea_thousandha1965 cassavaarea_thousandha1970 
+    cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 cassavaprod_thousandtons1970 
+    peanutarea_thousandha1960 peanutarea_thousandha1965 peanutarea_thousandha1970 
+    peanutprod_thousandtons1960 peanutprod_thousandtons1965 peanutprod_thousandtons1970 
+    canearea_thousandha1960 canearea_thousandha1965 canearea_thousandha1970 
+    caneprod_thousandtons1960 caneprod_thousandtons1965 caneprod_thousandtons1970 caneprod_thousandtons1976 caneprod_thousandtons1977 
+    caneprod_thousandtons1978  caneprod_thousandtons1979 caneprod_thousandtons1980 
 
-	buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 buffalos_thousand1970 buffalos_thousand1976 buffalos_thousand1977 
-	buffalos_thousand1978 buffalos_thousand1979 buffalos_thousand1980 
-	buffalos_plow_thousand1960 buffalos_plow_thousand1965 buffalos_plow_thousand1970 
-	buffalos_she_thousand1960 buffalos_she_thousand1965 buffalos_she_thousand1970 buffalos_she_thousand1976 buffalos_she_thousand1977 
-	buffalos_she_thousand1978 buffalos_she_thousand1979 buffalos_she_thousand1980 
+    buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 buffalos_thousand1970 buffalos_thousand1976 buffalos_thousand1977 
+    buffalos_thousand1978 buffalos_thousand1979 buffalos_thousand1980 
+    buffalos_plow_thousand1960 buffalos_plow_thousand1965 buffalos_plow_thousand1970 
+    buffalos_she_thousand1960 buffalos_she_thousand1965 buffalos_she_thousand1970 buffalos_she_thousand1976 buffalos_she_thousand1977 
+    buffalos_she_thousand1978 buffalos_she_thousand1979 buffalos_she_thousand1980 
 
-	oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 oxen_thousand1970 
-	oxen_plow_thousand1960 oxen_plow_thousand1965 oxen_plow_thousand1970 oxen_plow_thousand1976 oxen_plow_thousand1977 
-	oxen_plow_thousand1978 oxen_plow_thousand1979 oxen_plow_thousand1980 
+    oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 oxen_thousand1970 
+    oxen_plow_thousand1960 oxen_plow_thousand1965 oxen_plow_thousand1970 oxen_plow_thousand1976 oxen_plow_thousand1977 
+    oxen_plow_thousand1978 oxen_plow_thousand1979 oxen_plow_thousand1980 
 
-	oxen_she_thousand1960 oxen_she_thousand1965 oxen_she_thousand1970 
-	pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 pigs_nonsuckling_thousand1970 
-	pigs_nonsuckling_thousand1976 pigs_nonsuckling_thousand1977 pigs_nonsuckling_thousand1978 
-	pigs_nonsuckling_thousand1979 pigs_nonsuckling_thousand1980 
+    oxen_she_thousand1960 oxen_she_thousand1965 oxen_she_thousand1970 
+    pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 pigs_nonsuckling_thousand1970 
+    pigs_nonsuckling_thousand1976 pigs_nonsuckling_thousand1977 pigs_nonsuckling_thousand1978 
+    pigs_nonsuckling_thousand1979 pigs_nonsuckling_thousand1980 
 
-	pigs_she_thousand1960 pigs_she_thousand1965 pigs_she_thousand1970 
-	pigs_forfood_thousand1960 pigs_forfood_thousand1965 pigs_forfood_thousand1970 pigs_forfood_thousand1976 pigs_forfood_thousand1977 
-	pigs_forfood_thousand1978 pigs_forfood_thousand1979 pigs_forfood_thousand1980:
+    pigs_she_thousand1960 pigs_she_thousand1965 pigs_she_thousand1970 
+    pigs_forfood_thousand1960 pigs_forfood_thousand1965 pigs_forfood_thousand1970 pigs_forfood_thousand1976 pigs_forfood_thousand1977 
+    pigs_forfood_thousand1978 pigs_forfood_thousand1979 pigs_forfood_thousand1980:
 
 replace X=X/arean;
 
 /*KEEP INTERESTING VARS*/
 
 keep 
-	provincecityn provincecoden arean
-	popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
+    provincecityn provincecoden arean
+    popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
 
-	area_cult_thousandha1960 area_cult_thousandha1965 
+    area_cult_thousandha1960 area_cult_thousandha1965 
 
-	area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
-	cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
+    area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
+    cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
 
-	cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
-	paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
+    cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
+    paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
 
-	paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
+    paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
 
-	paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
+    paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
 
-	croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
-	cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
+    croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
+    cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
 
-	cornarea_thousandha1960 cornarea_thousandha1965 
-	cornprod_thousandtons1960 cornprod_thousandtons1965 
-	swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
-	swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
-	cassavaarea_thousandha1960 cassavaarea_thousandha1965 
-	cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
-	peanutarea_thousandha1960 peanutarea_thousandha1965 
-	peanutprod_thousandtons1960 peanutprod_thousandtons1965 
-	canearea_thousandha1960 canearea_thousandha1965 
-	caneprod_thousandtons1960 caneprod_thousandtons1965 
+    cornarea_thousandha1960 cornarea_thousandha1965 
+    cornprod_thousandtons1960 cornprod_thousandtons1965 
+    swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
+    swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
+    cassavaarea_thousandha1960 cassavaarea_thousandha1965 
+    cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
+    peanutarea_thousandha1960 peanutarea_thousandha1965 
+    peanutprod_thousandtons1960 peanutprod_thousandtons1965 
+    canearea_thousandha1960 canearea_thousandha1965 
+    caneprod_thousandtons1960 caneprod_thousandtons1965 
 
-	buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
-	buffalos_plow_thousand1960 buffalos_plow_thousand1965 
-	buffalos_she_thousand1960 buffalos_she_thousand1965 
+    buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
+    buffalos_plow_thousand1960 buffalos_plow_thousand1965 
+    buffalos_she_thousand1960 buffalos_she_thousand1965 
 
-	oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
-	oxen_plow_thousand1960 oxen_plow_thousand1965 
+    oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
+    oxen_plow_thousand1960 oxen_plow_thousand1965 
 
-	oxen_she_thousand1960 oxen_she_thousand1965 
-	pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
+    oxen_she_thousand1960 oxen_she_thousand1965 
+    pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
 
-	pigs_she_thousand1960 pigs_she_thousand1965
-	pigs_forfood_thousand1960 pigs_forfood_thousand1965
+    pigs_she_thousand1960 pigs_she_thousand1965
+    pigs_forfood_thousand1960 pigs_forfood_thousand1965
 
-	/*YIELDS*/
- 	paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 /*paddyyield_hundredkgperha1970*/
-	cornyield_hundredkgperha1960 cornyield_hundredkgperha1965 /*cornyield_hundredkgperha1970 cornyield_hundredkgperha1976 
-	cornyield_hundredkgperha1977 cornyield_hundredkgperha1978 cornyield_hundredkgperha1979 cornyield_hundredkgperha1980*/
-	swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965 /*swtpotatoyield_100kgperha1970*/
-	cassavayield_100kgperha1960 cassavayield_100kgperha1965 /*cassavayield_100kgperha1970*/ peanutyield_hundredkgperha1960 
-	peanutyield_hundredkgperha1965 /*peanutyield_hundredkgperha1970*/ caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
-	/*caneyield_hundredkgperha1970*/ cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965 /*cropyield_nonpad_tonspha1970*/;
+    /*YIELDS*/
+     paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 /*paddyyield_hundredkgperha1970*/
+    cornyield_hundredkgperha1960 cornyield_hundredkgperha1965 /*cornyield_hundredkgperha1970 cornyield_hundredkgperha1976 
+    cornyield_hundredkgperha1977 cornyield_hundredkgperha1978 cornyield_hundredkgperha1979 cornyield_hundredkgperha1980*/
+    swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965 /*swtpotatoyield_100kgperha1970*/
+    cassavayield_100kgperha1960 cassavayield_100kgperha1965 /*cassavayield_100kgperha1970*/ peanutyield_hundredkgperha1960 
+    peanutyield_hundredkgperha1965 /*peanutyield_hundredkgperha1970*/ caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
+    /*caneyield_hundredkgperha1970*/ cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965 /*cropyield_nonpad_tonspha1970*/;
 
 save tmpn, replace;
 clear;
@@ -653,54 +653,54 @@ tab _merge;
 drop _merge;
 global statsn
 
-	"provincecityn arean
-	popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
+    "provincecityn arean
+    popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
 
-	area_cult_thousandha1960 area_cult_thousandha1965 
+    area_cult_thousandha1960 area_cult_thousandha1965 
 
-	area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
-	cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
+    area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
+    cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
 
-	cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
-	paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
+    cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
+    paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
 
-	paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
+    paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
 
-	paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
+    paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
 
-	croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
-	cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
+    croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
+    cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
 
-	cornarea_thousandha1960 cornarea_thousandha1965 
-	cornprod_thousandtons1960 cornprod_thousandtons1965 
-	swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
-	swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
-	cassavaarea_thousandha1960 cassavaarea_thousandha1965 
-	cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
-	peanutarea_thousandha1960 peanutarea_thousandha1965 
-	peanutprod_thousandtons1960 peanutprod_thousandtons1965 
-	canearea_thousandha1960 canearea_thousandha1965 
-	caneprod_thousandtons1960 caneprod_thousandtons1965 
+    cornarea_thousandha1960 cornarea_thousandha1965 
+    cornprod_thousandtons1960 cornprod_thousandtons1965 
+    swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
+    swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
+    cassavaarea_thousandha1960 cassavaarea_thousandha1965 
+    cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
+    peanutarea_thousandha1960 peanutarea_thousandha1965 
+    peanutprod_thousandtons1960 peanutprod_thousandtons1965 
+    canearea_thousandha1960 canearea_thousandha1965 
+    caneprod_thousandtons1960 caneprod_thousandtons1965 
 
-	buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
-	buffalos_plow_thousand1960 buffalos_plow_thousand1965 
-	buffalos_she_thousand1960 buffalos_she_thousand1965 
+    buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
+    buffalos_plow_thousand1960 buffalos_plow_thousand1965 
+    buffalos_she_thousand1960 buffalos_she_thousand1965 
 
-	oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
-	oxen_plow_thousand1960 oxen_plow_thousand1965 
+    oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
+    oxen_plow_thousand1960 oxen_plow_thousand1965 
 
-	oxen_she_thousand1960 oxen_she_thousand1965 
-	pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
+    oxen_she_thousand1960 oxen_she_thousand1965 
+    pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
 
-	pigs_she_thousand1960 pigs_she_thousand1965
-	pigs_forfood_thousand1960 pigs_forfood_thousand1965
+    pigs_she_thousand1960 pigs_she_thousand1965
+    pigs_forfood_thousand1960 pigs_forfood_thousand1965
 
- 	paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
-	cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
-	swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
-	cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
-	peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
-	cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965";
+     paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
+    cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
+    swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
+    cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
+    peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
+    cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965";
 
 quietly for var $statsn: rename X X_1;
 rename provincecoden provinceonen;
@@ -730,53 +730,53 @@ rename provincecoden provincefourn;
 
 global statsn
 
-	"arean
-	area_cult_thousandha1960 area_cult_thousandha1965 
-	popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
+    "arean
+    area_cult_thousandha1960 area_cult_thousandha1965 
+    popdensity1960n popdensity1965n popdens_pctdis1960n popdens_pctdis1965n
 
-	area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
-	cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
+    area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
+    cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
 
-	cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
-	paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
+    cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 
+    paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
 
-	paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
+    paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
 
-	paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
+    paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965 
 
-	croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
-	cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
+    croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
+    cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
 
-	cornarea_thousandha1960 cornarea_thousandha1965 
-	cornprod_thousandtons1960 cornprod_thousandtons1965 
-	swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
-	swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
-	cassavaarea_thousandha1960 cassavaarea_thousandha1965 
-	cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
-	peanutarea_thousandha1960 peanutarea_thousandha1965 
-	peanutprod_thousandtons1960 peanutprod_thousandtons1965 
-	canearea_thousandha1960 canearea_thousandha1965 
-	caneprod_thousandtons1960 caneprod_thousandtons1965 
+    cornarea_thousandha1960 cornarea_thousandha1965 
+    cornprod_thousandtons1960 cornprod_thousandtons1965 
+    swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
+    swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
+    cassavaarea_thousandha1960 cassavaarea_thousandha1965 
+    cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
+    peanutarea_thousandha1960 peanutarea_thousandha1965 
+    peanutprod_thousandtons1960 peanutprod_thousandtons1965 
+    canearea_thousandha1960 canearea_thousandha1965 
+    caneprod_thousandtons1960 caneprod_thousandtons1965 
 
-	buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
-	buffalos_plow_thousand1960 buffalos_plow_thousand1965 
-	buffalos_she_thousand1960 buffalos_she_thousand1965 
+    buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
+    buffalos_plow_thousand1960 buffalos_plow_thousand1965 
+    buffalos_she_thousand1960 buffalos_she_thousand1965 
 
-	oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
-	oxen_plow_thousand1960 oxen_plow_thousand1965 
+    oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
+    oxen_plow_thousand1960 oxen_plow_thousand1965 
 
-	oxen_she_thousand1960 oxen_she_thousand1965 
-	pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
+    oxen_she_thousand1960 oxen_she_thousand1965 
+    pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
 
-	pigs_she_thousand1960 pigs_she_thousand1965
-	pigs_forfood_thousand1960 pigs_forfood_thousand1965
+    pigs_she_thousand1960 pigs_she_thousand1965
+    pigs_forfood_thousand1960 pigs_forfood_thousand1965
 
- 	paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
-	cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
-	swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
-	cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
-	peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
-	cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965";
+     paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
+    cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
+    swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
+    cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
+    peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965 
+    cropyield_nonpad_tonspha1960 cropyield_nonpad_tonspha1965";
 
 quietly for any $statsn: gen X=X_1*provinceonenw+X_2*provincetwonw+X_3*provincethreenw+X_4*provincefournw if provincefournw~=. & provincefournw>0.05;
 quietly for any $statsn: replace X=X_1*provinceonenw+X_2*provincetwonw+X_3*provincethreenw if (provincefournw==. | provincefournw<=0.05) & provincethreenw~=. & provincethreenw>0.05;
@@ -789,96 +789,96 @@ order districtname provincename regionname district province region $statsn;
 **//RESETTING THE UNITS TO AGREE WITH SOUTH VIETNAMESE PREWAR DATA;
 
 foreach var in 
-	area_cult_thousandha1960 area_cult_thousandha1965 
+    area_cult_thousandha1960 area_cult_thousandha1965 
 
-	area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
-	cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
+    area_cult_crops_thousandha1960 area_cult_crops_thousandha1965 
+    cerealprod_padval_1000tons1960 cerealprod_padval_1000tons1965 
 
-	/*cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 WOULD NEED TO MULTIPLY BY POPULATION, DON'T HAVE*/
-	paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
+    /*cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 WOULD NEED TO MULTIPLY BY POPULATION, DON'T HAVE*/
+    paddyarea_thousandha1955 paddyarea_thousandha1960 paddyarea_thousandha1965
 
-	paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
+    paddyprod_1000tons1955 paddyprod_1000tons1960  paddyprod_1000tons1965 
 
-	/*paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965*/ 
+    /*paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965*/ 
 
-	croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
-	cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
+    croparea_nonpad_1000ha1960 croparea_nonpad_1000ha1965
+    cropprod_nonpad_1000tons1960 cropprod_nonpad_1000tons1965 
 
-	cornarea_thousandha1960 cornarea_thousandha1965 
-	cornprod_thousandtons1960 cornprod_thousandtons1965 
-	swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
-	swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
-	cassavaarea_thousandha1960 cassavaarea_thousandha1965 
-	cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
-	peanutarea_thousandha1960 peanutarea_thousandha1965 
-	peanutprod_thousandtons1960 peanutprod_thousandtons1965 
-	canearea_thousandha1960 canearea_thousandha1965 
-	caneprod_thousandtons1960 caneprod_thousandtons1965 
+    cornarea_thousandha1960 cornarea_thousandha1965 
+    cornprod_thousandtons1960 cornprod_thousandtons1965 
+    swtpotatoarea_thousandha1960 swtpotatoarea_thousandha1965 
+    swtpotatoprod_thousandtons1960 swtpotatoprod_thousandtons1965 
+    cassavaarea_thousandha1960 cassavaarea_thousandha1965 
+    cassavaprod_thousandtons1960 cassavaprod_thousandtons1965 
+    peanutarea_thousandha1960 peanutarea_thousandha1965 
+    peanutprod_thousandtons1960 peanutprod_thousandtons1965 
+    canearea_thousandha1960 canearea_thousandha1965 
+    caneprod_thousandtons1960 caneprod_thousandtons1965 
 
-	buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
-	buffalos_plow_thousand1960 buffalos_plow_thousand1965 
-	buffalos_she_thousand1960 buffalos_she_thousand1965 
+    buffalos_thousand1955 buffalos_thousand1960 buffalos_thousand1965 
+    buffalos_plow_thousand1960 buffalos_plow_thousand1965 
+    buffalos_she_thousand1960 buffalos_she_thousand1965 
 
-	oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
-	oxen_plow_thousand1960 oxen_plow_thousand1965 
+    oxen_thousand1955 oxen_thousand1960 oxen_thousand1965 
+    oxen_plow_thousand1960 oxen_plow_thousand1965 
 
-	oxen_she_thousand1960 oxen_she_thousand1965 
-	pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
+    oxen_she_thousand1960 oxen_she_thousand1965 
+    pigs_nonsuckling_thousand1955 pigs_nonsuckling_thousand1960 pigs_nonsuckling_thousand1965 
 
-	pigs_she_thousand1960 pigs_she_thousand1965
-	pigs_forfood_thousand1960 pigs_forfood_thousand1965{;
+    pigs_she_thousand1960 pigs_she_thousand1965
+    pigs_forfood_thousand1960 pigs_forfood_thousand1965{;
 
-		replace `var'=`var'*1000;};
+        replace `var'=`var'*1000;};
 
 foreach var in 
- 	paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
-	cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
-	swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
-	cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
-	peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965{; 
+     paddyyield_hundredkgperha1955 paddyyield_hundredkgperha1960 paddyyield_hundredkgperha1965 
+    cornyield_hundredkgperha1960 cornyield_hundredkgperha1965
+    swtpotatoyield_100kgperha1960 swtpotatoyield_100kgperha1965
+    cassavayield_100kgperha1960 cassavayield_100kgperha1965 peanutyield_hundredkgperha1960 
+    peanutyield_hundredkgperha1965 caneyield_hundredkgperha1960 caneyield_hundredkgperha1965{; 
 
-		replace `var'=`var'/10;};
+        replace `var'=`var'/10;};
 
 **//RENAMING TO REFLECT UNIT CHANGE;
 
 rename area_cult_thousandha1960 plantedarea_total1960n;
 rename area_cult_thousandha1965 plantedarea_total1965n;
-rename 	area_cult_crops_thousandha1960 plantedarea_crop1960n;
+rename     area_cult_crops_thousandha1960 plantedarea_crop1960n;
 rename area_cult_crops_thousandha1965 plantedarea_crop1965n;
 
 rename paddyprod_1000tons1955 paddyproduction1955n;
 
 foreach varpart in cerealprod_padval paddyprod cropprod_nonpad {;
-	rename `varpart'_1000tons1960 `varpart'1960n; 
-	rename `varpart'_1000tons1965 `varpart'1965n;};
+    rename `varpart'_1000tons1960 `varpart'1960n; 
+    rename `varpart'_1000tons1965 `varpart'1965n;};
 
 rename croparea_nonpad_1000ha1960 plantedarea_nonpadc1960n; rename croparea_nonpad_1000ha1965 plantedarea_nonpadc1965n;
 
-	/*cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965*/
-	/*paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965*/
+    /*cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965*/
+    /*paddypdpercap_kgperperson1960  paddypdpercap_kgperperson1965*/
 
 rename paddyarea_thousandha1955 paddyarea1955n;
 foreach varpart in
-	paddyarea cornarea swtpotatoarea cassavaarea peanutarea canearea{;
-	rename `varpart'_thousandha1960 `varpart'1960n;
-	rename `varpart'_thousandha1965 `varpart'1965n;};
+    paddyarea cornarea swtpotatoarea cassavaarea peanutarea canearea{;
+    rename `varpart'_thousandha1960 `varpart'1960n;
+    rename `varpart'_thousandha1965 `varpart'1965n;};
 foreach varpart in 
-	cornprod swtpotatoprod cassavaprod peanutprod caneprod{;
-	rename `varpart'_thousandtons1960 `varpart'1960n;
-	rename `varpart'_thousandtons1965 `varpart'1965n;};
+    cornprod swtpotatoprod cassavaprod peanutprod caneprod{;
+    rename `varpart'_thousandtons1960 `varpart'1960n;
+    rename `varpart'_thousandtons1965 `varpart'1965n;};
 foreach varpart in buffalos pigs_nonsuckling oxen{;
-	rename `varpart'_thousand1955 `varpart'1955n;};
+    rename `varpart'_thousand1955 `varpart'1955n;};
 foreach varpart in 
-	buffalos buffalos_plow buffalos_she oxen oxen_plow oxen_she pigs_nonsuckling pigs_she pigs_forfood{;
-	rename `varpart'_thousand1960 `varpart'1960n;
-	rename `varpart'_thousand1965 `varpart'1965n;};
+    buffalos buffalos_plow buffalos_she oxen oxen_plow oxen_she pigs_nonsuckling pigs_she pigs_forfood{;
+    rename `varpart'_thousand1960 `varpart'1960n;
+    rename `varpart'_thousand1965 `varpart'1965n;};
 rename paddyyield_hundredkgperha1955 paddyyield1955n;
 foreach varpart in 
- 	paddyyield cornyield peanutyield caneyield{;
-	rename `varpart'_hundredkgperha1960 `varpart'1960n;
-	rename `varpart'_hundredkgperha1965 `varpart'1965n;};
+     paddyyield cornyield peanutyield caneyield{;
+    rename `varpart'_hundredkgperha1960 `varpart'1960n;
+    rename `varpart'_hundredkgperha1965 `varpart'1965n;};
 foreach varpart in 
-	swtpotatoyield cassavayield{; rename `varpart'_100kgperha1960 `varpart'1960n; rename `varpart'_100kgperha1965 `varpart'1965n;};
+    swtpotatoyield cassavayield{; rename `varpart'_100kgperha1960 `varpart'1960n; rename `varpart'_100kgperha1965 `varpart'1965n;};
 rename cropyield_nonpad_tonspha1960 cropyield_nonpad1960; rename cropyield_nonpad_tonspha1965 cropyield_nonpad1965;
 
 sort district;
@@ -895,71 +895,71 @@ save prewardt.dta, replace;
 cd ..; cd IFPRI; insheet using SES-data.csv, clear; keep district area_tot_km2; sort district; 
 cd ..; cd "Pre-war data"; merge district using prewardt.dta; tab _merge; drop _merge;
 foreach var in 
-	plantedarea_total1960n plantedarea_total1965n plantedarea_crop1960n plantedarea_crop1965n cerealprod_padval1960n
-	cerealprod_padval1965n cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 paddyarea1955n paddyarea1960n 
-	paddyarea1965n paddyproduction1955n paddyprod1960n paddyprod1965n paddypdpercap_kgperperson1960 
-	paddypdpercap_kgperperson1965 plantedarea_nonpadc1960n plantedarea_nonpadc1965n cropprod_nonpad1960n 
-	cropprod_nonpad1965n cornarea1960n cornarea1965n cornprod1960n cornprod1965n swtpotatoarea1960n 
-	swtpotatoarea1965n swtpotatoprod1960n swtpotatoprod1965n cassavaarea1960n cassavaarea1965n cassavaprod1960n 
-	cassavaprod1965n peanutarea1960n peanutarea1965n peanutprod1960n peanutprod1965n canearea1960n canearea1965n 
-	caneprod1960n caneprod1965n buffalos1955n buffalos1960n buffalos1965n buffalos_plow1960n buffalos_plow1965n 
-	buffalos_she1960n  buffalos_she1965n oxen1955n oxen1960n oxen1965n oxen_plow1960n oxen_plow1965n oxen_she1960n 
-	oxen_she1965n pigs_nonsuckling1955n pigs_nonsuckling1960n pigs_nonsuckling1965n pigs_she1960n pigs_she1965n 
-	pigs_forfood1960n pigs_forfood1965n population1963  population1964 birthsmale1964 birthsfemale1964 deathsmale1964 
-	deathsfemale1964 paddyarea1964 paddyarea1965 paddyarea1966 paddyproduction1964 paddyproduction1965 
-	paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 swtpotatoarea1965 swtpotatoproduction1962 
-	swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 coconutarea1963 coconutarea1964 
-	coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 coconutproduction1965 canearea1962 
-	canearea1963 canearea1964 canearea1965 caneproduction1962  caneproduction1963 caneproduction1964 caneproduction1965 
-	tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
-	tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 
-	maniocproduction1962 maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 
-	cornarea1964 cornarea1965 cornproduction1962 cornproduction1963 cornproduction1964 cornproduction1965 population1962 
-	birthsmale1962 birthsfemale1962 birthsmale1963 birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 
-	deathsfemale1963 paddyarea1963 paddyproduction1963 rubberplanted1962 rubberworkable1962 rubberworked1962 
-	rubberplanted1963 rubberworkable1963 rubberworked1963 birthsmale1961 birthsfemale1961 deathsmale1961 deathsfemale1961 
-	rubberplanted1961 rubberworkable1961 rubberworked1961 tobaccoarea1961 tobaccoproduction1961 coconutarea1961 
-	coconutproduction1961 population1961 birthsmale1960 birthsfemale1960 deathsmale1960 deathsfemale1960 paddyarea1961 
-	paddyproduction1961 paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 
-	coconutarea1960 coconutproduction1960 tobaccoarea1960 tobaccoproduction1960 population1959  birthsmale1958 
-	birthsfemale1958 birthsmale1959 birthsfemale1959 deathsmale1958 deathsfemale1958 deathsmale1959 deathsfemale1959 
-	paddyarea1959 paddyproduction1959 rubberplanted1958 rubberworkable1958 rubberworked1958 rubberplanted1959 rubberworkable1959 
-	rubberworked1959 tobaccoarea1958 tobaccoarea1959 tobaccoproduction1958 tobaccoproduction1959 coconutarea1958 coconutarea1959 
-	coconutproduction1958 coconutproduction1959 canearea1958 canearea1959 caneproduction1958 caneproduction1959{;
-		replace `var'=`var'*area_tot_km2;};
+    plantedarea_total1960n plantedarea_total1965n plantedarea_crop1960n plantedarea_crop1965n cerealprod_padval1960n
+    cerealprod_padval1965n cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 paddyarea1955n paddyarea1960n 
+    paddyarea1965n paddyproduction1955n paddyprod1960n paddyprod1965n paddypdpercap_kgperperson1960 
+    paddypdpercap_kgperperson1965 plantedarea_nonpadc1960n plantedarea_nonpadc1965n cropprod_nonpad1960n 
+    cropprod_nonpad1965n cornarea1960n cornarea1965n cornprod1960n cornprod1965n swtpotatoarea1960n 
+    swtpotatoarea1965n swtpotatoprod1960n swtpotatoprod1965n cassavaarea1960n cassavaarea1965n cassavaprod1960n 
+    cassavaprod1965n peanutarea1960n peanutarea1965n peanutprod1960n peanutprod1965n canearea1960n canearea1965n 
+    caneprod1960n caneprod1965n buffalos1955n buffalos1960n buffalos1965n buffalos_plow1960n buffalos_plow1965n 
+    buffalos_she1960n  buffalos_she1965n oxen1955n oxen1960n oxen1965n oxen_plow1960n oxen_plow1965n oxen_she1960n 
+    oxen_she1965n pigs_nonsuckling1955n pigs_nonsuckling1960n pigs_nonsuckling1965n pigs_she1960n pigs_she1965n 
+    pigs_forfood1960n pigs_forfood1965n population1963  population1964 birthsmale1964 birthsfemale1964 deathsmale1964 
+    deathsfemale1964 paddyarea1964 paddyarea1965 paddyarea1966 paddyproduction1964 paddyproduction1965 
+    paddyproduction1966 swtpotatoarea1962 swtpotatoarea1963 swtpotatoarea1964 swtpotatoarea1965 swtpotatoproduction1962 
+    swtpotatoproduction1963 swtpotatoproduction1964 swtpotatoproduction1965 coconutarea1962 coconutarea1963 coconutarea1964 
+    coconutarea1965 coconutproduction1962 coconutproduction1963 coconutproduction1964 coconutproduction1965 canearea1962 
+    canearea1963 canearea1964 canearea1965 caneproduction1962  caneproduction1963 caneproduction1964 caneproduction1965 
+    tobaccoarea1962 tobaccoarea1963 tobaccoarea1964 tobaccoarea1965 tobaccoproduction1962 tobaccoproduction1963 
+    tobaccoproduction1964 tobaccoproduction1965 maniocarea1962 maniocarea1963 maniocarea1964 maniocarea1965 
+    maniocproduction1962 maniocproduction1963 maniocproduction1964 maniocproduction1965 cornarea1962 cornarea1963 
+    cornarea1964 cornarea1965 cornproduction1962 cornproduction1963 cornproduction1964 cornproduction1965 population1962 
+    birthsmale1962 birthsfemale1962 birthsmale1963 birthsfemale1963 deathsmale1962 deathsfemale1962 deathsmale1963 
+    deathsfemale1963 paddyarea1963 paddyproduction1963 rubberplanted1962 rubberworkable1962 rubberworked1962 
+    rubberplanted1963 rubberworkable1963 rubberworked1963 birthsmale1961 birthsfemale1961 deathsmale1961 deathsfemale1961 
+    rubberplanted1961 rubberworkable1961 rubberworked1961 tobaccoarea1961 tobaccoproduction1961 coconutarea1961 
+    coconutproduction1961 population1961 birthsmale1960 birthsfemale1960 deathsmale1960 deathsfemale1960 paddyarea1961 
+    paddyproduction1961 paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 
+    coconutarea1960 coconutproduction1960 tobaccoarea1960 tobaccoproduction1960 population1959  birthsmale1958 
+    birthsfemale1958 birthsmale1959 birthsfemale1959 deathsmale1958 deathsfemale1958 deathsmale1959 deathsfemale1959 
+    paddyarea1959 paddyproduction1959 rubberplanted1958 rubberworkable1958 rubberworked1958 rubberplanted1959 rubberworkable1959 
+    rubberworked1959 tobaccoarea1958 tobaccoarea1959 tobaccoproduction1958 tobaccoproduction1959 coconutarea1958 coconutarea1959 
+    coconutproduction1958 coconutproduction1959 canearea1958 canearea1959 caneproduction1958 caneproduction1959{;
+        replace `var'=`var'*area_tot_km2;};
 
 
 **//MATCH VARNAMES;
 foreach varpart in plantedarea_total1960 plantedarea_total1965 popdensity1960 popdensity1965 popdens_pctdis1960 
-	popdens_pctdis1965 plantedarea_crop1960 plantedarea_crop1965 cerealprod_padval1960 cerealprod_padval1965 paddyarea1955 
-	paddyarea1960 paddyarea1965 paddyproduction1955 paddyprod1960 paddyprod1965 plantedarea_nonpadc1960 
-	plantedarea_nonpadc1965 cropprod_nonpad1960 cropprod_nonpad1965 cornarea1960 cornarea1965 cornprod1960 
-	cornprod1965 swtpotatoarea1960 swtpotatoarea1965 swtpotatoprod1960 swtpotatoprod1965 cassavaarea1960 cassavaarea1965 
-	cassavaprod1960 cassavaprod1965 peanutarea1960 peanutarea1965 peanutprod1960 peanutprod1965 canearea1960 canearea1965 
-	caneprod1960 caneprod1965 buffalos1955 buffalos1960 buffalos1965 buffalos_plow1960 buffalos_plow1965 buffalos_she1960 
-	buffalos_she1965 oxen1955 oxen1960 oxen1965 oxen_plow1960 oxen_plow1965 oxen_she1960 oxen_she1965 pigs_nonsuckling1955 
-	pigs_nonsuckling1960 pigs_nonsuckling1965 pigs_she1960 pigs_she1965  pigs_forfood1960 pigs_forfood1965 paddyyield1955 
-	paddyyield1960 paddyyield1965 cornyield1960 cornyield1965 swtpotatoyield1960 swtpotatoyield1965 
-	cassavayield1960 cassavayield1965 peanutyield1960 peanutyield1965 caneyield1960 caneyield1965 {;
-		rename `varpart'n `varpart'_n;};
+    popdens_pctdis1965 plantedarea_crop1960 plantedarea_crop1965 cerealprod_padval1960 cerealprod_padval1965 paddyarea1955 
+    paddyarea1960 paddyarea1965 paddyproduction1955 paddyprod1960 paddyprod1965 plantedarea_nonpadc1960 
+    plantedarea_nonpadc1965 cropprod_nonpad1960 cropprod_nonpad1965 cornarea1960 cornarea1965 cornprod1960 
+    cornprod1965 swtpotatoarea1960 swtpotatoarea1965 swtpotatoprod1960 swtpotatoprod1965 cassavaarea1960 cassavaarea1965 
+    cassavaprod1960 cassavaprod1965 peanutarea1960 peanutarea1965 peanutprod1960 peanutprod1965 canearea1960 canearea1965 
+    caneprod1960 caneprod1965 buffalos1955 buffalos1960 buffalos1965 buffalos_plow1960 buffalos_plow1965 buffalos_she1960 
+    buffalos_she1965 oxen1955 oxen1960 oxen1965 oxen_plow1960 oxen_plow1965 oxen_she1960 oxen_she1965 pigs_nonsuckling1955 
+    pigs_nonsuckling1960 pigs_nonsuckling1965 pigs_she1960 pigs_she1965  pigs_forfood1960 pigs_forfood1965 paddyyield1955 
+    paddyyield1960 paddyyield1965 cornyield1960 cornyield1965 swtpotatoyield1960 swtpotatoyield1965 
+    cassavayield1960 cassavayield1965 peanutyield1960 peanutyield1965 caneyield1960 caneyield1965 {;
+        rename `varpart'n `varpart'_n;};
 foreach var in cerealprodpercap_pv_kgper1960 cerealprodpercap_pv_kgper1965 paddypdpercap_kgperperson1960 
-	paddypdpercap_kgperperson1965 cropyield_nonpad1960 cropyield_nonpad1965 {;
-	rename `var' `var'_n;};
+    paddypdpercap_kgperperson1965 cropyield_nonpad1960 cropyield_nonpad1965 {;
+    rename `var' `var'_n;};
 foreach year in 1960 1965 {;
-	rename caneyield`year'_n caneyieldperha`year'_n;
-	rename cornyield`year'_n cornyieldperha`year'_n;
-	rename paddyyield`year'_n paddyyieldperhectare`year'_n;
-	rename swtpotatoyield`year'_n swtpotatoyieldperha`year'_n;
-	rename cassavayield`year'_n cassavayieldperha`year'_n;
-	rename peanutyield`year'_n peanutyieldperha`year'_n;};
+    rename caneyield`year'_n caneyieldperha`year'_n;
+    rename cornyield`year'_n cornyieldperha`year'_n;
+    rename paddyyield`year'_n paddyyieldperhectare`year'_n;
+    rename swtpotatoyield`year'_n swtpotatoyieldperha`year'_n;
+    rename cassavayield`year'_n cassavayieldperha`year'_n;
+    rename peanutyield`year'_n peanutyieldperha`year'_n;};
 rename paddyyield1955_n paddyyieldperhectare1955_n;
 foreach year in 1960_n 1965_n {;
-	rename cornprod`year' cornproduction`year';
-	rename paddyprod`year' paddyproduction`year';
-	rename peanutprod`year' peanutproduction`year';
-	rename cassavaprod`year' cassavaproduction`year';
-	rename caneprod`year' caneproduction`year';
-	rename swtpotatoprod`year' swtpotatoproduction`year';};
+    rename cornprod`year' cornproduction`year';
+    rename paddyprod`year' paddyproduction`year';
+    rename peanutprod`year' peanutproduction`year';
+    rename cassavaprod`year' cassavaproduction`year';
+    rename caneprod`year' caneproduction`year';
+    rename swtpotatoprod`year' swtpotatoproduction`year';};
 aorder; order regionname provincename districtname region province district;
 sort district;
 save prewardt.dta, replace;
@@ -1132,9 +1132,9 @@ HHVLSS02 - CONTAINS HH-LEVEL DATA FOR '02, AT THE HH LEVEL
 COMVLSS98 - CONTAINS COMMUNE-LEVEL DATA FOR '98, AT THE COMMUNE LEVEL
 VLSS98HHCOM - CONTAINS HH AND COMMUNE LEVEL DATA FOR '98, AT THE HH LEVEL
 HHVLSS98_93 - CONTAINS HH AND COMMUNE DATA FOR '98, PLUS HH LEVEL DATA FOR '93, ALL AT THE HH LEVEL
-COMVLSS98COLLAPSE - CONTAINS COMMUNE DATA, COLLAPSED BY DISTRICT, FOR '98	
+COMVLSS98COLLAPSE - CONTAINS COMMUNE DATA, COLLAPSED BY DISTRICT, FOR '98    
 HHVLSS9893COLLAPSE - CONTAINS DATA IN HHVLSS98_93, COLLAPSED TO THE DISTRICT LEVEL
-HHVLSS02COLLAPSE - CONTAINS DATA IN HHVLSS02,COLLAPSED TO THE DISTRICT 	LEVEL
+HHVLSS02COLLAPSE - CONTAINS DATA IN HHVLSS02,COLLAPSED TO THE DISTRICT     LEVEL
 HHVLSSALLCOLLAPSE - CONTAINS DATA FROM ALL YEARS COLLAPSED TO THE DISTRICT LEVEL
 HHVLSS93COLLAPSE_PROVINCE - CONTAINS DATA IN HHVLSS98_93, COLLAPSED WITHOUT WEIGHTS FOR 1993 DATA TO PROVINCE LEVEL
 HHVLSS98COLLAPSE_PROVINCE - CONTAINS DATA IN HHVLSS98_93, COLLAPSED WITH WEIGHTS FOR 1998 DATA TO PROVINCE LEVEL
@@ -1145,7 +1145,7 @@ HHVLSSALLCOLLAPSE_PANEL - CONTAINS DATA FORM ALL YEARS, ONLY FOR DISTRICTS IN AL
 HHVLSSALLCOLLAPSE_PROVINCE_PANEL - CONTAINS DATA FORM ALL YEARS, ONLY FOR PROVINCES IN ALL YEARS, COLLAPSED TO PROVINCE LEVEL;
 
 **//OTHER IMPORTANT FILES USED BY THIS FILE ARE:
-93EXP - '93 EXPENDITURE FILE FROM MINOT	
+93EXP - '93 EXPENDITURE FILE FROM MINOT    
 HHEXP98N - '98 EXPENDITURE FILE FROM MINOT
 COMVLSSMATCH - CREATED BY BUB TO MATCH COMMUNE CODES IN '98 TO DISTRICT CODES IN '98;
 
@@ -1241,41 +1241,41 @@ erase `x'_temp.dta;
 **//Note: SCR08A2 also codes the birth order (s8aorde) of the children in question.
     And SCR08A1 codes the idcode of the fertile woman in question (s8idc).;
 **//NOTE: s8aorde s8aq05d s8aq05m s8aq05y s8aq09t s8aq09u s8aq10
-	were all removed from the and order commands because file SCR08A2 needs to be manipulated before merging (see above)
-	these variables are all eliminated later (see next keep command), so this is unimportant for now;
+    were all removed from the and order commands because file SCR08A2 needs to be manipulated before merging (see above)
+    these variables are all eliminated later (see next keep command), so this is unimportant for now;
 
 **//KEEP ONLY "POSSIBLE OUTCOME MEASURES";
 keep househol cluster idcode s0bq01 s0bq02 s0bq021 vlsscode s1aq02 s1aq03 s1aq04 s1aq05d s1aq05m s1aq05y s1aq06y s1aq06m 
-	s1bq01 s1bq02 s1bq03 s1bq04 s1bq05 s1bq06 s1bq07 s1bq08 s1bq09 s1bq10 s1bq11 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 
-	s2aq01 s2aq02 s2aq03 s2aq04 s2aq05 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq09f s2aq09s s2aq09t s2aq11 s2aq12 s2aq13m 
-	s2aq13y s2aq15 s2aq16 s2aq17y s2aq17m s2aq18 s2aq19 s2aq20 s2aq21m s2aq21y s2aq22 s2bq01 s2bq02 s2bq03 s2bq07 s2bq11 s2bq12f s2bq12s 
-	s2bq12t s2eq01 s2eq02
-	s2eq03 s2eq04 s2eq05 s3q01 s3q05 s3q06 s3q07 s3q45 s3q46
-	s4aq02 s4aq03 s4aq04 s4aq05 s4aq06 s4aq07 s4aq08 s4aq14 
-	s4bq01 s4bq02 s4bq03y s4bq03m s4bq07 s4bq08 s4bq09 s4bq10 s4bq20
-	s4cq01 s4cq02 s4cq03y s4cq03m s4cq12 s4cq14  s4bq21a s4bq21u s4bq22ia s4bq22iu 
-	s4dq01 s4dq02 s4dq03 s4dq04y s4dq04m s4dq06 s4dq12 s4dq13a s4dq13u s4dq14ia s4dq14iu 
-	s4gq09 s4gq10
-	s5q01 s5q02 
-	s5q03 s5q04 s5q05 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 s6cuar s6clar
-	s8idc s8aq02 s8aq03  s8aq13 s8aq14 s8aq19 s8aq25 s8aq26 s8aq27 s8aq30 
-	s15yrs s15mth s15q04 s15q05 s15q06 s15q07 numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10	 
-	s4aq11	 s4aq12	s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10	s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
-	s9a4q01 s9a1q04	s9a1q05	wtdqualitycrop	s9a2q03	s9a2q04	wtdqualityother	s9a3q03	s9a3q04	wtdqualityrentin s9a4q05 s9a4q06
-	wtdqualityrentout
-	s15yrs s15mth s15q01 s15q02 s15q03d s15q03m s15q03y s15q04 s15q05 s15q06 s15q07 s15q08 ;
+    s1bq01 s1bq02 s1bq03 s1bq04 s1bq05 s1bq06 s1bq07 s1bq08 s1bq09 s1bq10 s1bq11 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 
+    s2aq01 s2aq02 s2aq03 s2aq04 s2aq05 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq09f s2aq09s s2aq09t s2aq11 s2aq12 s2aq13m 
+    s2aq13y s2aq15 s2aq16 s2aq17y s2aq17m s2aq18 s2aq19 s2aq20 s2aq21m s2aq21y s2aq22 s2bq01 s2bq02 s2bq03 s2bq07 s2bq11 s2bq12f s2bq12s 
+    s2bq12t s2eq01 s2eq02
+    s2eq03 s2eq04 s2eq05 s3q01 s3q05 s3q06 s3q07 s3q45 s3q46
+    s4aq02 s4aq03 s4aq04 s4aq05 s4aq06 s4aq07 s4aq08 s4aq14 
+    s4bq01 s4bq02 s4bq03y s4bq03m s4bq07 s4bq08 s4bq09 s4bq10 s4bq20
+    s4cq01 s4cq02 s4cq03y s4cq03m s4cq12 s4cq14  s4bq21a s4bq21u s4bq22ia s4bq22iu 
+    s4dq01 s4dq02 s4dq03 s4dq04y s4dq04m s4dq06 s4dq12 s4dq13a s4dq13u s4dq14ia s4dq14iu 
+    s4gq09 s4gq10
+    s5q01 s5q02 
+    s5q03 s5q04 s5q05 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 s6cuar s6clar
+    s8idc s8aq02 s8aq03  s8aq13 s8aq14 s8aq19 s8aq25 s8aq26 s8aq27 s8aq30 
+    s15yrs s15mth s15q04 s15q05 s15q06 s15q07 numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10     
+    s4aq11     s4aq12    s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10    s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
+    s9a4q01 s9a1q04    s9a1q05    wtdqualitycrop    s9a2q03    s9a2q04    wtdqualityother    s9a3q03    s9a3q04    wtdqualityrentin s9a4q05 s9a4q06
+    wtdqualityrentout
+    s15yrs s15mth s15q01 s15q02 s15q03d s15q03m s15q03y s15q04 s15q05 s15q06 s15q07 s15q08 ;
 
 **//order househol cluster idcode s0bq01 s0bq02 s0bq021 vlsscode s1aq02 s1aq03 s1aq04 s1aq05d s1aq05m s1aq05y s1aq06y s1aq06m s1bq04 s1bq05 s1bq06 s1bq07 
-	s1bq08 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2aq02 s2aq03 s2aq04 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq11 s2aq12 s2aq13m s2aq13y 
-	s2aq15 s2aq16 s2aq17y s2aq17m s2aq19 s2aq20 s2aq21m s2aq21y s2bq01 s2bq02 s2bq07 s2bq11 s2bq12f s2bq12s s2bq12t s2eq01 s2eq02 s2eq03 
-	s2eq04 s2eq05 s3q01 s3q05 s3q06 s3q07 s3q45 s3q46 s4aq02 s4aq03 s4aq04 s4aq05 s4aq06 s4aq07 s4aq08 s4aq14 s4bq01 s4bq02 s4bq21a 
-	s4bq21u s4bq22ia s4bq22iu s4dq01 s4dq02 s4dq04y s4dq04m s4dq06 s4dq12 s4dq13a s4dq13u s4dq14ia s4dq14iu s4gq09 s4gq10 s5q01 s5q02 
-	s5q03 s5q04 s5q05 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 s6cuar s6clar
-	s8idc s8aq02 s8aq03 s8aq13 s8aq14 s8aq19 s8aq25 s8aq26 s8aq27 s8aq30 
-	s15yrs s15mth s15q04 s15q05 s15q06 s15q07 numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10	 
-	s4aq11	 s4aq12	s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10	s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
-	s9a4q01 s9a1q04	s9a1q05	wtdqualitycrop	s9a2q03	s9a2q04	wtdqualityother	s9a3q03	s9a3q04	wtdqualityrentin s9a4q05 s9a4q06 
-	wtdqualityrentout;
+    s1bq08 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2aq02 s2aq03 s2aq04 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq11 s2aq12 s2aq13m s2aq13y 
+    s2aq15 s2aq16 s2aq17y s2aq17m s2aq19 s2aq20 s2aq21m s2aq21y s2bq01 s2bq02 s2bq07 s2bq11 s2bq12f s2bq12s s2bq12t s2eq01 s2eq02 s2eq03 
+    s2eq04 s2eq05 s3q01 s3q05 s3q06 s3q07 s3q45 s3q46 s4aq02 s4aq03 s4aq04 s4aq05 s4aq06 s4aq07 s4aq08 s4aq14 s4bq01 s4bq02 s4bq21a 
+    s4bq21u s4bq22ia s4bq22iu s4dq01 s4dq02 s4dq04y s4dq04m s4dq06 s4dq12 s4dq13a s4dq13u s4dq14ia s4dq14iu s4gq09 s4gq10 s5q01 s5q02 
+    s5q03 s5q04 s5q05 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 s6cuar s6clar
+    s8idc s8aq02 s8aq03 s8aq13 s8aq14 s8aq19 s8aq25 s8aq26 s8aq27 s8aq30 
+    s15yrs s15mth s15q04 s15q05 s15q06 s15q07 numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10     
+    s4aq11     s4aq12    s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10    s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
+    s9a4q01 s9a1q04    s9a1q05    wtdqualitycrop    s9a2q03    s9a2q04    wtdqualityother    s9a3q03    s9a3q04    wtdqualityrentin s9a4q05 s9a4q06 
+    wtdqualityrentout;
 
 
 **//SORT AND SAVE '98 DATAFILE;
@@ -1294,20 +1294,20 @@ merge househol using HHEXP98N.DTA; drop _merge;
 
 **//KEEP ONLY SELECT "POSSIBLE OUTCOME MEASURES" SO THAT THE FILE ISN'T TOO BIG;
 keep househol cluster idcode vlssmphs vlsscode sex age agegroup comped98 educyr98 farm urban98 urban92 wt hhsize hhsizewt commune ricexpd 
-	nonrice totnfdx1 totnfdhp totnfdh1 food nonfood1 hhexp1 pcexp1 pcfdex1 rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2
-	rlhhex2 rlpcex2 s0bq01 s0bq02 s0bq021 s1aq02 s1aq03 s1aq05d s1aq05m s1aq05y s1aq06y s1aq06m s1bq01 s1bq02 s1bq04 s1bq05 s1bq06 s1bq07 s1bq08 s1bq09 s1bq10 
-	s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2aq02 s2aq03 s2aq04 s2aq05 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq09f s2aq09s 
-	s2aq09t  s2aq11 s2aq12 s2aq15 s2aq16 s2aq19 s2aq20 s2aq21m s2aq21y s2aq22 s2bq01 s2bq02 s2bq03 s2bq07 s2bq11 s2bq12f s2bq12s 
-	s2bq12t s2eq01 s2eq02 s2eq03 s3q05 s3q06 s3q07 s3q45 s3q46 
-	s4aq08 s4bq01 s4bq02 s4bq03y s4bq03m s4bq07 s4bq08 s4bq09 s4bq10 s4bq20
-	s4cq01 s4cq02 s4cq03y s4cq03m s4cq12 s4cq14
-	s4aq14 s4dq01 s4dq02 s4dq03 s4dq04y s4dq04m s4dq06 s4dq12 
-	s5q01 s5q03 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 
-	numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10	 
-	s4aq11	 s4aq12	s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10	s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
-	s9a4q01 s9a1q04	s9a1q05	wtdqualitycrop	s9a2q03	s9a2q04	wtdqualityother	s9a3q03	s9a3q04	wtdqualityrentin s9a4q05 s9a4q06 
-	wtdqualityrentout
-	/*s15yrs s15mth s15q01 */ s15q02 s15q03d s15q03m s15q03y s15q04 s15q05 s15q06 s15q07 s15q08;
+    nonrice totnfdx1 totnfdhp totnfdh1 food nonfood1 hhexp1 pcexp1 pcfdex1 rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2
+    rlhhex2 rlpcex2 s0bq01 s0bq02 s0bq021 s1aq02 s1aq03 s1aq05d s1aq05m s1aq05y s1aq06y s1aq06m s1bq01 s1bq02 s1bq04 s1bq05 s1bq06 s1bq07 s1bq08 s1bq09 s1bq10 
+    s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2aq02 s2aq03 s2aq04 s2aq05 s2aq06 s2aq07 s2aq08f s2aq08s s2aq08t s2aq09f s2aq09s 
+    s2aq09t  s2aq11 s2aq12 s2aq15 s2aq16 s2aq19 s2aq20 s2aq21m s2aq21y s2aq22 s2bq01 s2bq02 s2bq03 s2bq07 s2bq11 s2bq12f s2bq12s 
+    s2bq12t s2eq01 s2eq02 s2eq03 s3q05 s3q06 s3q07 s3q45 s3q46 
+    s4aq08 s4bq01 s4bq02 s4bq03y s4bq03m s4bq07 s4bq08 s4bq09 s4bq10 s4bq20
+    s4cq01 s4cq02 s4cq03y s4cq03m s4cq12 s4cq14
+    s4aq14 s4dq01 s4dq02 s4dq03 s4dq04y s4dq04m s4dq06 s4dq12 
+    s5q01 s5q03 s5q06 s5q7y s5q7m s5q08 s5q09 s6aq02 s6bq01 s6bq17 s6bq21a s6bq21u s6bq25 s6bq26a s6bq26u s6bq31 s6bq33 
+    numplots_crop numplots_other numplots_rentin numplots_rentout tribe s4aq09 s4aq10     
+    s4aq11     s4aq12    s4dq10 s4dq11 s4dq12 s4eq01 s4eq02 s4eq03 s4eq09 s4eq10    s4eq11 s4hq08f s4hq08s s4hq08t s9a1q01 s9a1q02 s9a2q01 s9a3q01 
+    s9a4q01 s9a1q04    s9a1q05    wtdqualitycrop    s9a2q03    s9a2q04    wtdqualityother    s9a3q03    s9a3q04    wtdqualityrentin s9a4q05 s9a4q06 
+    wtdqualityrentout
+    /*s15yrs s15mth s15q01 */ s15q02 s15q03d s15q03m s15q03y s15q04 s15q05 s15q06 s15q07 s15q08;
 
 
 **//RENAME AND LABEL ALL VARIABLES;
@@ -1327,9 +1327,9 @@ replace commune=int((int(househol/100)+1)/2) /*THIS IS JUST TO GIVE THE 10HH NOT
 **//CREATE CODES;
 /*TRANSLATING DIPLOMA LABELS, AS TRANSLATED BY KHUYEN - these labels are for Minot's comped98 variable*/ 
 label define diploma 0 Never 1 "Nhatre = Kindergarten" 
-	2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
-	7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
-	12 "TS = PhD", modify;
+    2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
+    7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
+    12 "TS = PhD", modify;
 
 /*FOR FEMALE*/
 label define female 0 male 1 female; 
@@ -1725,37 +1725,37 @@ gen educyrself = .;
 
 **//if schoollevel ==2 {; /*last attended primary school*/
   **//if primarydiploma == 1|2{; /*finished primary w/ or w/o diploma */
-	replace educyrself = 5 if schoollevel ==2 & primarydiploma == 1|2; /*highest primary grade*/
- 	replace educyrself = higradepreprim if schoollevel ==2 & primarydiploma != 1|2;
+    replace educyrself = 5 if schoollevel ==2 & primarydiploma == 1|2; /*highest primary grade*/
+     replace educyrself = higradepreprim if schoollevel ==2 & primarydiploma != 1|2;
 
 **//if schoollevel ==3 {; /*last attended lower secondary school*/
  **// if lowsecdiploma ==1|2 {; /*finished lower secondary w/ or w/o diploma*/
-	replace educyrself = 9 if schoollevel ==3 & lowsecdiploma ==1|2; /*highest lower secondary grade*/
-	replace educyrself = higradeprelowsec if schoollevel ==3 & lowsecdiploma !=1|2;
+    replace educyrself = 9 if schoollevel ==3 & lowsecdiploma ==1|2; /*highest lower secondary grade*/
+    replace educyrself = higradeprelowsec if schoollevel ==3 & lowsecdiploma !=1|2;
 
 **//if schoollevel ==4 {;/*last attended upper secondary school*/
   **//if upsecdiploma == 1|2 {; /*finished upper secondary w/ or w/o diploma*/
-	replace educyrself = 12 if schoollevel ==4 & upsecdiploma ==1|2; /*highest uppse secondary grade*/
-  	replace educyrself = higradepreupsec if schoollevel ==4 & upsecdiploma !=1|2;
+    replace educyrself = 12 if schoollevel ==4 & upsecdiploma ==1|2; /*highest uppse secondary grade*/
+      replace educyrself = higradepreupsec if schoollevel ==4 & upsecdiploma !=1|2;
   
 **//if schoollevel ==5 {; /*last attended vocational school */
   **//if schooltype == 2 {; /*if attended primary school before vocational school*/
-	**//if primarydiploma == 1|2{; /*finished primary w/ or w/o diploma */
-		replace educyrself = 5 if schoollevel ==5 & schooltype ==2 & primarydiploma ==1|2; /*highest primary grade*/
-		replace educyrself = higradepreprim if schoollevel ==5 & schooltype ==2 & primarydiploma !=1|2;
+    **//if primarydiploma == 1|2{; /*finished primary w/ or w/o diploma */
+        replace educyrself = 5 if schoollevel ==5 & schooltype ==2 & primarydiploma ==1|2; /*highest primary grade*/
+        replace educyrself = higradepreprim if schoollevel ==5 & schooltype ==2 & primarydiploma !=1|2;
   
   **//if schooltype ==3 {; /*if attended lower sec. before vocational school*/
-    	**//if lowsecdiploma ==1|2 {; /*finished lower secondary w/ or w/o diploma*/
-		replace educyrself = 9 if schoollevel ==5 & schooltype ==3 & lowsecdiploma ==1|2; /*highest lower secondary grade*/
-    		replace educyrself = higradeprelowsec if schoollevel ==5 & schooltype ==3 & lowsecdiploma !=1|2;
-    	
+        **//if lowsecdiploma ==1|2 {; /*finished lower secondary w/ or w/o diploma*/
+        replace educyrself = 9 if schoollevel ==5 & schooltype ==3 & lowsecdiploma ==1|2; /*highest lower secondary grade*/
+            replace educyrself = higradeprelowsec if schoollevel ==5 & schooltype ==3 & lowsecdiploma !=1|2;
+        
   **//if schooltype ==4 {; /*if attended upper sec before vocational school*/
-	**//if upsecdiploma == 1|2 {; /*finished upper secondary w/ or w/o diploma*/
-		replace educyrself = 12 if schoollevel ==5 & schooltype ==4 & upsecdiploma ==1|2; /*highest uppse secondary grade*/
-  		replace educyrself = higradepreupsec if schoollevel ==5 & schooltype ==4 & upsecdiploma !=1|2;
-  	
+    **//if upsecdiploma == 1|2 {; /*finished upper secondary w/ or w/o diploma*/
+        replace educyrself = 12 if schoollevel ==5 & schooltype ==4 & upsecdiploma ==1|2; /*highest uppse secondary grade*/
+          replace educyrself = higradepreupsec if schoollevel ==5 & schooltype ==4 & upsecdiploma !=1|2;
+      
   **//if schooltype ==5 {; /*if attended university before vocational school*/
-	replace educyrself = 12 if schoollevel ==5 & schooltype ==5; /*must have also completed the highest grade of upper secondary school*/
+    replace educyrself = 12 if schoollevel ==5 & schooltype ==5; /*must have also completed the highest grade of upper secondary school*/
 
 **//if schoollevel ==6 {; /*last attended university*/
    replace educyrself = 12 if schoollevel ==6; /*must have also completed highest grade of upper secondary*/
@@ -1767,9 +1767,9 @@ replace educyrself = educyrself + edyrspostsec if edyrspostsec !=.;
 label var educyrself "ED: edgrade + years in jr. coll., univ, or grad. - no vocational sch. incl.";
 
 /*See also Minot's comped98_head variable, with codes: label define diploma 0 Never 1 "Nhatre = Kindergarten" 
-	2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
-	7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
-	12 "TS = PhD", modify; */
+    2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
+    7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
+    12 "TS = PhD", modify; */
 
 /*This variable is currently only created for household head*/
 
@@ -1923,18 +1923,18 @@ erase `x'_temp.dta;
 
 
 **//KEEP ONLY "POSSIBLE OUTCOME MEASURES" ;
-keep hholdno idc s1aq02	s1aq03 s1aq06y s1bq04 s1bq05 s1bq06 s1bq07 s1bq11 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2q05 s2q06 s2q07 s2q08 s2q01 s2q02 
-	s3q01 s3q05 s3q06 s5q01 s5q03 s5q06 s5q07y s5q07m s5q08 s5q09 
-	s6aq02 s6bq01
-	s6bq27 s6bq29 tribe 
-	s4aq08  s4aq09 s4aq12 s4aq14 
-	s4bq01 s4bq02 s4bq05 s4bq06 s4bq07y s4bq07m s4bq16
-	s4cq01 s4cq02 s4cq07y s4cq07m s4cq09 s4cq10 
-	s4dq01 s4dq02
-	s4eq01	s4eq02	s4eq03 s4eq07y	s4eq07m	s4eq04	s4eq08	s4eq09	s4eq15	
-	s4gq01	s4gq02	s4gq03	s4gq07	s4gq08	s4gq09
-	s9q1	s9q4	s9q5a	s9q5b	s9q17	s9q6a	
-	s9q6b	s9q11 s9q12 s9q18 s9q29b s9q29c wtdquality93;
+keep hholdno idc s1aq02    s1aq03 s1aq06y s1bq04 s1bq05 s1bq06 s1bq07 s1bq11 s1bq12 s1bq13 s1bq14 s1bq15 s1bq16 s2q05 s2q06 s2q07 s2q08 s2q01 s2q02 
+    s3q01 s3q05 s3q06 s5q01 s5q03 s5q06 s5q07y s5q07m s5q08 s5q09 
+    s6aq02 s6bq01
+    s6bq27 s6bq29 tribe 
+    s4aq08  s4aq09 s4aq12 s4aq14 
+    s4bq01 s4bq02 s4bq05 s4bq06 s4bq07y s4bq07m s4bq16
+    s4cq01 s4cq02 s4cq07y s4cq07m s4cq09 s4cq10 
+    s4dq01 s4dq02
+    s4eq01    s4eq02    s4eq03 s4eq07y    s4eq07m    s4eq04    s4eq08    s4eq09    s4eq15    
+    s4gq01    s4gq02    s4gq03    s4gq07    s4gq08    s4gq09
+    s9q1    s9q4    s9q5a    s9q5b    s9q17    s9q6a    
+    s9q6b    s9q11 s9q12 s9q18 s9q29b s9q29c wtdquality93;
 
 
 
@@ -2301,7 +2301,7 @@ label var anysalary_all93 "1 if person receives salary, main or sec. job (past 1
 
 /*GENERATE IRRIGATION VARIABLE*/
 gen irr_frac93 = (allocated_crop_irr93 +longterm_crop_irr93 + auctioned_crop_irr93 + owned_crop_irr93)/
-		(allocated_crop93 + longterm_crop93 + auctioned_crop93 + owned_crop93);
+        (allocated_crop93 + longterm_crop93 + auctioned_crop93 + owned_crop93);
 label var irr_frac93 "***Proportion own cropland irrigated 1993: this should be checked because questionnaire is unclear.";
 
 
@@ -2397,17 +2397,17 @@ erase hhvlss93.dta;
 **//MERGE HH-LEVEL EXPENDITURE DATA, FROM MINOT **************************************************************************************;
 
 use SCR001.DTA, clear; /*NEED THIS FILE TO GET MONTH DEFLATORS FOR 93*/
-	gen day93=int(date6/10000); gen month93=int(date6/100)-day93*100; gen year93=date6-100*month93-10000*day93;
-	gen vlss93cluster=int(hholdn/100); gen vlss93hh=hholdn-vlss93cluster*100;
-	keep vlss93cluster vlss93hh month93 year93;
-	sort vlss93cluster vlss93hh;
+    gen day93=int(date6/10000); gen month93=int(date6/100)-day93*100; gen year93=date6-100*month93-10000*day93;
+    gen vlss93cluster=int(hholdn/100); gen vlss93hh=hholdn-vlss93cluster*100;
+    keep vlss93cluster vlss93hh month93 year93;
+    sort vlss93cluster vlss93hh;
 cd ..; save temphh.dta, replace;
 
 use hhvlss93.dta, clear;
 sort vlss93cluster vlss93hh;
 merge vlss93cluster vlss93hh using 93EXP.dta;
 tab _merge; drop _merge;
-	sort vlss93cluster vlss93hh; merge vlss93cluster vlss93hh using temphh.dta; tab _merge; drop _merge;
+    sort vlss93cluster vlss93hh; merge vlss93cluster vlss93hh using temphh.dta; tab _merge; drop _merge;
 label var exp93 "consumption expenditure 93";
 label var expb93 "cons. exp. bought/bartered 93";
 label var exph93 "cons. exp. hh product 93";
@@ -2428,35 +2428,35 @@ label var swpotv93 "Value of sweet potatoes 1000VND";
 label var swpotq93 "Quantity of sweet potatoes kg?";
 /*INPUTTING PRICE DEFLATORS FROM VLSS93 DOCUMENTATION*/
 gen rcpi93=.; label var rcpi93 "Regional Price Deflator, 93";
-	replace rcpi93=.9692 if urb93==0 & region93==1; 
-	replace rcpi93=.8954 if urb93==0 & region93==2; 
-	replace rcpi93=.9813 if urb93==0 & region93==3; 
-	replace rcpi93=.9764 if urb93==0 & region93==4; 
-	replace rcpi93=1.0638 if urb93==0 & region93==5; 
-	replace rcpi93=1.1153 if urb93==0 & region93==6; 
-	replace rcpi93=1.0196 if urb93==0 & region93==7; 
-	replace rcpi93=1.0815 if urb93==1 & region93==1; 
-	replace rcpi93=1.0658 if urb93==1 & region93==2; 
-	replace rcpi93=1.0112 if urb93==1 & region93==3; 
-	replace rcpi93=1.0554 if urb93==1 & region93==4; 
-	replace rcpi93=1.2315 if urb93==1 & region93==6; 
-	replace rcpi93=1.0929 if urb93==1 & region93==7; 
+    replace rcpi93=.9692 if urb93==0 & region93==1; 
+    replace rcpi93=.8954 if urb93==0 & region93==2; 
+    replace rcpi93=.9813 if urb93==0 & region93==3; 
+    replace rcpi93=.9764 if urb93==0 & region93==4; 
+    replace rcpi93=1.0638 if urb93==0 & region93==5; 
+    replace rcpi93=1.1153 if urb93==0 & region93==6; 
+    replace rcpi93=1.0196 if urb93==0 & region93==7; 
+    replace rcpi93=1.0815 if urb93==1 & region93==1; 
+    replace rcpi93=1.0658 if urb93==1 & region93==2; 
+    replace rcpi93=1.0112 if urb93==1 & region93==3; 
+    replace rcpi93=1.0554 if urb93==1 & region93==4; 
+    replace rcpi93=1.2315 if urb93==1 & region93==6; 
+    replace rcpi93=1.0929 if urb93==1 & region93==7; 
 gen mcpi93=.; label var mcpi93 "Monthly price deflator 93 (based on mo of 2nd rd survey), Jan93=1";
-	replace mcpi93=.9524 if month93==9 & year93==92;
-	replace mcpi93=.9507 if month93==10 & year93==92;
-	replace mcpi93=.9699 if month93==11 & year93==92;
-	replace mcpi93=.9833 if month93==12 & year93==92;
-	replace mcpi93=1 if month93==1 & year93==93;
-	replace mcpi93=1.0190 if month93==2 & year93==93;
-	replace mcpi93=1.0139 if month93==3 & year93==93;
-	replace mcpi93=1.0119 if month93==4 & year93==93;
-	replace mcpi93=1.0271 if month93==5 & year93==93;
-	replace mcpi93=1.0240 if month93==6 & year93==93;
-	replace mcpi93=1.0240 if month93==7 & year93==93;
-	replace mcpi93=1.0219 if month93==8 & year93==93;
-	replace mcpi93=1.0270 if month93==9 & year93==93;
-	replace mcpi93=1.0260 if month93==10 & year93==93;
-	drop month93 year93;
+    replace mcpi93=.9524 if month93==9 & year93==92;
+    replace mcpi93=.9507 if month93==10 & year93==92;
+    replace mcpi93=.9699 if month93==11 & year93==92;
+    replace mcpi93=.9833 if month93==12 & year93==92;
+    replace mcpi93=1 if month93==1 & year93==93;
+    replace mcpi93=1.0190 if month93==2 & year93==93;
+    replace mcpi93=1.0139 if month93==3 & year93==93;
+    replace mcpi93=1.0119 if month93==4 & year93==93;
+    replace mcpi93=1.0271 if month93==5 & year93==93;
+    replace mcpi93=1.0240 if month93==6 & year93==93;
+    replace mcpi93=1.0240 if month93==7 & year93==93;
+    replace mcpi93=1.0219 if month93==8 & year93==93;
+    replace mcpi93=1.0270 if month93==9 & year93==93;
+    replace mcpi93=1.0260 if month93==10 & year93==93;
+    drop month93 year93;
 gen exp93r98=(exp93/(rcpi93*mcpi93))*1.456; label var exp93r98 "real cons exp 93, in 98 1000VND, adj for reg/mo price diff";
 gen exppc93r98=(exppc93/(rcpi93*mcpi93))*1.456; label var exppc93r98 "real cons exp per cap 93, in 98 1000VND, adj for reg/mo price diff";
 gen ricexpd93=ricevb93+ricevh93; 
@@ -2523,18 +2523,18 @@ erase qt000q0_d_temp.dta;
 use qt000q0_k.dta;
 drop if muc!="5B1"; /*keeps only questions from relevant section (muc = section)*/
 keep tinh huyen xa diaban hoso qui c2 c3 c7 c8;
-	foreach y in c2 c3 c7 c8 {;
-	rename `y' `y'_5B1;
-	};
+    foreach y in c2 c3 c7 c8 {;
+    rename `y' `y'_5B1;
+    };
 sort tinh huyen xa diaban hoso qui;
 save 5B1_temp.dta, replace;
 
 use qt000q0_k.dta;
 drop if muc!="5B4"; /*keeps only questions from relevant section*/
 keep tinh huyen xa diaban hoso qui c7 c39;
-	foreach y in c7 c39 {;
-	rename `y' `y'_5B4;
-	};
+    foreach y in c7 c39 {;
+    rename `y' `y'_5B4;
+    };
 sort tinh huyen xa diaban hoso qui;
 save 5B4_temp.dta, replace;
 
@@ -2566,7 +2566,7 @@ erase qt000q0_h_temp.dta;
 
 
 **//KEEP ONLY "POSSIBLE OUTCOME MEASURES" ;
-keep tinh huyen xa diaban hoso matv qui ngaydt	m1c2	m1c3	m1c5	m2c4	m2c1	m2c3	m2c2 m3c1a	m3c1b	m3c1c	m3c2 	m3c4	m3c5 m3c6	m3c7   m3c8	m3c9   	m3c12	m3c13	m8c7	m8c23	m8c27	m8c28	t26	t27	t37	t40	ch_dantoc		m3c1c	m9c1	m9c2	c2_5B1 c3_5B1 c7_5B1 c8_5B1 c7_5B4 c39_5B4;
+keep tinh huyen xa diaban hoso matv qui ngaydt    m1c2    m1c3    m1c5    m2c4    m2c1    m2c3    m2c2 m3c1a    m3c1b    m3c1c    m3c2     m3c4    m3c5 m3c6    m3c7   m3c8    m3c9       m3c12    m3c13    m8c7    m8c23    m8c27    m8c28    t26    t27    t37    t40    ch_dantoc        m3c1c    m9c1    m9c2    c2_5B1 c3_5B1 c7_5B1 c8_5B1 c7_5B4 c39_5B4;
 
 sort tinh;
 save hhvlss02.dta, replace;
@@ -2714,21 +2714,21 @@ gen month02 = month(ngaydt);
 label var month02 "month of survey";
 /*Note: All surveys were conducted in 2002, so all monthly deflator data is from 2002*/
 
-gen mcpi02=.; label var mcpi02 "Monthly price deflator 02 (based on mo. of ngaydt (interviewer date)), Jan02=1";			
-	replace mcpi02 = 1.0000 if month02==1;		
-	replace mcpi02 = 1.0160 if month02==2;		
-	replace mcpi02 = 1.0048 if month02==3;		
-	replace mcpi02 = 0.9978 if month02==4;		
-	replace mcpi02 = 0.9918 if month02==5;		
-	replace mcpi02 = 0.9868 if month02==6;		
-	replace mcpi02 = 0.9809 if month02==7;		
-	replace mcpi02 = 0.9819 if month02==8;		
-	replace mcpi02 = 0.9799 if month02==9;		
-	replace mcpi02 = 0.9809 if month02==10;		
-	replace mcpi02 = 0.9897 if month02==11;		
-	replace mcpi02 = 0.9907 if month02==12;		
-	drop month02;
-	
+gen mcpi02=.; label var mcpi02 "Monthly price deflator 02 (based on mo. of ngaydt (interviewer date)), Jan02=1";            
+    replace mcpi02 = 1.0000 if month02==1;        
+    replace mcpi02 = 1.0160 if month02==2;        
+    replace mcpi02 = 1.0048 if month02==3;        
+    replace mcpi02 = 0.9978 if month02==4;        
+    replace mcpi02 = 0.9918 if month02==5;        
+    replace mcpi02 = 0.9868 if month02==6;        
+    replace mcpi02 = 0.9809 if month02==7;        
+    replace mcpi02 = 0.9819 if month02==8;        
+    replace mcpi02 = 0.9799 if month02==9;        
+    replace mcpi02 = 0.9809 if month02==10;        
+    replace mcpi02 = 0.9897 if month02==11;        
+    replace mcpi02 = 0.9907 if month02==12;        
+    drop month02;
+    
 /*Note: Source for monthly data is GSO CPI data.  See CPI_data.xls.*/
 
 
@@ -2752,7 +2752,7 @@ gen exppc02r98 =(pcexp02yr/(rcpi02*mcpi02))*0.918168097; label var exppc02r98 "r
 
 **//REPLACING {1,2} binary vars with {0,1} binary vars;
 foreach x in school02 literate02 workforother02 workonownfield02 lookedforwork02 selfemp02
-	secjob02 invalids02 elderly02 agr_activity02 havework02 {;
+    secjob02 invalids02 elderly02 agr_activity02 havework02 {;
 replace `x' = 0 if `x' ==2;
 };
 
@@ -2790,7 +2790,7 @@ label define reltohead02 1 head 2 spouse 3 child 4 childinlaw 5 parent 6 sibling
 label define diploma02 0 none 1 primary 2 lowsec 3 hisec 4 techworker 5 profsec 6 "jr. college" 7 bachelor 8 masters 9 "candidate/doctor"; 
 /*FOR WORKFOR*/
 label define workfor02 0 selfemp 1 "work for other households" 2 "government, police, military" 3 "communist party, social org." 4  "state owned
-	enterprise" 5 "other state econ. sector" 6 "collective econ. sector" 7 "private capitalist econ. sector" 8 "state capitalist econ. sector" 9 "foreign shared enterprise";
+    enterprise" 5 "other state econ. sector" 6 "collective econ. sector" 7 "private capitalist econ. sector" 8 "state capitalist econ. sector" 9 "foreign shared enterprise";
 /*FOR WHYNOLOOK*/
 label define whynolook02 1 studying 2 housework 3 "not able to work" 4 "have a job" 5 "don't know where to find job" 6 other;
 /*FOR DWELLINGOWNED*/
@@ -2801,7 +2801,7 @@ label define toilettype02 1 "flush w/ septic/sewage" 2 suilabh 3 "double vault c
 label define lightingsource02 1 electricity 2 "battery lamp" 3 "gas/oil/kerosene" 4 other;
 /*WATERSOURCE (diff from '98)*/
 label define watersource02 1 "pvt tap" 2 "public tap" 3 "bought water" 4 "deep drill well w/ pump" 5 "hand-dug/constructed well" 6 "filtered spring water" 
-	7 "deep well" 8 rain 9 "river/lake/pond" 10 other;
+    7 "deep well" 8 rain 9 "river/lake/pond" 10 other;
 
 
 
@@ -2815,7 +2815,7 @@ gen dkhmer02 = 1 if tribe02 ==5; replace dkhmer02 = 0 if dkhmer02 ==.;
 gen dmuong02 = 1 if tribe02 ==6; replace dmuong02 = 0 if dmuong02 ==.;
 gen dnung02 = 1 if tribe02 ==7; replace dnung02 = 0 if dnung02 ==.;
 gen dotherrace02 = 1 if (tribe02 !=1 & tribe02 !=2 &tribe02 !=3 &tribe02 !=4 &tribe02 !=5 &tribe02 !=6 & tribe02 !=7 & tribe02 !=.); 
-	replace dotherrace02 = 0 if dotherrace02 ==.;
+    replace dotherrace02 = 0 if dotherrace02 ==.;
 
 label var dkinh02 "gen dkinh02 = 1 if tribe02 ==1";
 label var dtay02 "gen dtay02 = 1 if tribe02 ==2"; 
@@ -2918,28 +2918,28 @@ cd ..\..\..;
 
 
 **//THIS SECTION EXTRACTS AND LABELS VARIABLES FROM THE VLSS98 COMMUNE-LEVEL SURVEY.
-	IT OUTPUTS comvlss98.dta AND comvlss98collapse.dta.
-	comvlss98.dta INCLUDES RESPONSES FROM BOTH VILLAGES SURVEYED IN THE COMMUNE (IF APPLICABLE.)
-	comvlss98collapse.dta COLLAPSES TO THE DISTRICT**-LEVEL, YIELDING UNWEIGHTED MEANS BETWEEN ALL OBS ACROSS THE COMMUNE.;  
+    IT OUTPUTS comvlss98.dta AND comvlss98collapse.dta.
+    comvlss98.dta INCLUDES RESPONSES FROM BOTH VILLAGES SURVEYED IN THE COMMUNE (IF APPLICABLE.)
+    comvlss98collapse.dta COLLAPSES TO THE DISTRICT**-LEVEL, YIELDING UNWEIGHTED MEANS BETWEEN ALL OBS ACROSS THE COMMUNE.;  
 
 **//THIS FILE ALSO MERGES BOTH HOUSEHOLD AND COMMUNE SURVEY OUTPUT INTO ONE FILE,VLSScommune.dta. (NOT DOING THIS AT THE MOMENT);
 
 cd VLSS98\DATA\COMMUNE;
 use CMT00B.DTA, clear;
 quietly for any CMT011 CMT021 CMT032: merge cluster using X.DTA\
-	tab _merge\
-	drop _merge\
-	sort cluster;
+    tab _merge\
+    drop _merge\
+    sort cluster;
 merge cluster using CMT033.DTA; rename idc factorycode; tab _merge; drop _merge; sort cluster;
 quietly foreach file in CMT034 CMT0400 CMT0402 CMT0403 CMT0404 CMT0406 CMT061 CMT063 CMT082 CMT091 {;
-	merge cluster using `file'.DTA; tab _merge; drop _merge; sort cluster;};
+    merge cluster using `file'.DTA; tab _merge; drop _merge; sort cluster;};
 
 keep househol cluster s00bq02 s00bq04 s00bq06 s011q1 s011q2 s011q3 s021q011 s021q012 s021q013 s021q02 s021q031 s021q032 s021q033 s021q07 
-	s021q09 s032q09 factorycode s033q11 s033q15 s034q18 s034q19 s0400q1 s402q05 s0403q11 s404typ s404q12 s404q13 s0406cct s0406q26 
-	s0406q27 s061q1 s061q2 s063q20 s063q211 s063q212 s063q213 cap s082q10 s082q111 s082q112 s082q113 s091q11 s091q12 s091q13;
+    s021q09 s032q09 factorycode s033q11 s033q15 s034q18 s034q19 s0400q1 s402q05 s0403q11 s404typ s404q12 s404q13 s0406cct s0406q26 
+    s0406q27 s061q1 s061q2 s063q20 s063q211 s063q212 s063q213 cap s082q10 s082q111 s082q112 s082q113 s091q11 s091q12 s091q13;
 order househol cluster s00bq02 s00bq04 s00bq06 s011q1 s011q2 s011q3 s021q011 s021q012 s021q013 s021q02 s021q031 s021q032 s021q033 s021q07 
-	s021q09 s032q09 factorycode s033q11 s033q15 s034q18 s034q19 s0400q1 s402q05 s0403q11 s404typ s404q12 s404q13 s0406cct s0406q26 
-	s0406q27 s061q1 s061q2 s063q20 s063q211 s063q212 s063q213 cap s082q10 s082q111 s082q112 s082q113 s091q11 s091q12 s091q13;
+    s021q09 s032q09 factorycode s033q11 s033q15 s034q18 s034q19 s0400q1 s402q05 s0403q11 s404typ s404q12 s404q13 s0406cct s0406q26 
+    s0406q27 s061q1 s061q2 s063q20 s063q211 s063q212 s063q213 cap s082q10 s082q111 s082q112 s082q113 s091q11 s091q12 s091q13;
 
 label var househol "COM: HH";
 label var cluster "COM: Cluster";
@@ -2953,7 +2953,7 @@ rename s021q011 maininc1; label var maininc1 "COM: Three main sources of income"
 rename s021q012 maininc2; label var maininc2 "COM: Three main sources of income"; label val maininc2 maininc;
 rename s021q013 maininc3; label var maininc3 "COM: Three main sources of income"; label val maininc3 maininc;
 rename s021q02 changelivstd; 
-	
+    
 /*RECODING. APPROVE?*/ replace changelivstd=0 if changelivstd==3; replace changelivstd=-1 if changelivstd==2; 
 label var changelivstd "COM: Has living std in comm/ward -1)declined 0)same 1)improved in past 5yrs?";
 rename s021q031 changelivstdreason1; label var changelivstdreason1 "COM: Top 3 reasons living standard has (not) changed."; label define changelivstdreason 1 "changes in agro policy" 2 "expansion in non-agro production" 3 weather 4 disaster 5 inflation 6 "changes in ability to obtain educ" 7 "changes in ability to use health svc" 8 "changes in ability to use social svc" 9 other; label val changelivstdreason1 changelivstdreason;
@@ -2971,17 +2971,17 @@ rename s0400q1 agriculture; label var agriculture "COM: Is agriculture an import
 
 **//WHAT KIND OF CROPS MIGHT WE BE INTERESTED IN?;
 rename s402q05 maincrops; label var maincrops "COM: Main Crops: See Crop Codes";
-	label define cropcodes 1 "Winter Rice" 2 "Autumn Rice" 3 "Winter Rice" 4 "Swidden Rice" 5 "Annual Rice" 6 "Glutinous Rice" 
-	7 "Specialty Rice" 8 "Corn/Maize" 9 "Sweet Potatoes" 10 "Cassava/Manioc" 11 "Other Staple Crops" 12 Potatoes 
-	13 "Kohlrabi, Cabbage, Cauliflower" 14 "Other Leafy Greens" 15 "Tomatoes" 16 "Water Morning Glory" 17 "Fresh Legumes (Beans)" 
-	18 "Dried Legumes (Beans)" 19 "Herbs and Spices" 20 "Other Vegetables, Tubers, and Fruits" 21 "Soy Beans" 22 Peanuts 
-	23 "Sesame Seeds" 24 "Sugar Cane" 25 Tobacco 26 Cotton 27 "Jute, Ramie" 28 "Rush (For Making Mats" 29 "Other Annual Industrial Crops" 
-	30 "Other Annual Crops" 31 Tea 32 Coffee 33 Rubber 34 "Black Pepper" 35 "Coconut (For Oil, Copra)" 36 Mulberry 37 Cashew 
-	38 "Other Perennial Industrial Crops" 39 "Oranges, Limes and Mandarins" 40 Pineapple 41 Bananas 42 Mango 43 Apple 44 Grapes 
-	45 Plum 46 Papaya 47 "Litchi, Longan, Rambutan" 48 Sapodilla 49 "Custard Apple" 50 "Jackfruit, Durian" 51 Mangosteen 
-	52 "Other Fruit Trees" 53 "Mu Oil Tree" 54 "Cinnamon Tree" 55 "Anise Tree" 56 "Pine Tree" 57 "Varnish Tree" 58 "tree for Wood" 
-	59 Bamboo 60 "Fan Palm Tree" 61 "Water Coconut Palm" 62 "Other Silviculture Tree";
-	label val maincrops cropcodes;
+    label define cropcodes 1 "Winter Rice" 2 "Autumn Rice" 3 "Winter Rice" 4 "Swidden Rice" 5 "Annual Rice" 6 "Glutinous Rice" 
+    7 "Specialty Rice" 8 "Corn/Maize" 9 "Sweet Potatoes" 10 "Cassava/Manioc" 11 "Other Staple Crops" 12 Potatoes 
+    13 "Kohlrabi, Cabbage, Cauliflower" 14 "Other Leafy Greens" 15 "Tomatoes" 16 "Water Morning Glory" 17 "Fresh Legumes (Beans)" 
+    18 "Dried Legumes (Beans)" 19 "Herbs and Spices" 20 "Other Vegetables, Tubers, and Fruits" 21 "Soy Beans" 22 Peanuts 
+    23 "Sesame Seeds" 24 "Sugar Cane" 25 Tobacco 26 Cotton 27 "Jute, Ramie" 28 "Rush (For Making Mats" 29 "Other Annual Industrial Crops" 
+    30 "Other Annual Crops" 31 Tea 32 Coffee 33 Rubber 34 "Black Pepper" 35 "Coconut (For Oil, Copra)" 36 Mulberry 37 Cashew 
+    38 "Other Perennial Industrial Crops" 39 "Oranges, Limes and Mandarins" 40 Pineapple 41 Bananas 42 Mango 43 Apple 44 Grapes 
+    45 Plum 46 Papaya 47 "Litchi, Longan, Rambutan" 48 Sapodilla 49 "Custard Apple" 50 "Jackfruit, Durian" 51 Mangosteen 
+    52 "Other Fruit Trees" 53 "Mu Oil Tree" 54 "Cinnamon Tree" 55 "Anise Tree" 56 "Pine Tree" 57 "Varnish Tree" 58 "tree for Wood" 
+    59 Bamboo 60 "Fan Palm Tree" 61 "Water Coconut Palm" 62 "Other Silviculture Tree";
+    label val maincrops cropcodes;
 rename s0403q11 area_ha; label var area_ha "COM: Commune/ward area, hectares";
 
 **//WHAT KIND OF AREA USE MIGHT WE BE INTERESTED IN?;
@@ -3035,35 +3035,35 @@ save comvlss98.dta, replace;  /*THIS FILE IS COMMUNE-LEVEL DATA THAT INCLUDES DI
 drop if district==.;
 /*COLLAPSE COMVLSS98*/
 collapse popcomm popcomm_year geogtype maininc1 maininc2 maininc3
-	changelivstd changelivstdreason1 changelivstdreason2 changelivstdreason3
-	numpoorhh immigration factory
-	handicrafts handicraftshh agriculture area_ha roadaccess roaddistance infra_imps
-	infra_imps_type1 infra_imps_type2 infra_imps_type3
-	illness1 illness2 illness3, by(district);
-	sort district; save comvlss98collapse.dta, replace;
+    changelivstd changelivstdreason1 changelivstdreason2 changelivstdreason3
+    numpoorhh immigration factory
+    handicrafts handicraftshh agriculture area_ha roadaccess roaddistance infra_imps
+    infra_imps_type1 infra_imps_type2 infra_imps_type3
+    illness1 illness2 illness3, by(district);
+    sort district; save comvlss98collapse.dta, replace;
 /*GET MORE DATA FROM COMVLSS98, THEN MERGE IT INTO COMVLSS98COLLAPSE*/
 use comvlss98.dta, clear; drop if district==.;
-	collapse areause areause_ha, by(district areausetype); 
-	keep if areausetype~=.;
-	reshape wide areause areause_ha, i(district) j(areausetype); sort district; 
-	merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
+    collapse areause areause_ha, by(district areausetype); 
+    keep if areausetype~=.;
+    reshape wide areause areause_ha, i(district) j(areausetype); sort district; 
+    merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
 use comvlss98.dta, clear; drop if district==.;
-	collapse cropland cropland_ha, by(district croplandtype); 
-	keep if croplandtype~=.;
-	reshape wide cropland cropland_ha, i(district) j(croplandtype); sort district; 
-	merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
+    collapse cropland cropland_ha, by(district croplandtype); 
+    keep if croplandtype~=.;
+    reshape wide cropland cropland_ha, i(district) j(croplandtype); sort district; 
+    merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
 use comvlss98.dta, clear; drop if district==.;
-	collapse noschool noschool_reason1 noschool_reason2 noschool_reason3, by(district noschool_level); 
-	reshape wide noschool noschool_reason1 noschool_reason2 noschool_reason3, i(district) j(noschool_level); sort district; 
-	merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
+    collapse noschool noschool_reason1 noschool_reason2 noschool_reason3, by(district noschool_level); 
+    reshape wide noschool noschool_reason1 noschool_reason2 noschool_reason3, i(district) j(noschool_level); sort district; 
+    merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
 use comvlss98.dta, clear; drop if district==.;
-	collapse factorydistance factorylabor, by(district factorycode); 
-	reshape wide factorydistance factorylabor, i(district) j(factorycode); sort district; 
-	merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
+    collapse factorydistance factorylabor, by(district factorycode); 
+    reshape wide factorydistance factorylabor, i(district) j(factorycode); sort district; 
+    merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
 use comvlss98.dta, clear; drop if district==.;
-	gen maincrop=maincrops; collapse maincrop, by(district maincrops); quietly by district: replace maincrops=_n;
-	reshape wide maincrop, i(district) j(maincrops); sort district;
-	merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
+    gen maincrop=maincrops; collapse maincrop, by(district maincrops); quietly by district: replace maincrops=_n;
+    reshape wide maincrop, i(district) j(maincrops); sort district;
+    merge district using comvlss98collapse.dta; tab _merge; drop _merge; sort district; save comvlss98collapse.dta, replace;
 
 **//RENAME & RELABEL;
 label var popcomm "COM: how many usually live in this commune/ward?";
@@ -3092,17 +3092,17 @@ label var area_ha "COM: Commune/ward area, hectares";
 
 **//WHAT KIND OF AREA USE MIGHT WE BE INTERESTED IN?;
 foreach string in areause areause_ha {; rename `string'1 `string'_annualcrop; rename `string'2 `string'_perennialcrop; 
-	rename `string'3 `string'_watersurface; rename `string'4 `string'_forest; 
-	rename `string'5 `string'_residential; rename `string'6 `string'_special; 
-	rename `string'7 `string'_unused;};
+    rename `string'3 `string'_watersurface; rename `string'4 `string'_forest; 
+    rename `string'5 `string'_residential; rename `string'6 `string'_special; 
+    rename `string'7 `string'_unused;};
 foreach name of varlist areause_ha* {; label var `name' "COM: Does this comm/ward have any area of type j?";};
 foreach name of varlist areause_a areause_p areause_w areause_f areause_r areause_s areause_u {; label var `name' "COM: What is the total area of this area of type j? ha";};
 
 **//WHAT KIND OF CROPS MIGHT WE BE INTERESTED IN?;
 foreach num of numlist 1/9 {; label var cropland`num' "COM: Does commune cultivate crop of type j?";};
 foreach string in cropland cropland_ha {; rename `string'1 `string'_rice; rename `string'2 `string'_othergrtub; rename `string'3 `string'_othfood;
-	rename `string'4 `string'_annind; rename `string'5 `string'_othann; rename `string'6 `string'_perenind; rename `string'7 `string'_fruittrees;
-	rename `string'8 `string'_othperenn; rename `string'9 `string'_forest;};
+    rename `string'4 `string'_annind; rename `string'5 `string'_othann; rename `string'6 `string'_perenind; rename `string'7 `string'_fruittrees;
+    rename `string'8 `string'_othperenn; rename `string'9 `string'_forest;};
 foreach name of varlist cropland_ha* {; label var `name' "COM: How much of the total area of this comm/ward is planted in crop type j? ha";};
 label var roadaccess "COM: Is there a road to this village that a car can travel on?";
 label var roaddistance "COM: How far away is the nearest road a car can travel on, km?";
@@ -3115,8 +3115,8 @@ label var infra_imps_type3 "COM: Top 3 Infrastructure Buildings/Improvements 94/
 foreach num of numlist 1/3 {; label var noschool`num' "COM: Are there school-age children who don't go to school level j?";};
 foreach name in noschool noschool_reason1 noschool_reason2 noschool_reason3 {; rename `name'1 `name'_prim; rename `name'2 `name'_lowsec; rename `name'3 `name'_uppersec;};
 foreach name of varlist noschool_reason* {; 
-	label var `name' "COM: Why don't children go to school at level j? (Top 3 Reasons)"; 
-	label val `name' noschool_reason;};
+    label var `name' "COM: Why don't children go to school at level j? (Top 3 Reasons)"; 
+    label val `name' noschool_reason;};
 
 **//ILLNESS;
 label var illness1 "COM: Top 3 illnesses/diseases of concern in this commune?"; label val illness1 illness;
@@ -3189,47 +3189,47 @@ sort district;
 
 **//COLLAPSES TO DISTRICT LEVEL. SKETCHY WITH CATEGORICAL VARIABLES;
 **//NOTE MEAN-COLLAPSE WEIGHTING: ALL RELEVANT VARIABLES WEIGHTED BY HHSIZEWT (# PERSONS REPRESENTED BY HOUSEHOLD,) 
-	EXCEPT HHSIZE (AVG HOUSEHOLD SIZE,) WEIGHTED BY WT (# HH REPRESENTED BY HH)
-	AND HHSIZEWT, WHICH IS SUMMED (NOT MEANED) UNWEIGHTED, TO GET # PERSONS REPRESENTED BY DISTRICT'S COMMUNES.;
+    EXCEPT HHSIZE (AVG HOUSEHOLD SIZE,) WEIGHTED BY WT (# HH REPRESENTED BY HH)
+    AND HHSIZEWT, WHICH IS SUMMED (NOT MEANED) UNWEIGHTED, TO GET # PERSONS REPRESENTED BY DISTRICT'S COMMUNES.;
 
 
 **//NOTE: IT IS NOT CLEAR HOW TO WEIGHT THE '93 DATA, SO WE JUST USE '98 WEIGHTS;
 collapse (mean) /*98 variables*/
-		female   ageyrs   farm avg_ill4wks   ill4wks    avg_hospital12mths dliterate_all   dnumerate_all   bornhere   yrshere   
-		dkinh   dchinese   disabled   vetassoc educyr98father educyr98father_comp educyr98mother educyr98mother_comp 
-		irr_frac irr_frac_old
-		dflushtoilet delectricity ddwellingfullyowned ddwellingpartowned workedpast12mo_all anysalary_all
-		comped98father comped98mother educyrself edgrade salaryfrac_all
-		
-		/*93 variables*/
-		female93 ageyrs93      avg_ill4wks93 ill4wks93	dliterate_all93 dnumerate_all93 bornhere93 yrshere93	
-		dkinh93 dchinese93 disabled93 educyrfather93 educyrmother93 delectricity93 dflushtoilet93  irr_frac93 irr_frac_alt93 
-		dwellingshared93
-		dwellingowned93 workedpast12mo_all93 anysalary_all93 compedfather93 compedmother93 diploma93 educyrself93 edgrade93
-		salaryfrac_all93 agr_activity93 cropland93 owned_crop93
-		
-		/*'98 expenditures*/
-		ricexpd nonrice totnfdx1 totnfdhp totnfdh1 
-		food nonfood1 hhexp1 pcexp1 pcfdex1
-		rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2 rlhhex2 rlpcex2
-		
-		/*'93 expenditures*/
-		com93 calpc93 calok93 expb93 exph93 exp93 exppc93 fexp93 fpct93 hfpct93 ricevb93 ricevh93 riceqb93 riceqh93 maizev93 
-		maizeq93 maniocv93 maniocq93 swpotv93 swpotq93 rcpi93 mcpi93 exp93r98 exppc93r98 ricexpd93 nonrice93 totnfdx193 totnfdh193 
-		nonfood193 pcfdex193 CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
-		
-		/*Other variables from Minot's files*/
-		urban98 urban92 comped98_head educyr98_head
-	 (sum)  landarea_crop landarea_other	 
-	(count) count_hh=househol count_avgill4wks=avg_ill4wks 
-		count_avghospital12mths=avg_hospital12mths count_ed98father=comped98father count_ed98mother=educyr98mother 
-		count_workedpast12mo=workedpast12mo	count_yearsinwork=yearsinwork count_salary=salary count_bornhere=bornhere 
-		count_yrshere=yrshere
-		
-		count_hh93 = vlss93hh count_avgill4wks93= avg_ill4wks93
-		/*no hospital for '93*/
-		/*add education variables*/
-	[w=hhsizewt], by(district) fast;
+        female   ageyrs   farm avg_ill4wks   ill4wks    avg_hospital12mths dliterate_all   dnumerate_all   bornhere   yrshere   
+        dkinh   dchinese   disabled   vetassoc educyr98father educyr98father_comp educyr98mother educyr98mother_comp 
+        irr_frac irr_frac_old
+        dflushtoilet delectricity ddwellingfullyowned ddwellingpartowned workedpast12mo_all anysalary_all
+        comped98father comped98mother educyrself edgrade salaryfrac_all
+        
+        /*93 variables*/
+        female93 ageyrs93      avg_ill4wks93 ill4wks93    dliterate_all93 dnumerate_all93 bornhere93 yrshere93    
+        dkinh93 dchinese93 disabled93 educyrfather93 educyrmother93 delectricity93 dflushtoilet93  irr_frac93 irr_frac_alt93 
+        dwellingshared93
+        dwellingowned93 workedpast12mo_all93 anysalary_all93 compedfather93 compedmother93 diploma93 educyrself93 edgrade93
+        salaryfrac_all93 agr_activity93 cropland93 owned_crop93
+        
+        /*'98 expenditures*/
+        ricexpd nonrice totnfdx1 totnfdhp totnfdh1 
+        food nonfood1 hhexp1 pcexp1 pcfdex1
+        rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2 rlhhex2 rlpcex2
+        
+        /*'93 expenditures*/
+        com93 calpc93 calok93 expb93 exph93 exp93 exppc93 fexp93 fpct93 hfpct93 ricevb93 ricevh93 riceqb93 riceqh93 maizev93 
+        maizeq93 maniocv93 maniocq93 swpotv93 swpotq93 rcpi93 mcpi93 exp93r98 exppc93r98 ricexpd93 nonrice93 totnfdx193 totnfdh193 
+        nonfood193 pcfdex193 CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
+        
+        /*Other variables from Minot's files*/
+        urban98 urban92 comped98_head educyr98_head
+     (sum)  landarea_crop landarea_other     
+    (count) count_hh=househol count_avgill4wks=avg_ill4wks 
+        count_avghospital12mths=avg_hospital12mths count_ed98father=comped98father count_ed98mother=educyr98mother 
+        count_workedpast12mo=workedpast12mo    count_yearsinwork=yearsinwork count_salary=salary count_bornhere=bornhere 
+        count_yrshere=yrshere
+        
+        count_hh93 = vlss93hh count_avgill4wks93= avg_ill4wks93
+        /*no hospital for '93*/
+        /*add education variables*/
+    [w=hhsizewt], by(district) fast;
 
 
 
@@ -3238,20 +3238,20 @@ sort district; save hhvlss9893collapse.dta, replace;
 
 **//COMMANDS FOR MERGING ADDITIONAL DATA INTO HHVLSS9893COLLAPSE;
 use hhvlss98_93.dta, clear; sort district; keep if reltohead==1; duplicates drop; drop if district==.;
-	collapse (mean) vlss93 [w=hhsizewt], by(district); rename vlss93 pctpanel;
-	label var pctpanel "PANEL: % of 98 HHs in district that were surveyed in VLSS93";
-	sort district; save temphh.dta, replace;
-	use hhvlss9893collapse.dta, clear; merge district using temphh.dta, nokeep; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
+    collapse (mean) vlss93 [w=hhsizewt], by(district); rename vlss93 pctpanel;
+    label var pctpanel "PANEL: % of 98 HHs in district that were surveyed in VLSS93";
+    sort district; save temphh.dta, replace;
+    use hhvlss9893collapse.dta, clear; merge district using temphh.dta, nokeep; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
 use hhvlss98_93.dta, clear; sort district; keep if reltohead==1; duplicates drop; drop if district==.;
-	collapse (mean) hhsize [w=wt], by(district); 
-	label var hhsize "HH: Avg HH size in district";
-	sort district; save temphh.dta, replace;
-	use hhvlss9893collapse.dta, clear; merge district using temphh.dta; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
+    collapse (mean) hhsize [w=wt], by(district); 
+    label var hhsize "HH: Avg HH size in district";
+    sort district; save temphh.dta, replace;
+    use hhvlss9893collapse.dta, clear; merge district using temphh.dta; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
 use hhvlss98_93.dta, clear; sort district; keep if reltohead==1; duplicates drop; drop if district==.;
-	collapse (sum) hhsizewt, by(district); rename hhsizewt communeweight;
-	label var communeweight "VLSS98: # persons represented by surveyed district (sum across district of hhsizewt)";
-	sort district; save temphh.dta, replace;
-	use hhvlss9893collapse.dta, clear; merge district using temphh.dta; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
+    collapse (sum) hhsizewt, by(district); rename hhsizewt communeweight;
+    label var communeweight "VLSS98: # persons represented by surveyed district (sum across district of hhsizewt)";
+    sort district; save temphh.dta, replace;
+    use hhvlss9893collapse.dta, clear; merge district using temphh.dta; tab _merge; drop _merge; sort district; save hhvlss9893collapse.dta, replace;
 
 
 
@@ -3273,32 +3273,32 @@ sort province;
 
 **//NOTE: USE 98 WEIGHTS FOR 98 DATA, NO WEIGHTS NEEDED FOR 93 DATA;
 collapse (mean) /*98 variables*/
-		female   ageyrs   farm avg_ill4wks   ill4wks    avg_hospital12mths dliterate_all   dnumerate_all   bornhere   yrshere   
-		dkinh   dchinese   disabled   vetassoc educyr98father educyr98father_comp educyr98mother educyr98mother_comp 
-		irr_frac irr_frac_old
-		dflushtoilet delectricity ddwellingfullyowned ddwellingpartowned workedpast12mo_all anysalary_all 
-		comped98father comped98mother educyrself edgrade salaryfrac_all
-		
-		
-		/*'98 expenditures*/
-		ricexpd nonrice totnfdx1 totnfdhp totnfdh1 
-		food nonfood1 hhexp1 pcexp1 pcfdex1
-		rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2 rlhhex2 rlpcex2
-		
-		CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
-		
-		/*Other variables from Minot's files*/
-		urban98 /*urban92*/ comped98_head educyr98_head	
-	 (sum)  landarea_crop landarea_other	 
-	(count) count_hh=househol count_avgill4wks=avg_ill4wks 
-		count_avghospital12mths=avg_hospital12mths count_ed98father=comped98father count_ed98mother=educyr98mother 
-		count_workedpast12mo=workedpast12mo	count_yearsinwork=yearsinwork count_salary=salary count_bornhere=bornhere 
-		count_yrshere=yrshere
-		
-		count_hh93 = vlss93hh
-		/*no hospital for '93*/
-		/*add education variables*/
-	[w=hhsizewt], by(province) fast;
+        female   ageyrs   farm avg_ill4wks   ill4wks    avg_hospital12mths dliterate_all   dnumerate_all   bornhere   yrshere   
+        dkinh   dchinese   disabled   vetassoc educyr98father educyr98father_comp educyr98mother educyr98mother_comp 
+        irr_frac irr_frac_old
+        dflushtoilet delectricity ddwellingfullyowned ddwellingpartowned workedpast12mo_all anysalary_all 
+        comped98father comped98mother educyrself edgrade salaryfrac_all
+        
+        
+        /*'98 expenditures*/
+        ricexpd nonrice totnfdx1 totnfdhp totnfdh1 
+        food nonfood1 hhexp1 pcexp1 pcfdex1
+        rlfood rlnfd1 rlhhex1 rlpcex1 rlpcfdex nonfood2 hhexp2 pcexp2 rlhhex2 rlpcex2
+        
+        CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
+        
+        /*Other variables from Minot's files*/
+        urban98 /*urban92*/ comped98_head educyr98_head    
+     (sum)  landarea_crop landarea_other     
+    (count) count_hh=househol count_avgill4wks=avg_ill4wks 
+        count_avghospital12mths=avg_hospital12mths count_ed98father=comped98father count_ed98mother=educyr98mother 
+        count_workedpast12mo=workedpast12mo    count_yearsinwork=yearsinwork count_salary=salary count_bornhere=bornhere 
+        count_yrshere=yrshere
+        
+        count_hh93 = vlss93hh
+        /*no hospital for '93*/
+        /*add education variables*/
+    [w=hhsizewt], by(province) fast;
 
 
 
@@ -3308,20 +3308,20 @@ sort province; save hhvlss98collapse_province.dta, replace;
 
 **//COMMANDS FOR MERGING ADDITIONAL DATA INTO HHVLSS9893COLLAPSE_PROVINCE;
 use hhvlss98_93.dta, clear; sort province; keep if reltohead==1; duplicates drop; drop if province==.;
-	collapse (mean) vlss93 [w=hhsizewt], by(province); rename vlss93 pctpanel;
-	label var pctpanel "PANEL: % of 98 HHs in province that were surveyed in VLSS93";
-	sort province; save temphh.dta, replace;
-	use hhvlss98collapse_province.dta, clear; merge province using temphh.dta, nokeep; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
+    collapse (mean) vlss93 [w=hhsizewt], by(province); rename vlss93 pctpanel;
+    label var pctpanel "PANEL: % of 98 HHs in province that were surveyed in VLSS93";
+    sort province; save temphh.dta, replace;
+    use hhvlss98collapse_province.dta, clear; merge province using temphh.dta, nokeep; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
 use hhvlss98_93.dta, clear; sort province; keep if reltohead==1; duplicates drop; drop if province==.;
-	collapse (mean) hhsize [w=wt], by(province); 
-	label var hhsize "HH: Avg HH size in province";
-	sort province; save temphh.dta, replace;
-	use hhvlss98collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
+    collapse (mean) hhsize [w=wt], by(province); 
+    label var hhsize "HH: Avg HH size in province";
+    sort province; save temphh.dta, replace;
+    use hhvlss98collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
 use hhvlss98_93.dta, clear; sort province; keep if reltohead==1; duplicates drop; drop if province==.;
-	collapse (sum) hhsizewt, by(province); rename hhsizewt communeweight;
-	label var communeweight "VLSS98: # persons represented by surveyed province (sum across province of hhsizewt)";
-	sort province; save temphh.dta, replace;
-	use hhvlss98collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
+    collapse (sum) hhsizewt, by(province); rename hhsizewt communeweight;
+    label var communeweight "VLSS98: # persons represented by surveyed province (sum across province of hhsizewt)";
+    sort province; save temphh.dta, replace;
+    use hhvlss98collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss98collapse_province.dta, replace;
 
 
 
@@ -3341,23 +3341,23 @@ sort province;
 
 **//NOTE: NO WEIGHTS NEEDED FOR 93 DATA;
 collapse (mean) /*93 variables*/
-		female93 ageyrs93      avg_ill4wks93 ill4wks93	dliterate_all93 dnumerate_all93 bornhere93 yrshere93	
-		dkinh93 dchinese93 disabled93 educyrfather93 educyrmother93 delectricity93 dflushtoilet93  irr_frac93 irr_frac_alt93 
-		dwellingshared93
-		dwellingowned93 workedpast12mo_all93 anysalary_all93 compedfather93 compedmother93 diploma93 educyrself93 edgrade93
-		salaryfrac_all93 agr_activity93 cropland93 owned_crop93
-		
-		/*'93 expenditures*/
-		com93 calpc93 calok93 expb93 exph93 exp93 exppc93 fexp93 fpct93 hfpct93 ricevb93 ricevh93 riceqb93 riceqh93 maizev93 
-		maizeq93 maniocv93 maniocq93 swpotv93 swpotq93 rcpi93 mcpi93 exp93r98 exppc93r98 ricexpd93 nonrice93 totnfdx193 totnfdh193 
-		nonfood193 pcfdex193 CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
-		
-		/*Other variables from Minot's files*/
-		urban92	
-	 	(count) count_hh93 = vlss93hh count_avgill4wks93= avg_ill4wks93
-		/*no hospital for '93*/
-		/*add education variables*/
-		, by(province) fast;
+        female93 ageyrs93      avg_ill4wks93 ill4wks93    dliterate_all93 dnumerate_all93 bornhere93 yrshere93    
+        dkinh93 dchinese93 disabled93 educyrfather93 educyrmother93 delectricity93 dflushtoilet93  irr_frac93 irr_frac_alt93 
+        dwellingshared93
+        dwellingowned93 workedpast12mo_all93 anysalary_all93 compedfather93 compedmother93 diploma93 educyrself93 edgrade93
+        salaryfrac_all93 agr_activity93 cropland93 owned_crop93
+        
+        /*'93 expenditures*/
+        com93 calpc93 calok93 expb93 exph93 exp93 exppc93 fexp93 fpct93 hfpct93 ricevb93 ricevh93 riceqb93 riceqh93 maizev93 
+        maizeq93 maniocv93 maniocq93 swpotv93 swpotq93 rcpi93 mcpi93 exp93r98 exppc93r98 ricexpd93 nonrice93 totnfdx193 totnfdh193 
+        nonfood193 pcfdex193 CONSCHANGEHH CONSCHANGEPC CONSGROWTHHH CONSGROWTHPC
+        
+        /*Other variables from Minot's files*/
+        urban92    
+         (count) count_hh93 = vlss93hh count_avgill4wks93= avg_ill4wks93
+        /*no hospital for '93*/
+        /*add education variables*/
+        , by(province) fast;
 
 
 
@@ -3367,10 +3367,10 @@ sort province; save hhvlss93collapse_province.dta, replace;
 
 **//COMMANDS FOR MERGING ADDITIONAL DATA INTO HHVLSS9893COLLAPSE_PROVINCE;
 use hhvlss98_93.dta, clear; sort province; keep if reltohead==1; duplicates drop; drop if province==.;
-	collapse (mean) hhsize93, by(province); 
-	label var hhsize93 "HH: Avg HH size in province, 93";
-	sort province; save temphh.dta, replace;
-	use hhvlss93collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss93collapse_province.dta, replace;
+    collapse (mean) hhsize93, by(province); 
+    label var hhsize93 "HH: Avg HH size in province, 93";
+    sort province; save temphh.dta, replace;
+    use hhvlss93collapse_province.dta, clear; merge province using temphh.dta; tab _merge; drop _merge; sort province; save hhvlss93collapse_province.dta, replace;
 
 
 /*MERGE THE 93 AND 98 FILES*/
@@ -3399,8 +3399,8 @@ label var dchinese "Proportion ethnic Chinese in 98";
 label var comped98_head "From Minot: highest diploma completed";
 
 **//Codes for comped98_head: 0 Never 1 "Nhatre = Kindergarten" 2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 
-	5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 
-	10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 12 "TS = PhD", modify;
+    5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 
+    10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 12 "TS = PhD", modify;
 
 
 label var comped98father "EDPAR: Father's highest diploma, ~=93"; 
@@ -3462,7 +3462,7 @@ label var pcexp2 "B.value for 98 nominal pc exp";
 label var rlhhex2 "B.M&Reg price adj. tot exp";
 label var rlpcex2 "B.M&Reg price adj. pc exp";
 
-		
+        
 
 /*1993 labels*/
 rename female93 sex_head_female93;
@@ -3548,7 +3548,7 @@ label var CONSGROWTHPC "HH Percap Cons %Change 93-98, adj reg/mo price diffs: CO
 
 
 /*Labels for calpc93 calok93?*/
-		
+        
 save "`filename'", replace; 
 
 };
@@ -3575,11 +3575,11 @@ destring, replace; /*some numeric variables are in string form*/
 sort district;
 
 collapse  female02 ageyrs02 edgrade02 dliterate_all02 diploma02 school02 workforother02 workonownfield02 selfemp02 havework02 
-	lookedforwork02 mosworkedlastyr02 agr_activity02 agrland02 cropland02 
-	longterm_crop02 irrinc02 irrexp02 ddwellingfullyowned02 ddwellingpartowned02 invalids02 elderly02 delectricity02 dflushtoilet02 
-	food02 nonfood02 hhexp02 pcexp02 dkinh02 dhoa02  exp02r98 exppc02r98  
-	(count) count_hh02 = househol02
-	[w=hhsizewt02], by(district) fast; /*CHECK WEIGHTS - IS THIS HOW THEY ARE USED?*/
+    lookedforwork02 mosworkedlastyr02 agr_activity02 agrland02 cropland02 
+    longterm_crop02 irrinc02 irrexp02 ddwellingfullyowned02 ddwellingpartowned02 invalids02 elderly02 delectricity02 dflushtoilet02 
+    food02 nonfood02 hhexp02 pcexp02 dkinh02 dhoa02  exp02r98 exppc02r98  
+    (count) count_hh02 = househol02
+    [w=hhsizewt02], by(district) fast; /*CHECK WEIGHTS - IS THIS HOW THEY ARE USED?*/
 
 sort district;
 save hhvlss02collapse.dta, replace;
@@ -3587,15 +3587,15 @@ save hhvlss02collapse.dta, replace;
 /*NOTE: IN GENERAL, ALL VARIABLES ARE NOW AVERAGES OF HOUSEHOLD HEADS*/
 
 use hhvlss02.dta, clear; sort district; keep if reltohead02==1; duplicates drop; drop if district==.;
-	collapse (mean) hhsize02 [w=wt30], by(district); 
-	label var hhsize02 "HH: Avg HH size in district";
-	sort district; save temphh.dta, replace;
-	use hhvlss02collapse.dta, clear; merge district using temphh.dta; drop _merge; sort district; save hhvlss02collapse.dta, replace;
+    collapse (mean) hhsize02 [w=wt30], by(district); 
+    label var hhsize02 "HH: Avg HH size in district";
+    sort district; save temphh.dta, replace;
+    use hhvlss02collapse.dta, clear; merge district using temphh.dta; drop _merge; sort district; save hhvlss02collapse.dta, replace;
 use hhvlss02.dta, clear; keep if reltohead02==1; duplicates drop; drop if district ==.;
-	collapse (sum) hhsizewt02, by(district); rename hhsizewt02 communeweight02;
-	label var communeweight02 "VLSS02: # persons represented by surveyed district (sum across district of hhsizewt)";
-	sort district; save temphh.dta, replace;
-	use hhvlss02collapse.dta, clear; merge district using temphh.dta; drop _merge; sort district; save hhvlss02collapse.dta,replace;
+    collapse (sum) hhsizewt02, by(district); rename hhsizewt02 communeweight02;
+    label var communeweight02 "VLSS02: # persons represented by surveyed district (sum across district of hhsizewt)";
+    sort district; save temphh.dta, replace;
+    use hhvlss02collapse.dta, clear; merge district using temphh.dta; drop _merge; sort district; save hhvlss02collapse.dta,replace;
 
 
 /*COLLAPSE 02 FILE TO PROVINCE LEVEL*/
@@ -3609,11 +3609,11 @@ destring, replace; /*some numeric variables are in string form*/
 sort province;
 
 collapse  female02 ageyrs02 edgrade02 dliterate_all02 diploma02 school02 workforother02 workonownfield02 selfemp02 havework02 
-	lookedforwork02 mosworkedlastyr02 agr_activity02 agrland02 cropland02 
-	longterm_crop02 irrinc02 irrexp02 ddwellingfullyowned02 ddwellingpartowned02 invalids02 elderly02 delectricity02 dflushtoilet02 
-	food02 nonfood02 hhexp02 pcexp02 dkinh02 dhoa02 exp02r98 exppc02r98  
-	(count) count_hh02 = househol02
-	[w=hhsizewt02], by(province) fast; /*CHECK WEIGHTS - IS THIS HOW THEY ARE USED?*/
+    lookedforwork02 mosworkedlastyr02 agr_activity02 agrland02 cropland02 
+    longterm_crop02 irrinc02 irrexp02 ddwellingfullyowned02 ddwellingpartowned02 invalids02 elderly02 delectricity02 dflushtoilet02 
+    food02 nonfood02 hhexp02 pcexp02 dkinh02 dhoa02 exp02r98 exppc02r98  
+    (count) count_hh02 = househol02
+    [w=hhsizewt02], by(province) fast; /*CHECK WEIGHTS - IS THIS HOW THEY ARE USED?*/
 
 sort province;
 save hhvlss02collapse_province.dta, replace;
@@ -3621,15 +3621,15 @@ save hhvlss02collapse_province.dta, replace;
 /*NOTE: IN GENERAL, ALL VARIABLES ARE NOW AVERAGES OF HOUSEHOLD HEADS*/
 
 use hhvlss02.dta, clear; sort province; keep if reltohead02==1; duplicates drop; drop if district==.;
-	collapse (mean) hhsize02 [w=wt30], by(province); 
-	label var hhsize02 "HH: Avg HH size in province";
-	sort province; save temphh.dta, replace;
-	use hhvlss02collapse_province.dta, clear; merge province using temphh.dta; drop _merge; sort province; save hhvlss02collapse_province.dta, replace;
+    collapse (mean) hhsize02 [w=wt30], by(province); 
+    label var hhsize02 "HH: Avg HH size in province";
+    sort province; save temphh.dta, replace;
+    use hhvlss02collapse_province.dta, clear; merge province using temphh.dta; drop _merge; sort province; save hhvlss02collapse_province.dta, replace;
 use hhvlss02.dta, clear; keep if reltohead02==1; duplicates drop; drop if province ==.;
-	collapse (sum) hhsizewt02, by(province); rename hhsizewt02 communeweight02;
-	label var communeweight02 "VLSS02: # persons represented by surveyed province (sum across province of hhsizewt)";
-	sort province; save temphh.dta, replace;
-	use hhvlss02collapse_province.dta, clear; merge province using temphh.dta; drop _merge; sort province; save hhvlss02collapse_province.dta,replace;
+    collapse (sum) hhsizewt02, by(province); rename hhsizewt02 communeweight02;
+    label var communeweight02 "VLSS02: # persons represented by surveyed province (sum across province of hhsizewt)";
+    sort province; save temphh.dta, replace;
+    use hhvlss02collapse_province.dta, clear; merge province using temphh.dta; drop _merge; sort province; save hhvlss02collapse_province.dta,replace;
 
 
 **//LABELS;
@@ -4018,7 +4018,7 @@ gen area_over_1000m = area_1001 + area_over_1500m;
 /* ELEV_STD HAS LITTLE PREDICTIVE POWER */;
 
 foreach var in
-	area_0_250m area_251 area_501 area_over_1000m
+    area_0_250m area_251 area_501 area_over_1000m
 {;
 replace `var' = `var'/100;
 };
@@ -4076,15 +4076,15 @@ save temp2, replace;
 
 /* PRECIPITATION */;
 foreach var in
-	pre tmp hum sun
+    pre tmp hum sun
 {;
 gen `var'_avg = (`var'_avg_jan + `var'_avg_feb + `var'_avg_mar + `var'_avg_apr
-	+ `var'_avg_may + `var'_avg_jun + `var'_avg_jul + `var'_avg_aug
-	+ `var'_avg_sep + `var'_avg_oct + `var'_avg_nov + `var'_avg_dec)/12;
+    + `var'_avg_may + `var'_avg_jun + `var'_avg_jul + `var'_avg_aug
+    + `var'_avg_sep + `var'_avg_oct + `var'_avg_nov + `var'_avg_dec)/12;
 /* STANDARD DEVIATION ACROSS MONTHS */;
 egen `var'_sd = rsd(`var'_avg_jan `var'_avg_feb `var'_avg_mar `var'_avg_apr
-	`var'_avg_may `var'_avg_jun `var'_avg_jul `var'_avg_aug
-	`var'_avg_sep `var'_avg_oct `var'_avg_nov `var'_avg_dec);
+    `var'_avg_may `var'_avg_jun `var'_avg_jul `var'_avg_aug
+    `var'_avg_sep `var'_avg_oct `var'_avg_nov `var'_avg_dec);
 drop `var'_avg_*;
 };
 
@@ -4170,8 +4170,8 @@ global ord8 = "RAP VT";
 
 
 /* TWO METHODS -
-	1) SUM UP TOTAL BOMBS, MISSILES, ETC
-	2) CREATE AN INDEX BASED ON PRINCIPAL COMPONENTS (COMMAND: PCA)
+    1) SUM UP TOTAL BOMBS, MISSILES, ETC
+    2) CREATE AN INDEX BASED ON PRINCIPAL COMPONENTS (COMMAND: PCA)
 */;
 
 /* METHOD 1 */;
@@ -4233,9 +4233,9 @@ save temp1, replace;
 /* PRE-WAR DATA, VLSS DATA */;
 **//PRE-WAR DATA;  
 **//NOTE: PER UNIT AREA VARS MORE INTUITIVELY ACCURATE, SINCE THERE WAS NO NEED TO NORMALIZE OVER AREA 
-	TO DEAL WITH SHIFTING BOUNDARIES.
+    TO DEAL WITH SHIFTING BOUNDARIES.
 I.E., PER-UNIT-AREA, PRE-WAR DISTRICT FIGURES ARE JUST WEIGHTED AVGS OF THE VALUES OF THE PRE-WAR PROVINCES 
-	THAT CONTAINED THEM.
+    THAT CONTAINED THEM.
 NON-PER-UNIT-AREA FIGURES ARE CALCULATED, E.G., AS WEIGHTED-AVG[PROVINCEENTRY1960/PROVINCEAREA1960]*DISTRICTAREA1999;
 clear;
 
@@ -4257,9 +4257,9 @@ label var popdensity1960_n "PopDensity, per km2, backed-out from cereal/paddy pe
 label var popdensity1960_n "PopDensity, per km2, backed-out from cereal/paddy percap (avg), 1960";
 foreach year in 1961 1962 1963{; label var rubberplanted`year' "Rubber Planted Area, Hectares, `year'";}; 
 foreach year in 1958 1959 1961 1962 1963{; 
-	label var rubberworkable`year' "Rubber Workable Area, Hectares, `year'";
-	label var rubberworked`year' "Rubber Worked Area, Hectares, `year'";
-	label var rubberworkedtoworkable`year' "Rubber Ratio Worked/Workable, `year'";};
+    label var rubberworkable`year' "Rubber Workable Area, Hectares, `year'";
+    label var rubberworked`year' "Rubber Worked Area, Hectares, `year'";
+    label var rubberworkedtoworkable`year' "Rubber Ratio Worked/Workable, `year'";};
 sort district; save temp1.dta, replace;
 cd ..;
 merge district using temp1.dta; tab _merge; drop _merge; sort district; 
@@ -4270,14 +4270,14 @@ cd "VLSS"; use hhvlss98collapse.dta; save temp1.dta, replace;
 label var sex_head_female "HHEXP: Avg Gender of HH.head (0:M;1:F)";
 label var age_head "HHEXP: Avg Age of HH.head";
 label var agegroup_head "HHEXP: Avg AgeGroup of HH.head"; 
-*	label define agegroup 1 "under 20" 2 "from 20" 3 "from 30" 4 "from 40" 5 "from 50" 6 "from 60" 7 "70 or ab";
-*	label val agegroup_head agegroup;
+*    label define agegroup 1 "under 20" 2 "from 20" 3 "from 30" 4 "from 40" 5 "from 50" 6 "from 60" 7 "70 or ab";
+*    label val agegroup_head agegroup;
 label var comped98_head "HHEXP: Avg completed diploma HH.head";
-	/*DIPLOMA LABELS TRANSLATED BY KHUYEN*/ label define diploma 0 Never 1 "Nhatre = Kindergarten" 
-	2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
-	7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
-	12 "TS = PhD", modify;
-	label val comped98_head diploma;
+    /*DIPLOMA LABELS TRANSLATED BY KHUYEN*/ label define diploma 0 Never 1 "Nhatre = Kindergarten" 
+    2 "<cap I = <primary" 3 "Cap I = Primary" 4 "Cap II = Lower Sec" 5 "Cap III = Higher Sec" 6 "Nghe SC = Voc Training" 
+    7 "THCN = Secondary Voc Training" 8 DHDC 9 "DHCD = Bachelors" 10 "Thac sy = Masters" 11 "PTS = PhD Candidate" 
+    12 "TS = PhD", modify;
+    label val comped98_head diploma;
 label var educyr98_head "HHEXP: Avg schooling years of HH.head";
 label var farm "Type of HH (1:farm; 0:nonfarm)";
 label var urban98 "1:urban 98, 0:rural 98";
@@ -4285,11 +4285,11 @@ label var urban92 "1:urban 92, 0:rural 92";
 label var avg_ill4wks "HH: Avg of Avg days ill in past 4wks (all HH members)";
 label var avg_hospital12mths "HH: Avg of Avg days spent in hospital past 12mths (all HH members)";
 label var literate "HH: ED: Can you read this sentence?";
-	*label define literate 3 "yes w/o difficulty" 2 "yes w/ difficulty" 1 "only in other lang" 0 no;
-	*label val literate literate;
+    *label define literate 3 "yes w/o difficulty" 2 "yes w/ difficulty" 1 "only in other lang" 0 no;
+    *label val literate literate;
 label var numerate "HH: ED: Can you do these calculations?";
-	*label define numerate 2 "yes w/o difficulty" 1 "yes w/ difficulty" 0 no;
-	*label val numerate numerate;
+    *label define numerate 2 "yes w/o difficulty" 1 "yes w/ difficulty" 0 no;
+    *label val numerate numerate;
 label var ricexpd "HHEXP: Avg Value rice expenditures, current 1000VND";
 label var nonrice "HHEXP: Avg Value food expenditures no rice, current 1000VND";
 label var totnfdx1 "HHEXP: Avg Value Nonfood exp.purchase/barter, current 1000VND (comp 93)";
@@ -4316,10 +4316,10 @@ label var rlpcex2 "HHEXP: Avg Exp per cap, adj for reg/mo prices, 1998 1000VND (
 **//label var factorydistance_min "COM: EXP: min(factorydistance*) across district";
 **//label var factorylabor_sum "COM: EXP: sum(factorylabor*) across district";
 label var comped98father "HH: EDPAR: Avg of HH.head's Father's highest diploma"; 
-	*label define diploma0 0 none 1 prim 2 lowsec 3 hisec 4 certif 5 training 6 "tech/prof.sec" 7 jc 8 assoc 9 bach 10 mast 11 "sub-doc" 12 phd 13 "don't know"; 
-	*label val comped98father diploma0; 
+    *label define diploma0 0 none 1 prim 2 lowsec 3 hisec 4 certif 5 training 6 "tech/prof.sec" 7 jc 8 assoc 9 bach 10 mast 11 "sub-doc" 12 phd 13 "don't know"; 
+    *label val comped98father diploma0; 
 label var comped98mother "HH: EDPAR: Avg of HH.head's Mother's highest diploma"; 
-	*label val comped98mother diploma0; 
+    *label val comped98mother diploma0; 
 label var educyr98father "HH: EDPAR: Avg of HH.head's Father's yrs formal sch (grade+postsec)";
 label var educyr98mother "HH: EDPAR: Avg of HH.head's Mother's yrs formal sch (grade+postsec)";
 label var workedpast12mo "HH: EMP: Avg Have you worked (for pay, at your farm, self-employed) in past 12 mo?";
@@ -4359,10 +4359,10 @@ label var maniocq93 "MINOT: Quantity of manioc kg?";
 label var swpotv93 "MINOT: Value of sweet potatoes 1000VND";
 label var swpotq93 "MINOT: Quantity of sweet potatoes kg?";
 foreach varpart in calpc calok expb exph exp exppc fexp fpct hfpct adults children infants hhsize ricevb ricevh riceqb 
-	ricexpd nonrice totnfdx1 totnfdh1 nonfood1 pcfdex1
-	riceqh maizev maizeq maniocv maniocq swpotv swpotq 
-	rcpi mcpi {;
-		rename `varpart'93 `varpart'_93;};
+    ricexpd nonrice totnfdx1 totnfdh1 nonfood1 pcfdex1
+    riceqh maizev maizeq maniocv maniocq swpotv swpotq 
+    rcpi mcpi {;
+        rename `varpart'93 `varpart'_93;};
 /*NOTE: VARS WITH LABELS BEGINNING '93:' ARE CONSTRUCTED TO AGREE WITH VLSS98 HHEXPENDITURE FILE.*/
 label var ricexpd_93 "93: Expenditure on rice 1000VND";
 label var nonrice_93 "93: Expenditure on food, no rice 1000VND";
@@ -4397,15 +4397,15 @@ label var rlpcex1_9398 "Avg Cons exp per cap 93 and 98, in 98 1000VND, adj for r
 
 /*REDEFINE COM LABELS*/
 **//label define cropcodes 1 "Winter Rice" 2 "Autumn Rice" 3 "Winter Rice" 4 "Swidden Rice" 5 "Annual Rice" 6 "Glutinous Rice" 
-	7 "Specialty Rice" 8 "Corn/Maize" 9 "Sweet Potatoes" 10 "Cassava/Manioc" 11 "Other Staple Crops" 12 Potatoes 
-	13 "Kohlrabi, Cabbage, Cauliflower" 14 "Other Leafy Greens" 15 "Tomatoes" 16 "Water Morning Glory" 17 "Fresh Legumes (Beans)" 
-	18 "Dried Legumes (Beans)" 19 "Herbs and Spices" 20 "Other Vegetables, Tubers, and Fruits" 21 "Soy Beans" 22 Peanuts 
-	23 "Sesame Seeds" 24 "Sugar Cane" 25 Tobacco 26 Cotton 27 "Jute, Ramie" 28 "Rush (For Making Mats" 29 "Other Annual Industrial Crops" 
-	30 "Other Annual Crops" 31 Tea 32 Coffee 33 Rubber 34 "Black Pepper" 35 "Coconut (For Oil, Copra)" 36 Mulberry 37 Cashew 
-	38 "Other Perennial Industrial Crops" 39 "Oranges, Limes and Mandarins" 40 Pineapple 41 Bananas 42 Mango 43 Apple 44 Grapes 
-	45 Plum 46 Papaya 47 "Litchi, Longan, Rambutan" 48 Sapodilla 49 "Custard Apple" 50 "Jackfruit, Durian" 51 Mangosteen 
-	52 "Other Fruit Trees" 53 "Mu Oil Tree" 54 "Cinnamon Tree" 55 "Anise Tree" 56 "Pine Tree" 57 "Varnish Tree" 58 "tree for Wood" 
-	59 Bamboo 60 "Fan Palm Tree" 61 "Water Coconut Palm" 62 "Other Silviculture Tree";
+    7 "Specialty Rice" 8 "Corn/Maize" 9 "Sweet Potatoes" 10 "Cassava/Manioc" 11 "Other Staple Crops" 12 Potatoes 
+    13 "Kohlrabi, Cabbage, Cauliflower" 14 "Other Leafy Greens" 15 "Tomatoes" 16 "Water Morning Glory" 17 "Fresh Legumes (Beans)" 
+    18 "Dried Legumes (Beans)" 19 "Herbs and Spices" 20 "Other Vegetables, Tubers, and Fruits" 21 "Soy Beans" 22 Peanuts 
+    23 "Sesame Seeds" 24 "Sugar Cane" 25 Tobacco 26 Cotton 27 "Jute, Ramie" 28 "Rush (For Making Mats" 29 "Other Annual Industrial Crops" 
+    30 "Other Annual Crops" 31 Tea 32 Coffee 33 Rubber 34 "Black Pepper" 35 "Coconut (For Oil, Copra)" 36 Mulberry 37 Cashew 
+    38 "Other Perennial Industrial Crops" 39 "Oranges, Limes and Mandarins" 40 Pineapple 41 Bananas 42 Mango 43 Apple 44 Grapes 
+    45 Plum 46 Papaya 47 "Litchi, Longan, Rambutan" 48 Sapodilla 49 "Custard Apple" 50 "Jackfruit, Durian" 51 Mangosteen 
+    52 "Other Fruit Trees" 53 "Mu Oil Tree" 54 "Cinnamon Tree" 55 "Anise Tree" 56 "Pine Tree" 57 "Varnish Tree" 58 "tree for Wood" 
+    59 Bamboo 60 "Fan Palm Tree" 61 "Water Coconut Palm" 62 "Other Silviculture Tree";
 **//label define noschool_reason 1 distance 2 "economic difficulties" 3 "illness/handicap" 4 "don't want to" 5 crowding 6 "parents don't care" 7 "must work" 8 other;
 **//label define geogtype 1 coast 2 "inland delta" 3 "hills/midlands" 4 "low mts" 5 "hi mts";
 **//label define maininc 1 agriculture 2 forestry 3 "aquatic products" 4 industry 5 handicrrafts 6 construction 7 trade 8 transport 9 services 10 other; 
@@ -4458,7 +4458,7 @@ bys south: pwcorr $ord0 $ord1 $ord2 $ord3 [aw=pop_tot], star(0.05);
 
 /* CREATE PROVINCE BOMBING MEASURES */;
 foreach vio in
-	tot_bmr /* tot_bmr_per */ tot_bmr_hi tot_bomb war_f1 war_f2
+    tot_bmr /* tot_bmr_per */ tot_bmr_hi tot_bomb war_f1 war_f2
 {;
 egen `vio'_prov = mean(`vio'), by(province);
 };
@@ -4482,20 +4482,20 @@ label var east_long "Degrees East Longitude";
 /* DEFINE SAMPLES */;
 gen sample_all = 1;
 replace sample_all = 0 if 
-	(poverty_p0==. | tot_bmr==. | tot_bmr_per==. | tot_bmr_per>1000
-	| popdensity6061==. | south==. | pre_avg==. | soil_1==.);
+    (poverty_p0==. | tot_bmr==. | tot_bmr_per==. | tot_bmr_per>1000
+    | popdensity6061==. | south==. | pre_avg==. | soil_1==.);
 
 gen rural = 1;
 replace rural = 0 if ((paddyyield6061==.) | (provincename=="Ho Chi Minh (City)")
-	| (provincename=="Ha Noi (City)") | (provincename=="Da Nang (City)")
-	| (provincename=="Hai Phong (City)"));
+    | (provincename=="Ha Noi (City)") | (provincename=="Da Nang (City)")
+    | (provincename=="Hai Phong (City)"));
 replace paddyyield6061=. if rural==0;
 
 gen central = 0;
 replace central = 1 if (sample_all==1
-	& (region==4 | region==5 | region==6 | region==7)
-	& (provincename~="Ho Chi Minh (City)")
-	& (provincename~="Da Nang (City)"));
+    & (region==4 | region==5 | region==6 | region==7)
+    & (provincename~="Ho Chi Minh (City)")
+    & (provincename~="Da Nang (City)"));
 
 keep if sample_all==1;
 
@@ -4505,33 +4505,33 @@ save temp1.dta, replace;
 
 /* IT TURNS OUT THAT THESE MEASURES ARE VERY HIGHLY CORRELATED */;
 pwcorr $ord0 $ord1 $ord2 $ord3 tot_bmr tot_bmr_per 
-	if sample_all==1 [aw=pop_tot], star(0.05);
+    if sample_all==1 [aw=pop_tot], star(0.05);
 
 
 /* MULTIPLE COLLAPSES TO GET CORRECT PROVINCE LEVEL DATA (PROVCREATE) */;
-collapse																	///
-	$ord0
-	$ord1
-	$ord2
-	$ord3
-	$ord3_per
-	$ord4
-	$ord5
-	$ord6
-	$ord7
-	$ord8
-	log_tot_bmr*
-	tot_bmr* tot_bomb* war_f1 war_f2
-	log_popdensity* popdensity* log*paddy* paddyyield* births* south* region
-	pop_prov  sample* central rural
-	diff_17*
-	(sum) area_sum=area_tot_km2
-	(sum) tot_bmr_sum=tot_bmr
-	(sum) tot_bomb_sum=tot_bomb
-	(sum) General_Purpose_sum=General_Purpose
-	(sum) Mine_sum = Mine
-	(sum) pop_tot_sum=pop_tot
-	if sample_all==1, by(province);
+collapse                                                                    ///
+    $ord0
+    $ord1
+    $ord2
+    $ord3
+    $ord3_per
+    $ord4
+    $ord5
+    $ord6
+    $ord7
+    $ord8
+    log_tot_bmr*
+    tot_bmr* tot_bomb* war_f1 war_f2
+    log_popdensity* popdensity* log*paddy* paddyyield* births* south* region
+    pop_prov  sample* central rural
+    diff_17*
+    (sum) area_sum=area_tot_km2
+    (sum) tot_bmr_sum=tot_bmr
+    (sum) tot_bomb_sum=tot_bomb
+    (sum) General_Purpose_sum=General_Purpose
+    (sum) Mine_sum = Mine
+    (sum) pop_tot_sum=pop_tot
+    if sample_all==1, by(province);
 
 replace popdensity1999 = pop_tot_sum/area_sum;
 replace log_popdensity1999 = log(popdensity1999);
@@ -4587,8 +4587,8 @@ clear;
 cd IFPRI;
 insheet using SES-data-prov.csv;
 /* SHOULD THERE BE A SEPARATE COLLAPSE DIRECTLY TO THE PROVINCE LEVEL 
-	FOR THE VLSS DATA?
-	YES, WE DO THIS BELOW. */;
+    FOR THE VLSS DATA?
+    YES, WE DO THIS BELOW. */;
 
 rename p0 poverty_p0;
 rename exppc pcexp_99;
@@ -4608,8 +4608,8 @@ clear;
 
 use temp1;
 collapse lit_rate elec_rate radio_rate urban_pct percent_cultivated
-	[aw=pop_tot]
-	if sample_all==1, by(province);
+    [aw=pop_tot]
+    if sample_all==1, by(province);
 
 label var elec_rate "District electricity, 1999";
 label var lit_rate "District literacy rate, 1999";
@@ -4621,10 +4621,10 @@ clear;
 
 use temp1;
 collapse
-	$x_weather /* $x_oth */ $x_elev $x_gis $x_soil1 $x_soil2 $x_slope
-	east_long
-	[aw=area_tot_km2]
-	if sample_all==1, by(province);
+    $x_weather /* $x_oth */ $x_elev $x_gis $x_soil1 $x_soil2 $x_slope
+    east_long
+    [aw=area_tot_km2]
+    if sample_all==1, by(province);
 sort province;
 save temp4, replace;
 clear;
@@ -4677,14 +4677,14 @@ merge province using temp3;
 tab _merge; drop _merge;
 
 foreach num in
-	1990 1992 1994 1996 1998 2000
+    1990 1992 1994 1996 1998 2000
 {;
 gen popdensity`num' = pop_`num'/area_sum;
 label var popdensity`num' "Population Density `num'";
 };
 
 /* THE 1999 POP CENSUS FIGURES DO NOT MATCH UP WITH THE YEARBOOK POP NUMBERS
-	--> USE CHANGES FROM 1990 TO 1999? WHY IS THIS? */;
+    --> USE CHANGES FROM 1990 TO 1999? WHY IS THIS? */;
 
 save temp2, replace;
 clear;
@@ -4714,14 +4714,14 @@ use vn_oldyearbooks_20may05;
 cd ..;
 
 foreach num in
-	76 77 78 79 80 81 82 83 84 85
+    76 77 78 79 80 81 82 83 84 85
 {;
 gen pupils_`num' = pupils1_`num' + pupils2_`num' + pupils3_`num';
 };
 
 keep province
-	pupils_* food2_* pop_76-pop_85
-	invest_76-invest_85 output_81-output_85;
+    pupils_* food2_* pop_76-pop_85
+    invest_76-invest_85 output_81-output_85;
 
 gen invest_85_per = invest_85/pop_85;
 gen output_85_per = output_85/pop_85;
@@ -4737,7 +4737,7 @@ merge province using temp3;
 tab _merge; drop _merge;
 
 foreach num in 
-	76 77 78 79 80 81 82 83 84 85
+    76 77 78 79 80 81 82 83 84 85
 {;
 gen popdensity19`num' = pop_`num'*1000/area_sum;
 replace popdensity19`num' = . if popdensity19`num'==0;
@@ -4776,8 +4776,8 @@ gen consgrowth_9302 = (exppc02r98 - exppc93r98)/exppc93r98;
 
 /* CREATE AVERAGE HEIGHTS FOR BOTH GENDERS */;
 foreach yr in
-	1931 1936 1941 1946
-	1951 1956 1961 1966 1971 1976
+    1931 1936 1941 1946
+    1951 1956 1961 1966 1971 1976
 {;
 gen temp_f = height_f`yr';
 replace temp_f = 0 if height_f`yr'==.;
@@ -4798,7 +4798,7 @@ drop temp_f temp_m weight_f weight_m;
 
 
 foreach num in
-	3 4 5 6 7
+    3 4 5 6 7
 {;
 gen height_`num'1`num'6 = (hnum_19`num'1*height_19`num'1 + hnum_19`num'6*height_19`num'6)/(hnum_19`num'1 + hnum_19`num'6);
 gen hnum_`num'1`num'6 = (hnum_19`num'1 + hnum_19`num'6);
@@ -4807,7 +4807,7 @@ gen prop_`num'1`num'6 = (hnum_19`num'1*prop_19`num'1 + hnum_19`num'6*prop_19`num
 
 
 foreach num in
-	3 4 5 6 7
+    3 4 5 6 7
 {;
 gen height_`num'1`num'6_3136 = height_`num'1`num'6 - height_3136;
 gen prop_`num'1`num'6_3136 = prop_`num'1`num'6 - prop_3136;
@@ -4853,7 +4853,7 @@ use "HAMLA\hamla_1may05";
 drop province;
 rename province_code province;
 rename dev_score hamla_dev_score;
-label var hamla_dev_score "1967 Avg SES, Province";	
+label var hamla_dev_score "1967 Avg SES, Province";    
 sort province;
 save temp3, replace;
 clear;
@@ -4866,9 +4866,9 @@ tab _merge; drop _merge;
 drop sample_all;
 gen sample_all = 1;
 replace sample_all = 0 if 
-	(poverty_p0==. | tot_bmr==. | tot_bmr_per==.
-	| popdensity6061==. | south==. | pre_avg==. | soil_1==.
-	| age_head02==. | age_head==. | age_head93==.);
+    (poverty_p0==. | tot_bmr==. | tot_bmr_per==.
+    | popdensity6061==. | south==. | pre_avg==. | soil_1==.
+    | age_head02==. | age_head==. | age_head93==.);
 
 compress;
 
