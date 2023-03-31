@@ -140,7 +140,7 @@ foreach province_data in                                                    ///
     "$data/external/dataverse/war_data_province.dta"                        ///
     "$data/external/archives/war_data_province_sep09.dta"                   ///
     "$data/external/archives/war_data_province_aug05.dta"                   ///
-    "$data/external/hochiminh/war_data_province_huynh.dta"                 ///
+    "$data/external/hochiminh/war_data_province_huynh.dta"                  ///
     "$data/external/exposition/war_data_province_malesk.dta"{
     if "`province_data'" == "$data/external/archives/war_data_province_sep09.dta" {
         local district_data = "$data/external/archives/war_data_district_sep09.dta"
