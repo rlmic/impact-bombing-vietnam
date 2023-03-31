@@ -13,13 +13,14 @@ set more off
 set mem 100m
 set matsize 800
 //log using war-analysis_2010-04, text
-
-
+cd "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
+echo $dir
 // Defining globals
 
 global x_elev = "area_251 area_501 area_over_1000m";
 global x_slope = "slp_c2 slp_c3 slp_c45";
-global x_soil = "soil_*";
+global x_soil1 = "soil_1 soil_3 soil_6 soil_7 soil_8 soil_9 soil_10 soil_11 soil_12"
+global x_soil2 = "soil_14 soil_24 soil_26 soil_33 soil_34 soil_35 soil_39 soil_40 soil_41"
 global x_gis = "north_lat";
 global x_weather = "pre_avg tmp_avg";
 global ord0 = "Ammunition";
@@ -59,14 +60,14 @@ LOAD DATASETS AS FRAMES
 frames reset
 frame create district
 cwf district
-use "../archives/war_data_district_sep09.dta", clear
-//use "../dataverse/war_data_district.dta", clear
+//use "data/internal/archives/war_data_district_sep09.dta", clear
+use "data/internal/dataverse/war_data_district.dta", clear
 
 // Province Level
 
 frame create province
 cwf province
-use "../archives/war_data_province_sep09.dta"
+use "data/internal/archives/war_data_province_sep09.dta"
 //use "../dataverse/war_data_province.dta", clear
 
 // List datasets
@@ -271,7 +272,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
-    soil*,                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2,                                                               ///
     robust cluster(province)
 
     
@@ -284,7 +286,8 @@ areg                                                                        ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1,                                                       ///
     a(province)                                                             ///
     robust cluster(province)
@@ -302,7 +305,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if provincename~="Quang Tri" & sample_all==1,                           ///
     robust cluster(province)
     
@@ -319,7 +323,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1, robust cluster(province)
     
 summ $dep_pov if sample_all==1
@@ -333,14 +338,16 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil(                                                                ///
+    $x_soil11                                                               ///
+    $x_soil12(                                                              ///
         diff_17                                                             ///
         popdensity6061                                                      ///
         south                                                               ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
-        $x_soil                                                             ///
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
         )                                                                   ///
     if sample_all==1, robust cluster(province)
 summ $dep_pov if sample_all==1
@@ -364,7 +371,8 @@ bys south: regress                                                          ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1,                                                       ///
     robust cluster(province)
     
@@ -380,7 +388,8 @@ bys urban_6061: regress                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil                                                                 ///                
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///                
     south                                                                   ///                
     if sample_all==1,                                                       ///
     robust cluster(province)
@@ -397,7 +406,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil                                                                 ///    
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     south                                                                   ///
     if sample_all==1,                                                       ///
     robust cluster(province)    
@@ -412,7 +422,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
-    $x_soil                                                                 ///    
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     south                                                                   ///
     if sample_all==1,                                                       ///
     robust cluster(province)
@@ -602,7 +613,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil,                                                                ///        
+    $x_soil1                                                                ///
+    $x_soil2,                                                               ///
     robust cluster(province)
 
 summ $dep_acc_elec
@@ -614,7 +626,8 @@ areg                                                                        ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil                                                                 ///        
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1,                                                       ///
     a(province) robust cluster(province)
 
@@ -629,7 +642,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if provincename~="Quang Tri" & sample_all==1,                           ///
     robust cluster(province)
 
@@ -644,7 +658,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1, robust cluster(province) 
 
 summ $dep_acc_elec if sample_all==1
@@ -701,16 +716,16 @@ regress                                                                     ///
     
 summ $dep_lit
 
-// (3) PROBLEMS
-areg
+// (3)
+areg                                                                        ///
     $dep_lit                                                                ///
     tot_bmr_per                                                             ///
+    $x_weather                                                              ///          
     $x_elev                                                                 ///
     $x_gis                                                                  ///
-    $x_weather                                                              ///          
-    $x_soil                                                                 ///
-    if sample_all==1,                                                       ///
-    a(province) robust cluster(province)
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    if sample_all==1, a(province) robust cluster(province)
 
 summ $dep_lit if sample_all==1
 
@@ -722,7 +737,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2,                                                               ///
     south                                                                   ///
     if provincename~="Quang Tri" & sample_all==1,                           ///
     robust cluster(province)
@@ -738,7 +754,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
-    $x_soil                                                                 ///
+    $x_soil1                                                                ///
+    $x_soil2,                                                               ///
     if sample_all==1, robust cluster(province)                              ///
 
 summ $dep_lit if sample_all==1
@@ -751,16 +768,18 @@ regress                                                                     ///
     south                                                                   ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
-    $x_weather                                                              ///          
-    $x_soil(                                                                ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2(                                                               ///
         diff_17                                                             ///
         popdensity6061                                                      ///
         south                                                               ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///          
-        $x_soil                                                             ///
-        ) if sample_all==1, robust cluster(province)                        
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
+    ) if sample_all==1, robust cluster(province)                        
 
 summ $dep_lit if sample_all==1
 
@@ -782,67 +801,100 @@ regress                                                                     ///
     tot_bmr_per                                                             ///
     popdensity6061                                                          ///
     south                                                                   ///
-    $x_elev $x_gis $x_weather
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
     if sample_all==1, robust
     
 summ $dep_pop_den_1999 if sample_all==1
 
-use war_data_district;
-***8.2 /* DETAILED DISTRICT GEOGRAPHIC, CLIMATIC CONTROLS */;
-regress  popdensity1999 tot_bmr_per
-    popdensity6061
-    $x_weather $x_elev $x_gis /* $x_oth */
-    $x_soil1 $x_soil2
-    south
-    /* [aw=pop_tot] */,
-    robust cluster(province);
-**summ popdensity1999;
+// (2)
+cwf district
 
-***8.3 /* PROVINCE FE */;
-areg popdensity1999 tot_bmr_per
-    $x_weather $x_elev $x_gis /* $x_oth */
-    $x_soil1 $x_soil2
-    /* [aw=pop_tot] */
-    if sample_all==1,
-    a(province) robust cluster(province);
-**summ popdensity1999 if sample_all==1;
+regress                                                                     ///
+    $dep_pop_den_1999                                                       ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    south,                                                                  ///
+    robust cluster(province)
+    
+summ $dep_pop_den_1999
 
-***8.4 /* EXCLUDE QUANG TRI */;
-regress popdensity1999 tot_bmr_per
-    popdensity6061
-    $x_weather $x_elev $x_gis /* $x_oth */
-    $x_soil1 $x_soil2
-    south
-    /* [aw=pop_tot] */
-    if provincename~="Quang Tri" & sample_all==1,
-    robust cluster(province);
-**summ popdensity1999 if provincename~="Quang Tri" & sample_all==1;
+// (3)
 
-***8.5 /* REDUCED FORM */;
-regress popdensity1999
-    diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2
-    /* [aw=pop_prov] */
-    if sample_all==1, robust cluster(province);
-**summ popdensity1999 if sample_all==1;
+areg                                                                        ///
+    $dep_pop_den_1999                                                       ///
+    tot_bmr_per                                                             ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    if sample_all==1,                                                       ///
+    a(province) robust cluster(province)
+    
+summ $dep_pop_den_1999 if sample_all==1
 
-***8.6 /* IV-2SLS */;
-regress popdensity1999 tot_bmr_per
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2
-    (diff_17
-    popdensity6061
-    south
-    $x_elev $x_gis $x_weather /* $x_oth */
-    $x_soil1 $x_soil2)
-    /* [aw=pop_prov] */
-    if sample_all==1, robust cluster(province);
-**summ popdensity1999 if sample_all==1;
+// (4)
+
+regress                                                                     ///
+    $dep_pop_den_1999                                                       ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    south                                                                   ///
+    if provincename~="Quang Tri" & sample_all==1,                           ///
+    robust cluster(province)
+
+summ $dep_pop_den_1999 if provincename~="Quang Tri" & sample_all==1
+
+// (5)
+
+regress                                                                     ///
+    $dep_pop_den_1999                                                       ///
+    diff_17                                                                 ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
+    if sample_all==1, robust cluster(province)
+
+summ $dep_pop_den_1999 if sample_all==1
+
+// (6)
+regress                                                                     ///
+    $dep_pop_den_1999                                                       ///
+    tot_bmr_per                                                             ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2(                                                               ///
+        diff_17                                                             ///
+        popdensity6061                                                      ///
+        south                                                               ///
+        $x_elev                                                             ///
+        $x_gis                                                              ///
+        $x_weather                                                          ///
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
+        )if sample_all==1, robust cluster(province);
+
+summ $dep_pop_den_1999 if sample_all==1;
 
 /*-----------
 TABLE 9
