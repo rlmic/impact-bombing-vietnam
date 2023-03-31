@@ -50,13 +50,13 @@ frames reset
 frame create district
 cwf district
 //use "data/internal/archives/war_data_district_sep09.dta", clear
-use "data/internal/dataverse/war_data_district.dta", clear
+use "$dir/data/internal/dataverse/war_data_district.dta", clear
 
 // Province Level
 
 frame create province
 cwf province
-use "data/internal/archives/war_data_province_sep09.dta"
+use "$dir/data/internal/archives/war_data_province_sep09.dta"
 //use "../dataverse/war_data_province.dta", clear
 
 frame drop default
@@ -80,6 +80,7 @@ DATA, 1965-1975
 PANEL A
 */
 
+cwf district
 summ                                                                        ///
     tot_bmr_per                                                             ///
     tot_bmr                                                                 ///
@@ -548,7 +549,7 @@ regress                                                                     ///
     $x_weather                                                              ///
     if (provincename~="Quang Tri") & sample_all==1, robust
     
-summ $y_consum_gro                                                        ///
+summ $y_consum_gro                                                          ///
     if (provincename~="Quang Tri") & sample_all==1
 
 // (3)
@@ -1096,7 +1097,7 @@ twoway                                                                     ///
     (scatter poverty_p0_dc tot_bmr_per_dc, mlabel(qt) mlabp(12))           ///
     (lfit poverty_p0_dc tot_bmr_per_dc),                                   ///
     ytitle("Residuals/Fitted values")                                      ///
-    saving(poverty_p0_tot_bmr_per_lin_dc, replace)
+    saving(fig2, replace)
 
 /*-----------
 FIGURE 3
@@ -1230,7 +1231,7 @@ twoway                                                                      ///
     (connected ratio34 year, mlabp(12)),                                    ///
     ylabel(0.8(0.2)1.6)                                                     ///
     l1title("State investment")                                             ///
-    saving(invest_median_19851976, replace)
+    saving(fig3, replace)
 
 
 
