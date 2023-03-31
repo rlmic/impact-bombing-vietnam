@@ -1,10 +1,8 @@
 /*
 
-Program analyzes data at 
-district & province level
+MAIN ANALYSIS
 ------------------------------------------
 
-Last modified: 29 March 2023
 */
 
 

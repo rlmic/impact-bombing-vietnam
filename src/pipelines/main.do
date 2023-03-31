@@ -129,24 +129,38 @@ global                                                                      ///
 RUN ANALYSIS
 -----------------------------------*/
 
-foreach district_data in                                                    ///
-    "$data/internal/dataverse/war_data_district.dta"                        ///
-    "$data/internal/archives/war_data_district_sep09.dta"                   ///
-    "$data/internal/archives/war_data_district_aug05.dta"{
-
-    if "`district_data'" == "$data/internal/dataverse/war_data_district.dta" {
-        local province_data = "$data/internal/dataverse/war_data_province.dta"
-        global source = "dataverse"
-        }
-    else if "`district_data'" == "$data/internal/archives/war_data_district_sep09.dta" {
-        local province_data = "$data/internal/archives/war_data_province_sep09.dta"
+foreach province_data in                                                    ///
+    "$data/external/dataverse/war_data_province.dta"                        ///
+    "$data/external/archives/war_data_province_sep09.dta"                   ///
+    "$data/external/archives/war_data_province_aug05.dta"					///
+	"$data/external/hochiminh/war_data_province_huynh .dta"			        ///
+	"$data/external/exposition/war_data_province_barce.dta"					///
+	"$data/external/exposition/war_data_province_malesk.dta"{
+	if "`province_data'" == "$data/external/archives/war_data_province_sep09.dta" {
+        local district_data = "$data/external/archives/war_data_district_sep09.dta"
         global source = "archives_sep09"
         }
-    else {
-        local province_data = "$data/internal/archives/war_data_province_aug05.dta"
+    else if "`province_data'" == "$data/external/archives/war_data_province_aug05.dta" {
+        local district_data = "$data/external/archives/war_data_district_aug05.dta"
         global source = "archives_aug05"
         }          
-        
+    else if "`province_data'" ==  "$data/external/dataverse/war_data_province.dta"{
+        local district_data = "$data/external/dataverse/war_data_district.dta"
+        global source = "dataverse"
+        }
+    else if "`province_data'" ==  "$data/external/hochiminh/war_data_province_huynh.dta"{
+        local district_data = "$data/external/dataverse/war_data_district.dta"
+        global source = "hochiminh"
+        }
+    else if "`province_data'" ==  "$data/external/exposition/war_data_province_barce.dta"{
+        local district_data = "$data/external/dataverse/war_data_district.dta"
+        global source = "barcelo"
+        }
+    else {
+		local district_data = "$data/external/dataverse/war_data_district.dta"
+        global source = "malesky"
+		
+	}  
     // Start log file and date
     log using "$logs/log_$source.txt", replace text
     
@@ -158,6 +172,7 @@ foreach district_data in                                                    ///
     frame create district
     cwf district
     use "`district_data'", clear
+	
     // Province Level
     frame create province
     cwf province
