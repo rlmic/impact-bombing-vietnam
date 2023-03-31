@@ -15,6 +15,7 @@ set matsize 800
 //log using war-analysis_2010-04, text
 cd "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 echo $dir
+
 // Defining globals
 
 global x_elev = "area_251 area_501 area_over_1000m";
@@ -27,18 +28,6 @@ global ord0 = "Ammunition";
 global ord1 = "General_Purpose Cluster_Bomb Missile Rocket Cannon_Artillery";
 global ord2 = "Incendiary WP";
 global ord3 = "Mine";
-global ord3_per = "mine_per";
-
-
-// Little predictive 
-// power and variation
-global ord4 = "AAC";
-global ord5 = "HE HECVT HEPD";
-global ord6 = "ILL ILLUM ILUM";
-global ord7 = "MK10 MK12 MK7";
-global ord8 = "RAP VT";
-global x_oth = "area_tot_km2 area_tot_km2_2"
-// Total U.S. bombs, missiles, and rockets per km2
 global dep_bom = "tot_bmr_per"
 global dep_pov = "poverty_p0"
 global dep_pop_den = "popdensity1985"
