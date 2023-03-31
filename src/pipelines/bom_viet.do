@@ -1121,11 +1121,8 @@ BOMBED
 cwf province
 
 gen tot_bmr_q1 = (tot_bmr_per>=0 & tot_bmr_per < 3.5)
-
 gen tot_bmr_q2 = (tot_bmr_per>=3.5 & tot_bmr_per < 12.3)
-
 gen tot_bmr_q3 = (tot_bmr_per>=12.3 & tot_bmr_per < 39.6)
-
 gen tot_bmr_q4 = (tot_bmr_per>=39.6 & tot_bmr_per ~=.)
 
 // Q1
@@ -1137,68 +1134,57 @@ cwf invest_q1
 collapse (sum) pop_85 invest_76-invest_85                                   ///
     if tot_bmr_q1==1    
 
-foreach num in 		                                                        ///
+foreach num in                                                              ///
     76 77 78 79 80 81 82 83 84 85{
-		replace invest_`num' = invest_`num'/pop_85
-		rename invest_`num' q1_`num'
+        replace invest_`num' = invest_`num'/pop_85
+        rename invest_`num' q1_`num'
     }
-	
+    
 gen temp=1
-
 reshape long q1_, i(temp) j(year)
-
 drop temp
-
 sort year
 
 
 // Q2
 
 frame copy province invest_q2
-
 cwf invest_q2
 
 collapse (sum)                                                              ///
     pop_85 invest_76-invest_85                                              ///
     if tot_bmr_q2==1    
 
-foreach num in 		                                                        ///
+foreach num in                                                               ///
     76 77 78 79 80 81 82 83 84 85{
-		replace invest_`num' = invest_`num'/pop_85
-		rename invest_`num' q2_`num'
+        replace invest_`num' = invest_`num'/pop_85
+        rename invest_`num' q2_`num'
     }
 
 gen temp=1
-
 reshape long q2_, i(temp) j(year)
-
 drop temp
-
 sort year
 
 
 // Q3
 
 frame copy province invest_q3
-
 cwf invest_q3
 
 collapse (sum)                                                              ///
     pop_85 invest_76-invest_85                                              ///
     if tot_bmr_q3==1    
 
-foreach num in 		                                                        ///
+foreach num in                                                              ///
     76 77 78 79 80 81 82 83 84 85{
-		replace invest_`num' = invest_`num'/pop_85
-		rename invest_`num' q3_`num'
+        replace invest_`num' = invest_`num'/pop_85
+        rename invest_`num' q3_`num'
     }
 
 gen temp=1
-
 reshape long q3_, i(temp) j(year)
-
 drop temp
-
 sort year
 
 
@@ -1212,72 +1198,49 @@ collapse (sum)                                                              ///
     pop_85 invest_76-invest_85                                              ///
     if tot_bmr_q4==1    
 
-foreach num in 		                                                        ///
+foreach num in                                                              ///
     76 77 78 79 80 81 82 83 84 85{
-		replace invest_`num' = invest_`num'/pop_85
-		rename invest_`num' q4_`num'
+        replace invest_`num' = invest_`num'/pop_85
+        rename invest_`num' q4_`num'
     }
 
 gen temp=1
-
 reshape long q4_, i(temp) j(year)
-
 drop temp
-
 sort year
 
 // Join into one dataframe
 frame copy invest_q1 invest
-
 cwf invest
-
 frlink 1:1 year, frame(invest_q2)
-
 frget q2_, from(invest_q2)
-
 frlink 1:1 year, frame(invest_q3)
-
 frget q3_, from(invest_q3)
-
 frlink 1:1 year, frame(invest_q4)
-
 frget q4_, from(invest_q4)
-
 sort year
 
-label var q1_ "Quartile 1"														
-
-label var q2_ "Quartile 2"
-
-label var q3_ "Quartile 3"
-
-label var q4_ "Quartile 4"
-
-label var year "Year"
-
 gen lab1 = 1
-
 gen lab2 = 2
-
 gen lab3 = 3
-
 gen lab4 = 4
-
-gen ratio2 = q2_/q1_
-
-gen ratio3 = q3_/q1_
-
-gen ratio4 = q4_/q1_
 
 gen ratio34 = (q3_+q4_)/(q2_+q1_)
 
-label var ratio34 "Ratio Above/Below Median"
+// Labels
 
-twoway 																		///
-	(connected ratio34 year, mlabp(12)),									///
-    ylabel(0.8(0.2)1.6)														///
-	l1title("State investment") 											///
-	saving(invest_median_19851976, replace)
+label var ratio34 "Ratio Above/Below Median"
+label var q1_ "Quartile 1"                                                        
+label var q2_ "Quartile 2"
+label var q3_ "Quartile 3"
+label var q4_ "Quartile 4"
+label var year "Year"
+
+twoway                                                                      ///
+    (connected ratio34 year, mlabp(12)),                                    ///
+    ylabel(0.8(0.2)1.6)                                                     ///
+    l1title("State investment")                                             ///
+    saving(invest_median_19851976, replace)
 
 
 
