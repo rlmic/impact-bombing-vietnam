@@ -43,7 +43,6 @@ global dep_bom = "tot_bmr_per"
 global dep_pov = "poverty_p0"
 global dep_pop_den = "popdensity1985"
 global dep_pop_gro = "ch_popdensity_20001985"
-global dep_nborn = "nbhere"
 global dep_pop_den_1999 = "popdensity1999"
 global dep_consum_2002 ="exppc02r98"
 global dep_consum_1992 ="exppc93r98"
@@ -738,10 +737,9 @@ regress                                                                     ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
     $x_soil1                                                                ///
-    $x_soil2,                                                               ///
+    $x_soil2                                                                ///
     south                                                                   ///
-    if provincename~="Quang Tri" & sample_all==1,                           ///
-    robust cluster(province)
+    if provincename~="Quang Tri" & sample_all==1, robust cluster(province)
     
 summ $dep_lit if provincename~="Quang Tri" & sample_all==1
 
@@ -755,7 +753,7 @@ regress                                                                     ///
     $x_gis                                                                  ///
     $x_weather                                                              ///          
     $x_soil1                                                                ///
-    $x_soil2,                                                               ///
+    $x_soil2                                                                ///
     if sample_all==1, robust cluster(province)                              ///
 
 summ $dep_lit if sample_all==1
@@ -892,9 +890,9 @@ regress                                                                     ///
         $x_weather                                                          ///
         $x_soil1                                                            ///
         $x_soil2                                                            ///
-        )if sample_all==1, robust cluster(province);
+        )if sample_all==1, robust cluster(province)
 
-summ $dep_pop_den_1999 if sample_all==1;
+summ $dep_pop_den_1999 if sample_all==1
 
 /*-----------
 TABLE 9
@@ -994,14 +992,13 @@ regress                                                                     ///
     
 summ $dep_pop_gro if sample_all==1
 
-gen nbhere=(1-bornhere)
 
 // PANEL C
 //--------
 
 // (1)
 regress                                                                     ///
-    $dep_nborn                                                              ///
+    nbhere                                                                  ///
     tot_bmr_per                                                             /// 
     popdensity6061                                                          ///
     south                                                                   ///
@@ -1010,11 +1007,11 @@ regress                                                                     ///
     $x_weather                                                              ///
     if sample_all==1, robust
     
-summ $dep_nborn if sample_all==1
+summ nbhere if sample_all==1
 
 // (2)
 regress                                                                     ///
-    $dep_nborn                                                              ///
+    nbhere                                                                  ///
     tot_bmr_per                                                             /// 
     popdensity6061                                                          ///
     south                                                                   ///
@@ -1027,7 +1024,7 @@ summ nbhere if (provincename~="Quang Tri") & sample_all==1
 
 // (3)
 regress                                                                     ///
-    $dep_nborn                                                              ///
+    nbhere                                                                  ///
     diff_17                                                                 ///
     popdensity6061                                                          ///
     south                                                                   ///
