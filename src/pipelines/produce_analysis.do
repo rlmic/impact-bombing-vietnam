@@ -9,29 +9,6 @@ Last modified: 29 March 2023
 
 
 /*-----------------------------------
-LOAD DATASETS AS FRAMES
------------------------------------*/
-
-// District Level
-
-frames reset
-
-frame create district
-cwf district
-//use "data/internal/archives/war_data_district_sep09.dta", clear
-use "$dir/data/internal/dataverse/war_data_district.dta", clear
-
-// Province Level
-
-frame create province
-cwf province
-use "$dir/data/internal/archives/war_data_province_sep09.dta"
-//use "../dataverse/war_data_province.dta", clear
-
-frame drop default
-
-
-/*-----------------------------------
 TABLES
 -----------------------------------*/
 
