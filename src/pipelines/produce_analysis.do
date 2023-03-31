@@ -1043,7 +1043,7 @@ twoway                                                                     ///
     (scatter poverty_p0_dc tot_bmr_per_dc, mlabel(qt) mlabp(12))           ///
     (lfit poverty_p0_dc tot_bmr_per_dc),                                   ///
     ytitle("Residuals/Fitted values")                                      ///
-    saving("$figures/fig2", replace)
+    saving("$figures/fig2_$source", replace)
 
 /*-----------
 FIGURE 3
@@ -1177,7 +1177,7 @@ twoway                                                                      ///
     (connected ratio34 year, mlabp(12)),                                    ///
     ylabel(0.8(0.2)1.6)                                                     ///
     l1title("State investment")                                             ///
-    saving("$figures/fig3", replace)
+    saving("$figures/fig3_$source", replace)
 
 
 /*-----------------------------------

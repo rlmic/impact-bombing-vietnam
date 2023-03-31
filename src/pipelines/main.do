@@ -40,8 +40,8 @@ global                                                                      ///
     soil_7                                                                  ///
     soil_8                                                                  ///
     soil_9                                                                  ///
-    soil_10
-    soil_11
+    soil_10                                                                 ///
+    soil_11																	///
     soil_12
     
 global                                                                      ///
@@ -125,36 +125,46 @@ global                                                                      ///
     lit_rate                                                                
 
 
-
-// Start log file and date
-log using "$logs/Baird-etal-QJE-2016_log_appendices.txt", replace text
-
-/*-----------------------------------
-LOAD DATASETS AS FRAMES
------------------------------------*/
-
-// District Level
-
-frames reset
-
-frame create district
-cwf district
-//use "data/internal/archives/war_data_district_sep09.dta", clear
-use "$dir/data/internal/dataverse/war_data_district.dta", clear
-
-// Province Level
-
-frame create province
-cwf province
-use "$dir/data/internal/archives/war_data_province_sep09.dta"
-//use "../dataverse/war_data_province.dta", clear
-
-frame drop default
-
 /*-----------------------------------
 RUN ANALYSIS
 -----------------------------------*/
 
-do "$code/pipelines/produce_analysis.do"
-    
-    
+foreach district_data in 													///
+	"$data/internal/dataverse/war_data_district.dta"						///
+	"$data/internal/archives/war_data_district_sep09.dta"					///
+	"$data/internal/archives/war_data_district_aug05.dta"{
+
+	if "`district_data'" == "$data/internal/dataverse/war_data_district.dta" {
+		local province_data = "$data/internal/dataverse/war_data_province.dta"
+		global source = "dataverse"
+		}
+	else if "`district_data'" == "$data/internal/archives/war_data_district_sep09.dta" {
+		local province_data = "$data/internal/archives/war_data_province_sep09.dta"
+		global source = "archives_sep09"
+		}
+    else {
+		local province_data = "$data/internal/archives/war_data_province_aug05.dta"
+		global source = "archives_aug05"
+		}		  
+		
+	// Start log file and date
+	log using "$logs/log_$source.txt", replace text
+	
+	/*-----------------------------------
+	LOAD DATASETS AS FRAMES
+	-----------------------------------*/
+	// District Level
+	frames reset
+	frame create district
+	cwf district
+	use "`district_data'", clear
+	// Province Level
+	frame create province
+	cwf province
+	use "`province_data'"
+	frame drop default
+	do "$code/pipelines/produce_analysis.do"
+    log c
+	clear
+
+    }
