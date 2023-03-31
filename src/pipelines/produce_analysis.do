@@ -1191,7 +1191,6 @@ desc                                                                        ///
     radio_rate                                                              ///
     urban_pct                                                               ///
     percent_cultivated                                                      ///
-    pcexp_99                                                                /// 
     gini                                                                    ///
     rlpcex1_9398                                                            ///
     rlpcex1                                                                 ///

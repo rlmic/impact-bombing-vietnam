@@ -19,40 +19,123 @@ global output = "$dir/outputs"
 global logs = "$dir/logs"
 global figures = "$output/figures"
 
-global                                                                       ///
-    stats1959                                                                ///
-    area1959                                                                 ///
-    population1959                                                           ///
-    popdensity1959                                                           ///
-    birthsmale1958
-    birthsfemale1958
-    birthsmale1959 
-    birthsfemale1959
-    deathsmale1958
-    deathsfemale1958                                                        ///
-    deathsmale1959
-    deathsfemale1959
-    paddyarea1959
+global                                                                      ///
+    stats1959                                                               ///
+    area1959                                                                ///
+    population1959                                                          ///
+    popdensity1959                                                          ///
+    birthsmale1958															///
+    birthsfemale1958  														///
+    birthsmale1959    														/// 
+    birthsfemale1959  														///
+    deathsmale1958    														///
+    deathsfemale1958  														///                                                     
+    deathsmale1959   														///
+    deathsfemale1959 														///
+    paddyarea1959    														///
     paddyproduction1959                                                     ///
-    paddyyieldperhectare1959
+    paddyyieldperhectare1959												///
     rubberplanted1958                                                       ///
     rubberworkable1958                                                      ///
-    rubberworked1958 
-    rubberworkedtoworkable1958 
-    rubberplanted1959
-    rubberworkable1959 rubberworked1959 rubberworkedtoworkable1959 tobaccoarea1958 tobaccoarea1959 
-    tobaccoproduction1958 tobaccoproduction1959 tobaccoyieldperha1958 tobaccoyieldperha1959 coconutarea1958 
-    coconutarea1959 coconutproduction1958 coconutproduction1959 coconutyieldperha1958 coconutyieldperha1959 
-    canearea1958 canearea1959 caneproduction1958 caneproduction1959 caneyieldperha1958 caneyieldperha1959";
+    rubberworked1958														/// 
+    rubberworkedtoworkable1958 												///
+    rubberplanted1959														///
+    rubberworkable1959														///
+	rubberworked1959														///
+	rubberworkedtoworkable1959												///
+	tobaccoarea1958															///
+	tobaccoarea1959 														///
+    tobaccoproduction1958													///
+	tobaccoproduction1959													///
+	tobaccoyieldperha1958													///
+	Tobaccoyieldperha1959													///
+	coconutarea1958 														///
+    coconutarea1959 														///
+	coconutproduction1958													///
+	coconutproduction1959													///
+	coconutyieldperha1958													///
+	coconutyieldperha1959													/// 
+    canearea1958															///
+	canearea1959															///
+	caneproduction1958														///
+	caneproduction1959														///
+	caneyieldperha1958														///
+	caneyieldperha1959
 
 
-global stats1961 "provincecity1961 area1961 population1961 popdensity1961 birthsmale1960 birthsfemale1960 birthsmale1961 
-    birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
-    paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
-    coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
-    tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
-    coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
-    
+global																		///
+	stats1961																///
+	provincecity1961														///
+	area1961																///
+	population1961															///
+	popdensity1961															///
+	birthsmale1960															///
+	birthsfemale1960														///
+	birthsmale1961  														///
+    birthsfemale1961														///
+	deathsmale1960  														///
+	deathsfemale1960														///
+	deathsmale1961  														///
+	deathsfemale1961														///
+	paddyarea1961 															///
+	paddyproduction1961 													///
+    paddyarea1962															///
+	paddyproduction1962														///
+	canearea1960															///
+	canearea1961															///
+	caneproduction1960														///
+	caneproduction1961														///
+	coconutarea1960 														///
+    coconutarea1961															///
+	coconutproduction1960													///
+	coconutproduction1961													///
+	tobaccoarea1960															///
+	tobaccoarea1961															///
+	tobaccoproduction1960													/// 
+    tobaccoproduction1961													///
+	paddyyieldperhectare1961												///
+	paddyyieldperhectare1962												///
+	caneyieldperha1960														///
+	caneyieldperha1961														/// 
+    coconutyieldperha1960													///
+	coconutyieldperha1961													///
+	tobaccoyieldperha1960													///
+	tobaccoyieldperha1961
+
+global																		///
+	stats1962																///
+	provincecity1962														///
+	birthsmale1961															///
+	birthsfemale1961														/// 
+	birthsmale1962  														///
+	birthsfemale1962														///
+	deathsmale1961  														///
+	deathsfemale1961														///
+	deathsmale1962
+	deathsfemale1962
+	paddyarea1_1963
+	paddyarea2_1963 paddyproduction1_1963 
+    paddyproduction2_1963
+    rubberplanted1961
+    rubberworkable1961
+    rubberworked1961
+    rubberplanted1962
+    rubberworkable1962 
+    rubberworked1962
+    tobaccoarea1961 
+	tobaccoarea1962
+	tobaccoproduction1961
+	tobaccoproduction1962
+	coconutarea1961 
+    coconutarea1962
+    coconutproduction1961
+    coconutproduction1962
+ global stats1962 "provincecity1962 area1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
+    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
+    rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
+    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
+    coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
+    rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
 **/////////////////////////////////////////////////////////////////////////**;
 **// TABLE OF CONTENTS;
 **// I.     CREATION OF PREWAR DATA FILE (PREWARDTSVIET);
@@ -94,8 +177,12 @@ label var
     popdensity1959
     "Population Density 1959, per km2"
     
-label var paddyarea1959 "Planted Area of Paddy, 1958-9, hectars"
-label var paddyproduction1959 "Production of Paddy, 1958-9, tons";
+label var 
+	paddyarea1959
+	"Planted Area of Paddy, 1958-9, hectars"
+label var
+	paddyproduction1959
+	"Production of Paddy, 1958-9, tons";
 label var paddyyieldperhectare1959 "Paddy Yield per Hectare, 1958-9";
 label var rubberplanted1958 "Planted Area of Rubber as of 12-31-58";
 label var rubberplanted1959 "Planted Area of Rubber as of 12-31-59";
@@ -105,10 +192,29 @@ sort provincecode1959
 drop if missing(provincecode1959)
     
 /*MAKE LANDMASS INVARIANT*/
-quietly for var population1959 birthsmale1958 birthsfemale1958 birthsmale1959 birthsfemale1959 deathsmale1958 deathsfemale1958 
-    deathsmale1959 deathsfemale1959 paddyarea1959 paddyproduction1959 rubberplanted1958 rubberworkable1958 
-    rubberworked1958 rubberplanted1959 rubberworkable1959 rubberworked1959 tobaccoarea1958 tobaccoarea1959 
-    tobaccoproduction1958 tobaccoproduction1959 coconutarea1958 coconutarea1959 coconutproduction1958 
+quietly for var
+	population1959
+	birthsmale1958
+	birthsfemale1958
+	birthsmale1959
+	birthsfemale1959
+	deathsmale1958
+	deathsfemale1958 
+    deathsmale1959
+	deathsfemale1959
+	paddyarea1959
+	paddyproduction1959
+	rubberplanted1958
+	rubberworkable1958 
+    rubberworked1958
+	rubberplanted1959
+	rubberworkable1959
+	rubberworked1959
+	tobaccoarea1958
+	tobaccoarea1959 
+    tobaccoproduction1958
+	tobaccoproduction1959
+	coconutarea1958 coconutarea1959 coconutproduction1958 
     coconutproduction1959 canearea1958 canearea1959 caneproduction1958 caneproduction1959:
     replace X=X/area1959;
 save Tmp1959, replace;
@@ -221,12 +327,6 @@ drop _merge;
 quietly for var $stats1961: rename X X_4;
 rename provincecode1961 provincefour1961;
 
-global stats1961 "area1961 population1961 popdensity1961 birthsmale1960 birthsfemale1960 birthsmale1961 
-    birthsfemale1961 deathsmale1960 deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 
-    paddyarea1962 paddyproduction1962 canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 
-    coconutarea1961 coconutproduction1960 coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 
-    tobaccoproduction1961 paddyyieldperhectare1961 paddyyieldperhectare1962 caneyieldperha1960 caneyieldperha1961 
-    coconutyieldperha1960 coconutyieldperha1961 tobaccoyieldperha1960 tobaccoyieldperha1961";
 
 quietly for any $stats1961: gen X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w+X_4*provincefour1961w if provincefour1961w~=. & provincefour1961w>0.05;
 quietly for any $stats1961: replace X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w if (provincefour1961w==. | provincefour1961w<=0.05) & provincethree1961w~=. & provincethree1961w>0.05;
@@ -245,11 +345,6 @@ save prewardt.dta, replace;
 **//1962;
 clear; insheet using Data1963.txt; sort provincecode1963; save Tmp1963.dta, replace;
 insheet using Data1962.txt, clear; drop if provincecode1962==.; sort provincecode1962;
-global stats1962 "provincecity1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
-    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1_1963 paddyarea2_1963 paddyproduction1_1963 
-    paddyproduction2_1963 rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
-    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
-    coconutarea1962 coconutproduction1961 coconutproduction1962";
 /* HAVE TO PULL area1962 FROM THE Data1963 FILE */;
 rename provincecode1962 provincecode1963; merge provincecode1963 using Tmp1963.dta; tab _merge; drop _merge;
     keep provincecode1963 area1962 $stats1962; rename provincecode1963 provincecode1962;
@@ -276,12 +371,6 @@ sort provincecode1962;
 merge provincecode1962 using Tmp1962.dta, update replace nokeep;
 tab _merge;
 drop _merge;
-global stats1962 "provincecity1962 area1962 birthsmale1961 birthsfemale1961 birthsmale1962 birthsfemale1962 deathsmale1961 
-    deathsfemale1961 deathsmale1962 deathsfemale1962 paddyarea1963 paddyproduction1963 
-    rubberplanted1961 rubberworkable1961 rubberworked1961 rubberplanted1962 rubberworkable1962 
-    rubberworked1962 tobaccoarea1961 tobaccoarea1962 tobaccoproduction1961 tobaccoproduction1962 coconutarea1961 
-    coconutarea1962 coconutproduction1961 coconutproduction1962 paddyyieldperhectare1963 rubberworkedtoworkable1961
-    rubberworkedtoworkable1962 coconutyieldperha1961 coconutyieldperha1962 tobaccoyieldperha1961 tobaccoyieldperha1962";
 quietly for var $stats1962: rename X X_1;
 rename provincecode1962 provinceone1962;
 rename provincetwo1962 provincecode1962;
