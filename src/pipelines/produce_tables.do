@@ -35,7 +35,7 @@ estpost summ                                                                ///
     $ord0                                                                   ///
     if sample_all==1
     
-esttab using "$tables/tab1a_stats.tex", replace                             ///
+esttab using "$tables/tab1a_stats_$source.tex", replace                     ///
     cells(                                                                  ///
     "mean($meas) sd($meas) max($meas) count()"                              ///
     )                                                                       ///
@@ -58,7 +58,7 @@ estpost correlate                                                           ///
     if sample_all==1                                                        ///
     [aw=pop_tot]
     
-esttab using "$tables/tab1a_corr.tex",                                      ///
+esttab using "$tables/tab1a_corr_$source.tex",                              ///
     replace                                                                 /// 
     nonote                                                                  ///
     noobs label booktabs                                                    ///
@@ -77,7 +77,7 @@ estpost summ                                                                ///
     tot_bmr_per                                                             ///
     if sample_all==1  
 
-esttab using "$tables/tab1b_stats.tex", replace                             ///
+esttab using "$tables/tab1b_stats_$source.tex", replace                     ///
     cells(                                                                  ///
     "mean($meas) sd($meas) max($meas) count()"                              ///
     )                                                                       ///
@@ -122,7 +122,7 @@ estpost summ                                                                ///
     diff_17                                                                 ///
     if sample_all==1
 
-esttab using "$tables/tab2a_stats.tex", replace                             ///
+esttab using "$tables/tab2a_stats_$source.tex", replace                     ///
     cells(                                                                  ///
     "mean($meas) sd($meas) min($meas) max($meas) count()"                   ///
     )                                                                       ///
@@ -153,7 +153,7 @@ estpost summ                                                                ///
     diff_17                                                                 ///
     if sample_all==1
     
-esttab using "$tables/tab2b_stats.tex", replace                             ///
+esttab using "$tables/tab2b_stats_$source.tex", replace                     ///
     cells(                                                                  ///
     "mean($meas) sd($meas) min($meas) max($meas) count()"                   ///
     )                                                                       ///
@@ -250,7 +250,7 @@ summ                                                                        ///
 
 local tab3 tab31 tab32 tab33
 
-esttab `tab3' using "$tables/tab3_reg.tex", replace                         ///
+esttab `tab3' using "$tables/tab3_reg_$source.tex", replace                 ///
     nomtitle label star(* 0.10 ** 0.05 *** 0.01)                            ///
     booktabs nonotes                                                        ///
     scalars(                                                                ///
@@ -430,10 +430,10 @@ summ $y_pov if sample_all==1
 
 local tab4 tab41 tab42 tab43 tab44 tab45 tab46
 
-esttab `tab4' using "$tables/tab4_reg.tex", replace                         ///
+esttab `tab4' using "$tables/tab4_reg_$source.tex", replace                 ///
    nomtitle label star(* 0.10 ** 0.05 *** 0.01)                             ///
    booktabs nonotes                                                         ///
-    scalars(                                                                //
+    scalars(                                                                ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
         "has_fe Fixes Effects"                                              ///
@@ -549,7 +549,7 @@ summ $y_pov if sample_all==1
 
 local tab5 tab50_south tab51_south tab50_urban tab51_urban tab55 tab56
 
-esttab `tab5' using "$tables/tab5_reg.tex", replace                         ///
+esttab `tab5' using "$tables/tab5_reg_$source.tex", replace                 ///
    label star(* 0.10 ** 0.05 *** 0.01)                                      ///
    booktabs nonotes                                                         ///
    scalars("has_control District demographic, geographic, soil controls")   ///
@@ -626,7 +626,7 @@ summ $y_consum_2002 if sample_all==1
 
 local tab6a tab6a1 tab6a2 tab6a3
 
-esttab `tab6a' using "$tables/tab6_reg.tex",                                ///    
+esttab `tab6a' using "$tables/tab6_reg_$source.tex", replace                ///    
     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab6_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                                                                 ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: 2002 per capita consumption expenditures}} \\\\[-1ex]") ///
     fragment                                                                ///
@@ -634,7 +634,7 @@ esttab `tab6a' using "$tables/tab6_reg.tex",                                ///
         "exc_qua Exclude Quang Tri"                                         ///
         )                                                                   ///    
     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
-    keep(tot_bmr_per diff_17) label replace
+    keep(tot_bmr_per diff_17) label
 
 /*
 PANEL B
@@ -687,14 +687,14 @@ summ $y_consum_1992 if sample_all==1
 
 local tab6b tab6b1 tab6b2 tab6b3
 
-esttab `tab6b' using "$tables/tab6_reg.tex",                                ///
-    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992/93 per capita consumption expenditures}} \\\\[-1ex]") ///
-    fragment append                                                         ///
-    scalars(                                                                ///
-        "exc_qua Exclude Quang Tri"                                         ///
-        )                                                                   ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
-    keep(tot_bmr_per diff_17) label
+//esttab `tab6b' using "$tables/tab6_reg_$source.tex"                         ///
+//    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992-93 per capita consumption expenditures}} \\\\[-1ex]") ///
+//    fragment append                                                         ///
+//    scalars(                                                                ///
+//        "exc_qua Exclude Quang Tri"                                         ///
+//        )                                                                   ///
+//    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
+//    keep(tot_bmr_per diff_17) label
 
 /*
 PANEL C
@@ -749,16 +749,16 @@ summ $y_consum_gro if sample_all==1
 
 local tab6c tab6c1 tab6c2 tab6c3
 
-esttab `tab6c' using "$tables/tab6_reg.tex",                                ///
-       posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}} \\\\[-1ex]") ///
-    prefoot("\hline")                                                       ///
-    postfoot($foot_pane)                                                    ///
-    fragment append                                                         ///
-    scalars(                                                                ///
-        "exc_qua Exclude Quang Tri"                                         ///
-        )                                                                   ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
-    keep(tot_bmr_per diff_17) label
+///esttab `tab6c' using "$tables/tab6_reg_$source.tex"                         ///
+///    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}} \\\\[-1ex]") ///
+///    prefoot("\hline")                                                       ///
+///    postfoot($foot_pane)                                                    ///
+///    fragment append                                                         ///
+///    scalars(                                                                ///
+///        "exc_qua Exclude Quang Tri"                                         ///
+///        )                                                                   ///
+///    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
+///    keep(tot_bmr_per diff_17) label
 
 /*-----------
 TABLE 7
@@ -921,16 +921,16 @@ summ $y_acc_elec if sample_all==1
 
 local tab7_a tab7_a1 tab7_a2 tab7_a3 tab7_a4 tab7_a5 tab7_a6
 
-esttab `tab7_a' using "$tables/tab7_reg.tex",                              ///    
-    prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab7_reg} \\ \begin{tabular}{l*{6}{c}} \hline\hline")                                                                 ///
+esttab `tab7_a' using "$tables/tab7_reg_$source.tex",                       ///    
+    prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab7_reg} \\ \begin{tabular}{l*{6}{c}} \hline\hline")                                                                            ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Proportion of households with access to electricity, 1999}} \\\\[-1ex]") ///
-    fragment                                                               ///
-    scalars(                                                               ///
-        "has_soil District soil"                                           ///
-        "exc_qua Exclude Quang Tri"                                        ///
-        "has_fe Fixes Effects"                                             ///
-        )                                                                  ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                ///
+    fragment                                                                ///
+    scalars(                                                                ///
+        "has_soil District soil"                                            ///
+        "exc_qua Exclude Quang Tri"                                         ///
+        "has_fe Fixes Effects"                                              ///
+        )                                                                   ///
+    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
     keep(tot_bmr_per diff_17) label replace
 
 /*
@@ -1080,7 +1080,7 @@ summ $y_lit if sample_all==1
 
 local tab7_b tab7_b1 tab7_b2 tab7_b3 tab7_b4 tab7_b5 tab7_b6
 
-esttab `tab7_b' using "$tables/tab7_reg.tex",                               ///
+esttab `tab7_b' using "$tables/tab7_reg_$source.tex",                       ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Proportion of literate respondents, 1999}} \\\\[-1ex]") ///
     prefoot("\hline")                                                       ///
     postfoot($foot_pane)                                                    ///
@@ -1256,7 +1256,7 @@ summ $y_pop_den_1999 if sample_all==1
 
 local tab8 tab8_*
 
-esttab `tab8' using "$tables/tab8_reg.tex", replace                         ///
+esttab `tab8' using "$tables/tab8_reg_$source.tex", replace                 ///
     label star(* 0.10 ** 0.05 *** 0.01)                                     ///
     booktabs nonotes                                                        ///
     scalars(                                                                ///
@@ -1336,7 +1336,7 @@ summ $y_pop_den if sample_all==1
 
 local tab9a tab9a1 tab9a2 tab9a3
 
-esttab `tab9a' using "$tables/tab9_reg.tex",                                ///    
+esttab `tab9a' using "$tables/tab9_reg_$source.tex",                        ///    
     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab9_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                                                                 ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Population density, 1985}} \\\\[-1ex]") ///
     fragment                                                                ///
@@ -1398,7 +1398,7 @@ summ $y_pop_gro if sample_all==1
 
 local tab9b tab9b1 tab9b2 tab9b3
 
-esttab `tab9b' using "$tables/tab9_reg.tex",                                ///
+esttab `tab9b' using "$tables/tab9_reg_$source.tex",                        ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Growth in population density, 1985 to 2000}} \\\\[-1ex]") ///
     fragment append                                                         ///
     scalars(                                                                ///
@@ -1459,7 +1459,7 @@ summ nbhere if sample_all==1
 
 local tab9c tab9c1 tab9c2 tab9c3
 
-esttab `tab9c' using "$tables/tab9_reg.tex",                                ///
+esttab `tab9c' using "$tables/tab9_reg_$source.tex",                        ///
        posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: 1997/98 proportion not born in current village}} \\\\[-1ex]") ///
     prefoot("\hline")                                                       ///
     postfoot($foot_pane)                                                    ///
