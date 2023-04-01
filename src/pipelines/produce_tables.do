@@ -662,7 +662,7 @@ esttab `tab4' using "$tables/tab4_reg.tex", replace 						///
    nomtitle label star(* 0.10 ** 0.05 *** 0.01)								///
    booktabs nonotes 														///
    scalars("has_soil District soil controls" "exc_qua Exclude Quang Tri" "has_fe Province fixed effects") ///
-   sfmt(0) r2 																///
+   sfmt(0) r2 b(%8.5f) se(%8.5f)				    						///
    mgroups("Estimated poverty rate, 1999", 									///
    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)							///
    suffix(}) span erepeat(\cmidrule(lr){@span}))						    ///
@@ -781,7 +781,7 @@ esttab `tab5' using "$tables/tab5_reg.tex", replace 						///
    label star(* 0.10 ** 0.05 *** 0.01)										///
    booktabs nonotes 														///
    scalars("has_control District demographic, geographic, soil controls")   ///
-   sfmt(0) r2 																///
+   sfmt(0) r2 b(%8.5f) se(%8.5f)				    						///
    mgroups("Estimated poverty rate, 1999", 									///
    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)							///
    suffix(}) span erepeat(\cmidrule(lr){@span}))						    ///
@@ -789,7 +789,6 @@ esttab `tab5' using "$tables/tab5_reg.tex", replace 						///
    mtitles("Ex-North" "Ex-South" "Rural" "Urban" "All Vietnam" "All Vietnam" ) ///
    keep(tot_bmr_hi tot_bmr_per tot_bmr_per_2)                               ///
    title($title_tab5_reg)
-
 
 /*-----------
 TABLE 6
@@ -866,7 +865,7 @@ esttab `tab6_a' using "$tables/tab6_reg.tex", 								///
 	posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: 2002 per capita consumption expenditures}} \\\\[-1ex]") ///
 	fragment       														    ///
 	scalars("exc_qua Exclude Quang Tri") 									///
-	sfmt(0) r2 nomtitles    											    ///
+	sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                              	///
 	keep(tot_bmr_per diff_17) label replace
 
 /*
@@ -930,7 +929,7 @@ esttab `tab6_b' using "$tables/tab6_reg.tex", 							    ///
 	posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992/93 per capita consumption expenditures}} \\\\[-1ex]") ///
 	fragment append  														///
 	scalars("exc_qua Exclude Quang Tri") 									///
-	sfmt(0) r2 nomtitles nonumbers 											///
+	sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers 					    ///
 	keep(tot_bmr_per diff_17) label
 
 /*
@@ -998,9 +997,9 @@ esttab `tab6_c' using "$tables/tab6_reg.tex", 								 ///
 	postfoot($foot_pane) 										             ///
 	fragment append  														 ///
 	scalars("exc_qua Exclude Quang Tri") 									 ///
-	sfmt(0) r2 nomtitles nonumbers 											 ///
+	sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers 						 ///
 	keep(tot_bmr_per diff_17) label
-	
+
 /*-----------
 TABLE 7
 -------------
