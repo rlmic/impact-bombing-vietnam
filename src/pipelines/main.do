@@ -26,7 +26,7 @@ RUN ANALYSIS
 foreach province_data in                                                    ///
     "$dave_prov"                                                            ///
     "$sept_prov"                                                            ///
-    "$augu_prov"                   											///
+    "$augu_prov"                                                            ///
     "$huyn_prov"                                                            ///
     "$males_prov"{
     if "`province_data'" == "$sept_prov" {
@@ -65,17 +65,17 @@ foreach province_data in                                                    ///
     do "$code/general/lab_dis.do"
 
     // Province Level
-	
+    
     frame create province
     cwf province
     use "`province_data'"
     gen nbhere=(1-bornhere)
     frame drop default
     do "$code/general/lab_pro.do"
-	
+    
     /*-----------------------------------
-	PRODUCE TABLES
-	-----------------------------------*/	
+    PRODUCE TABLES
+    -----------------------------------*/    
     do "$code/pipelines/produce_tables.do"
     log c
     clear
