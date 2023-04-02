@@ -151,6 +151,10 @@ estpost summ                                                                ///
     consgrowth_9302                                                         ///
     $x_gis                                                                  ///
     diff_17                                                                 ///
+    poverty_p0                                                              ///
+	south																	///
+    $x_weather                                                              ///
+    $x_elev                                                                 ///
     if sample_all==1
     
 esttab using "$tables/tab2b_stats_$source.tex", replace                     ///

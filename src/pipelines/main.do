@@ -1,8 +1,6 @@
 clear
 capture log close
 set more off
-set mem 100m
-set matsize 800
 
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 
