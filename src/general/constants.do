@@ -204,17 +204,33 @@ PATH TO SOURCE DATA
 -----------------------------------*/
 
 global                                                                      /// 
-	dave_prov																///
-	"$data/external/dataverse/war_data_province.dta"
-	
-global																		///
-	dave_dist																///
-	"$data/external/dataverse/war_data_district.dta"
-	
+    dave_prov                                                               ///
+    "$data/external/dataverse/war_data_province.dta"
+    
+global                                                                      ///
+    dave_dist                                                               ///
+    "$data/external/dataverse/war_data_district.dta"
+    
 global                                                                      /// 
-	augu_prov																///
-	"$data/external/archives/war_data_province_aug05.dta"
+    augu_prov                                                               ///
+    "$data/external/archives/war_data_province_aug05.dta"
 
 global                                                                      /// 
-	augu_dist																///
-	"$data/external/archives/war_data_district_aug05.dta"
+    augu_dist                                                               ///
+    "$data/external/archives/war_data_district_aug05.dta"
+
+global                                                                      /// 
+    sept_prov                                                               ///
+    "$data/external/archives/war_data_province_sep09.dta"
+
+global                                                                      /// 
+    sept_dist                                                               ///
+    "$data/external/archives/war_data_district_sep09.dta"
+
+global                                                                      ///
+    males_prov                                                              ///                                             
+    "$data/external/exposition/war_data_province_malesk.dta"
+
+global                                                                      ///
+    huyn_prov                                                               /// 
+    "$data/external/hochiminh/war_data_province_huynh.dta"

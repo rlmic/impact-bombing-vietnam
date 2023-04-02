@@ -24,29 +24,29 @@ RUN ANALYSIS
 -----------------------------------*/
 
 foreach province_data in                                                    ///
-    "$data/external/dataverse/war_data_province.dta"                        ///
-    "$data/external/archives/war_data_province_sep09.dta"                   ///
-    "$data/external/archives/war_data_province_aug05.dta"                   ///
-    "$data/external/hochiminh/war_data_province_huynh.dta"                  ///
-    "$data/external/exposition/war_data_province_malesk.dta"{
-    if "`province_data'" == "$data/external/archives/war_data_province_sep09.dta" {
-        local district_data = "$data/external/archives/war_data_district_sep09.dta"
+    "$dave_prov"                                                            ///
+    "$sept_prov"                                                            ///
+    "$augu_prov"                   											///
+    "$huyn_prov"                                                            ///
+    "$males_prov"{
+    if "`province_data'" == "$sept_prov" {
+        local district_data = "$sept_dist"
         global source = "archives_sep09"
         }
-    else if "`province_data'" == "$data/external/archives/war_data_province_aug05.dta"{
-        local district_data = "$data/external/archives/war_data_district_aug05.dta"
+    else if "`province_data'" == "$augu_prov"{
+        local district_data = "$augu_dist"
         global source = "archives_aug05"
         }          
-    else if "`province_data'" ==  "$data/external/dataverse/war_data_province.dta" {
-        local district_data = "$data/external/dataverse/war_data_district.dta"
+    else if "`province_data'" ==  "$dave_prov" {
+        local district_data = "$dave_dist"
         global source = "dataverse"
         }
-    else if "`province_data'" ==  "$data/external/hochiminh/war_data_province_huynh.dta"{
-        local district_data = "$data/external/dataverse/war_data_district.dta"
+    else if "`province_data'" ==  "$huyn_prov"{
+        local district_data = "$dave_dist"
         global source = "hochiminh"
         }
     else {
-        local district_data = "$data/external/dataverse/war_data_district.dta"
+        local district_data = "$dave_dist"
         global source = "malesky"
         
     }  
