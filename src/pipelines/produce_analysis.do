@@ -147,6 +147,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1, robust cluster(province)
 
 summ                                                                        ///
@@ -163,6 +165,8 @@ regress                                                                     ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1 & provincename~="Quang Tri", robust cluster(province)
     
 summ                                                                        ///

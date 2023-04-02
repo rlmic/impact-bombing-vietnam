@@ -216,6 +216,8 @@ eststo tab32: regress                                                       ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1, robust cluster(province)
 
 estadd local has_soil "Yes"
@@ -236,6 +238,8 @@ eststo tab33: regress                                                       ///
     $x_elev                                                                 ///
     $x_weather                                                              ///
     $x_gis                                                                  ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     if sample_all==1 & provincename~="Quang Tri", robust cluster(province)
 
 estadd local has_soil "Yes"
@@ -264,7 +268,7 @@ esttab `tab3' using "$tables/tab3_reg_$source.tex", replace                 ///
     suffix(}) span                                                          ///
     erepeat(\cmidrule(lr){@span}))                                          ///
     alignment(D{.}{.}{-1})                                                  ///
-    drop(_cons)                                                             ///
+    drop(_cons soil*)                                                       ///
     title($title_tab3_reg)                                                
 
 /*-----------
