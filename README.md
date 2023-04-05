@@ -29,6 +29,27 @@
 │   ├── pipelines
 
 ```
+# Datasets
+
++ Defense Security Cooperation Agency (DSCA): Archives housed at the United States National Archives in Record Group 218, called “Records of the U.S. Joint Chiefs of Staff”. The database contains information on all ordnance dropped from U.S. and allied airplanes and helicopters in Vietnam between 1965 and 1975, as well as artillery fired from naval ships.
+
++ Vietnam Poverty, Geographic, and Climatic Data
+District-level estimates of poverty were provided by Nicholas Minot of the International Food Policy Research Institute (IFPRI). The estimates were generated through poverty mapping, an application of the small-area estimation method developed in Elbers et al (2003). This method matches detailed, small- sample survey data to less-detailed, large-sample census data across geographic units, to generate area- level estimates of an individual- or household-level phenomenon—in our case, district-level poverty incidence in Vietnam. For more detailed information, see Minot et al. (2003).
+The two datasets used by Minot et al. (2003) are the 1997/8 Vietnam Living Standards Survey (VLSS) and a 33% subsample (5,553,811 households) of the 1999 Population and Housing Census. The VLSS, undertaken by the Vietnam General Statistical Office (GSO) in Hanoi with technical assistance from the World Bank, is a detailed household-level survey of 4270 rural and 1730 urban Vietnamese households. The 1999 Population and Housing Census was conducted by the GSO with technical support from the United Nations Family Planning Agency and United Nations Development Program (UNDP). We also use data from the 1992/3 and 2002 VLSS survey rounds in this paper.
+ 49
+Minot et al. use the VLSS data to estimate a household-level, log-linear regression of real cost-of- living-adjusted per capita consumption expenditure on 17 household characteristics common to both the VLSS and the Population and Housing Census. These characteristics include: household size, proportion over 60 years old, proportion under 15 years old, proportion female, highest level of education completed by head of household, whether or not head has a spouse, highest level of education completed by spouse, whether or not head is an ethnic minority, occupation of head over last 12 months, type of house (permanent; semi-permanent or wooden frame; “simple”), house type interacted with living area, whether or not household has electricity, main source of drinking water, type of toilet, whether or not household owns a television, whether or not household owns a radio, and region. Minot et al. (2003) partition the sample to undertake separate parameter estimates for the correlates of rural and urban poverty.
+Predicted consumption expenditures per capita for each of the district-coded households in the 1999 Population and Housing Census sample are then generated using the parameter estimates from these regressions. Properly weighting by the size of each household, this enables Minot et al (2003) to generate an estimate of district-level poverty incidence, the percentage of the population in each district that lives below the official national poverty line of 1,789,871 Dong (VND) per person per year (GSO 2000).
+All district-level topographic, geographic, and climatic data used in this paper were provided by Nicholas Minot and are identical to those used in Minot et al. (2003). The topographical data used in Minot et al. (2003) are taken from the United States Geological Survey.
+Province population figures in the 1980s and 1990s are from the Vietnam Statistical Yearbooks (Vietnam General Statistical Office). Unfortunately, we have been unable to locate complete and consistently defined province level demographic data from the mid-1970s through the mid-1980s. These Yearbooks also contain information on total state investment flows by province from 1976-1985, data that is also used in the statistical analysis.
+
++ Data from the pre-*American War* period
+
+Pre-war, province-level demographic data on South Vietnam were taken from the 1959-1965 editions of the Statistical Yearbook of Vietnam, published by the National Institute of Statistics in Saigon, and for North Vietnam from the Vietnam Agricultural Statistics over 35 Years (1956-1990), published by the GSO Statistical Publishing House in Hanoi (1991). Province level agricultural statistics are also available (e.g., rice paddy yields), but it is widely thought that such prewar data are unreliable as a result of the prewar ideological conflict between North and South Vietnam (Banens 1999), and thus we do not use those data in the analysis.
+A final data source we considered is the HAMLA/HES database collected by the U.S. government starting in South Vietnam in 1967-68 (described in Kalyvas and Kocher 2003), which collected rough proxies for village socioeconomic conditions. The two main drawbacks of this data is that first, the exact procedure for assigning the local SES measures is not transparent or well-described in existing sources, and second the data was collected several years into the war, and thus may be endogenous to earlier U.S. bombing patterns. For these reasons we do not utilize this data in the analysis.
+
+
+# Reproducing the results
+
 ## Running the main analysis
 ## Constructing the datasets
 
