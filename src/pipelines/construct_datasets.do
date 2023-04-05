@@ -18,6 +18,7 @@ global logs = "$dir/logs"
 global figures = "$output/figures"
 
 
+
 global                                                                      /// 
     stats1959                                                               ///
     area1959                                                                ///
@@ -62,53 +63,60 @@ global                                                                      ///
     caneyieldperha1959    
     
 global                                                                      ///
-    vars1959                                                                ///
+    identifiers                                                             ///
     districtname                                                            ///
     provincename                                                            ///                
     regionname                                                              ///
     district                                                                ///
     province                                                                ///
-    region                                                                  ///
-    area1959                                                                ///
-    population1959                                                          ///
-    popdensity1959                                                          ///
-    birthsmale1958                                                          ///
-    birthsfemale1958                                                        ///
-    birthsmale1959                                                          ///
-    birthsfemale1959                                                        ///
-    deathsmale1958                                                          ///                    
-    deathsfemale1958                                                        ///
-    deathsmale1959                                                          ///
-    deathsfemale1959                                                        ///
-    paddyarea1959                                                           ///
-    paddyproduction1959                                                     ///
-    paddyyieldperhectare1959                                                ///
-    rubberplanted1958                                                       ///
-    rubberworkable1958                                                      ///
-    rubberworked1958                                                        ///
-    rubberworkedtoworkable1958                                              ///
-    rubberplanted1959                                                       ///
-    rubberworkable1959                                                      ///
-    rubberworked1959                                                        ///
-    rubberworkedtoworkable1959                                              ///
-    tobaccoarea1958 tobaccoarea1959                                         ///
-    tobaccoproduction1958                                                   /// 
-    tobaccoproduction1959                                                   /// 
-    tobaccoyieldperha1958                                                   /// 
-    tobaccoyieldperha1959                                                   /// 
-    coconutarea1958                                                         /// 
-    coconutarea1959                                                         /// 
-    coconutproduction1958                                                   /// 
-    coconutproduction1959                                                   /// 
-    coconutyieldperha1958                                                   /// 
-    coconutyieldperha1959                                                   ///  
-    canearea1958                                                            ///
-    canearea1959                                                            ///
-    caneproduction1958                                                      /// 
-    caneproduction1959                                                      /// 
-    caneyieldperha1958                                                      /// 
-    caneyieldperha1959                                                        
-    
+    region
+	
+global                                                                      ///
+	stats1961 																///
+	area1961																///
+	population1961															///
+	popdensity1961															///
+	birthsmale1960															///
+	birthsfemale1960														///
+	birthsmale1961															/// 
+	birthsfemale1961														///	
+	deathsmale1960  														///
+	deathsfemale1960														///	 
+	deathsmale1961															///
+	deathsfemale1961														///
+	paddyarea1961															///
+	paddyproduction1961														/// 
+	paddyarea1962 															///														
+	paddyproduction1962														/// 
+	canearea1960															/// 
+	canearea1961															///
+	caneproduction1960														/// 
+	caneproduction1961														///
+	coconutarea1960															/// 
+	coconutarea1961															///
+	coconutproduction1960													///
+	coconutproduction1961													///
+	tobaccoarea1960															///
+	tobaccoarea1961															///
+	tobaccoproduction1960 													///
+	tobaccoproduction1961													///
+	paddyyieldperhectare1961												///
+	paddyyieldperhectare1962												///
+	caneyieldperha1960														///
+	caneyieldperha1961														/// 
+	coconutyieldperha1960 													///
+	coconutyieldperha1961													///
+	tobaccoyieldperha1960													///
+	tobaccoyieldperha1961
+
+/*-----------
+PREWAR DATA
+-------------
+
+PRODUCES AND COMBINES
+PREWAR DATA
+
+-----------*/
 /*
 1959
 */
@@ -170,6 +178,10 @@ save `1959'
 insheet using                                                               ///
    "$data/internal/raw/prewar/districtcodesprewarmatchedw.txt",             ///
    clear
+
+tempfile prewarcode
+
+save `prewarcode'
 
 rename                                                                      ///
     provinceone1959                                                         ///
@@ -265,9 +277,9 @@ label var                                                                   ///
 
 drop urban
 
-keep $vars1959
+keep $identifiers $stats1959
 
-order $vars1959
+order $identifiers $stats1959
 
 sort district
 
@@ -282,79 +294,197 @@ save `prewardt'
 insheet                                                                     /// 
     using Data1961.txt,                                                     ///
     clear
-label var area1961 "Area 1961, km2";
-label var popdensity1961 "Population Density 1961, per km2";
-label var paddyarea1_1961 "Planted Area of Paddy, 1960-1 First Crop, hectars";
-label var paddyarea2_1961 "Planted Area of Paddy, 1960-1 Second Crop, hectars";
-label var paddyproduction1_1961 "Production of Paddy, 1960-1 First Crop, tons";
-label var paddyproduction2_1961 "Production of Paddy, 1960-1 Second Crop, tons";
-label var canearea1960 "Planted Area of Sugar Cane 1960, hectars";
-label var canearea1961 "Planted Area of Sugar Cane 1961, hectars";
-label var caneproduction1960 "Production of Sugar Cane 1960, tons";
-label var caneproduction1961 "Production of Sugar Cane 1961, tons";
-label var coconutproduction1960 "Coconut Production 1960, 1000 nuts";
-label var coconutproduction1961 "Coconut Production 1961, 1000 nuts";
-sort provincecode1961;
-drop if provincecode1961==.;
-foreach part in paddyarea paddyproduction {;
-    gen `part'1962=`part'1_1962+`part'2_1962;
-    gen `part'1961=`part'1_1961+`part'2_1961;
-    drop `part'1_* `part'2_*;
-};
-quietly for num 1961 1962: gen paddyyieldperhectareX=paddyproductionX/paddyareaX;
-quietly for num 1960 1961: gen caneyieldperhaX=caneproductionX/caneareaX\
-    gen coconutyieldperhaX=coconutproductionX/coconutareaX\
-    gen tobaccoyieldperhaX=tobaccoproductionX/tobaccoareaX;
-quietly for var population1961 birthsmale1960 birthsfemale1960 birthsmale1961 birthsfemale1961 deathsmale1960 
-    deathsfemale1960 deathsmale1961 deathsfemale1961 paddyarea1961 paddyproduction1961 paddyarea1962 paddyproduction1962 
-    canearea1960 canearea1961 caneproduction1960 caneproduction1961 coconutarea1960 coconutarea1961 coconutproduction1960 
-    coconutproduction1961 tobaccoarea1960 tobaccoarea1961 tobaccoproduction1960 tobaccoproduction1961:
-    replace X=X/area1961;
-save Tmp1961, replace;
-clear;
-insheet using districtcodesprewarmatchedw.txt;
-rename provinceone1961 provincecode1961;
-sort provincecode1961;
-merge provincecode1961 using Tmp1961.dta, update replace nokeep;
-tab _merge;
-drop _merge;
-quietly for var $stats1961: rename X X_1;
-rename provincecode1961 provinceone1961;
-rename provincetwo1961 provincecode1961;
-sort provincecode1961;
-merge provincecode1961 using Tmp1961.dta, update replace nokeep;
-tab _merge;
-drop _merge;
-quietly for var $stats1961: rename X X_2;
-rename provincecode1961 provincetwo1961;
-rename provincethree1961 provincecode1961;
-sort provincecode1961;
-merge provincecode1961 using Tmp1961.dta, update replace nokeep;
-tab _merge;
-drop _merge;
-quietly for var $stats1961: rename X X_3;
-rename provincecode1961 provincethree1961;
-rename provincefour1961 provincecode1961;
-sort provincecode1961;
-merge provincecode1961 using Tmp1961.dta, update replace nokeep;
-tab _merge;
-drop _merge;
-quietly for var $stats1961: rename X X_4;
-rename provincecode1961 provincefour1961;
 
+sort provincecode1961
 
-quietly for any $stats1961: gen X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w+X_4*provincefour1961w if provincefour1961w~=. & provincefour1961w>0.05;
-quietly for any $stats1961: replace X=X_1*provinceone1961w+X_2*provincetwo1961w+X_3*provincethree1961w if (provincefour1961w==. | provincefour1961w<=0.05) & provincethree1961w~=. & provincethree1961w>0.05;
-quietly for any $stats1961: replace X=X_1*provinceone1961w+X_2*provincetwo1961w if (provincethree1961w==. | provincethree1961w<=0.05) & provincetwo1961w~=. & provincetwo1961w>0.05;
-quietly for any $stats1961: replace X=X_1 if provincetwo1961w==. | provincetwo1961w<=0.05;
+drop if missing(provincecode1961)
 
-drop urban;
-keep districtname provincename regionname district province region $stats1961;
-order districtname provincename regionname district province region $stats1961;
-sort district;
-merge district using prewardt.dta;
-tab _merge;
-drop _merge;
+foreach var in paddyarea paddyproduction {
+							
+	gen `var'1962 =`var'1_1962+`var'2_1962
+	gen `var'1961 =`var'1_1961+`var'2_1961
+	drop `var'1_* `var'2_*
+	
+}
+
+quietly for num 1961 1962:													///
+	gen paddyyieldperhectareX = paddyproductionX/paddyareaX
+	
+quietly for num 1960 1961:													///
+	gen caneyieldperhaX = caneproductionX/caneareaX\						///
+	gen coconutyieldperhaX = coconutproductionX/coconutareaX\				///
+	gen tobaccoyieldperhaX = tobaccoproductionX/tobaccoareaX
+	
+	
+quietly for var 															///
+	population1961															///
+	birthsmale1960															///
+	birthsfemale1960														///
+	birthsmale1961															///
+	birthsfemale1961														///
+	deathsmale1960 															///
+	deathsfemale1960														///
+	deathsmale1961 															///
+	deathsfemale1961														///
+	paddyarea1961 															///
+	paddyproduction1961 													///
+	paddyarea1962 															///
+	paddyproduction1962 													///
+	canearea1960 															///
+	canearea1961 															///
+	caneproduction1960 														///
+	caneproduction1961 														///
+	coconutarea1960 														///
+	coconutarea1961 														///
+	coconutproduction1960 													///
+	coconutproduction1961 													///
+	tobaccoarea1960  														///
+	tobaccoarea1961 														///
+	tobaccoproduction1960 													///
+	tobaccoproduction1961:													///
+	replace X=X/area1961
+	
+tempfile 1961
+
+save `1961'
+
+// Match to pre-war provinces
+
+use `prewarcode'
+
+rename                                                                      ///
+    provinceone1961                                                         ///
+    provincecode1961
+    
+sort provincecode1961
+
+merge m:m provincecode1961 using `1961', nogen
+   
+quietly for var provincecity1961 $stats1961:                                ///
+    rename X X_1
+
+rename                                                                      ///
+    (provincecode1961 provincetwo1961)                                      ///
+    (provinceone1961 provincecode1961)
+    
+sort provincecode1961
+
+merge m:m provincecode1961 using `1961', nogen
+
+quietly for var $stats1961 provincecity1961:                                ///
+    rename X X_2
+
+rename                                                                      ///
+    (provincecode1961 provincethree1961)                                    ///
+    (provincetwo1961 provincecode1961)
+    
+sort provincecode1961
+
+merge m:m provincecode1961 using `1961', nogen
+
+quietly for var $stats1961 provincecity1961:                                ///
+    rename X X_3
+    
+rename                                                                      ///
+    (provincecode1961 provincefour1961)                                     ///
+    (provincethree1961 provincecode1961)
+
+sort provincecode1961
+
+merge m:m provincecode1961 using `1961', nogen
+
+quietly for var $stats1961 provincecity1961:                                ///
+    rename X X_4
+
+rename provincecode1961 provincefour1961
+
+// District pre-war stats
+// weighted avg of containing
+// provinces
+
+quietly for any $stats1961:                                                 ///
+    gen                                                                     ///
+        X = X_1*provinceone1961w +                                          /// 
+            X_2*provincetwo1961w +                                          ///
+            X_3*provincethree1961w +                                        ///
+			X_4*provincefour1961w											///
+    if provincefour1961w~=. & provincefour1961w>0.05
+	
+quietly for any $stats1961:                                                 ///
+    replace                                                                 ///
+        X = X_1*provinceone1961w +                                          /// 
+            X_2*provincetwo1961w +                                          ///
+            X_3*provincethree1961w                                          ///
+    if (provincethree1961w~=. & provincethree1961w>0.05) &					///
+	   (provincefour1961w==. | provincefour1961w<=0.05)
+    
+quietly for any $stats1961:                                                 ///
+    replace                                                                 ///                                                    
+        X = X_1*provinceone1961w + X_2*provincetwo1961w                     ///
+        if (provincethree1961w==. | provincethree1961w<=0.05)               /// 
+        & provincetwo1961w~=. & provincetwo1961w>0.05
+        
+quietly for any $stats1961:                                                 ///
+    replace X = X_1                                                         ///
+	if provincetwo1961w==. | provincetwo1961w<=0.05       
+
+label var                                                                   /// 
+	area1961																///
+	"Area 1961, km2"
+	
+label var                                                                   /// 
+	popdensity1961 															///
+	"Population Density 1961, per km2"
+	
+label var                                                                   /// 
+	 paddyarea1961_1 														///
+	 "Planted Area of Paddy, 1960-1 First Crop, hectars"
+	 
+label var                                                                   /// 
+	paddyarea1961_2  														///
+	"Planted Area of Paddy, 1960-1 Second Crop, hectars"
+
+label var                                                                   /// 
+	paddyproduction1961_1 													///
+	"Production of Paddy, 1960-1 First Crop, tons"
+
+label var                                                                   /// 
+	paddyproduction1961_2													/// 
+	"Production of Paddy, 1960-1 Second Crop, tons"
+
+label var                                                                   /// 
+	canearea1960															/// 
+	"Planted Area of Sugar Cane 1960, hectars"
+
+label var                                                                   /// 
+	canearea1961 															///
+	"Planted Area of Sugar Cane 1961, hectars"
+
+label var                                                                   /// 
+	caneproduction1960 														///
+	"Production of Sugar Cane 1960, tons"
+
+label var                                                                   /// 
+	caneproduction1961 														///
+	"Production of Sugar Cane 1961, tons"
+	
+label var                                                                   /// 
+	coconutproduction1960													///													 
+	"Coconut Production 1960, 1000 nuts"
+
+label var                                                                   /// 
+	coconutproduction1961													///
+	"Coconut Production 1961, 1000 nuts"
+	
+drop urban
+	
+keep $identifiers $stats1961
+
+order $identifiers $stats1961
+
+sort district
+
+merge district using `prewardt'
 
 tempfile prewardt
 
@@ -1089,8 +1219,15 @@ save prewardt.dta, replace;
 
 clear;
 
+/*-----------
+DISTRICT DATA
+-------------
 
-**//THIS PORTION OF FILE CONSTRUCTS DSCADATA - DATA ON BOMBING
+PRODUCES DISTRICT DATA
+ON BOMBING
+
+-----------*/
+
 TAKEN FROM DSCADATAWORK.DO (DSCABOMB);
 
 cd ..; cd DSCA;
@@ -1244,6 +1381,14 @@ tab _merge;
 rename _merge _merge_distcodes;
 sort district;
 save DSCAdata.dta, replace;
+
+
+/*-----------
+HOUSEHOLD AND COMMUNE SURVEYS
+-------------
+
+
+-----------*/
 
 **//The next portion creates hhVLSSallcollapse_province_panel and SHOULD create VLSScommune - but doesn't yet - more programs may need to be run first (VLSSDATA);
 
@@ -4625,13 +4770,13 @@ keep if sample_all==1;
 quietly compress;
 save temp1.dta, replace;
 
+/*-----------
+PROVINCE LEVEL DATA 
+-------------
 
-/* IT TURNS OUT THAT THESE MEASURES ARE VERY HIGHLY CORRELATED */;
-pwcorr $ord0 $ord1 $ord2 $ord3 tot_bmr tot_bmr_per 
-    if sample_all==1 [aw=pop_tot], star(0.05);
 
+-----------*/
 
-/* MULTIPLE COLLAPSES TO GET CORRECT PROVINCE LEVEL DATA (PROVCREATE) */;
 collapse                                                                    ///
     $ord0                                                                    ///
     $ord1                                                                    ///
