@@ -42,7 +42,7 @@ esttab using "$tables/tab1a_stats_$source.tex", replace                     ///
     nonumber                                                                ///
     nomtitle                                                                ///
     nonote                                                                  ///
-    noobs label    booktabs                                                 ///                                        
+    noobs label booktabs                                                    ///                                        
     title($title_tab1a_stats)                                               ///
     addnotes($note_tab1a_stats)                                             ///
     collabels("Mean" "S.D." "Max." "Obs.")
@@ -152,7 +152,7 @@ estpost summ                                                                ///
     $x_gis                                                                  ///
     diff_17                                                                 ///
     poverty_p0                                                              ///
-	south																	///
+   south                                                   ///
     $x_weather                                                              ///
     $x_elev                                                                 ///
     if sample_all==1
@@ -265,7 +265,7 @@ esttab `tab3' using "$tables/tab3_reg_$source.tex", replace                 ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
         )                                                                   ///
-    sfmt(%14.5fc) r2 b(%8.2f) se(%8.2f)                                     ///
+    sfmt(%14.5fc) r2 b(%12.4f) se(%12.4f)                                   ///
     mgroups("Total U.S. bombs, missiles and rockets per km$^2$",            ///
     pattern(1 0 0 )                                                         ///
     prefix(\multicolumn{@span}{c}{)                                         ///
@@ -314,6 +314,7 @@ summ                                                                        ///
 
 // (OLS 2)
 cwf district
+
 eststo: regress                                                             ///
     $y_pov                                                                  ///
     tot_bmr_per                                                             /// 
@@ -408,26 +409,26 @@ summ $y_pov if sample_all==1
 
 // (IV-2SLS 6)
 eststo tab46: regress                                                       ///
-    $y_pov                                                                  ///
-    tot_bmr_per                                                             ///
-    popdensity6061                                                          ///
-    south                                                                   ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_weather                                                              ///
-    $x_soil11                                                               ///
-    $x_soil12(                                                              ///
-        diff_17                                                             ///
-        popdensity6061                                                      ///
-        south                                                               ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///
-        $x_soil1                                                            ///
-        $x_soil2                                                            ///
-        )                                                                   ///
-    if sample_all==1, robust cluster(province)
-
+   $y_pov                                                                   ///
+   tot_bmr_per                                                              ///
+   popdensity6061                                                           ///
+   south                                                                    ///
+   $x_elev                                                                  ///
+   $x_gis                                                                   ///
+   $x_weather                                                               ///
+   $x_soil1                                                                 ///
+   $x_soil2                                                                 ///
+   (diff_17                                                                 ///
+   popdensity6061                                                           ///
+   south                                                                    ///
+   $x_elev                                                                  ///
+   $x_gis                                                                   ///
+   $x_weather                                                               ///
+   $x_soil1                                                                 ///
+   $x_soil2)                                                                ///
+   if sample_all==1, robust cluster(province)
+   
+   
 estadd local has_soil "Yes"
 
 estadd local exc_qua "No"
@@ -444,9 +445,9 @@ esttab `tab4' using "$tables/tab4_reg_$source.tex", replace                 ///
     scalars(                                                                ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
-        "has_fe Fixes Effects"                                              ///
+        "has_fe Fixed Effects"                                              ///
         )                                                                   ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f)                                           ///
+    sfmt(0) r2 b(%8.6f) se(%8.6f)                                           ///
    mgroups("Estimated poverty rate, 1999",                                  ///
    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                          ///
    suffix(}) span erepeat(\cmidrule(lr){@span}))                            ///
@@ -519,20 +520,14 @@ bys urban_6061: summ $y_pov if sample_all==1
 drop urban_6061
 
 // (5)
-eststo tab55: regress                                                       ///
-    $y_pov                                                                  ///
-    tot_bmr_per                                                             ///
-    tot_bmr_per_2                                                           ///
-    popdensity6061                                                          ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_weather                                                              ///
-    $x_soil1                                                                ///
-    $x_soil2                                                                ///
-    south                                                                   ///
-    if sample_all==1,                                                       ///
-    robust cluster(province)    
-    
+eststo tab55: regress poverty_p0 tot_bmr_per tot_bmr_per_2                 ///
+   popdensity6061                                                          ///
+   $x_weather $x_elev $x_gis                                               ///
+   $x_soil1 $x_soil2                                                       ///
+   south                                                                   ///
+   if sample_all==1,                                                       ///
+   robust cluster(province)
+
 estadd local has_control "Yes"
 
 summ $y_pov if sample_all==1
@@ -561,7 +556,7 @@ esttab `tab5' using "$tables/tab5_reg_$source.tex", replace                 ///
    label star(* 0.10 ** 0.05 *** 0.01)                                      ///
    booktabs nonotes                                                         ///
    scalars("has_control District demographic, geographic, soil controls")   ///
-   sfmt(0) r2 b(%8.5f) se(%8.5f)                                            ///
+   sfmt(0) r2 b(%12.7f) se(%12.7f)                                          ///
    mgroups("Estimated poverty rate, 1999",                                  ///
    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                          ///
    suffix(}) span erepeat(\cmidrule(lr){@span}))                            ///
@@ -634,15 +629,15 @@ summ $y_consum_2002 if sample_all==1
 
 local tab6a tab6a1 tab6a2 tab6a3
 
-esttab `tab6a' using "$tables/tab6_reg_$source.tex", replace                ///    
-    prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab6_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                                                                 ///
+esttab `tab6a' using "$tables/tab6_reg_$source.tex",                        ///    
+    prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab6_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                                                                            ///
     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: 2002 per capita consumption expenditures}} \\\\[-1ex]") ///
     fragment                                                                ///
     scalars(                                                                ///
         "exc_qua Exclude Quang Tri"                                         ///
         )                                                                   ///    
     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
-    keep(tot_bmr_per diff_17) label
+    keep(tot_bmr_per diff_17) label replace
 
 /*
 PANEL B
@@ -695,14 +690,14 @@ summ $y_consum_1992 if sample_all==1
 
 local tab6b tab6b1 tab6b2 tab6b3
 
-//esttab `tab6b' using "$tables/tab6_reg_$source.tex"                         ///
-//    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992-93 per capita consumption expenditures}} \\\\[-1ex]") ///
-//    fragment append                                                         ///
-//    scalars(                                                                ///
-//        "exc_qua Exclude Quang Tri"                                         ///
-//        )                                                                   ///
-//    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
-//    keep(tot_bmr_per diff_17) label
+esttab `tab6b' using "$tables/tab6_reg_$source.tex",                        ///
+    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992-93 per capita consumption expenditures}} \\\\[-1ex]") ///
+    fragment append                                                         ///
+    scalars(                                                                ///
+        "exc_qua Exclude Quang Tri"                                         ///
+        )                                                                   ///
+    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
+    keep(tot_bmr_per diff_17) label
 
 /*
 PANEL C
@@ -757,16 +752,16 @@ summ $y_consum_gro if sample_all==1
 
 local tab6c tab6c1 tab6c2 tab6c3
 
-///esttab `tab6c' using "$tables/tab6_reg_$source.tex"                         ///
-///    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}} \\\\[-1ex]") ///
-///    prefoot("\hline")                                                       ///
-///    postfoot($foot_pane)                                                    ///
-///    fragment append                                                         ///
-///    scalars(                                                                ///
-///        "exc_qua Exclude Quang Tri"                                         ///
-///        )                                                                   ///
-///    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
-///    keep(tot_bmr_per diff_17) label
+esttab `tab6c' using "$tables/tab6_reg_$source.tex",                        ///
+    posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}} \\\\[-1ex]") ///
+    prefoot("\hline")                                                       ///
+    postfoot($foot_pane)                                                    ///
+    fragment append                                                         ///
+    scalars(                                                                ///
+        "exc_qua Exclude Quang Tri"                                         ///
+        )                                                                   ///
+    sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                   ///
+    keep(tot_bmr_per diff_17) label
 
 /*-----------
 TABLE 7
@@ -785,7 +780,7 @@ PANEL A
 
 // (1)
 cwf province
-regress                                                                     /// 
+eststo tab7_a1: regress                                                     /// 
     $y_acc_elec                                                             ///
     tot_bmr_per                                                             ///
     popdensity6061                                                          ///
@@ -795,8 +790,6 @@ regress                                                                     ///
     $x_weather                                                              ///
     if sample_all==1, robust
     
-est sto tab7_a1
-
 estadd local has_soil "No"
 
 estadd local has_fe "No"
@@ -807,7 +800,7 @@ summ $y_acc_elec if sample_all==1
 
 // (2)
 cwf district
-regress                                                                     /// 
+eststo tab7_a2: regress                                                     /// 
     $y_acc_elec                                                             ///
     tot_bmr_per                                                             ///
     popdensity6061                                                          ///
@@ -819,8 +812,6 @@ regress                                                                     ///
     $x_soil2,                                                               ///
     robust cluster(province)
 
-est sto tab7_a2
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -830,7 +821,7 @@ estadd local exc_qua "No"
 summ $y_acc_elec
 
 // (3)
-areg                                                                        ///
+eststo tab7_a3: areg                                                        ///
     $y_acc_elec                                                             ///
     tot_bmr_per                                                             ///
     $x_elev                                                                 ///
@@ -841,8 +832,6 @@ areg                                                                        ///
     if sample_all==1,                                                       ///
     a(province) robust cluster(province)
 
-est sto tab7_a3
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "Yes"
@@ -852,7 +841,7 @@ estadd local exc_qua "No"
 summ $y_acc_elec if sample_all==1
 
 // (4)
-regress                                                                     ///
+eststo tab7_a4: regress                                                     ///
     $y_acc_elec                                                             ///
     tot_bmr_per                                                             ///
     popdensity6061                                                          ///
@@ -865,8 +854,6 @@ regress                                                                     ///
     if provincename~="Quang Tri" & sample_all==1,                           ///
     robust cluster(province)
 
-est sto tab7_a4
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -876,7 +863,7 @@ estadd local exc_qua "Yes"
 summ $y_acc_elec if provincename~="Quang Tri" & sample_all==1
 
 // (5)
-regress                                                                     ///
+eststo tab7_a5: regress                                                     ///
     $y_acc_elec                                                             ///
     diff_17                                                                 ///
     popdensity6061                                                          ///
@@ -888,8 +875,6 @@ regress                                                                     ///
     $x_soil2                                                                ///
     if sample_all==1, robust cluster(province) 
 
-est sto tab7_a5
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -899,26 +884,26 @@ estadd local exc_qua "No"
 summ $y_acc_elec if sample_all==1
 
 // (6)
-regress                                                                     ///
-    $y_acc_elec                                                             ///
-    tot_bmr_per                                                             ///
-    popdensity6061                                                          ///
-    south                                                                   ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_weather                                                              ///          
-    $x_soil(                                                                ///
-        diff_17                                                             ///
-        popdensity6061                                                      ///
-        south                                                               ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///          
-        $x_soil                                                             ///
-    ) if sample_all==1, robust cluster(province)
+eststo tab7_a6: regress                                                    ///
+   $y_acc_elec                                                             /// 
+   tot_bmr_per                                                             ///
+   popdensity6061                                                          ///
+   south                                                                   ///
+   $x_elev                                                                 /// 
+   $x_gis                                                                  ///
+   $x_weather                                                              ///
+   $x_soil1                                                                ///
+   $x_soil2                                                                ///
+   (diff_17                                                                ///
+   popdensity6061                                                          ///
+   south                                                                   ///
+   $x_elev                                                                 ///
+   $x_gis                                                                  ///
+   $x_weather                                                              ///
+   $x_soil1                                                                ///
+   $x_soil2)                                                               ///
+   if sample_all==1, robust cluster(province)
  
-est sto tab7_a6
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -936,9 +921,9 @@ esttab `tab7_a' using "$tables/tab7_reg_$source.tex",                       ///
     scalars(                                                                ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
-        "has_fe Fixes Effects"                                              ///
+        "has_fe Fixed Effects"                                              ///
         )                                                                   ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
+    sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles                             ///
     keep(tot_bmr_per diff_17) label replace
 
 /*
@@ -947,16 +932,16 @@ PANEL B
 
 // (1)
 cwf province
-regress                                                                     ///
+
+eststo tab7_b1: regress                                                     ///
     $y_lit                                                                  ///
     tot_bmr_per                                                             /// 
     popdensity6061                                                          ///
+    south                                                                   ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
     if sample_all==1, robust
-    
-est sto tab7_b1
 
 estadd local has_soil "No"
 
@@ -968,17 +953,18 @@ summ $y_lit if sample_all==1
 
 // (2)
 cwf district
-eststo: regress                                                             ///
+
+eststo tab7_b2: regress                                                     ///
     $y_lit                                                                  ///
     tot_bmr_per                                                             /// 
     popdensity6061                                                          ///
     $x_elev                                                                 ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2                                                                ///
     south,                                                                  ///
     robust cluster(province)
-
-est sto tab7_b2
 
 estadd local has_soil "Yes"
 
@@ -989,7 +975,7 @@ estadd local exc_qua "No"
 summ $y_lit
 
 // (3)
-eststo: areg                                                                ///
+eststo tab7_b3: areg                                                        ///
     $y_lit                                                                  ///
     tot_bmr_per                                                             ///
     $x_weather                                                              ///          
@@ -998,8 +984,6 @@ eststo: areg                                                                ///
     $x_soil1                                                                ///
     $x_soil2                                                                ///
     if sample_all==1, a(province) robust cluster(province)
-
-est sto tab7_b3
 
 estadd local has_soil "Yes"
 
@@ -1010,7 +994,7 @@ estadd local exc_qua "No"
 summ $y_lit if sample_all==1
 
 // (4)
-eststo: regress                                                             ///
+eststo tab7_b4: regress                                                     ///
     $y_lit                                                                  ///
     tot_bmr_per                                                             ///
     popdensity6061                                                          ///
@@ -1022,8 +1006,6 @@ eststo: regress                                                             ///
     south                                                                   ///
     if provincename~="Quang Tri" & sample_all==1, robust cluster(province)
 
-est sto tab7_b4
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -1033,7 +1015,7 @@ estadd local exc_qua "Yes"
 summ $y_lit if provincename~="Quang Tri" & sample_all==1
 
 // (5)
-eststo: regress                                                             ///
+eststo tab7_b5: regress                                                     ///
     $y_lit                                                                  ///
     diff_17                                                                 ///
     popdensity6061                                                          ///
@@ -1045,8 +1027,6 @@ eststo: regress                                                             ///
     $x_soil2                                                                ///
     if sample_all==1, robust cluster(province)     
     
-est sto tab7_b5
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -1056,28 +1036,26 @@ estadd local exc_qua "No"
 summ $y_lit if sample_all==1
 
 // (6)
-eststo: regress                                                             ///
+eststo tab7_b6: regress                                                     ///
     $y_lit                                                                  ///
-    tot_bmr_per                                                             ///
-    popdensity6061                                                          ///
-    south                                                                   ///
-    $x_elev                                                                 ///
-    $x_gis                                                                  ///
-    $x_weather                                                              ///
-    $x_soil1                                                                ///
-    $x_soil2(                                                               ///
-        diff_17                                                             ///
-        popdensity6061                                                      ///
-        south                                                               ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///          
-        $x_soil1                                                            ///
-        $x_soil2                                                            ///
-    ) if sample_all==1, robust cluster(province) 
+   tot_bmr_per                                                              ///
+   popdensity6061                                                           ///
+   south                                                                    ///
+   $x_elev                                                                  ///
+   $x_gis                                                                   ///
+   $x_weather                                                               ///
+   $x_soil1                                                                 ///
+   $x_soil2                                                                 ///
+   (diff_17                                                                 ///
+   popdensity6061                                                           ///
+   south                                                                    ///
+   $x_elev                                                                  ///
+   $x_gis                                                                   ///
+   $x_weather                                                               ///
+   $x_soil1                                                                 ///
+   $x_soil2)                                                                ///
+   if sample_all==1, robust cluster(province)
     
-est sto tab7_b6
-
 estadd local has_soil "Yes"
 
 estadd local has_fe "No"
@@ -1096,9 +1074,9 @@ esttab `tab7_b' using "$tables/tab7_reg_$source.tex",                       ///
     scalars(                                                                ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
-        "has_fe Fixes Effects"                                              ///
+        "has_fe Fixed Effects"                                              ///
         )                                                                   ///
-    sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
+    sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                   ///
     keep(tot_bmr_per diff_17) label
 
 /*-----------
@@ -1241,16 +1219,17 @@ eststo: regress                                                             ///
     $x_gis                                                                  ///
     $x_weather                                                              ///
     $x_soil1                                                                ///
-    $x_soil2(                                                               ///
-        diff_17                                                             ///
-        popdensity6061                                                      ///
-        south                                                               ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///
-        $x_soil1                                                            ///
-        $x_soil2                                                            ///
-        )if sample_all==1, robust cluster(province)
+    $x_soil2                                                                ///
+    (diff_17                                                                ///
+    popdensity6061                                                          ///
+    south                                                                   ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    $x_soil1                                                                ///
+    $x_soil2)                                                               ///
+    if sample_all==1, robust cluster(province)
+   
 
 est sto tab8_6
 
@@ -1270,9 +1249,9 @@ esttab `tab8' using "$tables/tab8_reg_$source.tex", replace                 ///
     scalars(                                                                ///
         "has_soil District soil"                                            ///
         "exc_qua Exclude Quang Tri"                                         ///
-        "has_fe Fixes Effects"                                              ///
+        "has_fe Fixed Effects"                                              ///
         )                                                                   ///
-    sfmt(0) r2 b(%8.2f) se(%8.2f)                                           ///
+    sfmt(0) r2 b(%12.2f) se(%12.2f)                                         ///
     mgroups("Population density, 1999",                                     ///
     pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                         ///
     suffix(}) span erepeat(\cmidrule(lr){@span}))                           ///
@@ -1740,6 +1719,3 @@ desc                                                                        ///
     central                                                                 ///
     rural                                                                   ///
     diff_17*
-
-
-

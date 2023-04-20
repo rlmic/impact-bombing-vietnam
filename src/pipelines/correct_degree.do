@@ -50,4 +50,46 @@ gen diff_17_2 = diff_17^2
     
 save "$data/external/hochiminh/war_data_province_huynh.dta", replace
 
+
+// Correct with shapefiles found
+
+clear
+
+use "$data/external/dataverse/war_data_district.dta", clear
+
+drop                                                                         ///
+    north_lat																 ///
+	diff_17                                                                  ///
+	diff_17_2																 
+                                                            
+    
+merge 1:1 district                                                           ///
+    using "$data/raw/coords/districts.dta", nogen
+
+rename                                                                       ///
+    (latitude)                                                               ///
+    (north_lat)
+	
+gen diff_17 = abs(north_lat-17)
+
+save "$data/clean/district_bombing_corrected.dta", replace
+
+use "$data/external/dataverse/war_data_province.dta", clear
+
+drop                                                                         ///
+    north_lat																 ///
+	diff_17                                                                  ///
+	diff_17_2																 
+    
+merge 1:1 province                                                           ///
+    using "$data/raw/coords/provinces.dta", nogen
+
+rename                                                                       ///
+    (latitude)                                                               ///
+    (north_lat)
+	
+gen diff_17 = abs(north_lat-17)
+
+save "$data/clean/province_bombing_corrected.dta", replace
+
 clear

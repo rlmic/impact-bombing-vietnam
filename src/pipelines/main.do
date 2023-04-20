@@ -12,6 +12,12 @@ do "$dir/src/general/constants.do"
 
 
 /*-----------------------------------
+CREATE DATASETS
+-----------------------------------*/
+
+do "$code/pipelines/combine_datasets.do"
+
+/*-----------------------------------
 CREATE CORRECTED LATITUDES
 -----------------------------------*/
 
@@ -26,25 +32,42 @@ foreach province_data in                                                    ///
     "$sept_prov"                                                            ///
     "$augu_prov"                                                            ///
     "$huyn_prov"                                                            ///
-    "$males_prov"{
+    "$males_prov"                                                           ///
+   "$main_prov"                                                             ///
+   "$main_prov_correc"{                                       
     if "`province_data'" == "$sept_prov" {
-        local district_data = "$sept_dist"
+      global province_data = "$sept_prov"
+        global district_data = "$sept_dist"
         global source = "archives_sep09"
         }
     else if "`province_data'" == "$augu_prov"{
-        local district_data = "$augu_dist"
+      global province_data = "$augu_prov"
+        global district_data = "$augu_dist"
         global source = "archives_aug05"
         }          
     else if "`province_data'" ==  "$dave_prov" {
-        local district_data = "$dave_dist"
+      global province_data = "$dave_prov"
+        global district_data = "$dave_dist"
         global source = "dataverse"
         }
     else if "`province_data'" ==  "$huyn_prov"{
-        local district_data = "$dave_dist"
+      global province_data = "$huyn_prov"
+        global district_data = "$dave_dist"
         global source = "hochiminh"
         }
+   else if "`province_data'" ==  "$main_prov"{
+      global province_data = "$main_prov"
+      global district_data = "$main_dist"
+        global source = "clean"
+      }
+   else if "`province_data'" ==  "$main_prov_correc"{
+      global province_data = "$main_prov_correc"
+      global district_data = "$main_dist_correc"
+        global source = "clean_correted"
+      }
     else {
-        local district_data = "$dave_dist"
+      global province_data = "$dave_prov"
+        global district_data = "$dave_dist"
         global source = "malesky"
         
     }  
@@ -59,14 +82,14 @@ foreach province_data in                                                    ///
     frames reset
     frame create district
     cwf district
-    use "`district_data'", clear
+    use "$district_data", clear
     do "$code/general/lab_dis.do"
 
     // Province Level
     
     frame create province
     cwf province
-    use "`province_data'"
+    use "$province_data", clear
     gen nbhere=(1-bornhere)
     frame drop default
     do "$code/general/lab_pro.do"
