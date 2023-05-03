@@ -210,50 +210,12 @@ global                                                                      ///
 PATH TO SOURCE DATA
 -----------------------------------*/
 
-global                                                                      /// 
-    dave_prov                                                               ///
-    "$data/external/dataverse/war_data_province.dta"
-    
 global                                                                      ///
-    dave_dist                                                               ///
-    "$data/external/dataverse/war_data_district.dta"
-    
-global                                                                      /// 
-    augu_prov                                                               ///
-    "$data/external/archives/war_data_province_aug05.dta"
-
-global                                                                      /// 
-    augu_dist                                                               ///
-    "$data/external/archives/war_data_district_aug05.dta"
-
-global                                                                      /// 
-    sept_prov                                                               ///
-    "$data/external/archives/war_data_province_sep09.dta"
-
-global                                                                      /// 
-    sept_dist                                                               ///
-    "$data/external/archives/war_data_district_sep09.dta"
+    district_data                                                           /// 
+    "$data/clean/district_bombing_corrected_data.dta"
 
 global                                                                      ///
-    males_prov                                                              ///                                             
-    "$data/external/exposition/war_data_province_malesk.dta"
+    province_data                                                           /// 
+    "$data/clean/province_bombing_corrected_data.dta"
 
-global                                                                      ///
-    huyn_prov                                                               /// 
-    "$data/external/hochiminh/war_data_province_huynh.dta"
-
-global                                                                      ///
-    main_prov                                                               /// 
-    "$data/clean/province_bombing.dta"
-
-global                                                                      ///
-    main_dist                                                               /// 
-    "$data/clean/district_bombing.dta"
-	
-global                                                                      ///
-    main_dist_correc                                                        /// 
-    "$data/clean/district_bombing_corrected.dta"
-
-global                                                                      ///
-    main_prov_correc                                                        /// 
-    "$data/clean/province_bombing_corrected.dta"
+global source = "correted"
