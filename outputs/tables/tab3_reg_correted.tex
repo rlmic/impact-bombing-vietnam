@@ -1,0 +1,41 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{3}{c}{Total U.S. bombs, missiles and rockets per km$^2$}\\\cmidrule(lr){2-4}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\midrule
+diff\_17\_corrected   &    -15.8483\sym{***}&    -19.7269\sym{***}&    -12.0726\sym{***}\\
+                    &    (5.6124)         &    (6.7960)         &    (2.8302)         \\
+\addlinespace
+popdensity6061      &      0.0056         &     -0.0035\sym{**} &     -0.0034\sym{**} \\
+                    &    (0.0045)         &    (0.0016)         &    (0.0014)         \\
+\addlinespace
+Former South Vietnam&   -102.9529         &    -91.7754         &    -11.7671         \\
+                    &   (63.1681)         &   (72.8260)         &   (26.0138)         \\
+\addlinespace
+Prop. of land area 250–500 m&     94.7070\sym{*}  &    -25.3095         &    -25.2861\sym{*}  \\
+                    &   (49.0310)         &   (20.6752)         &   (14.2688)         \\
+\addlinespace
+Prop. of land area 500–1000 m&    -43.1385         &    -16.6519         &    -10.2364         \\
+                    &   (64.7047)         &   (19.5586)         &   (17.2666)         \\
+\addlinespace
+Prop. of land area over 1000 m&    150.4988\sym{*}  &     -7.5995         &    -20.5239         \\
+                    &   (79.5152)         &   (30.3747)         &   (19.3883)         \\
+\addlinespace
+Average precipitation (cm)&      0.2856         &      0.2191         &      0.1457\sym{*}  \\
+                    &    (0.1716)         &    (0.1947)         &    (0.0821)         \\
+\addlinespace
+Average temperature (C $°$)&     14.8619         &     -1.0183         &     -1.1009         \\
+                    &    (9.7410)         &    (4.6713)         &    (3.7148)         \\
+\addlinespace
+Latitude (°N)       &    -11.3118         &    -13.3979         &     -4.0356         \\
+                    &    (7.2409)         &    (8.3327)         &    (2.7421)         \\
+\midrule
+Observations        &          55         &         584         &         576         \\
+\(R^{2}\)           &       0.538         &       0.337         &       0.255         \\
+District soil       &          No         &         Yes         &         Yes         \\
+Exclude Quang Tri   &          No         &          No         &         Yes         \\
+\bottomrule
+\end{tabular}
+}
