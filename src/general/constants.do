@@ -15,7 +15,7 @@ global code = "$dir/src"
 
 global tables = "$output/tables"
 
-global meas = "fmt(%9.2fc)"
+global meas = "fmt(%15.2fc)"
 
 /*-----------------------------------
 NAMES OF ELEMENTS IN TABLES
@@ -134,6 +134,10 @@ global                                                                      ///
 global                                                                      ///
     x_gis                                                                   ///
     north_lat
+
+global                                                                      ///
+    x_diff                                                                  ///
+    diff_17
     
 global                                                                      /// 
     x_weather                                                               ///
@@ -148,12 +152,14 @@ global                                                                      ///
     ord1                                                                    ///
     General_Purpose                                                         ///
     Cluster_Bomb                                                            ///
-    Missile Rocket                                                          ///
+    Missile 																///
+	Rocket                                                         		    ///
     Cannon_Artillery
     
 global                                                                      ///
     ord2                                                                    ///
-    Incendiary WP
+    Incendiary																///
+	WP
     
 global                                                                      ///
     ord3                                                                    ///
@@ -199,6 +205,7 @@ global                                                                      ///
     y_lit                                                                   ///
     lit_rate                      
 
+
 /*-----------------------------------
 PATH TO SOURCE DATA
 -----------------------------------*/
@@ -234,3 +241,19 @@ global                                                                      ///
 global                                                                      ///
     huyn_prov                                                               /// 
     "$data/external/hochiminh/war_data_province_huynh.dta"
+
+global                                                                      ///
+    main_prov                                                               /// 
+    "$data/clean/province_bombing.dta"
+
+global                                                                      ///
+    main_dist                                                               /// 
+    "$data/clean/district_bombing.dta"
+	
+global                                                                      ///
+    main_dist_correc                                                        /// 
+    "$data/clean/district_bombing_corrected.dta"
+
+global                                                                      ///
+    main_prov_correc                                                        /// 
+    "$data/clean/province_bombing_corrected.dta"
