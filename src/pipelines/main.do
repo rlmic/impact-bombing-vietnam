@@ -2,6 +2,7 @@ clear
 capture log close
 set more off
 
+// Change this path
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 
 /*-----------------------------------
@@ -10,74 +11,6 @@ LOAD CONSTANTS AND VARIABLES
 
 do "$dir/src/general/constants.do"
 
-
-/*-----------------------------------
-CREATE DATASETS
------------------------------------*/
-
-//do "$code/pipelines/combine_datasets.do"
-
-/*-----------------------------------
-CREATE CORRECTED LATITUDES
------------------------------------*/
-
-//do "$code/pipelines/correct_degree.do"
-
-/*-----------------------------------
-CREATE PUBLIC CORRECTED DATABASE
------------------------------------*/
-
-clear
-
-// Province
-
-use "$data/clean/province_bombing_corrected.dta"
-
-keep                                                                         ///
-    province                                                                 ///
-    north_lat                                                                ///
-    diff_17                                                                  ///
-    longitude
-
-rename                                                                       ///
-    (north_lat diff_17 longitude)                                            ///
-    (north_lat_corrected diff_17_corrected east_long_corrected)
-
-tempfile corr_prov
-
-save `corr_prov'
-
-use "$data/clean/province_bombing.dta"
-
-merge 1:1 province                                                           ///
-    using `corr_prov', nogen
-
-save "$data/clean/province_bombing_corrected_data.dta", replace
-
-// District
-
-use "$data/clean/district_bombing_corrected.dta"
-
-keep                                                                         ///
-    district                                                                 ///
-    north_lat                                                                ///
-    diff_17                                                                  ///
-    longitude
-
-rename                                                                       ///
-    (north_lat diff_17 longitude)                                            ///
-    (north_lat_corrected diff_17_corrected east_long_corrected)
-
-tempfile corr_dist
-
-save `corr_dist'
-
-use "$data/clean/district_bombing.dta"
-
-merge 1:1 district                                                           ///
-    using `corr_dist', nogen
-
-save "$data/clean/district_bombing_corrected_data.dta", replace
 
 /*-----------------------------------
 RUN ANALYSIS
