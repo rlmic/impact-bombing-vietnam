@@ -15,26 +15,85 @@ do "$dir/src/general/constants.do"
 CREATE DATASETS
 -----------------------------------*/
 
-do "$code/pipelines/combine_datasets.do"
+//do "$code/pipelines/combine_datasets.do"
 
 /*-----------------------------------
 CREATE CORRECTED LATITUDES
 -----------------------------------*/
 
-do "$code/pipelines/correct_degree.do"
+//do "$code/pipelines/correct_degree.do"
+
+/*-----------------------------------
+CREATE PUBLIC CORRECTED DATABASE
+-----------------------------------*/
+
+clear
+
+// Province
+
+use "$data/clean/province_bombing_corrected.dta"
+
+keep                                                                         ///
+    province                                                                 ///
+    north_lat                                                                ///
+    diff_17                                                                  ///
+    longitude
+
+rename                                                                       ///
+    (north_lat diff_17 longitude)                                            ///
+    (north_lat_corrected diff_17_corrected east_long_corrected)
+
+tempfile corr_prov
+
+save `corr_prov'
+
+use "$data/clean/province_bombing.dta"
+
+merge 1:1 province                                                           ///
+    using `corr_prov', nogen
+
+save "$data/clean/province_bombing_corrected_data.dta", replace
+
+// District
+
+use "$data/clean/district_bombing_corrected.dta"
+
+keep                                                                         ///
+    district                                                                 ///
+    north_lat                                                                ///
+    diff_17                                                                  ///
+    longitude
+
+rename                                                                       ///
+    (north_lat diff_17 longitude)                                            ///
+    (north_lat_corrected diff_17_corrected east_long_corrected)
+
+tempfile corr_dist
+
+save `corr_dist'
+
+use "$data/clean/district_bombing.dta"
+
+merge 1:1 district                                                           ///
+    using `corr_dist', nogen
+
+save "$data/clean/district_bombing_corrected_data.dta", replace
 
 /*-----------------------------------
 RUN ANALYSIS
 -----------------------------------*/
 
+do "$code/pipelines/data_valid.do"
+
+/*
 foreach province_data in                                                    ///
     "$dave_prov"                                                            ///
     "$sept_prov"                                                            ///
     "$augu_prov"                                                            ///
     "$huyn_prov"                                                            ///
     "$males_prov"                                                           ///
-   "$main_prov"                                                             ///
-   "$main_prov_correc"{                                       
+    "$main_prov"                                                            ///
+    "$main_prov_correc"{                                       
     if "`province_data'" == "$sept_prov" {
       global province_data = "$sept_prov"
         global district_data = "$sept_dist"
