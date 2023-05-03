@@ -9,19 +9,23 @@ This folder contains the necesarry files to reproduce the analysis.
 ├── README.md          <- The top-level README for users.
 ├── data
 │   ├── clean          <- Data from third party sources.
-
+      ├── district_bombing_corrected_data.dta
+      └── province_bombing_corrected_data.dta
 │
-├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-│   └── codebook       <- 
-│   └── tables    
+├── docs               <- 
+│   └── The long-run impact of Bombing Vietnam_Supplement.pdf   
+│   └── [Paper] The Long-Run Impact of Bombing Vietnam.pdf    
 │
-├── outputs            <- Generated analysis as HTML, PDF, LaTeX, etc.
+├── outputs            <- 
 │   └── figures        <- Generated graphics and figures to be used in reporting
 │   └── tables         <- Generated tables to be used in reporting
 │
 ├── src/               <- Source code for use in this project, see below for script details.
 │   ├── general        <- Scripts to download or generate data
-│   │
+│          ├──  constants.do
+│          ├──  lab_dis.do
+│          └──  lab_pro.do
+│   
 │   ├── pipelines
         ├──  main.do
         └──  produce_analysis_corrected.do
