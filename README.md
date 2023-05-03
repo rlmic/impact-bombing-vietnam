@@ -34,8 +34,10 @@ Open the main.do file, and execute. A log file is produced, which you can use to
 
 In the beginning portion of the .do file, you will see the following lines of code:
 
+```{do}
 // Change this path
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
+```
 
 This global variable defines where the directory sits on your computer. To run the replication file, you'll need to change this to reflect where you're storing the directory on your hard drive (the filepath). Note that several STATA routines may need to be installed for the programs to run properly.
 

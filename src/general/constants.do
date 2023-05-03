@@ -133,11 +133,11 @@ global                                                                      ///
     
 global                                                                      ///
     x_gis                                                                   ///
-    north_lat
+    north_lat_corrected
 
 global                                                                      ///
     x_diff                                                                  ///
-    diff_17
+    diff_17_corrected
     
 global                                                                      /// 
     x_weather                                                               ///
