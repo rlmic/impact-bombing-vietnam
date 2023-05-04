@@ -5,7 +5,6 @@
 This folder contains the necesarry files to reproduce the analysis, as well as the expected output from the running the source code provided.
 
 ```
-├── LICENSE
 ├── README.md          <- The top-level README for users.
 ├── data
 │   ├── clean          <- Data used as input for the analysis.
@@ -20,22 +19,22 @@ This folder contains the necesarry files to reproduce the analysis, as well as t
 │   └── figures        <- Generated graphics and figures to be used in reporting
 │   └── tables         <- Generated tables to be used in reporting
 │
-└── src/               <- Source code for to reproduce analysis
+└── src                <- Source code for to reproduce analysis
     ├── general        <- Scripts contaning the constants used in the project. See below for script details.
-    │      ├──  constants.do
-    │      ├──  lab_dis.do
-    │      └──  lab_pro.do
+    │   ├──  constants.do
+    │   ├──  lab_dis.do
+    │   └──  lab_pro.do
     │
     └── pipelines      <- Scripts contaning the main code to reproduce the analysis project. 
         ├──  main.do
         ├──  produce_analysis_corrected.do
-        └──  valid
+        └──  data_valid.do 
 
 ```
 
 ## How to replicate the analysis  
 
-Open the main.do file, and execute. A log file is produced, which you can use to check the tables and figure. 
+Open the `main.do` file, located in the following directory `src/pipelines/` and execute. A log file is produced, which you can use to check the tables and figure. 
 
 In the beginning portion of the .do file, you will see the following lines of code:
 
