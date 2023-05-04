@@ -40,8 +40,19 @@ frame drop default
 do "$code/general/lab_pro.do"
 
 /*-----------------------------------
-PRODUCE TABLES
+PRODUCE PAPER TABLES
 -----------------------------------*/    
-do "$code/pipelines/produce_analysis_corrected.do"
+do "$code/pipelines/analysis_corrected.do"
+
+/*-----------------------------------
+PRODUCE ALTERNATIVE ANALYSIS
+-----------------------------------*/    
+do "$code/pipelines/alterna_analysis.do"
+
+/*-----------------------------------
+PRODUCE APPENDIX ANALYSIS OF CORRIGENDUM
+-----------------------------------*/  
+
+do "$code/pipelines/append_corrigen.do"
 log c
 clear
