@@ -118,3 +118,27 @@ foreach dep in                                                              ///
     mtitles("Ex-North" "Ex-South" "Rural" "Urban" "All Vietnam" "All Vietnam" ) ///
     keep(tot_bmr_hi tot_bmr_per tot_bmr_per_2)                               
     }
+
+
+/*-----------
+ALT. TO TABLE 6
+ALTERNATIVES  
+PROVINCE-LEVEL
+STATE INVESTMENT
+DURING 1976 TO 198
+
+-----------*/
+
+
+foreach dep in                                                              ///
+	invest_76                                                               ///
+    invest_78                                                               ///
+    invest_80                                                               ///
+    invest_82                                                               ///
+    invest_85                                                               ///
+    invest_85_per{    
+
+	invest_85_per
+	output_85_per
+	food2_85_per
+	pupils_85_per
