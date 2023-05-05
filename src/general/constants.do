@@ -89,7 +89,6 @@ global                                                                      ///
     title_tab7_reg =                                                        ///
     "Local war impacts on physical infrastructure and human capital"
 
-    
 /*-----------------------------------
 CONTROL AND DEPENDANT 
 VARIABLES FOR ANALYSIS 
