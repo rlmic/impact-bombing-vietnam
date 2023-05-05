@@ -7,22 +7,7 @@ PREVIOUS COORDINATES
 */
 
 
-use "$main_dist_correc", clear
-
-keep                                                                       ///
-    north_lat                                                              ///
-    longitude                                                              ///
-    diff_17                                                                ///
-    district
-
-rename north_lat north_lat_corrected
-
-rename diff_17 diff_17_corrected
-
-merge 1:1 district using "$main_dist", nogen
-
-sort district
-
+use "$district_data", clear
 eststo clear
 
 eststo tab: regress                                                         ///
