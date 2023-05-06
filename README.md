@@ -4,7 +4,7 @@
 
 <p align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], in the Journal of Development Economics, alongside posterior corrections to the original paper ––Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside posterior corrections to the original paper ––Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
 
 Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
@@ -14,7 +14,7 @@ The folder is structured to facilitate the reproduction and transparency in the 
 
 
 <details>
-  <summary> Click here to see folder structure </summary>
+  <summary> Click here to see the folder structure </summary>
 
 ```
 ├── README.md          <- The top-level README for users.
@@ -52,7 +52,7 @@ The folder is structured to facilitate the reproduction and transparency in the 
 
 Open the `main.do` file, located under `src/pipelines/` and execute. The `main.do` file calls on the other do files to reproduce each part of the analysis. In the beginning portion of the `main.do` file, you will see the following lines of code:
 
-```{do}
+```{stata}
 // Change this path
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 ```
@@ -69,14 +69,14 @@ The expected outputs will be produced within the directory `outputs/`, either un
 
 ## Data Sources
 
-The two main data sources are used are located under `data/` and include:
+The two main data sources are located under `data/` and include:
 
 + `district_bombing_corrected_data.dta`: relevant variables at district-level.
 + `province_bombing_corrected_data.dta`: relevant variables at province-level.
 
 ## Documentation :newspaper:
 
-We include the following documents to serve as reference as one is reproducing the paper:
+We include the following documents to serve as reference:
 
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
 + `impact-bombing-vietnam-supplement.pdf`: The supplement material that outlines minor discrepancies found in data replication which do not, as a whole, affect the reported data analysis published in the paper.
