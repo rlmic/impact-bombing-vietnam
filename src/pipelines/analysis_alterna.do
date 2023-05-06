@@ -260,7 +260,7 @@ booktabs nonotes                                                          ///
 scalars(                                                                  ///
     "exc_qua Exclude Quang Tri"                                           ///
     )                                                                     ///    
-sfmt(0) r2 b(%8.2f) se(%8.2f)                                             /// 
+sfmt(0) r2 b(%8.4f) se(%8.4f)                                             /// 
 mgroups("STATE INVESTMENT",                                               ///
 pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                           ///
 suffix(}) span erepeat(\cmidrule(lr){@span}))                             ///
