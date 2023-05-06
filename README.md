@@ -10,7 +10,7 @@ Continuing, we present a "map" to help the user navigate through this project, a
 
 ## Project structure :world_map:
 
-The folder is structured to facilitate the reproduction and transparency in the generation of the econometric analysis. To navigate efficiently through the project, please refer to the following detailed "map" of the project:
+The folder is structured to facilitate the reproduction and transparency in the generation of the econometric analysis. To navigate efficiently through the project, please refer to the following detailed "map" of the project.
 
 
 <details>
@@ -57,7 +57,7 @@ Open the `main.do` file, located under `src/pipelines/` and execute. The `main.d
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 ```
 
-This global variable defines where the directory sits on your computer. **To run the replication file, you'll need to change this to reflect where you're storing the directory on your hard drive (the filepath)**. 
+:exclamation: This global variable defines where the directory sits on your computer. To run the replication file, you'll need to change this to reflect where you're storing the directory on your hard drive.
 
 :sparkles: The `main.do` file will 1) load the constants and labels used for our analysis, 2) load the corresponding data sources, 3) run the analysis, splitted in three other do files:
 
