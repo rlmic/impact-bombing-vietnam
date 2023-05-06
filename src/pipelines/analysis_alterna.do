@@ -218,7 +218,7 @@ DURING 1976 TO 1985
 
 
 foreach dep in                                                              ///
-	invest_76                                                               ///
+    invest_76                                                               ///
     invest_78                                                               ///
     invest_80                                                               ///
     invest_82                                                               ///
