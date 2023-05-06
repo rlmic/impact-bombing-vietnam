@@ -93,8 +93,8 @@ Please direct any questions to  Edward Miguel at emiguel@berkeley.edu.
 
 [^1]: Edward Miguel and Gérard Roland. “The long-run impact of bombing Vietnam”. In: Journal of Development Economics 96.1 (2011), pp. 1–15. url:  https://doi.org/10.1016/j.jdeveco.2010.07.004
 
-[^2]: Several STATA routines may need to be installed for the programs to run properly. 
+[^2]: Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
 
-[^3]: Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+[^3]: Several STATA routines may need to be installed for the programs to run properly. 
 
 </p>
