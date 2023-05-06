@@ -76,13 +76,12 @@ The two main data sources are located under `data/` and include:
 
 ## Documentation :newspaper:
 
-We include the following documents to serve as reference:
+We include the following documents under `docs/` to serve as reference:
 
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
 + `impact-bombing-vietnam-supplement.pdf`: The supplement material that outlines minor discrepancies found in data replication which do not, as a whole, affect the reported data analysis published in the paper.
-+ `impact-bombing-vietnam-corrigendum.pdf`: The *Corrigendum* to corrects Miguel and Roland (2011) for errors in re-projecting district and
-province locations from one geographic coordinate system to another. 
-
++ `impact-bombing-vietnam-corrigendum.pdf`: The *Corrigendum* that corrects the re-projecting of district and
+province locations, and reports the resulting updated outputs in the econometric analysis.
 
 ## Contact
 
