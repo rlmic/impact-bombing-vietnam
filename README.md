@@ -1,4 +1,4 @@
-# The long-run impact of bombing Vietnam
+# The long-run Impact of Bombing Vietnam
 
 ## Overview
 
