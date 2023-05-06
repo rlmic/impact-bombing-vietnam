@@ -70,7 +70,7 @@ global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 
 + `analysis_corrected.do`: reproduces the main analysis presented in the original paper, considering as input the corrected locations of the provinces and districts in Vietnam, 
 + `analysis_alterna.do`: generates the alternative econometric analysis mentioned in the original paper, but not shown in the tables included as part of the published paper,
-+ `append_corrigen.do`: produces the additional analysis included as part of the Appendix of the *Corregidum*.
++ `append_corrigen.do`: produces the additional analysis included as part of the Appendix of the *Corrigedum*.
 
 The expected outputs will be produced within the directory `outputs/`, either under `outputs/figures/` or `outputs/tables/`. Finally, to facilitate tracking the execution of the do file, a logs file will be saved under `logs/`, which you can use to check the tables and figure. 
 
