@@ -4,14 +4,17 @@
 
 <p align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], in the Journal of Development Economics, alongside posterior corrections to the original paper --Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], in the Journal of Development Economics, alongside posterior corrections to the original paper ––Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
 
-Continuing, we present a "map"*" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
+Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
-## Project structure
+## Project structure :world_map:
 
 The folder is structured to facilitate the reproduction and transparency in the generation of the econometric analysis. To navigate efficiently through the project, please refer to the following detailed "map" of the project:
 
+
+<details>
+  <summary> Click here to see folder structure /summary>
 ```
 ├── README.md          <- The top-level README for users.
 ├── data
@@ -41,6 +44,7 @@ The folder is structured to facilitate the reproduction and transparency in the 
         └──  append_corrigen.do 
 
 ```
+</details>
 
 ## How to replicate the analysis?[^2]  
 
@@ -68,7 +72,7 @@ The two main data sources are used are located under `data/` and include:
 + `district_bombing_corrected_data.dta`: relevant variables at district-level.
 + `province_bombing_corrected_data.dta`: relevant variables at province-level.
 
-## Documentation
+## Documentation :newspaper:
 
 We include the following documents to serve as reference as one is reproducing the paper:
 
@@ -78,9 +82,11 @@ We include the following documents to serve as reference as one is reproducing t
 province locations from one geographic coordinate system to another. 
 
 
-## Contact information
+## Contact
 
-+ Edward Miguel, reachable at emiguel@berkeley.edu
+Please direct any questions to  Edward Miguel at emiguel@berkeley.edu. 
+
+
 
 
 [^1]: Edward Miguel and Gérard Roland. “The long-run impact of bombing Vietnam”. In: Journal of Development Economics 96.1 (2011), pp. 1–15. url:  https://doi.org/10.1016/j.jdeveco.2010.07.004
