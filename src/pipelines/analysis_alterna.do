@@ -85,19 +85,19 @@ foreach ind in                                                              ///
 
     local app_tab4 tab41a tab42a
 
-    esttab `app_tab4' using "$tables/app_tab4_`ind'_reg_$source.tex",        ///
-    replace nomtitle label star(* 0.10 ** 0.05 *** 0.01)                     ///
-    booktabs nonotes                                                         ///
-        scalars(                                                             ///
-            "has_soil District soil"                                         ///
-            "exc_qua Exclude Quang Tri"                                      ///
-            "has_fe Fixed Effects"                                           ///
-            )                                                                ///
-        sfmt(0) r2 b(%8.6f) se(%8.6f)                                        ///
-    mgroups("Estimated poverty rate, 1999",                                  ///
-    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                          ///
-    suffix(}) span erepeat(\cmidrule(lr){@span}))                            ///
-    alignment(D{.}{.}{-1})                                                   ///
+    esttab `app_tab4' using "$tables/app_tab4_`ind'_reg_$source.tex",       ///
+    replace nomtitle label star(* 0.10 ** 0.05 *** 0.01)                    ///
+    booktabs nonotes                                                        ///
+        scalars(                                                            ///
+            "has_soil District soil"                                        ///
+            "exc_qua Exclude Quang Tri"                                     ///
+            "has_fe Fixed Effects"                                          ///
+            )                                                               ///
+        sfmt(0) r2 b(%8.6f) se(%8.6f)                                       ///
+    mgroups("Estimated poverty rate, 1999",                                 ///
+    pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                         ///
+    suffix(}) span erepeat(\cmidrule(lr){@span}))                           ///
+    alignment(D{.}{.}{-1})                                                  ///
     drop(soil* _cons)    
     }
 
@@ -124,15 +124,15 @@ foreach dep in                                                              ///
     rlpcex1_9398                                                            ///
     gini{ 
     // (5)
-    eststo tab5a5: regress                                                 ///
-        `dep'                                                              ///
-        tot_bmr_per                                                        ///
-        tot_bmr_per_2                                                      ///
-        popdensity6061                                                     ///
-        $x_weather $x_elev $x_gis                                          ///
-        $x_soil1 $x_soil2                                                  ///
-        south                                                              ///
-        if sample_all==1,                                                  ///
+    eststo tab5a5: regress                                                  ///
+        `dep'                                                               ///
+        tot_bmr_per                                                         ///
+        tot_bmr_per_2                                                       ///
+        popdensity6061                                                      ///
+        $x_weather $x_elev $x_gis                                           ///
+        $x_soil1 $x_soil2                                                   ///
+        south                                                               ///
+        if sample_all==1,                                                   ///
         robust cluster(province)
 
     estadd local has_control "Yes"
@@ -169,8 +169,8 @@ ON:
   RATES
 -----------*/
 
-foreach dep in                                                            ///
-    invalids02                                                            ///
+foreach dep in                                                             ///
+    invalids02                                                             ///
 	vetassoc{
 
     cwf province
@@ -195,14 +195,14 @@ foreach dep in                                                            ///
 
     } 
 local app_tab6a app_tab6a_invalids02 app_tab6a_vetassoc
-esttab `app_tab6a' using "$tables/app_tab6a_reg_$source.tex",             ///    
-replace label star(* 0.10 ** 0.05 *** 0.01)                               ///
-booktabs nonotes                                                          ///
-scalars(                                                                  ///
-    "exc_qua Exclude Quang Tri"                                           ///
-    )                                                                     ///    
-sfmt(0) r2 b(%8.5f) se(%8.5f)                                             ///                                                                  ///
-mtitles("2002 disability rates" "War veterans' associations" )            ///
+esttab `app_tab6a' using "$tables/app_tab6a_reg_$source.tex",              ///    
+replace label star(* 0.10 ** 0.05 *** 0.01)                                ///
+booktabs nonotes                                                           ///
+scalars(                                                                   ///
+    "exc_qua Exclude Quang Tri"                                            ///
+    )                                                                      ///    
+sfmt(0) r2 b(%8.5f) se(%8.5f)                                              ///                                                             
+mtitles("2002 disability rates" "War veterans' associations" )             ///
 keep(tot_bmr_per)
 
 /*-----------
@@ -246,26 +246,26 @@ foreach dep in                                                              ///
 
     }
 
-local                                                                     ///
-    app_tab6b                                                             /// 
-    app_tab6b_invest_76                                                   ///
-    app_tab6b_invest_78                                                   ///
-    app_tab6b_invest_80                                                   ///
-    app_tab6b_invest_82                                                   ///
-    app_tab6b_invest_85_per                                               ///
+local                                                                       ///
+    app_tab6b                                                               /// 
+    app_tab6b_invest_76                                                     ///
+    app_tab6b_invest_78                                                     ///
+    app_tab6b_invest_80                                                     ///
+    app_tab6b_invest_82                                                     ///
+    app_tab6b_invest_85_per                                                 ///
 
-esttab `app_tab6b' using "$tables/app_tab6b_reg_$source.tex",             ///    
-replace label star(* 0.10 ** 0.05 *** 0.01)                               ///
-booktabs nonotes                                                          ///
-scalars(                                                                  ///
-    "exc_qua Exclude Quang Tri"                                           ///
-    )                                                                     ///    
-sfmt(0) r2 b(%8.4f) se(%8.4f)                                             /// 
-mgroups("STATE INVESTMENT",                                               ///
-pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                           ///
-suffix(}) span erepeat(\cmidrule(lr){@span}))                             ///
-alignment(D{.}{.}{-1})                                                    ///
-mtitles("1976" "1978" "1980" "1982" "1985" )                              ///
+esttab `app_tab6b' using "$tables/app_tab6b_reg_$source.tex",               ///    
+replace label star(* 0.10 ** 0.05 *** 0.01)                                 ///
+booktabs nonotes                                                            ///
+scalars(                                                                    ///
+    "exc_qua Exclude Quang Tri"                                             ///
+    )                                                                       ///    
+sfmt(0) r2 b(%8.4f) se(%8.4f)                                               /// 
+mgroups("STATE INVESTMENT",                                                 ///
+pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                             ///
+suffix(}) span erepeat(\cmidrule(lr){@span}))                               ///
+alignment(D{.}{.}{-1})                                                      ///
+mtitles("1976" "1978" "1980" "1982" "1985" )                                ///
 keep(tot_bmr_per)
 
 /*-----------
@@ -280,9 +280,9 @@ ON:
   MEASURES
 -----------*/
 
-foreach dep in                                                             ///
-    educyr98father                                                         ///
-    educyr98mother                                                         ///
+foreach dep in                                                              ///
+    educyr98father                                                          ///
+    educyr98mother                                                          ///
 	educyr98_head{
 
     /*
@@ -465,17 +465,17 @@ eststo clear
     
 foreach level of local sud {
 
-    eststo: regress                                                             ///
-        $y_pop_den_1999                                                         ///
-        tot_bmr_per                                                             ///
-        popdensity6061                                                          ///
-        south                                                                   ///
-        $x_elev                                                                 ///
-        $x_weather                                                              ///
-        $x_soil1                                                                ///
-        $x_soil2                                                                ///
-        $x_gis                                                                  ///
-        if sample_all==1 & south==`level',                                      ///
+    eststo: regress                                                         ///
+        $y_pop_den_1999                                                     ///
+        tot_bmr_per                                                         ///
+        popdensity6061                                                      ///
+        south                                                               ///
+        $x_elev                                                             ///
+        $x_weather                                                          ///
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
+        $x_gis                                                              ///
+        if sample_all==1 & south==`level',                                  ///
         robust cluster(province)
    
     est sto app_tab82`level'_south
@@ -496,17 +496,17 @@ levelsof urban_6061, local(urbano)
 
 foreach level of local urbano {                                                
 
-    eststo: regress                                                             ///
-        $y_pop_den_1999                                                         ///
-        tot_bmr_per                                                             ///
-        popdensity6061                                                          ///
-        south                                                                   ///
-        $x_elev                                                                 ///
-        $x_weather                                                              ///
-        $x_soil1                                                                ///
-        $x_soil2                                                                ///
-        $x_gis                                                                  ///
-        if sample_all==1  & urban_6061==`level',                                ///
+    eststo: regress                                                         ///
+        $y_pop_den_1999                                                     ///
+        tot_bmr_per                                                         ///
+        popdensity6061                                                      ///
+        south                                                               ///
+        $x_elev                                                             ///
+        $x_weather                                                          ///
+        $x_soil1                                                            ///
+        $x_soil2                                                            ///
+        $x_gis                                                              ///
+        if sample_all==1  & urban_6061==`level',                            ///
         robust cluster(province)
    
     est sto app_tab82`level'_urban
@@ -576,7 +576,7 @@ foreach level of local urbano {
         $x_soil1                                                            ///
         $x_soil2                                                            ///
         $x_gis                                                              ///
-        if sample_all==1 & urban_6061==`level',                                                             ///
+        if sample_all==1 & urban_6061==`level',                             ///
         a(province) robust cluster(province)
 
     est sto app_tab83`level'_urban
