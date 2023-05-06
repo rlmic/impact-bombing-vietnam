@@ -4,7 +4,7 @@
 
 <p align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside posterior corrections to the original paper ––Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside posterior corrections to the original paper[^2].
 
 Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
@@ -48,7 +48,7 @@ The folder is structured to facilitate the reproduction and transparency in the 
 
 </details>
 
-## How to replicate the analysis?[^2]  
+## How to replicate the analysis?[^3]  
 
 Open the `main.do` file, located under `src/pipelines/` and execute. The `main.do` file calls on the other do files to reproduce each part of the analysis. In the beginning portion of the `main.do` file, you will see the following lines of code:
 
@@ -94,5 +94,7 @@ Please direct any questions to  Edward Miguel at emiguel@berkeley.edu.
 [^1]: Edward Miguel and Gérard Roland. “The long-run impact of bombing Vietnam”. In: Journal of Development Economics 96.1 (2011), pp. 1–15. url:  https://doi.org/10.1016/j.jdeveco.2010.07.004
 
 [^2]: Several STATA routines may need to be installed for the programs to run properly. 
+
+[^3]: Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
 
 </p>
