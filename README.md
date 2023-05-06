@@ -91,6 +91,7 @@ The two main data sources are located under `data/` and include:
 ## Documentation :newspaper:
 
 <div align="justify">
+
 We include the following documents under `docs/` to serve as reference:
 
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
