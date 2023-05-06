@@ -2,21 +2,21 @@
 
 ## Overview
 
-<p align="justify">
+<div align="justify">
 
 This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside posterior corrections to the original paper[^2].
 
 Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
-</p>
+</div>
 
 ## Project structure :world_map:
 
-<p align="justify">
+<div align="justify">
 
 The folder is structured to facilitate the reproduction and transparency in the generation of the econometric analysis. To navigate efficiently through the project, please refer to the following detailed "map" of the project.
 
-</p>
+</div>
 
 <details>
   <summary> Click here to see the folder structure </summary>
@@ -86,8 +86,11 @@ The two main data sources are located under `data/` and include:
 + `district_bombing_corrected_data.dta`: relevant variables at district-level.
 + `province_bombing_corrected_data.dta`: relevant variables at province-level.
 
+</div>
+
 ## Documentation :newspaper:
 
+<div align="justify">
 We include the following documents under `docs/` to serve as reference:
 
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
