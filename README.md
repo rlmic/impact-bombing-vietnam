@@ -14,8 +14,8 @@ The folder is structured to facilitate the reproduction and transparency in the 
 
 
 <details>
-  <summary> Click here to see folderstructure /summary>
-  
+  <summary> Click here to see folder structure </summary>
+
 ```
 ├── README.md          <- The top-level README for users.
 ├── data
