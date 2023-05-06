@@ -1,12 +1,16 @@
 # The long-run impact of bombing Vietnam
+===
 
 ## Overview
+<p align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam." Thus, we provide the replication materials to reproduce the econometric analysis and the expected output.
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam." by E. Miguel and G. Roland, in the Journal of Development Economics, alongside posterior corrections to the original paper --Supplement of "The Long-run Impact of Bombing Vietnam" and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+
+Continuing, we present a "map"*" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
 ## Project structure
 
-The folder is structured to facilitate the reproduction of the principal analysis and the alternative research mentioned in the original paper "The long-run impact of Bombing Vietnam" and its corresponding Supplement. Likewise, we have included the code to reproduce the figures and additional outputs as part of the *Corrigendum* to "The Long-run Impact of Bombing Vietnam."
+The folder is structured to facilitate the reproduction and transparency in the generation of the econometric analysis. To navigate efficiently through the project, please refer to the following detailed "map" of the project:
 
 ```
 ├── README.md          <- The top-level README for users.
@@ -38,39 +42,54 @@ The folder is structured to facilitate the reproduction of the principal analysi
 
 ```
 
-## How to replicate the analysis  
+## How to replicate the analysis?[^1]  
 
-Open the `main.do` file, located in the following directory `src/pipelines/` and execute. The `main.do` file calls on the other do files to reproduce each part of the analysis. In particular:
-
-+ `analysis_corrected.do`: reproduces the main analysis within the paper, with the correction for the errors in re-projecting district and province locations from one geographic coordinate systems to another. 
-+ `analysis_alterna.do`: reproduces the alternative econometric analysis mentioned withint the original paper, but not shown withing the tables included as part of the published paper.
-+ `append_corrigen.do`: reproduces the additional analysis produced as part of the appendix in the *Corregidum*.
-
-In the beginning portion of the `main.do` file, you will see the following lines of code:
+Open the `main.do` file, located under `src/pipelines/` and execute. The `main.do` file calls on the other do files to reproduce each part of the analysis. In the beginning portion of the `main.do` file, you will see the following lines of code:
 
 ```{do}
 // Change this path
 global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 ```
 
-This global variable defines where the directory sits on your computer. To run the replication file, you'll need to change this to reflect where you're storing the directory on your hard drive (the filepath). Note that several STATA routines may need to be installed for the programs to run properly. 
+This global variable defines where the directory sits on your computer. **To run the replication file, you'll need to change this to reflect where you're storing the directory on your hard drive (the filepath)**. 
 
-The expected outputs will be produced within the directory `outputs/`, either under `outputs/figures/` or `outputs/tables/`. To facilitate tracking the execution of the do file, a logs file will be saved under `logs/`, which you can use to check the tables and figure. 
+Note that several STATA routines may need to be installed for the programs to run properly. 
+
+The `main.do` file will 1) load the constants and labels used for our analysis, 2) load the corresponding data sources, 3) run the analysis, splitted in three other do files:
+
+      + `analysis_corrected.do`: reproduces the main analysis presented in the original paper, considering as input the corrected locations of the provinces and districts in Vietnam, 
+
+      + `analysis_alterna.do`: generates the alternative econometric analysis mentioned in the original paper, but not shown in the tables included as part of the published paper,
+
+      + `append_corrigen.do`: produces the additional analysis included as part of the Appendix of the *Corregidum*.
+
+The expected outputs will be produced within the directory `outputs/`, either under `outputs/figures/` or `outputs/tables/`. Finally, to facilitate tracking the execution of the do file, a logs file will be saved under `logs/`, which you can use to check the tables and figure. 
 
 ## Data Sources
 
-To reproduce this analysis, two main data sources are used:
-+ district_bombing_corrected_data.dta: relevant variables a district-level.
-+ province_bombing_corrected_data.dta: relevant variables a province-level.
+The two main data sources are used are located under `data/` and include:
+
++ district_bombing_corrected_data.dta: relevant variables at district-level.
++ province_bombing_corrected_data.dta: relevant variables at province-level.
 
 ## Documentation
 
-As part of the documentation of this project, we include the following documents:
+We include the following documents to serve as reference as one is reproducing the paper:
+
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
-+ `impact-bombing-vietnam-suplement.pdf`: The supplement material that outlines minor discrepancies found in data replication which do not, as a whole, affect the reported data analysis published in the paper.
-+ `impact-bombing-vietnam-corrigendum.pdf`: The *corrigendum* that corrects Miguel and Roland (2010) for errors in re-projecting district and
++ `impact-bombing-vietnam-supplement.pdf`: The supplement material that outlines minor discrepancies found in data replication which do not, as a whole, affect the reported data analysis published in the paper.
++ `impact-bombing-vietnam-corrigendum.pdf`: The *Corrigendum* to corrects Miguel and Roland (2011) for errors in re-projecting district and
 province locations from one geographic coordinate system to another. 
+
+## References
+
+[1] Edward Miguel and G ́erard Roland. “The long-run impact of bombing Vietnam”. In: Journal of Development Economics 96.1 (2011), pp. 1–15. url:  https://doi.org/10.1016/j.jdeveco.2010.07.004
+
 
 ## Contact information
 
-	
++ Edward Miguel emiguel@berkeley.edu
+
+[^1]: Several STATA routines may need to be installed for the programs to run properly. 
+
+</p>
