@@ -55,7 +55,7 @@ The folder is structured to facilitate the reproduction and transparency in the 
 
 ## How to replicate the analysis?[^3]  
 
-<p align="justify">
+<div align="justify">
 
 Open the `main.do` file, located under `src/pipelines/` and execute. The `main.do` file calls on the other do files to reproduce each part of the analysis. In the beginning portion of the `main.do` file, you will see the following lines of code:
 
@@ -74,11 +74,12 @@ global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 
 The expected outputs will be produced within the directory `outputs/`, either under `outputs/figures/` or `outputs/tables/`. Finally, to facilitate tracking the execution of the do file, a logs file will be saved under `logs/`, which you can use to check the tables and figure. 
 
-</p>
+</div>
 
 ## Data Sources
 
-<p align="justify">
+<div align="justify">
+
 
 The two main data sources are located under `data/` and include:
 
@@ -94,7 +95,7 @@ We include the following documents under `docs/` to serve as reference:
 + `impact-bombing-vietnam-corrigendum.pdf`: The *Corrigendum* that corrects the re-projecting of district and
 province locations, and reports the resulting updated outputs in the econometric analysis.
 
-</p>
+</div>
 
 ## Contact
 
