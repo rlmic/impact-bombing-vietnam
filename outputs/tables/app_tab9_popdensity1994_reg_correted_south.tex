@@ -1,0 +1,19 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{3}{c}{popdensity1994}                               \\\cmidrule(lr){2-4}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\midrule
+U.S. bombs, missiles, and rockets per km$^2$&       -0.76\sym{**} &       -0.86         &                     \\
+                    &      (0.34)         &      (0.97)         &                     \\
+\addlinespace
+\big|Latitude - 17 ^\circ N\big|&                     &                     &       -1.82         \\
+                    &                     &                     &     (11.60)         \\
+\midrule
+Observations        &          55         &          54         &          55         \\
+\(R^{2}\)           &       0.859         &       0.858         &       0.855         \\
+Exclude Quang Tri   &          No         &         Yes         &          No         \\
+\bottomrule
+\end{tabular}
+}
