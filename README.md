@@ -83,8 +83,8 @@ The expected outputs will be produced within the directory `outputs/`, either un
 
 The two main data sources are located under `data/` and include:
 
-+ `district_bombing_corrected_data.dta`: relevant variables at district-level.
-+ `province_bombing_corrected_data.dta`: relevant variables at province-level.
++ `district_bombing_corrected.dta`: relevant variables at district-level.
++ `province_bombing_corrected.dta`: relevant variables at province-level.
 
 </div>
 
