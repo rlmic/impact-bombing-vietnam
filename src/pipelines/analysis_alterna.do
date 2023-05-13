@@ -40,7 +40,7 @@ foreach ind in                                                              ///
         $y_pov                                                              ///
         `ind'                                                               /// 
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_weather                                                          ///
         $x_gis                                                              ///
