@@ -4,7 +4,7 @@
 
 <div align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside the Supplement and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside its Supplement and *Corrigendum*.
 
 Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
