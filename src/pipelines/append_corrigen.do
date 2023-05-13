@@ -12,9 +12,8 @@ eststo clear
 
 eststo tab: regress                                                         ///
     diff_17_corrected                                                       ///
-    diff_17                                                                 ///
-    $south 
-
+    diff_17                                                                 
+    
 summ                                                                        ///
     $y_bom                                                                  ///
     if sample_all==1

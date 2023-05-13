@@ -4,7 +4,7 @@
 
 <div align="justify">
 
-This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside posterior corrections to the original paper[^2].
+This repository aims to facilitate the reproducibility of the paper "The Long-run Impact of Bombing Vietnam" by E. Miguel and G. Roland[^1], alongside the Supplement and the *Corrigendum* to "The Long-run Impact of Bombing Vietnam". 
 
 Continuing, we present a "map" to help the user navigate through this project, a detailed description on how to run the analysis, a brief description of the data sources and documentation, finalizing with relevant contact information.
 
@@ -25,8 +25,8 @@ The folder is structured to facilitate the reproduction and transparency in the 
 ├── README.md          <- The top-level README for users.
 ├── data
 │   ├── clean          <- Data used as input for the analysis.
-│     ├── district_bombing_corrected_data.dta
-│     └── province_bombing_corrected_data.dta
+│     ├── district_bombing_corrected.dta
+│     └── province_bombing_corrected.dta
 │
 ├── docs               <- Documentation associated with the paper.
 │   └── impact-bombing-vietnam-supplement.pdf   
@@ -68,7 +68,7 @@ global dir = "/Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam"
 
 :sparkles: The `main.do` file will 1) load the constants and labels used for our analysis, 2) load the corresponding data sources, 3) run the analysis, splitted in three other do files:
 
-+ `analysis_corrected.do`: reproduces the main analysis presented in the original paper, considering as input the corrected locations of the provinces and districts in Vietnam, 
++ `analysis_corrected.do`: reproduces the main analysis presented in the original paper, considering as input the corrected locations of the provinces and districts in Vietnam, as well as the fixed indicator for provinces or districts belonging to former South Vietnam, 
 + `analysis_alterna.do`: generates the alternative econometric analysis mentioned in the original paper, but not shown in the tables included as part of the published paper,
 + `append_corrigen.do`: produces the additional analysis included as part of the Appendix of the *Corrigedum*.
 
@@ -97,14 +97,13 @@ We include the following documents under `docs/` to serve as reference:
 + `impact-bombing-vietnam-paper.pdf`: Original paper published in the Journal of Development Economics.
 + `impact-bombing-vietnam-supplement.pdf`: The supplement material that outlines minor discrepancies found in data replication which do not, as a whole, affect the reported data analysis published in the paper.
 + `impact-bombing-vietnam-corrigendum.pdf`: The *Corrigendum* that corrects the re-projecting of district and
-province locations, and reports the resulting updated outputs in the econometric analysis.
+province locations, as well as the indicator for provinces or districts belonging to former South Vietnam, and reports the resulting updated outputs in the econometric analysis.
 
 </div>
 
 ## Contact
 
-Please direct any questions to  Edward Miguel at emiguel@berkeley.edu. 
-
+Please direct any questions to Edward Miguel at emiguel@berkeley.edu. 
 
 
 
