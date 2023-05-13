@@ -155,14 +155,14 @@ global                                                                      ///
     ord1                                                                    ///
     General_Purpose                                                         ///
     Cluster_Bomb                                                            ///
-    Missile 																///
-	Rocket                                                         		    ///
+    Missile                                                                 ///
+    Rocket                                                                  ///
     Cannon_Artillery
     
 global                                                                      ///
     ord2                                                                    ///
-    Incendiary																///
-	WP
+    Incendiary                                                              ///
+    WP
     
 global                                                                      ///
     ord3                                                                    ///
