@@ -1,6 +1,6 @@
     // Label variables for display
     label var                                                                ///
-        $south                                                                ///
+        $south                                                               ///
         "Former South Vietnam"
     label var                                                                ///
         area_251_500m                                                        ///

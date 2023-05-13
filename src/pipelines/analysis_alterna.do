@@ -65,7 +65,7 @@ foreach ind in                                                              ///
         $y_pov                                                              ///
         `ind'                                                               /// 
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_weather                                                          ///
         $x_gis                                                              ///
@@ -131,7 +131,7 @@ foreach dep in                                                              ///
         popdensity6061                                                      ///
         $x_weather $x_elev $x_gis                                           ///
         $x_soil1 $x_soil2                                                   ///
-        $south                                                               ///
+        $south                                                              ///
         if sample_all==1,                                                   ///
         robust cluster(province)
 
@@ -183,7 +183,7 @@ foreach dep in                                                             ///
         `dep'                                                              ///
         tot_bmr_per                                                        ///                
         popdensity6061                                                     ///
-        $south                                                              ///
+        $south                                                             ///
         $x_elev                                                            ///
         $x_gis                                                             ///
         $x_weather                                                         ///
@@ -234,7 +234,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         tot_bmr_per                                                         ///                
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -296,7 +296,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         tot_bmr_per                                                         /// 
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -322,7 +322,7 @@ foreach dep in                                                              ///
         $x_weather                                                          ///
         $x_soil1                                                            ///
         $x_soil2                                                            ///
-        $south,                                                              ///
+        $south,                                                             ///
         robust cluster(province)
 
     estadd local has_soil "Yes"
@@ -362,7 +362,7 @@ foreach dep in                                                              ///
         $x_weather                                                          ///          
         $x_soil1                                                            ///
         $x_soil2                                                            ///
-        $south                                                               ///
+        $south                                                              ///
         if provincename~="Quang Tri" & sample_all==1, robust cluster(province)
 
     estadd local has_soil "Yes"
@@ -378,7 +378,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         $x_diff                                                             ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///          
@@ -399,7 +399,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         tot_bmr_per                                                         ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -407,7 +407,7 @@ foreach dep in                                                              ///
         $x_soil2                                                            ///
         ($x_diff                                                            ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -471,13 +471,13 @@ foreach level of local sud {
         $y_pop_den_1999                                                     ///
         tot_bmr_per                                                         ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_weather                                                          ///
         $x_soil1                                                            ///
         $x_soil2                                                            ///
         $x_gis                                                              ///
-        if sample_all==1 & $south==`level',                                  ///
+        if sample_all==1 & $south==`level',                                 ///
         robust cluster(province)
    
     est sto app_tab82`level'_south
@@ -502,7 +502,7 @@ foreach level of local urbano {
         $y_pop_den_1999                                                     ///
         tot_bmr_per                                                         ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_weather                                                          ///
         $x_soil1                                                            ///
@@ -646,7 +646,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         tot_bmr_per                                                         ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -661,7 +661,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         tot_bmr_per                                                         ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
@@ -677,7 +677,7 @@ foreach dep in                                                              ///
         `dep'                                                               ///
         $x_diff                                                             ///
         popdensity6061                                                      ///
-        $south                                                               ///
+        $south                                                              ///
         $x_elev                                                             ///
         $x_gis                                                              ///
         $x_weather                                                          ///
