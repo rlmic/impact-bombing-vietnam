@@ -1,0 +1,42 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{2}{c}{Estimated poverty rate, 1999}\\\cmidrule(lr){2-3}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         \\
+\midrule
+Total # of U.S. general purpose bombs&   -0.000000         &    0.000000         \\
+                    &  (0.000000)         &  (0.000000)         \\
+\addlinespace
+popdensity6061      &   -0.000102\sym{***}&   -0.000021\sym{**} \\
+                    &  (0.000021)         &  (0.000010)         \\
+\addlinespace
+Former South Vietnam&   -0.158323         &   -0.011987         \\
+                    &  (0.107650)         &  (0.068275)         \\
+\addlinespace
+Prop. of land area 250–500 m&    0.266929\sym{**} &    0.328280\sym{***}\\
+                    &  (0.128041)         &  (0.071487)         \\
+\addlinespace
+Prop. of land area 500–1000 m&    0.301588         &    0.237608\sym{***}\\
+                    &  (0.185452)         &  (0.056563)         \\
+\addlinespace
+Prop. of land area over 1000 m&    0.603641\sym{**} &   -0.061441         \\
+                    &  (0.259883)         &  (0.112254)         \\
+\addlinespace
+Average precipitation (cm)&    0.000218         &    0.000654\sym{*}  \\
+                    &  (0.000540)         &  (0.000335)         \\
+\addlinespace
+Average temperature (C ^\circ)&    0.024901         &   -0.014996         \\
+                    &  (0.030159)         &  (0.020409)         \\
+\addlinespace
+Latitude (^{\circ}N)&    0.001428         &    0.006834         \\
+                    &  (0.015759)         &  (0.009026)         \\
+\midrule
+Observations        &          55         &         584         \\
+\(R^{2}\)           &       0.667         &       0.587         \\
+District soil       &          No         &         Yes         \\
+Exclude Quang Tri   &          No         &          No         \\
+Fixed Effects       &          No         &          No         \\
+\bottomrule
+\end{tabular}
+}

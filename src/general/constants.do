@@ -89,7 +89,6 @@ global                                                                      ///
     title_tab7_reg =                                                        ///
     "Local war impacts on physical infrastructure and human capital"
 
-    
 /*-----------------------------------
 CONTROL AND DEPENDANT 
 VARIABLES FOR ANALYSIS 
@@ -133,7 +132,11 @@ global                                                                      ///
     
 global                                                                      ///
     x_gis                                                                   ///
-    north_lat
+    north_lat_corrected
+
+global                                                                      ///
+    south                                                                   ///
+    south_corrected
 
 global                                                                      ///
     x_diff                                                                  ///
@@ -152,14 +155,14 @@ global                                                                      ///
     ord1                                                                    ///
     General_Purpose                                                         ///
     Cluster_Bomb                                                            ///
-    Missile 																///
-	Rocket                                                         		    ///
+    Missile                                                                 ///
+    Rocket                                                                  ///
     Cannon_Artillery
     
 global                                                                      ///
     ord2                                                                    ///
-    Incendiary																///
-	WP
+    Incendiary                                                              ///
+    WP
     
 global                                                                      ///
     ord3                                                                    ///
@@ -210,50 +213,12 @@ global                                                                      ///
 PATH TO SOURCE DATA
 -----------------------------------*/
 
-global                                                                      /// 
-    dave_prov                                                               ///
-    "$data/external/dataverse/war_data_province.dta"
-    
 global                                                                      ///
-    dave_dist                                                               ///
-    "$data/external/dataverse/war_data_district.dta"
-    
-global                                                                      /// 
-    augu_prov                                                               ///
-    "$data/external/archives/war_data_province_aug05.dta"
-
-global                                                                      /// 
-    augu_dist                                                               ///
-    "$data/external/archives/war_data_district_aug05.dta"
-
-global                                                                      /// 
-    sept_prov                                                               ///
-    "$data/external/archives/war_data_province_sep09.dta"
-
-global                                                                      /// 
-    sept_dist                                                               ///
-    "$data/external/archives/war_data_district_sep09.dta"
-
-global                                                                      ///
-    males_prov                                                              ///                                             
-    "$data/external/exposition/war_data_province_malesk.dta"
-
-global                                                                      ///
-    huyn_prov                                                               /// 
-    "$data/external/hochiminh/war_data_province_huynh.dta"
-
-global                                                                      ///
-    main_prov                                                               /// 
-    "$data/clean/province_bombing.dta"
-
-global                                                                      ///
-    main_dist                                                               /// 
-    "$data/clean/district_bombing.dta"
-	
-global                                                                      ///
-    main_dist_correc                                                        /// 
+    district_data                                                           /// 
     "$data/clean/district_bombing_corrected.dta"
 
 global                                                                      ///
-    main_prov_correc                                                        /// 
+    province_data                                                           /// 
     "$data/clean/province_bombing_corrected.dta"
+
+global source = "correted_south"
