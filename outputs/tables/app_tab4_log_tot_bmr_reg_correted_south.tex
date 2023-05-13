@@ -1,0 +1,42 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{2}{c}{Estimated poverty rate, 1999}\\\cmidrule(lr){2-3}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         \\
+\midrule
+Log(Total # of U.S. bombs, missiles, rockets)&   -0.022008\sym{***}&    0.005441         \\
+                    &  (0.007033)         &  (0.005152)         \\
+\addlinespace
+popdensity6061      &   -0.000101\sym{***}&   -0.000020\sym{*}  \\
+                    &  (0.000021)         &  (0.000011)         \\
+\addlinespace
+Former South Vietnam&   -0.159477         &    0.003600         \\
+                    &  (0.100684)         &  (0.069803)         \\
+\addlinespace
+Prop. of land area 250–500 m&    0.272249\sym{**} &    0.330514\sym{***}\\
+                    &  (0.110339)         &  (0.071118)         \\
+\addlinespace
+Prop. of land area 500–1000 m&    0.304417         &    0.237429\sym{***}\\
+                    &  (0.181421)         &  (0.056514)         \\
+\addlinespace
+Prop. of land area over 1000 m&    0.416918\sym{**} &   -0.046942         \\
+                    &  (0.199140)         &  (0.117561)         \\
+\addlinespace
+Average precipitation (cm)&    0.000546         &    0.000565\sym{*}  \\
+                    &  (0.000403)         &  (0.000325)         \\
+\addlinespace
+Average temperature (C ^\circ)&    0.015205         &   -0.013662         \\
+                    &  (0.026964)         &  (0.019820)         \\
+\addlinespace
+Latitude (^{\circ}N)&   -0.006548         &    0.009514         \\
+                    &  (0.015791)         &  (0.009038)         \\
+\midrule
+Observations        &          55         &         583         \\
+\(R^{2}\)           &       0.715         &       0.589         \\
+District soil       &          No         &         Yes         \\
+Exclude Quang Tri   &          No         &          No         \\
+Fixed Effects       &          No         &          No         \\
+\bottomrule
+\end{tabular}
+}

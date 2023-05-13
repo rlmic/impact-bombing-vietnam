@@ -1,6 +1,6 @@
     // Label variables for display
     label var                                                                ///
-        south                                                                ///
+        $south                                                                ///
         "Former South Vietnam"
     label var                                                                ///
         area_251_500m                                                        ///
@@ -13,16 +13,16 @@
         "Prop. of land area over 1000 m"
     label var                                                                ///
         tmp_avg                                                              ///
-        "Average temperature (C $°$)"
+        "Average temperature (C ^\circ)"
     label var                                                                ///
         pre_avg                                                              ///
         "Average precipitation (cm)"
     label var                                                                ///
         diff_17                                                              ///
-        "\|Latitude - 17 $°$ N\|"
+        "\big|Latitude - 17^{\circ} N \big|
     label var                                                                ///
         $x_gis                                                               ///
-        "Latitude (°N)"
+        "Latitude (^{\circ}N)"
     label var                                                                ///
         popdensity1999                                                       ///
         "Population density, 1999"

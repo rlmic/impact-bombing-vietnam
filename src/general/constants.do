@@ -135,8 +135,12 @@ global                                                                      ///
     north_lat_corrected
 
 global                                                                      ///
+    south                                                                   ///
+    south_corrected
+
+global                                                                      ///
     x_diff                                                                  ///
-    diff_17_corrected
+    diff_17
     
 global                                                                      /// 
     x_weather                                                               ///
@@ -211,10 +215,10 @@ PATH TO SOURCE DATA
 
 global                                                                      ///
     district_data                                                           /// 
-    "$data/clean/district_bombing_corrected_data.dta"
+    "$data/clean/district_bombing_corrected.dta"
 
 global                                                                      ///
     province_data                                                           /// 
-    "$data/clean/province_bombing_corrected_data.dta"
+    "$data/clean/province_bombing_corrected.dta"
 
-global source = "correted"
+global source = "correted_south"

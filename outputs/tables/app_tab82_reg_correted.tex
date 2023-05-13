@@ -1,0 +1,43 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{4}{c}{Population density, 1999}                                           \\\cmidrule(lr){2-5}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Ex-North}&\multicolumn{1}{c}{Ex-South}&\multicolumn{1}{c}{Rural}&\multicolumn{1}{c}{Urban}\\
+\midrule
+U.S. bombs, missiles, and rockets per km$^2$&       11.36         &      -49.49         &       -0.33         &       32.20\sym{*}  \\
+                    &      (6.75)         &     (30.98)         &      (0.75)         &     (15.91)         \\
+\addlinespace
+popdensity6061      &        7.52\sym{***}&        0.28         &        0.44         &        0.44         \\
+                    &      (1.20)         &      (0.23)         &      (0.78)         &      (0.50)         \\
+\addlinespace
+Former South Vietnam&        0.00         &        0.00         &      719.94         &    11872.50         \\
+                    &         (.)         &         (.)         &    (630.79)         &  (17037.93)         \\
+\addlinespace
+Prop. of land area 250–500 m&      461.15         &    -3583.37         &     -697.35         &   -28145.24         \\
+                    &    (513.26)         &   (2962.77)         &    (442.72)         &  (18056.16)         \\
+\addlinespace
+Prop. of land area 500–1000 m&      598.18         &    -2500.79         &     -398.39         &   -12065.41         \\
+                    &    (451.15)         &   (2296.44)         &    (324.79)         &  (18564.80)         \\
+\addlinespace
+Prop. of land area over 1000 m&     -508.47         &     -515.96         &        9.61         &    93824.31\sym{*}  \\
+                    &    (837.83)         &   (2896.38)         &    (248.04)         &  (53028.78)         \\
+\addlinespace
+Average precipitation (cm)&       -4.75         &      -16.08         &       -0.29         &     -132.96         \\
+                    &      (7.26)         &     (14.89)         &      (1.42)         &     (97.34)         \\
+\addlinespace
+Average temperature (C $°$)&     -123.77         &     2783.79         &       72.36         &     5029.17         \\
+                    &    (104.26)         &   (2021.00)         &     (54.14)         &  (10768.08)         \\
+\addlinespace
+Latitude (°N)       &      267.71\sym{*}  &      163.73         &      105.22         &     2722.77         \\
+                    &    (154.36)         &    (324.42)         &     (68.97)         &   (2780.04)         \\
+\midrule
+Observations        &         300         &         284         &         409         &         175         \\
+\(R^{2}\)           &       0.470         &       0.320         &       0.158         &       0.432         \\
+District soil       &         Yes         &         Yes         &         Yes         &         Yes         \\
+Exclude Quang Tri   &          No         &          No         &          No         &          No         \\
+Fixed Effects       &          No         &          No         &          No         &          No         \\
+\bottomrule
+\end{tabular}
+}

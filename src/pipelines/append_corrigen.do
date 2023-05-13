@@ -13,7 +13,7 @@ eststo clear
 eststo tab: regress                                                         ///
     diff_17_corrected                                                       ///
     diff_17                                                                 ///
-    south 
+    $south 
 
 summ                                                                        ///
     $y_bom                                                                  ///
