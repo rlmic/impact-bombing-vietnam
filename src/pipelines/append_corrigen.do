@@ -1,5 +1,4 @@
 /*
-
 VALIDATING THE CORRELATION BETWEEN OLD AND
 PREVIOUS COORDINATES
 ------------------------------------------
@@ -13,7 +12,7 @@ eststo clear
 eststo tab: regress                                                         ///
     diff_17_corrected                                                       ///
     diff_17                                                                 
-    
+
 summ                                                                        ///
     $y_bom                                                                  ///
     if sample_all==1
