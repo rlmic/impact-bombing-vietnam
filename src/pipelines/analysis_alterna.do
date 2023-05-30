@@ -362,7 +362,7 @@ mgroups("Per capita state investment (in millions of 1985 Dong per capita)", ///
 pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                             ///
 suffix(}) span erepeat(\cmidrule(lr){@span}))                               ///
 alignment(D{.}{.}{-1})                                                      ///
-mtitles("1985 " )                                                           ///
+mtitles("1985" )                                                           ///
 keep(tot_bmr_per)
 
 
