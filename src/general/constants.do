@@ -1,3 +1,39 @@
+// CHANGES!!!
+//-----------------------------------
+
+global source = "original"
+
+if "$source" == "corrected" {
+
+    global                                                                      ///
+        x_gis                                                                   ///
+        north_lat_corrected
+
+    global                                                                      ///
+        south                                                                   ///
+        south_corrected
+
+    global                                                                      ///
+        x_diff                                                                  ///
+        diff_17_corrected
+
+} 
+
+else {
+
+    global                                                                      ///
+        x_gis                                                                   ///
+        north_lat
+
+    global                                                                      ///
+        south                                                                   ///
+        south
+
+    global                                                                      ///
+        x_diff                                                                  ///
+        diff_17
+}
+
 /*-----------------------------------
 FOLDER STRUCTURE
 -----------------------------------*/
@@ -94,6 +130,9 @@ CONTROL AND DEPENDANT
 VARIABLES FOR ANALYSIS 
 -----------------------------------*/
 
+//------------------------------------
+
+// Remains the same
 global                                                                      ///
     x_elev                                                                  ///
     area_251                                                                ///
@@ -129,19 +168,7 @@ global                                                                      ///
     soil_39                                                                 ///
     soil_40                                                                 ///
     soil_41                                                                  
-    
-global                                                                      ///
-    x_gis                                                                   ///
-    north_lat_corrected
 
-global                                                                      ///
-    south                                                                   ///
-    south_corrected
-
-global                                                                      ///
-    x_diff                                                                  ///
-    diff_17
-    
 global                                                                      /// 
     x_weather                                                               ///
     pre_avg                                                                 ///
@@ -220,5 +247,3 @@ global                                                                      ///
 global                                                                      ///
     province_data                                                           /// 
     "$data/clean/province_bombing_corrected.dta"
-
-global source = "correted_south"

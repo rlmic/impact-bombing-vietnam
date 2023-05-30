@@ -6,6 +6,9 @@
         area_251_500m                                                        ///
         "Prop. of land area 250–500 m"
     label var                                                                ///
+        popdensity6061                                                       ///
+        "Population density (province) 1960-61"
+    label var                                                                ///
         area_501_1000m                                                       ///
         "Prop. of land area 500–1000 m"
     label var                                                                ///
@@ -13,13 +16,14 @@
         "Prop. of land area over 1000 m"
     label var                                                                ///
         tmp_avg                                                              ///
-        "Average temperature (C ^\circ)"
+        "Average temperature (C^\circ)"
     label var                                                                ///
         pre_avg                                                              ///
         "Average precipitation (cm)"
     label var                                                                ///
-        diff_17                                                              ///
-        "\big|Latitude - 17^{\circ} N \big|
+        $x_diff                                                              ///
+        "\big|Latitude - 17^{\circ} N \big|"
+
     label var                                                                ///
         $x_gis                                                               ///
         "Latitude (^{\circ}N)"
@@ -31,10 +35,10 @@
         "District land area (km$^2$)"
     label var                                                                ///
         tot_bmr_per                                                          ///
-        "U.S. bombs, missiles, and rockets per km$^2$"
+        "Total U.S. bombs, missiles, and rockets per km$^2$"
     label var                                                                ///
         tot_bmr_per_2                                                        ///
-        "(U.S. bombs, missiles, and rockets per km$^2$)$^2$ ÷ 100"
+        "(Total U.S. bombs, missiles, and rockets per km$^2$)$^2$ ÷ 100"
     label var                                                                ///
         tot_bmr_hi                                                           ///
-        "U.S. bombs, missiles, and rockets per km$^2$ (top 10\% districts)"
+        "Total U.S. bombs, missiles, and rockets per km$^2$ (top 10\% districts)"

@@ -1,6 +1,8 @@
 /*
 VALIDATING THE CORRELATION BETWEEN OLD AND
 PREVIOUS COORDINATES
+
+CONTROLLED BY ORIGINAL SOUTH INDICATOR
 ------------------------------------------
 
 */
@@ -11,11 +13,8 @@ eststo clear
 
 eststo tab: regress                                                         ///
     diff_17_corrected                                                       ///
-    diff_17                                                                 
-
-summ                                                                        ///
-    $y_bom                                                                  ///
-    if sample_all==1
+    diff_17                                                                 ///
+    south
     
 // Produce regression table
 
