@@ -1,0 +1,47 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Local bombing impacts on 1999 population density}
+\begin{tabular}{l*{6}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{6}{c}{Population density, 1999}                                                                                       \\\cmidrule(lr){2-7}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                    &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV-2SLS}\\
+\midrule
+Total U.S. bombs, missiles, and rockets per km$^2$&       -0.75\sym{**} &        1.85         &       12.36         &        6.09         &                     &      -11.91         \\
+                    &      (0.35)         &      (7.73)         &     (10.88)         &     (12.39)         &                     &     (16.86)         \\
+\addlinespace
+Population density (province) 1960-61&        0.89\sym{***}&        0.67         &                     &        0.68         &        0.67         &        0.63         \\
+                    &      (0.19)         &      (0.42)         &                     &      (0.42)         &      (0.41)         &      (0.45)         \\
+\addlinespace
+Former South Vietnam&      368.63\sym{**} &     -926.56         &                     &     -277.31         &     -344.32         &      440.63         \\
+                    &    (156.32)         &   (1880.19)         &                     &   (2136.18)         &   (1585.80)         &   (1344.75)         \\
+\addlinespace
+Prop. of land area 250–500 m&    -1330.28\sym{***}&    -3701.47         &    -1414.25         &    -3783.64         &    -3765.04         &    -4372.06         \\
+                    &    (408.59)         &   (3022.08)         &   (1720.30)         &   (3009.96)         &   (2792.28)         &   (3504.99)         \\
+\addlinespace
+Prop. of land area 500–1000 m&      -40.26         &    -1905.07         &    -1760.50         &    -2086.93         &    -1771.45         &    -2238.25         \\
+                    &    (272.99)         &   (1634.09)         &   (1459.00)         &   (1617.56)         &   (1370.31)         &   (1856.43)         \\
+\addlinespace
+Prop. of land area over 1000 m&    -1420.23\sym{***}&     -978.78         &     -116.30         &     -981.04         &    -1154.36         &    -1547.91         \\
+                    &    (476.72)         &   (1949.47)         &   (1723.62)         &   (1985.98)         &   (1736.68)         &   (2146.05)         \\
+\addlinespace
+Average precipitation (cm)&       -1.56\sym{***}&      -19.28         &       -9.88         &      -21.55         &      -13.80         &      -14.22         \\
+                    &      (0.51)         &     (13.49)         &      (9.23)         &     (13.07)         &     (10.29)         &     (10.90)         \\
+\addlinespace
+Average temperature (C^\circ)&      -40.52         &      788.74         &      469.62         &      783.32         &      837.34         &      807.85         \\
+                    &     (48.67)         &    (858.66)         &    (373.60)         &    (861.41)         &    (901.79)         &    (867.26)         \\
+\addlinespace
+Latitude (^{\circ}N)&       49.53\sym{**} &      -65.98         &    -1460.34         &        4.36         &       42.66         &       75.00         \\
+                    &     (18.89)         &    (191.00)         &   (1001.40)         &    (214.60)         &    (135.10)         &    (137.61)         \\
+\addlinespace
+\big|Latitude - 17^{\circ} N \big|&                     &                     &                     &                     &      229.82         &                     \\
+                    &                     &                     &                     &                     &    (320.04)         &                     \\
+\midrule
+Observations        &          55         &         584         &         584         &         576         &         584         &         584         \\
+\(R^{2}\)           &       0.857         &       0.153         &       0.556         &       0.154         &       0.154         &       0.133         \\
+District soil       &          No         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+Exclude Quang Tri   &          No         &          No         &         Yes         &          No         &          No         &          No         \\
+Fixed Effects       &          No         &          No         &          No         &         Yes         &          No         &          No         \\
+\bottomrule
+\end{tabular}
+\end{table}
