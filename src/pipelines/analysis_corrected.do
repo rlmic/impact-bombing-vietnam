@@ -1038,7 +1038,7 @@ summ $y_lit if sample_all==1
 
 // (6)
 eststo tab7_b6: regress                                                     ///
-    $y_lit                                                                  ///
+   $y_lit                                                                   ///
    tot_bmr_per                                                              ///
    popdensity6061                                                           ///
    $south                                                                   ///

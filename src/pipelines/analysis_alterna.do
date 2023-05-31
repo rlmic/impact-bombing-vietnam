@@ -222,58 +222,6 @@ foreach dep in                                                              ///
     invest_78                                                               ///
     invest_80                                                               ///
     invest_82                                                               ///
-    invest_85_per{ 
-
-    cwf province
-    /*
-    PANEL A
-    */
-
-    // (1)
-    eststo app_tab6b_`dep': regress                                         ///
-        `dep'                                                               ///
-        tot_bmr_per                                                         ///                
-        popdensity6061                                                      ///
-        $south                                                              ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///
-        if sample_all==1, robust
-
-    estadd local exc_qua "No"
-
-    summ `dep' if sample_all==1
-
-    }
-
-local                                                                       ///
-    app_tab6b                                                               /// 
-    app_tab6b_invest_76                                                     ///
-    app_tab6b_invest_78                                                     ///
-    app_tab6b_invest_80                                                     ///
-    app_tab6b_invest_82                                                     ///
-    app_tab6b_invest_85_per                                                 ///
-
-esttab `app_tab6b' using "$tables/app_tab6b_reg_$source.tex",               ///    
-replace label star(* 0.10 ** 0.05 *** 0.01)                                 ///
-booktabs nonotes                                                            ///
-scalars(                                                                    ///
-    "exc_qua Exclude Quang Tri"                                             ///
-    )                                                                       ///    
-sfmt(0) r2 b(%9.7f) se(%9.7f)                                               /// 
-mgroups("STATE INVESTMENT",                                                 ///
-pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                             ///
-suffix(}) span erepeat(\cmidrule(lr){@span}))                               ///
-alignment(D{.}{.}{-1})                                                      ///
-mtitles("1976" "1978" "1980" "1982" "1985" )                                ///
-keep(tot_bmr_per)
-
-
-foreach dep in                                                              ///
-    invest_76                                                               ///
-    invest_78                                                               ///
-    invest_80                                                               ///
-    invest_82                                                               ///
     invest_85{ 
 
     cwf province
@@ -312,57 +260,44 @@ booktabs nonotes                                                            ///
 scalars(                                                                    ///
     "exc_qua Exclude Quang Tri"                                             ///
     )                                                                       ///    
-sfmt(0) r2 b(%9.7f) se(%9.7f)                                               /// 
+sfmt(0) r2 b(%9.3f) se(%9.3f)                                               /// 
 mgroups("Total State Investment",                                           ///
 pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                             ///
 suffix(}) span erepeat(\cmidrule(lr){@span}))                               ///
 alignment(D{.}{.}{-1})                                                      ///
-mtitles("1976" "1978" "1980" "1982" "1985" )                                ///
+mtitles("1976" "1978" "1980" "1982" "1985")                                ///
 keep(tot_bmr_per)
 
 
 // Per capita state investment
 
-foreach dep in                                                              ///
-    invest_85_per{ 
+cwf province
+eststo: regress                                                             ///
+    invest_85_per                                                           ///
+    tot_bmr_per                                                             ///                
+    popdensity6061                                                          ///
+    $south                                                                  ///
+    $x_elev                                                                 ///
+    $x_gis                                                                  ///
+    $x_weather                                                              ///
+    if sample_all==1, robust
 
-    cwf province
-    /*
-    PANEL A
-    */
+est sto tab6c
+estadd local exc_qua "No"
+summ invest_85_per if sample_all==1
 
-    // (1)
-    eststo app_tab6b_`dep': regress                                         ///
-        `dep'                                                               ///
-        tot_bmr_per                                                         ///                
-        popdensity6061                                                      ///
-        $south                                                              ///
-        $x_elev                                                             ///
-        $x_gis                                                              ///
-        $x_weather                                                          ///
-        if sample_all==1, robust
-
-    estadd local exc_qua "No"
-
-    summ `dep' if sample_all==1
-
-    }
-
-local                                                                       ///
-    app_tab6b_invest_85_per                                                 ///
-
-esttab `app_tab6C' using "$tables/app_tab6C_reg_$source.tex",               ///    
+esttab tab6c using "$tables/app_tab6c_reg_$source.tex",                     ///        
 replace label star(* 0.10 ** 0.05 *** 0.01)                                 ///
 booktabs nonotes                                                            ///
 scalars(                                                                    ///
     "exc_qua Exclude Quang Tri"                                             ///
     )                                                                       ///    
-sfmt(0) r2 b(%9.7f) se(%9.7f)                                               /// 
-mgroups("Per capita state investment (in millions of 1985 Dong per capita)", ///
+sfmt(0) r2 b(%9.6f) se(%9.6f)                                               /// 
+mgroups("Per capita state investment",                                      ///
 pattern(1 0 0 ) prefix(\multicolumn{@span}{c}{)                             ///
 suffix(}) span erepeat(\cmidrule(lr){@span}))                               ///
 alignment(D{.}{.}{-1})                                                      ///
-mtitles("1985" )                                                           ///
+mtitles("1985")                                                             ///
 keep(tot_bmr_per)
 
 

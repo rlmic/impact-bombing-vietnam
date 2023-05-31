@@ -1,7 +1,7 @@
 // CHANGES!!!
 //-----------------------------------
 
-global source = "original"
+global source = "corrected"
 
 if "$source" == "corrected" {
 
