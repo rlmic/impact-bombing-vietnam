@@ -587,7 +587,7 @@ foreach level of local sud {
         $x_soil1                                                            ///
         $x_soil2                                                            ///
         $x_gis                                                              ///
-        if sample_all==1 & south==`level',                                  ///
+        if sample_all==1 & $south==`level',                                  ///
         a(province) robust cluster(province)
 
     est sto app_tab83`level'_south
