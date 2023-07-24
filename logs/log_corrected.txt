@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/logs/log_corrected.txt
   log type:  text
- opened on:  30 May 2023, 17:49:30
+ opened on:  24 Jul 2023, 13:22:43
 
 . 
 . /*-----------------------------------
@@ -224,18 +224,31 @@ end of do-file
 >     $ord0                                                                   ///
 >     if sample_all==1
 
-             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max)     e(sum) 
--------------+----------------------------------------------------------------------------------------
- tot_bmr_per |       584        584   32.28611   4686.066   68.45484          0   561.4873   18855.09 
-     tot_bmr |       584        584   14691.92   1.39e+09   37349.23          0     365449    8580079 
-General_Pu~e |       584        584   11124.16   9.47e+08    30778.7          0     322111    6496508 
-Cluster_Bomb |       584        584   706.1336    5143636   2267.959          0      32403     412382 
-     Missile |       584        584   24.71918   14814.93   121.7166          0       1600      14436 
-      Rocket |       584        584   2828.346   5.20e+07   7207.671          0     106445    1651754 
-Cannon_Art~y |       584        584   8.559932   2690.785   51.87278          0        772       4999 
-  Incendiary |       584        584   795.1062    2698245   1642.634          0      11667     464342 
-          WP |       584        584   70.74658   94013.07   306.6155          0       3580      41316 
-  Ammunition |       584        584    5677.11   1.22e+08   11060.53          0     136416    3315432 
+             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max) 
+-------------+-----------------------------------------------------------------------------
+ tot_bmr_per |       584        584   32.28611   4686.066   68.45484          0   561.4873 
+     tot_bmr |       584        584   14691.92   1.39e+09   37349.23          0     365449 
+General_Pu~e |       584        584   11124.16   9.47e+08    30778.7          0     322111 
+Cluster_Bomb |       584        584   706.1336    5143636   2267.959          0      32403 
+     Missile |       584        584   24.71918   14814.93   121.7166          0       1600 
+      Rocket |       584        584   2828.346   5.20e+07   7207.671          0     106445 
+Cannon_Art~y |       584        584   8.559932   2690.785   51.87278          0        772 
+  Incendiary |       584        584   795.1062    2698245   1642.634          0      11667 
+          WP |       584        584   70.74658   94013.07   306.6155          0       3580 
+  Ammunition |       584        584    5677.11   1.22e+08   11060.53          0     136416 
+
+             |    e(sum) 
+-------------+-----------
+ tot_bmr_per |  18855.09 
+     tot_bmr |   8580079 
+General_Pu~e |   6496508 
+Cluster_Bomb |    412382 
+     Missile |     14436 
+      Rocket |   1651754 
+Cannon_Art~y |      4999 
+  Incendiary |    464342 
+          WP |     41316 
+  Ammunition |   3315432 
 
 .     
 . esttab using "$tables/tab1a_stats_$source.tex", replace                     ///
@@ -245,12 +258,15 @@ Cannon_Art~y |       584        584   8.559932   2690.785   51.87278          0 
 >     nonumber                                                                ///
 >     nomtitle                                                                ///
 >     nonote                                                                  ///
->     noobs label booktabs                                                    ///                                        
+>     noobs label booktabs                                                    ///                
+>                         
 >     title($title_tab1a_stats)                                               ///
 >     addnotes($note_tab1a_stats)                                             ///
 >     collabels("Mean" "S.D." "Max." "Obs.")
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_stats_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_stats_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_stats_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab1a_stats_corrected.tex)
 
 .     
 . // Correlation with general purpose bombs
@@ -286,8 +302,10 @@ Cannon_Art~y |  .3737318   .3737318   8.49e-21        584
 >     title($title_tab1a_corr)                                                ///
 >     collabels("Correlation")                                                ///
 >     star(* 0.10 ** 0.05 *** 0.01)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_corr_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_corr_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1a_corr_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab1a_corr_corrected.tex)
 
 . /*
 > PANEL B
@@ -300,9 +318,13 @@ Cannon_Art~y |  .3737318   .3737318   8.49e-21        584
 >     tot_bmr_per                                                             ///
 >     if sample_all==1  
 
-             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max)     e(sum) 
--------------+----------------------------------------------------------------------------------------
- tot_bmr_per |        55         55     30.617   2669.041   51.66276   .0120862   335.4713   1683.935 
+             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max) 
+-------------+-----------------------------------------------------------------------------
+ tot_bmr_per |        55         55     30.617   2669.041   51.66276   .0120862   335.4713 
+
+             |    e(sum) 
+-------------+-----------
+ tot_bmr_per |  1683.935 
 
 . 
 . esttab using "$tables/tab1b_stats_$source.tex", replace                     ///
@@ -312,12 +334,15 @@ Cannon_Art~y |  .3737318   .3737318   8.49e-21        584
 >     nonumber                                                                ///
 >     nomtitle                                                                ///
 >     nonote                                                                  ///
->     noobs label    booktabs                                                 ///                                        
+>     noobs label    booktabs                                                 ///                
+>                         
 >     title($title_tab1b_stats)                                               ///
 >     addnotes($note_tab1b_stats)                                             ///
 >     collabels("Mean" "S.D." "Max." "Obs.")
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1b_stats_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1b_stats_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab1b_stats_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab1b_stats_corrected.tex)
 
 .     
 . /*-----------
@@ -355,21 +380,37 @@ Cannon_Art~y |  .3737318   .3737318   8.49e-21        584
 >     $x_diff                                                                 ///
 >     if sample_all==1
 
-             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max)     e(sum) 
--------------+----------------------------------------------------------------------------------------
-  poverty_p0 |       584        584   .4095922   .0397411   .1993516    .027275   .9353491   239.2019 
-popdens~1999 |       584        584   1658.601   3.42e+07    5845.96   10.28743      52382     968623 
-   elec_rate |       584        584   .7084437   .0717621   .2678846   .0768074    .999391   413.7311 
-    lit_rate |       584        584   .8777585    .012563   .1120847   .2437915   .9850973    512.611 
-area_25~500m |       584        584    .105405   .0344015   .1854763          0    .995185   61.55652 
-area_5~1000m |       584        584   .1069173   .0440591   .2099025          0          1   62.43971 
-area_o~1000m |       584        584   .0333307   .0131662   .1147442          0          1   19.46511 
-area_tot_km2 |       584        584   528.9572   262773.5   512.6143          4       3230     308911 
-     pre_avg |       584        584   154.6225   903.8553   30.06419   84.19334   281.9888   90299.54 
-     tmp_avg |       584        584   24.33353   3.433208   1.852892   19.36494   27.25502   14210.78 
-south_corr~d |       584        584    .515411   .2501909   .5001909          0          1        301 
-north_lat_~d |       584        584   16.24496   22.02903   4.693509   8.771513   22.94699   9487.056 
-diff_17_co~d |       584        584   4.383219   3.354529   1.831537   .0594227   8.228487     2559.8 
+             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max) 
+-------------+-----------------------------------------------------------------------------
+  poverty_p0 |       584        584   .4095922   .0397411   .1993516    .027275   .9353491 
+popdens~1999 |       584        584   1658.601   3.42e+07    5845.96   10.28743      52382 
+   elec_rate |       584        584   .7084437   .0717621   .2678846   .0768074    .999391 
+    lit_rate |       584        584   .8777585    .012563   .1120847   .2437915   .9850973 
+area_25~500m |       584        584    .105405   .0344015   .1854763          0    .995185 
+area_5~1000m |       584        584   .1069173   .0440591   .2099025          0          1 
+area_o~1000m |       584        584   .0333307   .0131662   .1147442          0          1 
+area_tot_km2 |       584        584   528.9572   262773.5   512.6143          4       3230 
+     pre_avg |       584        584   154.6225   903.8553   30.06419   84.19334   281.9888 
+     tmp_avg |       584        584   24.33353   3.433208   1.852892   19.36494   27.25502 
+south_corr~d |       584        584    .515411   .2501909   .5001909          0          1 
+north_lat_~d |       584        584   16.24496   22.02903   4.693509   8.771513   22.94699 
+diff_17_co~d |       584        584   4.383219   3.354529   1.831537   .0594227   8.228487 
+
+             |    e(sum) 
+-------------+-----------
+  poverty_p0 |  239.2019 
+popdens~1999 |    968623 
+   elec_rate |  413.7311 
+    lit_rate |   512.611 
+area_25~500m |  61.55652 
+area_5~1000m |  62.43971 
+area_o~1000m |  19.46511 
+area_tot_km2 |    308911 
+     pre_avg |  90299.54 
+     tmp_avg |  14210.78 
+south_corr~d |       301 
+north_lat_~d |  9487.056 
+diff_17_co~d |    2559.8 
 
 . 
 . esttab using "$tables/tab2a_stats_$source.tex", replace                     ///
@@ -379,12 +420,15 @@ diff_17_co~d |       584        584   4.383219   3.354529   1.831537   .0594227 
 >     nonumber                                                                ///
 >     nomtitle                                                                ///
 >     nonote                                                                  ///
->     noobs label    booktabs                                                 ///                                        
+>     noobs label    booktabs                                                 ///                
+>                         
 >     title($title_tab2a_stats)                                               ///
 >     addnotes($note_tab2a_stats)                                             ///
 >     collabels("Mean" "S.D." "Min" "Max." "Obs.")
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2a_stats_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2a_stats_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2a_stats_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab2a_stats_corrected.tex)
 
 . 
 . /*
@@ -411,25 +455,45 @@ diff_17_co~d |       584        584   4.383219   3.354529   1.831537   .0594227 
 >     $x_elev                                                                 ///
 >     if sample_all==1
 
-             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max)     e(sum) 
--------------+----------------------------------------------------------------------------------------
-popdens~6061 |        55         55   244.2842   190988.3   437.0221     12.205   2867.946   13435.63 
-popdens~1985 |        53         53   401.2648     283573   532.5158   33.54763   3195.761   21267.03 
-popdens~1999 |        55         55   464.7559   291656.7   540.0525   62.39997   2907.789   25561.58 
-ch_~20001985 |        53         53   77.65006   23854.95   154.4505   -439.353   745.0859   4115.453 
-      nbhere |        55         55   .2607204    .051967   .2279628          0          1   14.33962 
-  exppc93r98 |        55         55   1831.111   348858.2   590.6422   996.5911    3546.23   100711.1 
-  exppc02r98 |        55         55   3084.009    1013101   1006.529    2040.22   7505.443   169620.5 
-consgro~9302 |        55         55   .7401662   .1475882   .3841721  -.0760533   1.671704   40.70914 
-north_lat_~d |        55         55   15.95747   24.02001   4.901021    9.04951   22.76822   877.6607 
-diff_17_co~d |        55         55   4.579488   3.766932   1.940859   .2627869    7.95049   251.8719 
-  poverty_p0 |        55         55   .3939183    .024561   .1567194   .0534061   .7489812   21.66551 
-south_corr~d |        55         55   .5454545   .2525253   .5025189          0          1         30 
-     pre_avg |        55         55   156.0383   982.7827   31.34936   100.4158   250.1573   8582.105 
-     tmp_avg |        55         55    24.4537   3.613891   1.901024   19.79324   27.17092   1344.954 
-area_25~500m |        55         55   .1241158   .0190415   .1379911          0   .6803738   6.826366 
-area_5~1000m |        55         55   .1109598   .0210046   .1449297          0   .5104162   6.102787 
-area_o~1000m |        55         55   .0335705   .0049494   .0703518          0    .308578   1.846376 
+             |  e(count)   e(sum_w)    e(mean)     e(Var)      e(sd)     e(min)     e(max) 
+-------------+-----------------------------------------------------------------------------
+popdens~6061 |        55         55   244.2842   190988.3   437.0221     12.205   2867.946 
+popdens~1985 |        53         53   401.2648     283573   532.5158   33.54763   3195.761 
+popdens~1999 |        55         55   464.7559   291656.7   540.0525   62.39997   2907.789 
+ch_~20001985 |        53         53   77.65006   23854.95   154.4505   -439.353   745.0859 
+      nbhere |        55         55   .2607204    .051967   .2279628          0          1 
+  exppc93r98 |        55         55   1831.111   348858.2   590.6422   996.5911    3546.23 
+  exppc02r98 |        55         55   3084.009    1013101   1006.529    2040.22   7505.443 
+consgro~9302 |        55         55   .7401662   .1475882   .3841721  -.0760533   1.671704 
+north_lat_~d |        55         55   15.95747   24.02001   4.901021    9.04951   22.76822 
+diff_17_co~d |        55         55   4.579488   3.766932   1.940859   .2627869    7.95049 
+  poverty_p0 |        55         55   .3939183    .024561   .1567194   .0534061   .7489812 
+south_corr~d |        55         55   .5454545   .2525253   .5025189          0          1 
+     pre_avg |        55         55   156.0383   982.7827   31.34936   100.4158   250.1573 
+     tmp_avg |        55         55    24.4537   3.613891   1.901024   19.79324   27.17092 
+area_25~500m |        55         55   .1241158   .0190415   .1379911          0   .6803738 
+area_5~1000m |        55         55   .1109598   .0210046   .1449297          0   .5104162 
+area_o~1000m |        55         55   .0335705   .0049494   .0703518          0    .308578 
+
+             |    e(sum) 
+-------------+-----------
+popdens~6061 |  13435.63 
+popdens~1985 |  21267.03 
+popdens~1999 |  25561.58 
+ch_~20001985 |  4115.453 
+      nbhere |  14.33962 
+  exppc93r98 |  100711.1 
+  exppc02r98 |  169620.5 
+consgro~9302 |  40.70914 
+north_lat_~d |  877.6607 
+diff_17_co~d |  251.8719 
+  poverty_p0 |  21.66551 
+south_corr~d |        30 
+     pre_avg |  8582.105 
+     tmp_avg |  1344.954 
+area_25~500m |  6.826366 
+area_5~1000m |  6.102787 
+area_o~1000m |  1.846376 
 
 .     
 . esttab using "$tables/tab2b_stats_$source.tex", replace                     ///
@@ -439,12 +503,15 @@ area_o~1000m |        55         55   .0335705   .0049494   .0703518          0 
 >     nonumber                                                                ///
 >     nomtitle                                                                ///
 >     nonote                                                                  ///
->     noobs label    booktabs                                                 ///                                        
+>     noobs label    booktabs                                                 ///                
+>                         
 >     title($title_tab2b_stats)                                               ///
 >     addnotes($note_tab2b_stats)                                             ///
 >     collabels("Mean" "S.D." "Min" "Max." "Obs.")
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2b_stats_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2b_stats_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab2b_stats_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab2b_stats_corrected.tex)
 
 . 
 . 
@@ -702,8 +769,10 @@ added macro:
 >     alignment(D{.}{.}{-1})                                                  ///
 >     drop(_cons soil*)                                                       ///
 >     title($title_tab3_reg)                                                
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab3_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab3_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab3_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab3_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -1230,8 +1299,10 @@ added macro:
 >    alignment(D{.}{.}{-1})                                                   ///
 >    drop(soil* _cons)                                                        ///
 >    title($title_tab4_reg)    
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab4_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab4_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab4_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab4_reg_corrected.tex)
 
 .    
 .    
@@ -1363,21 +1434,21 @@ added macro:
 . 
 . bys $south: summ $y_pov if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   poverty_p0 |        283    .4587212     .198348   .0306242   .9353491
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   poverty_p0 |        301    .3634012     .189291    .027275   .8800411
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = .
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -1458,7 +1529,7 @@ added macro:
         e(has_control) : "Yes"
 
 Linear regression                               Number of obs     =        175
-                                                F(19, 20)         =          .
+                                                F(20, 20)         =          .
                                                 Prob > F          =          .
                                                 R-squared         =     0.6531
                                                 Root MSE          =     .10029
@@ -1505,14 +1576,14 @@ added macro:
 .    
 . bys urban_6061: summ $y_pov if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   poverty_p0 |        409    .4611047    .1935588   .0431624   .9353491
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -1673,8 +1744,10 @@ added macro:
 >    mtitles("Ex-North" "Ex-South" "Rural" "Urban" "All Vietnam" "All Vietnam" ) ///
 >    keep(tot_bmr_hi tot_bmr_per tot_bmr_per_2)                               ///
 >    title($title_tab5_reg)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab5_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab5_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab5_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab5_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -1840,17 +1913,21 @@ added macro:
 
 . 
 . esttab `tab6a' using "$tables/tab6_reg_$source.tex",                        ///    
->     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab6_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                    
->                                                         ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: 2002 per capita consumption expenditures}} \\\\[-1ex]") ///
+>     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \ca
+> ption{$title_tab6_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                             
+>                                                ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: 2002 per capita consumption expenditu
+> res}} \\\\[-1ex]") ///
 >     fragment                                                                ///
 >     scalars(                                                                ///
 >         "exc_qua Exclude Quang Tri"                                         ///
 >         )                                                                   ///    
 >     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
 >     keep(tot_bmr_per $x_diff) label replace
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab6_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab6_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab6_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab6_reg_corrected.tex)
 
 . 
 . /*
@@ -2002,14 +2079,16 @@ added macro:
 
 . 
 . esttab `tab6b' using "$tables/tab6_reg_$source.tex",                        ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992-93 per capita consumption expenditures}} \\\\[-1ex]") ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: 1992-93 per capita consumption expend
+> itures}} \\\\[-1ex]") ///
 >     fragment append                                                         ///
 >     scalars(                                                                ///
 >         "exc_qua Exclude Quang Tri"                                         ///
 >         )                                                                   ///
 >     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
 >     keep(tot_bmr_per $x_diff) label
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab6_reg_corrected.tex)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab6_reg_corrected.tex)
 
 . 
 . /*
@@ -2163,7 +2242,8 @@ consgro~9302 |         55    .7401662    .3841721  -.0760533   1.671704
 
 . 
 . esttab `tab6c' using "$tables/tab6_reg_$source.tex",                        ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}} \\\\[-1ex]") ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: Growth in consumption, 1992/93–2002}}
+>  \\\\[-1ex]") ///
 >     prefoot("\hline")                                                       ///
 >     postfoot($foot_pane)                                                    ///
 >     fragment append                                                         ///
@@ -2172,7 +2252,8 @@ consgro~9302 |         55    .7401662    .3841721  -.0760533   1.671704
 >         )                                                                   ///
 >     sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                   ///
 >     keep(tot_bmr_per $x_diff) label
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab6_reg_corrected.tex)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab6_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -2665,9 +2746,11 @@ added macro:
 
 . 
 . esttab `tab7_a' using "$tables/tab7_reg_$source.tex",                       ///    
->     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab7_reg} \\ \begin{tabular}{l*{6}{c}} \hline\hline")                    
->                                                         ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Proportion of households with access to electricity, 1999}} \\\\[-1ex]") ///
+>     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \ca
+> ption{$title_tab7_reg} \\ \begin{tabular}{l*{6}{c}} \hline\hline")                             
+>                                                ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Proportion of households with access 
+> to electricity, 1999}} \\\\[-1ex]") ///
 >     fragment                                                                ///
 >     scalars(                                                                ///
 >         "has_soil District soil"                                            ///
@@ -2676,8 +2759,10 @@ added macro:
 >         )                                                                   ///
 >     sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles                             ///
 >     keep(tot_bmr_per $x_diff) label replace
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab7_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab7_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab7_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab7_reg_corrected.tex)
 
 . 
 . /*
@@ -3159,7 +3244,8 @@ added macro:
 
 . 
 . esttab `tab7_b' using "$tables/tab7_reg_$source.tex",                       ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Proportion of literate respondents, 1999}} \\\\[-1ex]") ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Proportion of literate respondents, 1
+> 999}} \\\\[-1ex]") ///
 >     prefoot("\hline")                                                       ///
 >     postfoot($foot_pane)                                                    ///
 >     fragment append                                                         ///
@@ -3170,7 +3256,8 @@ added macro:
 >         )                                                                   ///
 >     sfmt($meas) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                   ///
 >     keep(tot_bmr_per $x_diff) label
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab7_reg_corrected.tex)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab7_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -3703,8 +3790,10 @@ popdens~1999 |        584    1658.601     5845.96   10.28743      52382
 >     mtitles("OLS" "OLS" "OLS" "OLS" "OLS" "IV-2SLS" )                       ///
 >     drop(soil* _cons)                                                       ///
 >     title($title_tab8_reg)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab8_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab8_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab8_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab8_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -3869,17 +3958,21 @@ popdens~1985 |         53    401.2648    532.5158   33.54763   3195.761
 
 . 
 . esttab `tab9a' using "$tables/tab9_reg_$source.tex",                        ///    
->     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \caption{$title_tab9_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                    
->                                              ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Population density, 1985}} \\\\[-1ex]") ///
+>     prehead("\begin{table}[htbp]\centering \\ \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \\ \ca
+> ption{$title_tab9_reg} \\ \begin{tabular}{l*{3}{c}} \hline\hline")                             
+>                                     ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel A: Population density, 1985}} \\\\[-1ex]
+> ") ///
 >     fragment                                                                ///
 >     scalars(                                                                ///
 >         "exc_qua Exclude Quang Tri"                                         ///
 >         )                                                                   ///
 >     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles                                 ///
 >     keep(tot_bmr_per $x_diff) label replace
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab9_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab9_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab9_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab9_reg_corrected.tex)
 
 .         
 . 
@@ -4032,14 +4125,16 @@ ch_~20001985 |         53    77.65006    154.4505   -439.353   745.0859
 
 . 
 . esttab `tab9b' using "$tables/tab9_reg_$source.tex",                        ///
->     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Growth in population density, 1985 to 2000}} \\\\[-1ex]") ///
+>     posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel B: Growth in population density, 1985 to
+>  2000}} \\\\[-1ex]") ///
 >     fragment append                                                         ///
 >     scalars(                                                                ///
 >         "exc_qua Exclude Quang Tri"                                         ///
 >         )                                                                   ///
 >     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
 >     keep(tot_bmr_per $x_diff) label
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab9_reg_corrected.tex)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab9_reg_corrected.tex)
 
 . 
 . 
@@ -4192,7 +4287,8 @@ added macro:
 
 . 
 . esttab `tab9c' using "$tables/tab9_reg_$source.tex",                        ///
->        posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: 1997/98 proportion not born in current village}} \\\\[-1ex]") ///
+>        posthead("\hline \\ \multicolumn{2}{c}{\emph{Panel C: 1997/98 proportion not born in cur
+> rent village}} \\\\[-1ex]") ///
 >     prefoot("\hline")                                                       ///
 >     postfoot($foot_pane)                                                    ///
 >     fragment append                                                         ///
@@ -4201,7 +4297,8 @@ added macro:
 >         )                                                                   ///
 >     sfmt(0) r2 b(%8.5f) se(%8.5f) nomtitles nonumbers                       ///
 >     keep(tot_bmr_per $x_diff) label
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab9_reg_corrected.tex)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab9_reg_corrected.tex)
 
 . 
 . 
@@ -4286,7 +4383,8 @@ added macro:
 >     (lfit poverty_p0_dc tot_bmr_per_dc),                                   ///
 >     ytitle("Residuals/Fitted values")                                      ///
 >     saving("$figures/fig2_$source", replace)
-file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/figures/fig2_corrected.gph saved
+file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/figures/fig2_corrected
+> .gph saved
 
 . 
 . /*-----------
@@ -4513,22 +4611,22 @@ xij variables:
 . cwf invest
 
 . frlink 1:1 year, frame(invest_q2)
-  (all observations in frame invest matched)
+(all observations in frame invest matched)
 
 . frget q2_, from(invest_q2)
-  (1 variable copied from linked frame)
+(1 variable copied from linked frame)
 
 . frlink 1:1 year, frame(invest_q3)
-  (all observations in frame invest matched)
+(all observations in frame invest matched)
 
 . frget q3_, from(invest_q3)
-  (1 variable copied from linked frame)
+(1 variable copied from linked frame)
 
 . frlink 1:1 year, frame(invest_q4)
-  (all observations in frame invest matched)
+(all observations in frame invest matched)
 
 . frget q4_, from(invest_q4)
-  (1 variable copied from linked frame)
+(1 variable copied from linked frame)
 
 . sort year
 
@@ -4565,7 +4663,8 @@ xij variables:
 >     ylabel(0.8(0.2)1.6)                                                     ///
 >     l1title("State investment")                                             ///
 >     saving("$figures/fig3_$source", replace)
-file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/figures/fig3_corrected.gph saved
+file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/figures/fig3_corrected
+> .gph saved
 
 . 
 . 
@@ -4628,7 +4727,7 @@ file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/figur
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 poverty_p0      float   %9.0g                 District poverty rate, 1999
 lit_rate        float   %9.0g                 District literacy rate, 1999
 elec_rate       float   %9.0g                 District electricity, 1999
@@ -4636,19 +4735,24 @@ radio_rate      float   %9.0g
 urban_pct       float   %9.0g                 
 percent_culti~d float   %14.0g                Percentage of total area under& NatForest
 gini            float   %9.0g                 District GINI coefficient, 1999
-rlpcex1_9398    float   %9.0g                 Avg Cons exp per cap 93 and 98, in 98 1000VND, adj for reg/mo price diff
+rlpcex1_9398    float   %9.0g                 Avg Cons exp per cap 93 and 98, in 98 1000VND, adj
+                                                for reg/mo price diff
 rlpcex1         float   %9.0g                 Per capita expenditures, 1998
 rlpcex1_93      float   %9.0g                 Per capita expenditures, 1993
 CONSGROWTHPC    float   %9.0g                 Per capita expenditures growth, 1993-98
-avg_ill4wks     float   %9.0g                 HH: Avg of Avg days ill in past 4wks (all HH members)
+avg_ill4wks     float   %9.0g                 HH: Avg of Avg days ill in past 4wks (all HH
+                                                members)
 literate        float   %18.0g                HH: ED: Can you read this sentence?
 numerate        float   %18.0g                HH: ED: Can you do these calculations?
 educyr98_head   float   %9.0g                 HHEXP: Avg schooling years of HH.head
-educyr98father  float   %9.0g                 HH: EDPAR: Avg of HH.head's Father's yrs formal sch (grade+postsec)
-educyr98mother  float   %9.0g                 HH: EDPAR: Avg of HH.head's Mother's yrs formal sch (grade+postsec)
+educyr98father  float   %9.0g                 HH: EDPAR: Avg of HH.head's Father's yrs formal sch
+                                                (grade+postsec)
+educyr98mother  float   %9.0g                 HH: EDPAR: Avg of HH.head's Mother's yrs formal sch
+                                                (grade+postsec)
 farm            float   %9.0g                 Type of HH (1:farm; 0:nonfarm)
 notbornhere     float   %9.0g                 Proportion not born in district, 1998
-yrshere         float   %8.0g                 HH: IMM: Avg How many years have you lived in current residence?
+yrshere         float   %8.0g                 HH: IMM: Avg How many years have you lived in
+                                                current residence?
 Ammunition      long    %12.0g                Ammunition quantity
 General_Purpose long    %12.0g                Total # of U.S. general purpose bombs
 Cluster_Bomb    long    %12.0g                Cluster_Bomb quantity
@@ -4664,8 +4768,10 @@ log_tot_bmr_p~v float   %9.0g
 tot_bmr         float   %9.0g                 Total # of U.S. bombs, missiles, rockets
 tot_bmr_2       float   %9.0g                 Total # of U.S. bombs, missiles, rockets - squared
 tot_bmr_per     float   %9.0g                 Total U.S. bombs, missiles, and rockets per km$^2$
-tot_bmr_per_2   float   %9.0g                 (Total U.S. bombs, missiles, and rockets per km$^2$)$^2$ ÷ 100
-tot_bmr_hi      float   %9.0g                 Total U.S. bombs, missiles, and rockets per km$^2$ (top 10\% districts)
+tot_bmr_per_2   float   %9.0g                 (Total U.S. bombs, missiles, and rockets per
+                                                km$^2$)$^2$ ÷ 100
+tot_bmr_hi      float   %9.0g                 Total U.S. bombs, missiles, and rockets per km$^2$
+                                                (top 10\% districts)
 tot_bmr_per_hi  float   %9.0g                 Total U.S. bombs, missiles, rockets per km2 > 78
 tot_bmr_prov    float   %9.0g                 
 tot_bmr_hi_prov float   %9.0g                 
@@ -4681,7 +4787,8 @@ area_251_500m   float   %14.0g                Prop. of land area 250–500 m
 area_501_1000m  float   %14.0g                Prop. of land area 500–1000 m
 area_over_1000m float   %9.0g                 Prop. of land area over 1000 m
 north_lat_cor~d double  %10.0g                Latitude (^{\circ}N)
-soil_1          float   %9.0g                 Percentage of total area by soild type (see legend) soil-1
+soil_1          float   %9.0g                 Percentage of total area by soild type (see legend)
+                                                soil-1
 soil_3          float   %9.0g                 
 soil_6          float   %9.0g                 
 soil_7          float   %9.0g                 
@@ -4703,7 +4810,8 @@ log_popden~1999 float   %9.0g                 Log(Population Density 1999)
 log_popden~6061 float   %9.0g                 
 popdensity1999  float   %9.0g                 Population density, 1999
 popdensity1959  float   %9.0g                 Population Density 1959, per km2
-popdensity1~0_n float   %9.0g                 PopDensity, per km2, backed-out from cereal/paddy percap (avg), 1960
+popdensity1~0_n float   %9.0g                 PopDensity, per km2, backed-out from cereal/paddy
+                                                percap (avg), 1960
 popdensity1961  float   %9.0g                 
 popdensity1962  float   %9.0g                 
 popdensity1963  float   %9.0g                 
@@ -4959,8 +5067,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   poverty_p0 |        584    .4095922    .1993516    .027275   .9353491
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_General_Purpose_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_General_Purpose_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_General_Purpose_reg_corrected.
+    > tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab4_General_Purpose_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      31.50
@@ -5052,8 +5163,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
   poverty_p0 |        584    .4095922    .1993516    .027275   .9353491
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_log_tot_bmr_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_log_tot_bmr_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab4_log_tot_bmr_reg_corrected.tex
+    not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab4_log_tot_bmr_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -5159,8 +5273,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 rlpcex1_9398 |        134    2071.104    1056.176   636.3403   5829.448
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_rlpcex1_9398_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_rlpcex1_9398_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_rlpcex1_9398_reg_corrected.tex
+    not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab5_rlpcex1_9398_reg_corrected.tex)
 
 Linear regression                               Number of obs     =        584
                                                 F(28, 60)         =      16.26
@@ -5210,8 +5327,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
         gini |        584    .2627059    .0291629   .2151966   .3692051
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_gini_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_gini_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab5_gini_reg_corrected.tex not
+    found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab5_gini_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -5320,11 +5440,14 @@ added macro:
 > scalars(                                                                   ///
 >     "exc_qua Exclude Quang Tri"                                            ///
 >     )                                                                      ///    
-> sfmt(0) r2 b(%8.5f) se(%8.5f)                                              ///                                                             
+> sfmt(0) r2 b(%8.5f) se(%8.5f)                                              ///                 
+>                                             
 > mtitles("2002 disability rates" "War veterans' associations" )             ///
 > keep(tot_bmr_per)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6a_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6a_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6a_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab6a_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -5536,8 +5659,10 @@ added macro:
 > alignment(D{.}{.}{-1})                                                      ///
 > mtitles("1976" "1978" "1980" "1982" "1985")                                ///
 > keep(tot_bmr_per)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6b_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6b_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6b_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab6b_reg_corrected.tex)
 
 . 
 . 
@@ -5606,8 +5731,10 @@ invest_85_~r |         52    .2854507     .228431          0   1.266797
 > alignment(D{.}{.}{-1})                                                      ///
 > mtitles("1985")                                                             ///
 > keep(tot_bmr_per)
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6c_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6c_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab6c_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab6c_reg_corrected.tex)
 
 . 
 . 
@@ -6089,8 +6216,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 educyr98fa~r |        133    5.113648    1.652869   2.666667   13.77778
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98father_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98father_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98father_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab7_educyr98father_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =       5.60
@@ -6396,8 +6526,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 educyr98mo~r |        131    3.826172    1.492364   1.796523   12.53333
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98mother_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98mother_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98mother_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab7_educyr98mother_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      13.69
@@ -6703,8 +6836,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 educyr98_h~d |        134    7.142976    2.194242   1.649331   13.73623
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98_head_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98_head_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab7_educyr98_head_reg_corrected.te
+    > x not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab7_educyr98_head_reg_corrected.tex)
 
 . 
 . /*-----------
@@ -6866,21 +7002,21 @@ added macro:
 . 
 . bys $south: summ $y_pop_den_1999 if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        283    1405.868    4183.814   21.21641   36339.75
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        301     1896.22    7059.954   10.28743      52382
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = .
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -7025,14 +7161,14 @@ added macro:
 
 . bys urban_6061: summ $y_pop_den_1999 if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        409    450.5188    976.2484   10.28743   16626.33
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -7060,8 +7196,10 @@ popdens~1999 |        175    4482.062     10041.1   59.48171      52382
 >     alignment(D{.}{.}{-1})                                                  ///
 >     mtitles("Ex-North" "Ex-South" "Rural" "Urban" )                         ///
 >     drop(soil* _cons)                                                      
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab82_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab82_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab82_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab82_reg_corrected.tex)
 
 . 
 . 
@@ -7077,7 +7215,7 @@ popdens~1999 |        175    4482.062     10041.1   59.48171      52382
 >         $x_soil1                                                            ///
 >         $x_soil2                                                            ///
 >         $x_gis                                                              ///
->         if sample_all==1 & south==`level',                                  ///
+>         if sample_all==1 & $south==`level',                                  ///
 >         a(province) robust cluster(province)
   3. 
 .     est sto app_tab83`level'_south
@@ -7090,45 +7228,45 @@ popdens~1999 |        175    4482.062     10041.1   59.48171      52382
   7. 
 . }
 
-Linear regression, absorbing indicators          Number of obs     =       300
-Absorbed variable: province                      No. of categories =        31
-                                                 F(25, 30)         =    480.29
+Linear regression, absorbing indicators          Number of obs     =       283
+Absorbed variable: province                      No. of categories =        29
+                                                 F(25, 28)         =   7059.78
                                                  Prob > F          =    0.0000
-                                                 R-squared         =    0.5059
-                                                 Adj R-squared     =    0.3945
-                                                 Root MSE          = 3170.9847
+                                                 R-squared         =    0.5271
+                                                 Adj R-squared     =    0.4177
+                                                 Root MSE          = 3192.7238
 
-                                     (Std. err. adjusted for 31 clusters in province)
+                                     (Std. err. adjusted for 29 clusters in province)
 -------------------------------------------------------------------------------------
                     |               Robust
      popdensity1999 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 --------------------+----------------------------------------------------------------
-        tot_bmr_per |   19.50435   10.88597     1.79   0.083    -2.727765    41.73646
-      area_251_500m |   1092.021   848.7217     1.29   0.208    -641.2999    2825.342
-     area_501_1000m |    422.573   587.6108     0.72   0.478    -777.4883    1622.634
-    area_over_1000m |  -592.1526   936.8331    -0.63   0.532    -2505.421    1321.116
-            pre_avg |   4.177747   4.288356     0.97   0.338    -4.580244    12.93574
-            tmp_avg |   42.47419   147.3453     0.29   0.775    -258.4452    343.3935
-             soil_1 |  -42.46359   33.52964    -1.27   0.215    -110.9403    26.01307
-             soil_3 |  -55.14876   25.99036    -2.12   0.042    -108.2282   -2.069355
-             soil_6 |  -7.950498   25.55529    -0.31   0.758    -60.14136    44.24037
-             soil_7 |  -64.65273   47.11237    -1.37   0.180     -160.869    31.56357
-             soil_8 |   31.16107   21.74904     1.43   0.162     -13.2564    75.57853
-             soil_9 |   21.03307   38.10949     0.55   0.585     -56.7969    98.86303
-            soil_10 |  -29.33409   19.75035    -1.49   0.148    -69.66968     11.0015
-            soil_11 |  -33.35235   23.40853    -1.42   0.165    -81.15895    14.45425
-            soil_12 |   -53.3942   47.64578    -1.12   0.271    -150.6999    43.91146
-            soil_14 |   16.29053   27.33931     0.60   0.556    -39.54379    72.12484
-            soil_24 |  -68.60589   44.06893    -1.56   0.130    -158.6066    21.39488
-            soil_26 |  -31.79507   13.82658    -2.30   0.029     -60.0327    -3.55743
-            soil_33 |  -18.88503   17.29266    -1.09   0.283    -54.20137     16.4313
-            soil_34 |  -22.59274   13.91059    -1.62   0.115    -51.00196    5.816476
-            soil_35 |  -10.34294   19.13959    -0.54   0.593     -49.4312    28.74532
-            soil_39 |  -79.68084    31.2739    -2.55   0.016    -143.5507   -15.81103
-            soil_40 |  -21.64834   14.46491    -1.50   0.145    -51.18962    7.892938
-            soil_41 |   67.19466   88.86834     0.76   0.455    -114.2987     248.688
-north_lat_corrected |  -492.4311   355.9982    -1.38   0.177    -1219.476    234.6143
-              _cons |   10978.02   9287.079     1.18   0.246    -7988.721    29944.77
+        tot_bmr_per |   27.60301   12.62199     2.19   0.037     1.748026    53.45799
+      area_251_500m |   530.3643    485.774     1.09   0.284    -464.6985    1525.427
+     area_501_1000m |   177.8727   331.7167     0.54   0.596    -501.6181    857.3634
+    area_over_1000m |  -293.9519   1073.173    -0.27   0.786    -2492.248    1904.344
+            pre_avg |   3.984464   6.497898     0.61   0.545    -9.325877    17.29481
+            tmp_avg |  -36.07552   125.9651    -0.29   0.777    -294.1032    221.9522
+             soil_1 |  -28.08679   25.45509    -1.10   0.279    -80.22917    24.05559
+             soil_3 |  -57.94855   22.97277    -2.52   0.018    -105.0061   -10.89096
+             soil_6 |   1.063064   24.09941     0.04   0.965    -48.30234    50.42846
+             soil_7 |  -53.20896   53.07784    -1.00   0.325     -161.934    55.51607
+             soil_8 |   36.87935   27.68958     1.33   0.194     -19.8402    93.59889
+             soil_9 |   28.02916   37.38631     0.75   0.460    -48.55323    104.6115
+            soil_10 |  -26.14097   13.66654    -1.91   0.066    -54.13562    1.853674
+            soil_11 |  -33.17647   20.48304    -1.62   0.117    -75.13408    8.781138
+            soil_12 |  -47.24755   47.87097    -0.99   0.332    -145.3068    50.81169
+            soil_14 |   29.21762   30.14139     0.97   0.341    -32.52422    90.95946
+            soil_24 |  -63.04529   42.58833    -1.48   0.150    -150.2835    24.19294
+            soil_26 |  -24.12277   12.43923    -1.94   0.063    -49.60338    1.357834
+            soil_33 |  -18.21967   19.17912    -0.95   0.350    -57.50631    21.06697
+            soil_34 |  -16.49975   13.12824    -1.26   0.219    -43.39173    10.39223
+            soil_35 |  -4.148638   19.18478    -0.22   0.830    -43.44687     35.1496
+            soil_39 |  -97.08888   35.41512    -2.74   0.011    -169.6335    -24.5443
+            soil_40 |  -14.33154   16.74929    -0.86   0.399     -48.6409    19.97782
+            soil_41 |   41.17393   89.93057     0.46   0.651    -143.0405    225.3884
+north_lat_corrected |  -415.1393     333.83    -1.24   0.224    -1098.959    268.6804
+              _cons |    11011.5   8025.807     1.37   0.181    -5428.618    27451.62
 -------------------------------------------------------------------------------------
 (est5 stored)
 
@@ -7141,45 +7279,45 @@ added macro:
 added macro:
              e(has_fe) : "No"
 
-Linear regression, absorbing indicators          Number of obs     =       284
-Absorbed variable: province                      No. of categories =        30
-                                                 F(25, 29)         =      8.89
+Linear regression, absorbing indicators          Number of obs     =       301
+Absorbed variable: province                      No. of categories =        32
+                                                 F(25, 31)         =     21.22
                                                  Prob > F          =    0.0000
-                                                 R-squared         =    0.6570
-                                                 Adj R-squared     =    0.5761
-                                                 Root MSE          = 4724.5005
+                                                 R-squared         =    0.6456
+                                                 Adj R-squared     =    0.5642
+                                                 Root MSE          = 4660.6072
 
-                                     (Std. err. adjusted for 30 clusters in province)
+                                     (Std. err. adjusted for 32 clusters in province)
 -------------------------------------------------------------------------------------
                     |               Robust
      popdensity1999 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 --------------------+----------------------------------------------------------------
-        tot_bmr_per |  -27.26952   18.24953    -1.49   0.146    -64.59401    10.05496
-      area_251_500m |  -5435.582   3159.769    -1.72   0.096    -11898.03    1026.871
-     area_501_1000m |  -5696.675   2855.642    -1.99   0.056    -11537.12    143.7684
-    area_over_1000m |  -4266.859   2807.782    -1.52   0.139    -10009.42      1475.7
-            pre_avg |  -39.29392   25.20185    -1.56   0.130    -90.83749    12.24966
-            tmp_avg |   1558.336   946.2277     1.65   0.110    -376.9166    3493.589
-             soil_1 |   136.8538   114.7476     1.19   0.243    -97.83137    371.5389
-             soil_3 |  -83.47436   86.90878    -0.96   0.345    -261.2228    94.27405
-             soil_6 |   63.50123   66.36822     0.96   0.347    -72.23703    199.2395
-             soil_7 |  -94.52396   41.07785    -2.30   0.029    -178.5376   -10.51032
-             soil_8 |   27.79144    35.5137     0.78   0.440    -44.84223    100.4251
-             soil_9 |   66.50937   47.86924     1.39   0.175    -31.39422    164.4129
-            soil_10 |   127.8149   85.02114     1.50   0.144    -46.07285    301.7026
-            soil_11 |   10.89009   18.94377     0.57   0.570    -27.85428    49.63445
-            soil_12 |   39.24211   35.52328     1.10   0.278    -33.41116    111.8954
-            soil_14 |   132.3599   71.90182     1.84   0.076    -14.69581    279.4157
-            soil_24 |   87.44701   69.16783     1.26   0.216    -54.01708    228.9111
-            soil_26 |   159.5828   92.44336     1.73   0.095    -29.48512    348.6507
-            soil_33 |   134.6705   80.56495     1.67   0.105    -30.10335    299.4443
-            soil_34 |     159.37   93.94127     1.70   0.101    -32.76146    351.5015
-            soil_35 |   157.3899   103.2106     1.52   0.138    -53.69942    368.4792
-            soil_39 |   61.57842   51.75939     1.19   0.244    -44.28142    167.4382
-            soil_40 |   614.5544   583.4021     1.05   0.301    -578.6368    1807.746
-            soil_41 |  -184.2344   102.8095    -1.79   0.084    -394.5034    26.03466
-north_lat_corrected |  -1564.598   1327.063    -1.18   0.248    -4278.747    1149.551
-              _cons |  -19554.77   27631.42    -0.71   0.485    -76067.37    36957.82
+        tot_bmr_per |  -17.10636   12.48762    -1.37   0.181    -42.57504    8.362309
+      area_251_500m |  -5571.525   3313.318    -1.68   0.103    -12329.08    1186.033
+     area_501_1000m |  -5219.642    2775.68    -1.88   0.069    -10880.68     441.395
+    area_over_1000m |  -3337.535   2586.503    -1.29   0.206    -8612.742    1937.672
+            pre_avg |  -30.90233   21.17675    -1.46   0.155    -74.09259    12.28793
+            tmp_avg |   1319.083   910.5843     1.45   0.157    -538.0658    3176.232
+             soil_1 |   126.8378   115.1154     1.10   0.279    -107.9416    361.6173
+             soil_3 |   25.11742   90.43557     0.28   0.783    -159.3271     209.562
+             soil_6 |   50.03182   60.36598     0.83   0.414    -73.08541     173.149
+             soil_7 |  -108.8209   45.42077    -2.40   0.023    -201.4572    -16.1846
+             soil_8 |   24.06177   33.59548     0.72   0.479    -44.45666     92.5802
+             soil_9 |   55.71682   44.93524     1.24   0.224     -35.9292    147.3628
+            soil_10 |   125.7148     82.303     1.53   0.137    -42.14325    293.5729
+            soil_11 |    6.50999   18.79616     0.35   0.731    -31.82503    44.84501
+            soil_12 |   36.12963   35.04747     1.03   0.311    -35.35017    107.6094
+            soil_14 |   121.9662   71.39935     1.71   0.098    -23.65375    267.5861
+            soil_24 |   78.51698   66.59366     1.18   0.247    -57.30169    214.3356
+            soil_26 |   143.4638   87.92601     1.63   0.113    -35.86246    322.7901
+            soil_33 |   123.0673   78.76183     1.56   0.128    -37.56848    283.7031
+            soil_34 |   141.8559   88.73779     1.60   0.120      -39.126    322.8378
+            soil_35 |   143.6862   99.72206     1.44   0.160    -59.69829    347.0707
+            soil_39 |   49.65767   43.76442     1.13   0.265    -39.60045    138.9158
+            soil_40 |   783.1944    476.985     1.64   0.111    -189.6229    1756.012
+            soil_41 |  -138.4319   97.71501    -1.42   0.167     -337.723    60.85917
+north_lat_corrected |  -1769.957   1401.979    -1.26   0.216    -4629.312    1089.398
+              _cons |  -11322.87   25399.14    -0.45   0.659    -63124.76    40479.01
 -------------------------------------------------------------------------------------
 (est6 stored)
 
@@ -7195,21 +7333,21 @@ added macro:
 . 
 . bys $south: summ $y_pop_den_1999 if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        283    1405.868    4183.814   21.21641   36339.75
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        301     1896.22    7059.954   10.28743      52382
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> south_corrected = .
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -7345,14 +7483,14 @@ added macro:
 . 
 . bys urban_6061: summ $y_pop_den_1999 if sample_all==1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1999 |        409    450.5188    976.2484   10.28743   16626.33
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 -> urban_6061 = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -7380,8 +7518,10 @@ popdens~1999 |        175    4482.062     10041.1   59.48171      52382
 >     alignment(D{.}{.}{-1})                                                  ///
 >     mtitles("Ex-North" "Ex-South" "Rural" "Urban" )                         ///
 >     drop(soil* _cons)                                                       
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab83_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab83_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab83_reg_corrected.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab83_reg_corrected.tex)
 
 . 
 . 
@@ -7562,8 +7702,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1990 |         55    411.8887    451.7347   45.39236    2303.37
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1990_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1990_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1990_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity1990_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      26.38
@@ -7651,8 +7794,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1992 |         55    426.0144    471.2243   49.07073   2438.587
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1992_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1992_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1992_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity1992_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      20.79
@@ -7740,8 +7886,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1994 |         55    434.9244    492.9531   27.89683   2575.761
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1994_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1994_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1994_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity1994_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      25.75
@@ -7829,8 +7978,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1996 |         55    452.4026    509.4261   56.88565   2709.674
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1996_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1996_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1996_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity1996_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      25.33
@@ -7918,8 +8070,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~1998 |         55    465.2143    529.0282   61.05447   2849.457
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1998_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1998_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity1998_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity1998_reg_corrected.tex)
 
 Linear regression                               Number of obs     =         55
                                                 F(9, 45)          =      25.16
@@ -8007,8 +8162,11 @@ added macro:
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 popdens~2000 |         55    477.8707    549.1531   64.51797   2974.348
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity2000_reg_corrected.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity2000_reg_corrected.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/app_tab9_popdensity2000_reg_corrected.t
+    > ex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/a
+> pp_tab9_popdensity2000_reg_corrected.tex)
 
 . 
 end of do-file
@@ -8060,10 +8218,13 @@ diff_17_co~d | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
 . 
 . esttab `tab' using "$tables/tab_valid_dist.tex", replace                    ///
 >     nomtitle label star(* 0.10 ** 0.05 *** 0.01)                            ///
->     booktabs nonotes                                                        ///                                                 
+>     booktabs nonotes                                                        ///                
+>                                  
 >     sfmt(%14.5fc) r2 b(%12.7f) se(%12.7f)                                  
-(file /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab_valid_dist.tex not found)
-(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab_valid_dist.tex)
+(file /Users/cegaadmin/Dropbox
+    (CEGA)/github/impact-bombing-vietnam/outputs/tables/tab_valid_dist.tex not found)
+(output written to /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/outputs/tables/t
+> ab_valid_dist.tex)
 
 . 
 end of do-file
@@ -8072,5 +8233,5 @@ end of do-file
       name:  <unnamed>
        log:  /Users/cegaadmin/Dropbox (CEGA)/github/impact-bombing-vietnam/logs/log_corrected.txt
   log type:  text
- closed on:  30 May 2023, 17:49:34
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  24 Jul 2023, 13:22:46
+-------------------------------------------------------------------------------------------------
